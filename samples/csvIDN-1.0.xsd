@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:csvIDN-1.0"
+      xmlns:csvIDN="urn:ietf:params:xml:ns:csvIDN-1.0"
+      xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+      xmlns="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified">
+
+  <!--
+  Import common element types
+  -->
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+  schemaLocation="rde-1.0.xsd"/>
+
+  <annotation>
+   <documentation>
+    IDN Language Comma-Separated Values (CSV) Object 
+   </documentation>
+  </annotation>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="csvIDN:contentsType"
+   substitutionGroup="rde:contents"/>
+
+  <complexType name="contentsType">
+   <complexContent>
+    <extension base="rde:contentsType"/>
+   </complexContent>
+  </complexType>
+
+  <!--
+  End of schema.
+  -->
+</schema>

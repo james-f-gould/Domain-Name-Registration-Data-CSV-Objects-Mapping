@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:rdeIDN-1.0"
+		  xmlns:rdeIDN="urn:ietf:params:xml:ns:rdeIDN-1.0"
+		  xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+		  xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+		  xmlns="http://www.w3.org/2001/XMLSchema"
+		  elementFormDefault="qualified">
+
+  <!--
+  Import common element types
+  -->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+	schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+	schemaLocation="rde-1.0.xsd"/>
+
+  <annotation>
+	 <documentation>
+		Registry Data Escrow (RDE) IDN Language Rules Object
+	 </documentation>
+  </annotation>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="rdeIDN:contentsType"
+	 substitutionGroup="rde:contents"/>
+
+  <complexType name="contentsType">
+	 <complexContent>
+		<extension base="rde:contentsType"/>
+	 </complexContent>
+  </complexType>
+
+
+  <!--
+  Child elements of the <rde:content> object
+  -->
+  <element name="languageRules" 
+  type="rdeIDN:languageRulesType"
+	substitutionGroup="rde:content"/>
+
+  <complexType name="languageRulesType">
+	 <complexContent>
+		<extension base="rde:contentType">
+		  <sequence>
+		  	 <element name="language" type="language" 
+		  	 	maxOccurs="unbounded"/>
+		  	 <element name="table" 
+		  	 type="rdeIDN:languageTableType" 
+		  	 	maxOccurs="unbounded"/>
+			</sequence>
+		</extension>
+	 </complexContent>
+  </complexType>
+  
+  <!-- 
+  Child elements of the <rdeIDN:rdeIDN:table> element.
+  -->
+  <complexType name="languageTableType">
+    <sequence>
+    	<element name="url" type="anyURI" 
+    		maxOccurs="unbounded"/>
+    	<element name="table" type="rdeIDN:languageTableType" 
+    		minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+	 <attribute name="use" 
+	 type="rdeIDN:languageUseType" default="one"/>
+	</complexType>
+	
+	<simpleType name="languageUseType">
+		<restriction base="token">
+			<enumeration value="one"/>
+			<enumeration value="all"/>
+		</restriction>
+	</simpleType>
+    
+   <!--
+  Child elements of the <rde:delete> object
+  -->
+  <element name="delete" type="rdeIDN:deleteType"
+	substitutionGroup="rde:delete"/>
+
+  <complexType name="deleteType">
+	 <complexContent>
+		<extension base="rde:deleteType">
+		  <sequence>
+		  	 <element name="language" type="language" 
+		  	 	minOccurs="0" maxOccurs="unbounded"/>
+		  </sequence>
+		</extension>
+	 </complexContent>
+  </complexType>
+ 
+
+  <!--
+  End of schema.
+  -->
+</schema>

@@ -1,0 +1,4832 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head><title>Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping">
+<meta name="keywords" content="escrow, registry, object">
+<meta name="generator" content="xml2rfc v1.36 (http://xml.resource.org/)">
+<style type='text/css'><!--
+        body {
+                font-family: verdana, charcoal, helvetica, arial, sans-serif;
+                font-size: small; color: #000; background-color: #FFF;
+                margin: 2em;
+        }
+        h1, h2, h3, h4, h5, h6 {
+                font-family: helvetica, monaco, "MS Sans Serif", arial, sans-serif;
+                font-weight: bold; font-style: normal;
+        }
+        h1 { color: #900; background-color: transparent; text-align: right; }
+        h3 { color: #333; background-color: transparent; }
+
+        td.RFCbug {
+                font-size: x-small; text-decoration: none;
+                width: 30px; height: 30px; padding-top: 2px;
+                text-align: justify; vertical-align: middle;
+                background-color: #000;
+        }
+        td.RFCbug span.RFC {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: bold; color: #666;
+        }
+        td.RFCbug span.hotText {
+                font-family: charcoal, monaco, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: normal; text-align: center; color: #FFF;
+        }
+
+        table.TOCbug { width: 30px; height: 15px; }
+        td.TOCbug {
+                text-align: center; width: 30px; height: 15px;
+                color: #FFF; background-color: #900;
+        }
+        td.TOCbug a {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, sans-serif;
+                font-weight: bold; font-size: x-small; text-decoration: none;
+                color: #FFF; background-color: transparent;
+        }
+
+        td.header {
+                font-family: arial, helvetica, sans-serif; font-size: x-small;
+                vertical-align: top; width: 33%;
+                color: #FFF; background-color: #666;
+        }
+        td.author { font-weight: bold; font-size: x-small; margin-left: 4em; }
+        td.author-text { font-size: x-small; }
+
+        /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+        a.info {
+                /* This is the key. */
+                position: relative;
+                z-index: 24;
+                text-decoration: none;
+        }
+        a.info:hover {
+                z-index: 25;
+                color: #FFF; background-color: #900;
+        }
+        a.info span { display: none; }
+        a.info:hover span.info {
+                /* The span will display just on :hover state. */
+                display: block;
+                position: absolute;
+                font-size: smaller;
+                top: 2em; left: -5em; width: 15em;
+                padding: 2px; border: 1px solid #333;
+                color: #900; background-color: #EEE;
+                text-align: left;
+        }
+
+        a { font-weight: bold; }
+        a:link    { color: #900; background-color: transparent; }
+        a:visited { color: #633; background-color: transparent; }
+        a:active  { color: #633; background-color: transparent; }
+
+        p { margin-left: 2em; margin-right: 2em; }
+        p.copyright { font-size: x-small; }
+        p.toc { font-size: small; font-weight: bold; margin-left: 3em; }
+        table.toc { margin: 0 0 0 3em; padding: 0; border: 0; vertical-align: text-top; }
+        td.toc { font-size: small; font-weight: bold; vertical-align: text-top; }
+
+        ol.text { margin-left: 2em; margin-right: 2em; }
+        ul.text { margin-left: 2em; margin-right: 2em; }
+        li      { margin-left: 3em; }
+
+        /* RFC-2629 <spanx>s and <artwork>s. */
+        em     { font-style: italic; }
+        strong { font-weight: bold; }
+        dfn    { font-weight: bold; font-style: normal; }
+        cite   { font-weight: normal; font-style: normal; }
+        tt     { color: #036; }
+        tt, pre, pre dfn, pre em, pre cite, pre span {
+                font-family: "Courier New", Courier, monospace; font-size: small;
+        }
+        pre {
+                text-align: left; padding: 4px;
+                color: #000; background-color: #CCC;
+        }
+        pre dfn  { color: #900; }
+        pre em   { color: #66F; background-color: #FFC; font-weight: normal; }
+        pre .key { color: #33C; font-weight: bold; }
+        pre .id  { color: #900; }
+        pre .str { color: #000; background-color: #CFF; }
+        pre .val { color: #066; }
+        pre .rep { color: #909; }
+        pre .oth { color: #000; background-color: #FCF; }
+        pre .err { background-color: #FCC; }
+
+        /* RFC-2629 <texttable>s. */
+        table.all, table.full, table.headers, table.none {
+                font-size: small; text-align: center; border-width: 2px;
+                vertical-align: top; border-collapse: collapse;
+        }
+        table.all, table.full { border-style: solid; border-color: black; }
+        table.headers, table.none { border-style: none; }
+        th {
+                font-weight: bold; border-color: black;
+                border-width: 2px 2px 3px 2px;
+        }
+        table.all th, table.full th { border-style: solid; }
+        table.headers th { border-style: none none solid none; }
+        table.none th { border-style: none; }
+        table.all td {
+                border-style: solid; border-color: #333;
+                border-width: 1px 2px;
+        }
+        table.full td, table.headers td, table.none td { border-style: none; }
+
+        hr { height: 1px; }
+        hr.insert {
+                width: 80%; border-style: none; border-width: 0;
+                color: #CCC; background-color: #CCC;
+        }
+--></style>
+</head>
+<body>
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
+<tr><td class="header">Network Working Group</td><td class="header">J. Gould</td></tr>
+<tr><td class="header">Internet-Draft</td><td class="header">C. Thippeswamy</td></tr>
+<tr><td class="header">Intended status: Standards Track</td><td class="header">Verisign</td></tr>
+<tr><td class="header">Expires: May 9, 2013</td><td class="header">November 5, 2012</td></tr>
+</table></td></tr></table>
+<h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-00</h1>
+
+<h3>Abstract</h3>
+
+<p>
+                This document specifies the format and contents of Data Escrow deposits for the 
+                standard set of Domain Name Registration Data (DNRD) objects including domain, host, 
+                contact, and registrar using XML for definition and Comma-Separated Values (CSV) Files 
+                for data.  
+            
+</p>
+<h3>Status of this Memo</h3>
+<p>
+This Internet-Draft is submitted  in full
+conformance with the provisions of BCP&nbsp;78 and BCP&nbsp;79.</p>
+<p>
+Internet-Drafts are working documents of the Internet Engineering
+Task Force (IETF).  Note that other groups may also distribute
+working documents as Internet-Drafts.  The list of current
+Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
+<p>
+Internet-Drafts are draft documents valid for a maximum of six months
+and may be updated, replaced, or obsoleted by other documents at any time.
+It is inappropriate to use Internet-Drafts as reference material or to cite
+them other than as &ldquo;work in progress.&rdquo;</p>
+<p>
+This Internet-Draft will expire on May 9, 2013.</p>
+
+<h3>Copyright Notice</h3>
+<p>
+Copyright (c) 2012 IETF Trust and the persons identified as the
+document authors.  All rights reserved.</p>
+<p>
+This document is subject to BCP 78 and the IETF Trust's Legal
+Provisions Relating to IETF Documents
+(http://trustee.ietf.org/license-info) in effect on the date of
+publication of this document.  Please review these documents
+carefully, as they describe your rights and restrictions with respect
+to this document. Code Components extracted from this document must
+include Simplified BSD License text as described in Section 4.e of
+the Trust Legal Provisions and are provided without warranty as
+described in the Simplified BSD License.</p>
+<a name="toc"></a><br /><hr />
+<h3>Table of Contents</h3>
+<p class="toc">
+<a href="#anchor1">1.</a>&nbsp;
+Introduction<br />
+<a href="#anchor2">2.</a>&nbsp;
+Conventions Used in This Document<br />
+<a href="#anchor3">3.</a>&nbsp;
+Object Attributes<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor4">3.1.</a>&nbsp;
+Date and Time<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor5">3.2.</a>&nbsp;
+Country names<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor6">3.3.</a>&nbsp;
+Telephone numbers<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#intandloc">3.4.</a>&nbsp;
+Internationalized and Localized Elements<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor7">3.5.</a>&nbsp;
+IP addresses<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#csvElements">3.6.</a>&nbsp;
+CSV elements<br />
+<a href="#anchor8">4.</a>&nbsp;
+Protocol Description<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#domainNameObject">4.1.</a>&nbsp;
+Domain Name Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#hostObject">4.2.</a>&nbsp;
+Host Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#contactObject">4.3.</a>&nbsp;
+Contact Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#registrarObject">4.4.</a>&nbsp;
+Registrar Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#idnLanguageObject">4.5.</a>&nbsp;
+IDN Language Object<br />
+<a href="#formalSyntax">5.</a>&nbsp;
+Formal Syntax<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor9">5.1.</a>&nbsp;
+RDE CSV Schema<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor10">5.2.</a>&nbsp;
+Domain Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">5.3.</a>&nbsp;
+Host Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor12">5.4.</a>&nbsp;
+Contact Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor13">5.5.</a>&nbsp;
+Registrar Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">5.6.</a>&nbsp;
+IDN Language Object<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#extension">5.7.</a>&nbsp;
+Extension Guidelines<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">5.8.</a>&nbsp;
+Internationalization Considerations<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">5.9.</a>&nbsp;
+IANA Considerations<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">5.10.</a>&nbsp;
+Security Considerations<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">5.11.</a>&nbsp;
+Acknowledgments<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">5.12.</a>&nbsp;
+Change History<br />
+<a href="#rfc.references1">6.</a>&nbsp;
+References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references1">6.1.</a>&nbsp;
+Normative References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references2">6.2.</a>&nbsp;
+Informative References<br />
+<a href="#rfc.authors">&#167;</a>&nbsp;
+Authors' Addresses<br />
+</p>
+<br clear="all" />
+
+<a name="anchor1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1"></a><h3>1.&nbsp;
+Introduction</h3>
+
+<p>          
+                The <a href='http://tools.ietf.org/id/draft-arias-noguchi-registry-data-escrow-04.txt'>Registry Data Escrow Specification</a> can 
+                be extended to support any type of object that is included in a data escrow.  This document defines the data escrow 
+                structure of the standard set of objects for Domain Name Registration Data (DNRD), using XML for definition and 
+                Comma-Seperated Values (CSV) files for data, which include:
+            
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>Domain:</dt>
+<dd>Internet domain names that are typically provisioned in a Domain Name Registry 
+          using the <a class='info' href='#RFC5731'>EPP domain name mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5731].  The attributes defined in 
+          the <a class='info' href='#RFC5731'>EPP domain name mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5731] are fully supported by this document.
+</dd>
+<dt>Host:</dt>
+<dd>Internet host names that are typically provisioned in a Domain Name Registry 
+          using the <a class='info' href='#RFC5732'>EPP host mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Host Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5732].  The attributes defined in 
+          the <a class='info' href='#RFC5732'>EPP host mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Host Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5732] are fully supported by this document.
+</dd>
+<dt>Contact:</dt>
+<dd>Individual or organization social information provisioned in a Domain Name Registry 
+          using the <a class='info' href='#RFC5733'>EPP contact mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Contact Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5733].  The attributes defined in 
+          the <a class='info' href='#RFC5733'>EPP contact mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Contact Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5733] are fully supported by this document.
+</dd>
+<dt>Registrar:</dt>
+<dd>The organization that sponsors objects like domains, hosts, and contacts 
+          in a Domain Name Registry.  The Registrar MAY also be associated with contacts, referred to as 
+          Registrars contacts.
+</dd>
+<dt>IDN language rules:</dt>
+<dd>Internationalized Domain Names (IDN) in the 
+          Domain Object Data Escrow include references to the languages rules that define the 
+          set of character code points allowed for a specific language.
+</dd>
+</dl></blockquote>
+
+<p>Bulk data exports and imports from and to a database is a natural fit for the use of Comma-Seperated Values (CSV) files, 
+         but CSV files don't provide any formal description that is a natural fit for the use of XML.  This document fully supports the 
+         full, incremental, and differential deposits defined in the <a href='http://tools.ietf.org/id/draft-arias-noguchi-registry-data-escrow-04.txt'>Registry Data Escrow Specification</a> with a flexible and extensible 
+        model for Domain Name Registration Data (DNRD) that leverages Comma-Seperated Values (CSV) files for creating and 
+        consuming the deposits in a cost effective manner.
+        
+</p>
+<a name="anchor2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2"></a><h3>2.&nbsp;
+Conventions Used in This Document</h3>
+
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+        document are to be interpreted as described in <a class='info' href='#RFC2119'>RFC 2119<span> (</span><span class='info'>Bradner, S., &ldquo;Key words for use in RFCs to Indicate Requirement Levels,&rdquo; March&nbsp;1997.</span><span>)</span></a> [RFC2119].
+</p>
+<a name="anchor3"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3"></a><h3>3.&nbsp;
+Object Attributes</h3>
+
+<a name="anchor4"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.1"></a><h3>3.1.&nbsp;
+Date and Time</h3>
+
+<p>
+                    Numerous fields indicate "dates", such as the creation and expiry dates for domains. These fields 
+                    SHALL contain timestamps indicating the date and time in UTC as specified in <a class='info' href='#RFC3339'>[RFC3339]<span> (</span><span class='info'>Klyne, G., Ed. and C. Newman, &ldquo;Date and Time on the Internet: Timestamps,&rdquo; July&nbsp;2002.</span><span>)</span></a>,
+                    with no offset from the zero meridian.
+                
+</p>
+<a name="anchor5"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2"></a><h3>3.2.&nbsp;
+Country names</h3>
+
+<p>
+                    Country identifiers SHALL be represented using two character identifiers as specified in 
+                    <a class='info' href='#ISO-3166-1'>[ISO&#8209;3166&#8209;1]<span> (</span><span class='info'>International Organization for Standardization, &ldquo;Codes for the representation of names of countries and their              subdivisions - Part 1: Country codes,&rdquo; November&nbsp;2006.</span><span>)</span></a>.
+                
+</p>
+<a name="anchor6"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.3"></a><h3>3.3.&nbsp;
+Telephone numbers</h3>
+
+<p>
+                    Telephone numbers (both voice and fax) SHALL be formatted based on structures defined in 
+                    <a class='info' href='#ITU-E164'>[ITU&#8209;E164]<span> (</span><span class='info'>International Telecommunication Union, &ldquo;The international public telecommunication numbering plan,&rdquo; February&nbsp;2005.</span><span>)</span></a>. Telephone numbers described in this specification are character strings 
+                    that MUST begin with a plus sign ("+", ASCII value 0x002B), followed by a country code defined in 
+                    <a class='info' href='#ITU-E164'>[ITU&#8209;E164]<span> (</span><span class='info'>International Telecommunication Union, &ldquo;The international public telecommunication numbering plan,&rdquo; February&nbsp;2005.</span><span>)</span></a>, followed by a dot (".", ASCII value 0x002E), followed by a sequence of 
+                    digits representing the telephone number.
+                
+</p>
+<a name="intandloc"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.4"></a><h3>3.4.&nbsp;
+Internationalized and Localized Elements</h3>
+
+<p>
+                    Some elements MAY be provided in either internationalized form ("int") or provided in localized 
+                    form ("loc").  Those elements use a field value or "isLoc" attribute to specify the form used.  If 
+                    an "isLoc" attribute is used, a value of "true" indicates the use of the localized form and a value 
+                    of "false" indicates the use of the internationalized form.  This MAY override the form specified for a parent 
+                    element.  A value of "int" is used to indicate the internationalized form and 
+                    a value of "loc" is used to indicate the localized form.  
+                    When the internalized form ("int") is provided, the field value MUST be represented in a subset of 
+                    UTF-8 that can be represented in the 7-bit US-ASCII character set.  When the localized form ("loc") 
+                    is provided, the field value MAY be represented in unrestricted UTF-8.  Some of the field elements below of 
+                    the "registrar" &lt;rdeCsv:csv"&gt; &lt;rdeCsv:fields&gt; element specify the 
+                    internationalized form with the isLoc="false" attribute:
+                
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvRegistrar:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="registrar"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvRegistrar:fId/&gt;
+      &lt;rdeCsv:fRoid/&gt;
+      &lt;csvRegistrar:fName isLoc="false"/&gt;
+      &lt;csvRegistrar:fGurid/&gt;
+      &lt;csvRegistrar:fStatus/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="0"/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="1"/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="2"/&gt;
+      &lt;csvContact:fCity isLoc="false" /&gt;
+      &lt;csvContact:fSp isLoc="false" /&gt;
+      &lt;csvContact:fPc isLoc="false" /&gt;
+      &lt;csvContact:fCc isLoc="false" /&gt;
+      &lt;csvContact:fVoice/&gt;
+      &lt;csvContact:fVoiceExt/&gt;
+      &lt;csvContact:fFax/&gt;
+      &lt;csvContact:fFaxExt/&gt;
+      &lt;csvContact:fEmail/&gt;
+      &lt;csvRegistrar:fUrl/&gt;
+      &lt;csvRegistrar:fWhoisUrl/&gt;
+      &lt;rdeCsv:fCrID/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+      &lt;rdeCsv:fUpID/&gt;
+      &lt;rdeCsv:fUpDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1924040625 268"&gt;
+        registrar-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvRegistrar:contents&gt;
+...
+</pre></div><p>
+
+                    
+</p>
+<p>The following is an example of using the &lt;csvContact:fPostalType&gt; 
+                field value to define the internationalized or localized form of the remainder of 
+                the "contactPostal" field values.
+                
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvContact:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="contactPostal"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;csvContact:fPostalType/&gt;
+      &lt;csvContact:fName/&gt;
+      &lt;csvContact:fOrg/&gt;
+      &lt;csvContact:fStreet index="0"/&gt;
+      &lt;csvContact:fStreet index="1"/&gt;
+      &lt;csvContact:fStreet index="2"/&gt;
+      &lt;csvContact:fCity/&gt;
+      &lt;csvContact:fSp/&gt;
+      &lt;csvContact:fPc/&gt;
+      &lt;csvContact:fCc/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        contactPostal-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvContact:contents&gt;
+...
+</pre></div><p>
+
+                    
+</p>
+<a name="anchor7"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.5"></a><h3>3.5.&nbsp;
+IP addresses</h3>
+
+<p>
+                    IP addresses syntax MUST conform either to, Internet Protocol <a class='info' href='#RFC0791'>[RFC0791]<span> (</span><span class='info'>Postel, J., &ldquo;Internet Protocol,&rdquo; September&nbsp;1981.</span><span>)</span></a>, for IPv4 
+                    addresses, or IP Version 6 Addressing Architecture <a class='info' href='#RFC4291'>[RFC4291]<span> (</span><span class='info'>Hinden, R. and S. Deering, &ldquo;IP Version 6 Addressing Architecture,&rdquo; February&nbsp;2006.</span><span>)</span></a>, for IPv6 addresses.
+                
+</p>
+<a name="csvElements"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.6"></a><h3>3.6.&nbsp;
+CSV elements</h3>
+
+<a name="rdeCsv-csv-csvDelete"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.6.1"></a><h3>3.6.1.&nbsp;
+&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</h3>
+
+<p>
+                To support a CSV model with the <a href='http://tools.ietf.org/id/draft-arias-noguchi-registry-data-escrow-04.txt'>Registry Data Escrow Specification</a>, 
+                  a &lt;rdeCsv:csv&gt; element is defined that substitutes for &lt;rde:content&gt; as a child element of 
+                  a &lt;rde:contents&gt; substitute element like the &lt;csvDomain:contents&gt; element.  A &lt;rdeCsv:csvDelete&gt; element 
+                  substitutes for &lt;rde:delete&gt; as a child element of the &lt;rde:deletes&gt; element.
+                  The &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements share the following child elements:
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>&lt;rdeCsv:sep&gt;</dt>
+<dd>Optional definition of the CSV separator characters with the default 
+                    separator character of ",".
+</dd>
+<dt>&lt;rdeCsv:fields&gt;</dt>
+<dd>Ordered list of CSV fields used in the CSV files.  There is one or more 
+                    child elements that substitute for the &lt;rdeCsv:field&gt; abstract element.  Each element 
+                    defines the format of the CSV field contained in the CSV files.  &lt;rdeCsv:field&gt; elements by 
+                    convention support the "type" attribute that defines the XML data type of the field elements, an 
+                    optional "list" attribute that when "true" indicates that the field is a list with the list 
+                    elements type defined by the "type" attribute, and an optional "sep" attribute for list fields that 
+                    defines the list element separator characters with a default seperator of ','.  List fields 
+                    MUST be enclosed in double quotes '"'.  By convention all fields are optional, where an undefined field 
+                    can be represented with an empty field value ",," in the CSV file, where ',' is the seperator character.
+</dd>
+<dt>&lt;rdeCsv:files&gt;</dt>
+<dd>A list of one or more CSV files using the &lt;rdeCsv:file&gt; child element.  
+                    The &lt;rdeCsv:file&gt; child element defines a reference to the CSV file name and has the following optional attributes:
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>compression</dt>
+<dd>If the CSV file is compressed, the "compression" attribute defines the compression format 
+                      like "gzip" or "zip".  
+                      
+</dd>
+<dt>encoding</dt>
+<dd>Defines the encoding of the CSV file with the default encoding of "UTF-8".
+                      
+</dd>
+<dt>chksum</dt>
+<dd>Defines the checksum CRC (UNIX cksum) of the CSV file.  This attribute is used to validate 
+                      that the full CSV file exists and has not been tampered with.
+                      
+</dd>
+</dl></blockquote>
+</dd>
+</dl></blockquote>
+
+<p>The &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements requires a "name" attribute that defines the 
+                  purpose of the CSV file with values like "domain", "host", "contact".  The supported "name" attribute values 
+                  are defined for each object type.
+                  
+</p>
+<p>The following is an example of the &lt;rdeCsv:csv&gt; element for domain name records.
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;rdeCsv:csv name="domain"&gt;
+  &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+  &lt;rdeCsv:fields&gt;
+    &lt;rdeCsv:fName/&gt;
+    &lt;rdeCsv:fRoid/&gt;
+    &lt;csvDomain:fIdn/&gt;
+    &lt;rdeCsv:fLanguage/&gt;
+    &lt;csvDomain:fVariant/&gt;
+    &lt;csvDomain:fOriginalName/&gt;
+    &lt;csvDomain:fReserved/&gt;
+    &lt;rdeCsv:fStatuses/&gt;
+    &lt;csvDomain:fRgpStatuses/&gt;
+    &lt;rdeCsv:fRegistrant/&gt;
+    &lt;rdeCsv:fAdminContacts/&gt;
+    &lt;rdeCsv:fTechContacts/&gt;
+    &lt;rdeCsv:fBillingContacts/&gt;
+    &lt;csvDomain:fNsObjs/&gt;
+    &lt;rdeCsv:fClID/&gt;
+    &lt;rdeCsv:fCrID/&gt;
+    &lt;rdeCsv:fCrDate/&gt;
+    &lt;rdeCsv:fUpID/&gt;
+    &lt;rdeCsv:fUpDate/&gt;
+    &lt;rdeCsv:fExDate/&gt;
+    &lt;rdeCsv:fPwAuthInfo/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+      cksum="2670296305 91797970"&gt;
+      domain-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+&lt;/rdeCsv:csv&gt;
+</pre></div><p>
+
+                    
+</p>
+<p>The following is example of the "domain-YYYYMMDD.csv" file 
+                  with a single record matching the &lt;rdeCsv:fields&gt; definition.
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,domain1-TEST,0,,0,0,,0,"pendingDelete",
+"pendingDelete",registrantid,"adminid","techid","billingid",
+"ns1.example.com,ns1.example.net",clientX,clientY,
+1999-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,
+2015-04-03T22:00:00.0Z,2fooBAR
+domain2.test,domain2-TEST,0,,0,0,,0,"ok",,registrantid,
+"adminid","techid","billingid","ns1.example.com,ns1.example.net",
+clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
+2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+</pre></div><p>
+
+                    
+</p>
+<p>The following is an example of the &lt;rde:csvDelete&gt; element for domain name records.
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;rdeCsv:csvDelete name="domain"&gt;
+  &lt;rdeCsv:fields&gt;
+    &lt;rdeCsv:fName/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+      cksum="2670296305 91797970"&gt;
+      domain-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+&lt;/rdeCsv:csvDelete&gt;
+</pre></div><p>
+
+                    
+</p>
+<p>The following is example of the "domain-delete-YYYYMMDD.csv" file 
+                  with a single record and matching the single &lt;rdeCsv:fName&gt; field.
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test
+domain2.test
+domainN.test
+</pre></div><p>
+
+                    
+</p>
+<a name="csvCommonFieldElements"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.6.2"></a><h3>3.6.2.&nbsp;
+CSV common field elements</h3>
+
+<p>The &lt;rdeCsv:fields&gt; element defined in the 
+                <a class='info' href='#rdeCsv-csv-csvDelete'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements<span> (</span><span class='info'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</span><span>)</span></a> 
+                section has child elements that substitute for the abstract &lt;rdeCsv:field&gt; element.  
+                By convention &lt;rdeCsv:field&gt; elements incude an 'f' prefix to identify it as a field 
+                definition element.  There are a set of common field elements that are used across 
+                multiple data escrow objects.  The common field elements are defined using the 
+                "urn:ietf:params:xml:ns:rdeCsv-1.0" namespace and using the "rdeCsv" sample namespace prefix.  
+                The CSV common field elements include:
+                
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>&lt;rdeCsv:fName&gt;</dt>
+<dd>Name field with type="eppcom:labelType".  
+                  
+</dd>
+<dt>&lt;rdeCsv:fUName&gt;</dt>
+<dd>UTF-8 encoded name field with type="eppcom:labelType".  
+                  
+</dd>
+<dt>&lt;rdeCsv:fRoid&gt;</dt>
+<dd>Repository Object IDentifier (ROID) field with type="eppcom:roidType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fRegistrant&gt;</dt>
+<dd>Registrant contact identifier with type="eppcom:clIDType". 
+                  
+</dd>
+<dt>&lt;rdeCsv:fAdminContacts&gt;</dt>
+<dd>List of administration contact identifiers with the 
+                  list elements type="eppcom:clIDType". 
+                  
+</dd>
+<dt>&lt;rdeCsv:fTechContacts&gt;</dt>
+<dd>List of technical contact identifiers with the 
+                  list elements type="eppcom:clIDType". 
+                  
+</dd>
+<dt>&lt;rdeCsv:fBillingContacts&gt;</dt>
+<dd>List of billing contact identifiers with the 
+                  list elements type="eppcom:clIDType". 
+                  
+</dd>
+<dt>&lt;rdeCsv:fStatuses&gt;</dt>
+<dd>List of statuses with the list element type="eppcom:statusType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fClID&gt;</dt>
+<dd>Identifier of client that sponsors the object with type="eppcom:clIDType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fCrID&gt;</dt>
+<dd>Identifier of client that created the object with type="eppcom:clIDType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fUpID&gt;</dt>
+<dd>Identifier of client that updated the object with type="eppcom:clIDType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fReID&gt;</dt>
+<dd>Identifier of client that requested the transfer with type="eppcom:clIDType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fAcID&gt;</dt>
+<dd>Identifier of client that should take or took action for transfer with type="eppcom:clIDType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fCrDate&gt;</dt>
+<dd>Created date of object with type="datetime".
+                  
+</dd>
+<dt>&lt;rdeCsv:fUpDate&gt;</dt>
+<dd>Updated date of object with type="datetime".
+                  
+</dd>
+<dt>&lt;rdeCsv:fExDate&gt;</dt>
+<dd>Expiration date of object with type="datetime".
+                  
+</dd>
+<dt>&lt;rdeCsv:fReDate&gt;</dt>
+<dd>Date that transfer was requested with type="datetime".
+                  
+</dd>
+<dt>&lt;rdeCsv:fAcDate&gt;</dt>
+<dd>Date that transfer action should be taken or has been taken with type="datetime".
+                  
+</dd>
+<dt>&lt;rdeCsv:fTrDate&gt;</dt>
+<dd>Date of last transfer with type="datetime".
+                  
+</dd>
+<dt>&lt;rdeCsv:fTrStatus&gt;</dt>
+<dd>State of the most recent transfer request with type="eppcom:trStatusType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fTokenType&gt;</dt>
+<dd>General token field with type="token".
+                  
+</dd>
+<dt>&lt;rdeCsv:fLanguage&gt;</dt>
+<dd>General language field with type="language".
+                  
+</dd>
+<dt>&lt;rdeCsv:fPositiveIntegerType&gt;</dt>
+<dd>General positive integer field with type="positiveInteger".
+                  
+</dd>
+<dt>&lt;rdeCsv:fPwAuthInfo&gt;</dt>
+<dd>Password authorization info value with type="normalizedString".
+                  
+</dd>
+<dt>&lt;rdeCsv:fCustom&gt;</dt>
+<dd>Custom field with name attribute that defines the custom field name" with type="token".
+                  
+</dd>
+</dl></blockquote>
+
+<a name="anchor8"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4"></a><h3>4.&nbsp;
+Protocol Description</h3>
+
+<p>
+                The following is a format for Data Escrow deposits for the standard set of objects for Domain Name Registration Data (DNRD). 
+                Format elements are reused from the EPP <a class='info' href='#RFC5730'>[RFC5730]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a> and related RFCs.
+            
+</p>
+<a name="domainNameObject"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.1"></a><h3>4.1.&nbsp;
+Domain Name Object</h3>
+
+<p>
+                   The domain name object is based on the EPP domain name mapping in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>. The 
+                   elements used for the Domain Name Object is defined in this section.  The &lt;csvDomain:contents&gt; child 
+                   element of the &lt;rde:contents&gt; element is used to hold the domain name objects for the deposit.  The &lt;rdeCsv:csv&gt; and the 
+                &lt;rdeCsv:csvDelete&gt; elements, defined in the 
+                "<a class='info' href='#rdeCsv-csv-csvDelete'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements<span> (</span><span class='info'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</span><span>)</span></a>" section, 
+                are used with the following supported "name" attribute values:
+                
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>&quot;domain&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the domain name object records.  The following field elements were added for use in the "domain" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvDomain:fIdn&gt;</dt>
+<dd>Boolean flag indicating if the domain name object is an IDN domain name object with type="boolean".
+                
+</dd>
+<dt>&lt;csvDomain:fVariant&gt;</dt>
+<dd>Boolean flag indicating if the domain name object is an IDN variant domain name object with type="boolean". 
+                
+</dd>
+<dt>&lt;csvDomain:fOriginalName&gt;</dt>
+<dd>Fully qualified name of the original IDN domain name object related to the 
+                      variant domain name object with type="eppcom:labelType".
+                
+</dd>
+<dt>&lt;csvDomain:fReserved&gt;</dt>
+<dd>Boolean flag indicating if the domain name object is a reserved domain with type="boolean".
+                
+</dd>
+<dt>&lt;csvDomain:fRgpStatuses&gt;</dt>
+<dd>List of Registry Grace Period (RGP) status descriptors with the list elements type="rgp:statusType" as 
+                defined in <a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a>.  
+                
+</dd>
+<dt>&lt;csvDomain:fNsObjs&gt;</dt>
+<dd>List of fully qualified names of the delegated host objects associated with the domain name object with 
+                the list elements type="eppcom:labelType".
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "domain" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fName&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUName&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fLanguage&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatuses&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fRegistrant&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fClID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fExDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fTrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fPwAuthInfo&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domain" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="domain"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;rdeCsv:fRoid/&gt;
+      &lt;csvDomain:fIdn/&gt;
+      &lt;rdeCsv:fLanguage/&gt;
+      &lt;csvDomain:fVariant/&gt;
+      &lt;csvDomain:fOriginalName/&gt;
+      &lt;csvDomain:fReserved/&gt;
+      &lt;rdeCsv:fStatuses/&gt;
+      &lt;csvDomain:fRgpStatuses/&gt;
+      &lt;rdeCsv:fRegistrant/&gt;
+      &lt;csvDomain:fNsObjs/&gt;
+      &lt;rdeCsv:fClID/&gt;
+      &lt;rdeCsv:fCrID/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+      &lt;rdeCsv:fUpID/&gt;
+      &lt;rdeCsv:fUpDate/&gt;
+      &lt;rdeCsv:fExDate/&gt;
+      &lt;rdeCsv:fPwAuthInfo/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        domain-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domain-YYYYMMDD.csv file.
+                        The file contains four records (active ASCII domain, pendingDelete domain, 
+                        original IDN with LANG1 language rules, and variant IDN 
+                        with LANG1 language rules).
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,Ddomain2-TEST,0,,0,0,,0,"ok",,registrantid,
+"ns1.example.com,ns1.example.net",
+clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
+2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+domain2.test,Ddomain1-TEST,0,,0,0,,0,"pendingDelete","pendingDelete",
+registrantid,"ns1.example.com,ns1.example.net",clientX,clientY,
+1999-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,
+2015-04-03T22:00:00.0Z,2fooBAR
+xn-abc123.test,Dxn-abc123-TEST,1,LANG1,0,1,,0,"ok",,
+registrantid,"ns1.example.com,ns1.example.net",clientX,clientY,
+2009-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,
+2015-04-03T22:00:00.0Z,2fooBAR
+xn-abc321.test,Dxn-abc321-TEST,1,LANG1,1,
+0,xn-abc123.test,0,"ok",,registrantid,"ns1.example.com,ns1.example.net",
+clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
+2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domain" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domain"&gt;
+  &lt;rdeCsv:fields&gt;
+    &lt;rdeCsv:fName/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="2670296305 91797970"&gt;
+     domain-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domain-delete-YYYYMMDD.csv file.
+                        The file contains three domain name records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test
+domain2.test
+domainN.test
+</pre></div>
+                    
+</dd>
+<dt>&quot;domainContacts&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the domain name object link records to contact objects, as described in <a class='info' href='#contactObject'>Section&nbsp;4.3<span> (</span><span class='info'>Contact Object</span><span>)</span></a>.  
+                  The following field elements were added for use in the "domainContacts" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvDomain:fContactType&gt;</dt>
+<dd>The contact type for the contact object link with type="domain:contactAttrType".  The supported 
+                contact type values include "admin" for the adminstration contact, "billing" for the billing contact, and "tech" for the technical contact.  
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "domainContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fName&gt; for the domain name object reference.
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fId&gt; for the server-unique contact identifier reference.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpDate&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainContacts" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="domainContacts"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;csvDomain:fContactType/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        domainContacts-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainContacts-YYYYMMDD.csv file.
+                        The file contains a admin, tech, and billing contact for 
+                        the two domain names domain1.test and domain2.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,sh8013,admin
+domain1.test,mycontactid,tech
+domain1.test,mycontactid,billing
+domain2.test,mycontactid,admin
+domain2.test,sh8013,tech
+domain2.test,mycontactid,billing
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainContacts" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domain"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;csvDomain:fContactType/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="2670296305 91797970"&gt;
+     domainContacts-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainContacts-delete-YYYYMMDD.csv file.
+                        The file contains two tech contact records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,mycontactid,tech
+domain2.test,sh8013,tech
+</pre></div>
+                    
+</dd>
+<dt>&quot;dnssec&quot;</dt>
+<dd>Defines the fields and CSV file referenes used 
+                  for the domain name object DNSSEC records (DS or Key Data).  The following field elements were added for use 
+                  in the "dnssec" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvDomain:fMaxSigLife&gt;</dt>
+<dd>Indicates a child's preference for the number of seconds 
+                after signature generation when the parent's signature on the DS information provided by the child 
+                will expire with type="secDNS:maxSigLifeType" defined in <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a>.
+                
+</dd>
+<dt>&lt;csvDomain:fKeyTag&gt;</dt>
+<dd>Contains the DS key tag value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="unsignedShort".
+                
+</dd>
+<dt>&lt;csvDomain:fDsAlg&gt;</dt>
+<dd>Contains the DS algorithm value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="unsignedByte".
+                
+</dd>
+<dt>&lt;csvDomain:fDigestType&gt;</dt>
+<dd>Contains the DS digest type value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="unsignedByte".
+                
+</dd>
+<dt>&lt;csvDomain:fDigest&gt;</dt>
+<dd>Contains the DS digest value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="hexBinary".
+                
+</dd>
+<dt>&lt;csvDomain:fFlags&gt;</dt>
+<dd>Contains the flags field value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="unsignedShort".
+                
+</dd>
+<dt>&lt;csvDomain:fProtocol&gt;</dt>
+<dd>Contains the Key protocol value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="unsignedByte".
+                
+</dd>
+<dt>&lt;csvDomain:fKeyAlg&gt;</dt>
+<dd>Contains the Key algorithm value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="unsignedByte".
+                
+</dd>
+<dt>&lt;csvDomain:fPubKey&gt;</dt>
+<dd>Contains the public key value per <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a> with type="secDNS:keyType".
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "dnssec" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fName&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "dnssec" &lt;rdeCsv:csv&gt; element with the DS Data Interface of <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a>:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;csvDomain:contents&gt;
+...
+  &lt;rdeCsv:csv name="dnssec"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fMaxSigLife/&gt;
+      &lt;csvDomain:fKeyTag/&gt;
+      &lt;csvDomain:fDsAlg/&gt;
+      &lt;csvDomain:fDigestType/&gt;
+      &lt;csvDomain:fDigest/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+       cksum="2670296305 91797970"&gt;
+       dnssec-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding dnssec-YYYYMMDD.csv file.
+                        The file contains two DS records for domain1.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,604800,12345,3,1,49FD46E6C4B45C55D4AC
+domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "dnssec" &lt;rdeCsv:csv&gt; element with the Key Data Interface of <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a>:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;csvDomain:contents&gt;
+...
+  &lt;rdeCsv:csv name="dnssec"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fMaxSigLife/&gt;
+      &lt;csvDomain:fFlags/&gt;
+      &lt;csvDomain:fProtocol/&gt;
+      &lt;csvDomain:fKeyAlg/&gt;
+      &lt;csvDomain:fPubKey/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+       cksum="2670296305 91797970"&gt;
+       dnssec-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding dnssec-YYYYMMDD.csv file.
+                        The file contains two key records for domain1.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,604800,257,3,1,AQPJ////4Q==
+domain1.test,604800,257,3,1,AQPJ////4QQQ
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "dnssec" &lt;rdeCsv:csvDelete&gt; element with the DS Data Interface of <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a>:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+  &lt;rdeCsv:csvDelete name="dnssec"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fKeyTag/&gt;
+      &lt;csvDomain:fDsAlg/&gt;
+      &lt;csvDomain:fDigestType/&gt;
+      &lt;csvDomain:fDigest/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+       cksum="2670296305 91797970"&gt;
+       dnssec-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding dnssec-delete-YYYYMMDD.csv file.
+                        The file contains two DS records for domain1.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,604800,12345,3,1,49FD46E6C4B45C55D4AC
+domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "dnssec" &lt;rdeCsv:csvDelete&gt; element with the Key Data Interface of <a class='info' href='#RFC5910'>[RFC5910]<span> (</span><span class='info'>Gould, J. and S. Hollenbeck, &ldquo;Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; May&nbsp;2010.</span><span>)</span></a>:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+  &lt;rdeCsv:csvDelete name="dnssec"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fFlags/&gt;
+      &lt;csvDomain:fProtocol/&gt;
+      &lt;csvDomain:fKeyAlg/&gt;
+      &lt;csvDomain:fPubKey/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+       cksum="2670296305 91797970"&gt;
+       dnssec-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding dnssec-delete-YYYYMMDD.csv file.
+                        The file contains two key records for domain1.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,257,3,1,AQPJ////4Q==
+domain1.test,257,3,1,AQPJ////4QQQ
+</pre></div>
+                    
+</dd>
+<dt>&quot;domainTransfer&quot;</dt>
+<dd>Defines the fields and CSV file referenes 
+                  used for the domain name object pending and completed transfer records.  No additional 
+                  field elements were added for use in the "domainTransfer"  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element. 
+                  The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "domainTransfer" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fName&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fTrStatus&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fReID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fReDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fAcID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fAcDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fExDate&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainTransfer" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+...
+  &lt;rdeCsv:csv name="domainTransfer"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;rdeCsv:fTrStatus/&gt;
+      &lt;rdeCsv:fReID/&gt;
+      &lt;rdeCsv:fReDate/&gt;
+      &lt;rdeCsv:fAcID/&gt;
+      &lt;rdeCsv:fAcDate/&gt;
+      &lt;rdeCsv:fExDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+       cksum="2670296305 91797970"&gt;
+       domainTransfer-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainTransfer-YYYYMMDD.csv file.
+                        The file contains two domain transfer records, with one
+                        in pending status and the second in clientApproved status.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,pending,clientW,2011-03-08T19:38:00.0Z,
+clientX,2011-03-13T23:59:59.0Z,2016-04-03T22:00:00.0Z
+domain2.test,clientApproved,clientW,2012-03-08T19:38:00.0Z,
+clientX,2012-03-09T23:59:59.0Z,2016-05-04T23:00:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainTransfer" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+  &lt;rdeCsv:csvDelete name="domainTransfer"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fName/&gt;
+      &lt;rdeCsv:fReDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+       cksum="2670296305 91797970"&gt;
+       domainTransfer-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainTransfer-delete-YYYYMMDD.csv file.
+                        The file contains two domain transfer records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,2011-03-08T19:38:00.0Z
+domain2.test,2012-03-08T19:38:00.0Z
+</pre></div>
+                    
+</dd>
+</dl></blockquote>
+
+<a name="hostObject"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.2"></a><h3>4.2.&nbsp;
+Host Object</h3>
+
+<p>
+                    The host object is based on the EPP host mapping in <a class='info' href='#RFC5732'>[RFC5732]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Host Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>. The 
+                    elements used for Host Object is defined in this section.  The &lt;csvHost:contents&gt; child 
+                    element of the &lt;rde:contents&gt; element is used to hold the host objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
+                &lt;rdeCsv:csvDelete&gt; elements, defined in the 
+                "<a class='info' href='#rdeCsv-csv-csvDelete'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements<span> (</span><span class='info'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</span><span>)</span></a>" section, 
+                are used with the following supported "name" attribute values:
+                
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>&quot;host&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the host object records.  The following field elements were added for use in the "host" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvHost:fParentDomain&gt;</dt>
+<dd>Contains parent domain name for the subordinate host object with type="eppcom:labelType".  
+                
+</dd>
+<dt>&lt;csvHost:fIdn&gt;</dt>
+<dd>Boolean flag indicating if the host object is an IDN host object with type="boolean".
+                
+</dd>
+<dt>&lt;csvHost:fV4Addrs&gt;</dt>
+<dd>List of IPv4 IP addresses for the host object with the list elements type="host:addrStringType".  
+                
+</dd>
+<dt>&lt;csvHost:fV6Addrs&gt;</dt>
+<dd>List of IPv6 IP addresses for the host object with the list elements type="host:addrStringType".
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "host" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fName&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUName&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatuses&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fClID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fTrDate&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "host" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvHost:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="host"&gt;
+   &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+   &lt;rdeCsv:fields&gt;
+     &lt;rdeCsv:fName/&gt;
+     &lt;rdeCsv:fRoid/&gt;
+     &lt;rdeCsv:fParentDomain/&gt;
+     &lt;rdeCsv:fStatuses/&gt;
+     &lt;csvHost:fV4Addrs/&gt;
+     &lt;csvHost:fV6Addrs/&gt;
+     &lt;rdeCsv:fClID/&gt;
+     &lt;rdeCsv:fCrID/&gt;
+     &lt;rdeCsv:fCrDate/&gt;
+     &lt;rdeCsv:fUpID/&gt;
+     &lt;rdeCsv:fUpDate/&gt;
+     &lt;rdeCsv:fTrDate/&gt;
+   &lt;/rdeCsv:fields&gt;
+   &lt;rdeCsv:files&gt;
+     &lt;rdeCsv:file
+      cksum="1410255126 216"&gt;
+      host-YYYYMMDD.csv
+     &lt;/rdeCsv:file&gt;
+   &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvHost:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding host-YYYYMMDD.csv file.
+                        The file contains two host records with one being 
+                        an internal host and the second being an external 
+                        host.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+ns1.example.test,Hns1_example_test-TEST,example.test,
+"linked,clientUpdateProhibited","192.0.2.2,192.0.2.29",
+"1080:0:0:0:8:800:200C:417A",clientY,clientX,
+1999-05-08T12:10:00.0Z,clientX,2009-10-03T09:34:00.0Z,
+2007-01-08T09:19:00.0Z
+ns1.example.test2,Hns1_example_test2-TEST,,
+"linked,clientUpdateProhibited",,,clientY,clientX,
+2009-05-08T12:10:00.0Z,clientX,2010-10-03T09:34:00.0Z,
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "host" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="host"&gt;
+  &lt;rdeCsv:fields&gt;
+    &lt;rdeCsv:fName/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="2670296305 91797970"&gt;
+     host-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the host-delete-YYYYMMDD.csv file.
+                        The file contains two host records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+ns1.example.test
+ns1.example.test2
+</pre></div>
+                    
+</dd>
+</dl></blockquote>
+
+<a name="contactObject"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.3"></a><h3>4.3.&nbsp;
+Contact Object</h3>
+
+<p>
+                    The contact object is based on the EPP contact mapping in <a class='info' href='#RFC5733'>[RFC5733]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Contact Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>. The 
+                    elements used for the Contact Object are defined in this sections  The &lt;csvContact:contents&gt; child 
+                    element of the &lt;rde:contents&gt; element to hold the contact objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
+                &lt;rdeCsv:csvDelete&gt; elements, defined in the 
+                "<a class='info' href='#rdeCsv-csv-csvDelete'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements<span> (</span><span class='info'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</span><span>)</span></a>" section, 
+                are used with the following supported "name" attribute values:
+                
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>&quot;contact&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the contact object records.  The following field elements were added for use in the "contact" 
+                  &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvContact:fId&gt;</dt>
+<dd>Contains the server-unique contact identifier with type="eppcom:clIDType".  
+                
+</dd>
+<dt>&lt;csvContact:fVoice&gt;</dt>
+<dd>Contains the contact's voice telephone number with type="contact:e164StringType".  
+                
+</dd>
+<dt>&lt;csvContact:fVoiceExt&gt;</dt>
+<dd>Contains the contact's voice telephone number extension with type="token".  
+                
+</dd>
+<dt>&lt;csvContact:fFax&gt;</dt>
+<dd>Contains the contact's facsimile telephone number with type="contact:e164StringType".  
+                
+</dd>
+<dt>&lt;csvContact:fFaxExt&gt;</dt>
+<dd>Contains the contact's facsimile telephone number extension with type="token".  
+                
+</dd>
+<dt>&lt;csvContact:fEmail&gt;</dt>
+<dd>Contains the contact's email address with type="eppcom:minTokenType".  
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatuses&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fClID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fTrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fPwAuthInfo&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contact" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvContact:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="contact"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+     &lt;csvContact:fId/&gt;
+     &lt;rdeCsv:fRoid/&gt;
+     &lt;rdeCsv:fStatuses/&gt;
+     &lt;csvContact:fVoice/&gt;
+     &lt;csvContact:fVoiceExt/&gt;
+     &lt;csvContact:fFax/&gt;
+     &lt;csvContact:fFaxExt/&gt;
+     &lt;csvContact:fEmail/&gt;
+     &lt;rdeCsv:fClID/&gt;
+     &lt;rdeCsv:fCrID/&gt;
+     &lt;rdeCsv:fCrDate/&gt;
+     &lt;rdeCsv:fUpID/&gt;
+     &lt;rdeCsv:fUpDate/&gt;
+     &lt;rdeCsv:fPwAuthInfo/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+     &lt;rdeCsv:file
+      cksum="1410255126 216"&gt;
+      contact-YYYYMMDD.csv
+     &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvContact:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the contact-YYYYMMDD.csv file.
+                        The file contains two contact records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,Csh8013-TEST,"linked,clientDeleteProhibited",
++1.7035555555,1234,+1.7035555556,,jdoe@example.test,clientY,
+clientX,2009-09-13T08:01:00.0Z,clientX,
+2009-11-26T09:10:00.0Z,2fooBAR
+mycontactid,Cmycontactid-TEST,"ok",+1.7034444444,1234,
++1.7033333333,,jsmith@example.test,clientY,clientX,
+2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,2fooBAR
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contact" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+  ...
+  &lt;rdeCsv:csvDelete name="contact"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1410255126 216"&gt;
+        contact-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+  ...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the contact-delete-YYYYMMDD.csv file.
+                        The file contains two contact records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013
+mycontactid
+</pre></div>
+                    
+</dd>
+<dt>&quot;contactPostal&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the contact postal info object records.  The following field elements were added for use in the "contactPostal" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvContact:fPostalType&gt;</dt>
+<dd>Contains the form of the postal-address information with type="contact:postalLineType".  
+                This field specifies the form ("int" or "loc"), as defined in <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>, of the 
+                &lt;csvContact:fName&gt;, &lt;csvContact:fOrg&gt;, &lt;csvContact:fStreet&gt;, &lt;csvContact:fCity&gt;, 
+                &lt;csvContact:fSp&gt;, &lt;csvContact:fPc&gt;, &lt;csvContact:fCc&gt; fields.  
+                
+</dd>
+<dt>&lt;csvContact:fName&gt;</dt>
+<dd>Contains the contact's name of the individual or role represented by the contact with type="contact:postalLineType".  
+                An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
+                
+</dd>
+<dt>&lt;csvContact:fOrg&gt;</dt>
+<dd>Contains the name of the organization with which the contact is affiliated with type="contact:optPostalLineType".  
+                An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
+              
+</dd>
+<dt>&lt;csvContact:fStreet&gt;</dt>
+<dd>Contains the contact's contact's street address line with type="contact:fPostalLineType".  An index attribute 
+                is required to indicate which street address line the field represents with index "0" for the first line and index "2" for the last line.  
+                An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
+                
+</dd>
+<dt>&lt;csvContact:fCity&gt;</dt>
+<dd>Contains the contact's city with type="contact:postalLineType".   
+                An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
+                
+</dd>
+<dt>&lt;csvContact:fSp&gt;</dt>
+<dd>Contains the contact's state or province with type="contact:optPostalLineType".   
+                An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
+                
+</dd>
+<dt>&lt;csvContact:fPc&gt;</dt>
+<dd>Contains the contact's postal code with type="contact:pcType".  
+                An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
+                
+</dd>
+<dt>&lt;csvContact:fCc&gt;</dt>
+<dd>Contains the contact's country code with type="contact:ccType".   
+                An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvContact" fields, defined for the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element, 
+                  is used in the "contactPostal" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvContact:fId&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactPostal" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvContact:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="contactPostal"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;csvContact:fPostalType/&gt;
+      &lt;csvContact:fName/&gt;
+      &lt;csvContact:fOrg/&gt;
+      &lt;csvContact:fStreet index="0"/&gt;
+      &lt;csvContact:fStreet index="1"/&gt;
+      &lt;csvContact:fStreet index="2"/&gt;
+      &lt;csvContact:fCity/&gt;
+      &lt;csvContact:fSp/&gt;
+      &lt;csvContact:fPc/&gt;
+      &lt;csvContact:fCc/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        contactPostal-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvContact:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the contactPostal-YYYYMMDD.csv file.
+                        The file contains two contact postal records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,int,"John Doe","Example Inc.",
+"123 Example Dr.","Suite 100",,Reston,VA,20190,US
+mycontactid,int,"John Smith","Acme Inc.",
+"123 Sample Dr.",,,Reston,VA,20190,US
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactPostal" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+  ...
+  &lt;rdeCsv:csvDelete name="contactPostal"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;csvContact:fPostalType/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        contactPostal-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+  ...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the contactPostal-delete-YYYYMMDD.csv file.
+                        The file contains two contact postal records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,int
+mycontactid,int
+</pre></div>
+                    
+</dd>
+<dt>&quot;contactTransfer&quot;</dt>
+<dd>Defines the fields and CSV file referenes 
+                  used for the contact object pending and completed transfer records.  No additional 
+                  field elements were added for use in the "contactTransfer"  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element. 
+                  The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "contactTransfer" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fTrStatus&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fReID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fReDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fAcID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fAcDate&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvContact" fields, defined for the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element, 
+                  is used in the "contactTransfer" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvContact:fId&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactTransfer" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+  ...
+  &lt;rdeCsv:csv name="contactTransfer"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;rdeCsv:fTrStatus/&gt;
+      &lt;rdeCsv:fReID/&gt;
+      &lt;rdeCsv:fReDate/&gt;
+      &lt;rdeCsv:fAcID/&gt;
+      &lt;rdeCsv:fAcDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        contactTransfer-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvContact:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the contactTransfer-YYYYMMDD.csv file.
+                        The file contains two contact transfer records 
+                        with one in pending status and the second in 
+                        clientApproved status.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,pending,clientW,2011-03-08T19:38:00.0Z,
+clientX,2011-03-13T23:59:59.0Z
+mycontactid,clientApproved,clientW,2011-04-08T19:38:00.0Z,
+clientX,2011-04-09T20:38:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactTransfer" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvContact:contents&gt;
+  ...
+  &lt;rdeCsv:csvDelete name="contactTransfer"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;rdeCsv:fReDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        contactTransfer-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+  ...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the contactTransfer-delete-YYYYMMDD.csv file.
+                        The file contains two contact transfer records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,2011-03-08T19:38:00.0Z
+mycontactid,2011-04-08T19:38:00.0Z
+</pre></div>
+                    
+</dd>
+<dt>&quot;contactDisclose&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the contact disclose object records. The following field elements were added for use in the "contactDisclose" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvContact:fDiscloseFlag&gt;</dt>
+<dd>Contains flag with a value of "true" or "1" (one) notes the preference 
+                to allow disclosure of the specified elements as an exception to the stated data-collection policy.  
+                A value of "false" or "0" (zero) notes a client preference to not allow disclosure of the specified elements as an exception 
+                to the stated data-collection policy with type="boolean". The additional fields define specific exceptional disclosure 
+                preferences based on the &lt;csvContact:fDiscloseFlag&gt; field.  
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseNameLoc&gt;</dt>
+<dd>Exceptional disclosure preference flag for the localized form of the 
+                contact name with type="boolean".  
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseNameInt&gt;</dt>
+<dd>Exceptional disclosure preference flag for the internationalized form of the 
+                contact name with type="boolean".   
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseOrgLoc&gt;</dt>
+<dd>Exceptional disclosure preference flag for the localized form of the 
+                contact organization with type="boolean".   with type="boolean".  
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseOrgInt&gt;</dt>
+<dd>Exceptional disclosure preference flag for the internationalized form of the 
+                contact organization with type="boolean".   with type="boolean".  
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseAddrLoc&gt;</dt>
+<dd>Exceptional disclosure preference flag for the localized form of the 
+                contact address with type="boolean".
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseAddrInt&gt;</dt>
+<dd>Exceptional disclosure preference flag for the internationalized form of the 
+                contact address with type="boolean".  
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseVoice&gt;</dt>
+<dd>Exceptional disclosure preference flag of the 
+                contact voice telephone number with type="boolean". 
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseFax&gt;</dt>
+<dd>Exceptional disclosure preference flag of the 
+                contact facsimile telephone number with type="boolean".   
+                
+</dd>
+<dt>&lt;csvContact:fDiscloseEmail&gt;</dt>
+<dd>Exceptional disclosure preference flag of the 
+                contact email address with type="boolean".  
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvContact" fields, defined for the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element, 
+                  is used in the "contactDisclose" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvContact:fId&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactDisclose" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvContact:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="contactDisclose"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;csvContact:fDiscloseFlag/&gt;
+      &lt;csvContact:fDiscloseNameLoc/&gt;
+      &lt;csvContact:fDiscloseNameInt/&gt;
+      &lt;csvContact:fDiscloseOrgLoc/&gt;
+      &lt;csvContact:fDiscloseOrgInt/&gt;
+      &lt;csvContact:fDiscloseAddrLoc/&gt;
+      &lt;csvContact:fDiscloseAddrInt/&gt;
+      &lt;csvContact:fDiscloseVoice/&gt;
+      &lt;csvContact:fDiscloseFax/&gt;
+      &lt;csvContact:fDiscloseEmail/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        contactDisclose-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvContact:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the contactDisclose-YYYYMMDD.csv file.
+                        The file contains two disclosure records.  The first contact 
+                        disables disclosure of voice, fax, and email.  
+                        The second contact enables disclosure of the localized 
+                        and internationalized form of the name.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,0,0,0,0,0,0,0,1,1,1
+mycontactid,1,1,1,0,0,0,0,0,0,0
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactDisclose" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvContact:contents&gt;
+  ...
+  &lt;rdeCsv:csvDelete name="contactDisclose"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        contactDisclose-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+  ...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+</dl></blockquote>
+
+<p>
+                        Example of the contactDisclose-delete-YYYYMMDD.csv file.
+                        The file contains two disclosure records.
+                    
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013
+mycontactid
+</pre></div><p>
+
+                    
+</p>
+<a name="registrarObject"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.4"></a><h3>4.4.&nbsp;
+Registrar Object</h3>
+
+<p>
+                    The registrar object represents the sponsoring client for other objects.  The registrar object MAY be related 
+                    to registrar contacts using Contact Object, as defined in <a class='info' href='#contactObject'>Section&nbsp;4.3<span> (</span><span class='info'>Contact Object</span><span>)</span></a>, references or MAY contain registrar contacts. The 
+                    elements used for the Registrar Object references are defined in this section.  The &lt;csvRegistrar:contents&gt; child 
+                    element of the &lt;rde:contents&gt; element holds the registrar objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
+                &lt;rdeCsv:csvDelete&gt; elements, defined in the 
+                "<a class='info' href='#rdeCsv-csv-csvDelete'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements<span> (</span><span class='info'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</span><span>)</span></a>" section, 
+                are used with the following supported "name" attribute values:
+                
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>&quot;registrar&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the registrar object records.  The following field elements were added for use in the "registrar" 
+                  &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvRegistrar:fId&gt;</dt>
+<dd>Contains the server-unique registrar identifier with type="eppcom:clIDType".  
+                
+</dd>
+<dt>&lt;csvRegistrar:fName&gt;</dt>
+<dd>Contains the name of the registrar with type="normalizedString".  
+                
+</dd>
+<dt>&lt;csvRegistrar:fGurid&gt;</dt>
+<dd>Contains the ID assigned by ICANN with type="positiveInteger".  
+                
+</dd>
+<dt>&lt;csvRegistrar:fStatus&gt;</dt>
+<dd>Contains the status of the registrar with type="csvRegistrar:statusValueType".  
+                
+</dd>
+<dt>&lt;csvRegistrar:fStatusName&gt;</dt>
+<dd>Contains the name of the registrar sub-status or the full name of the 
+                status when the fStatus value is "custom" with type="token".  
+                
+</dd>
+<dt>&lt;csvRegistrar:fUrl&gt;</dt>
+<dd>Contains the URL of the registrar with type="anyURI".  
+                
+</dd>
+<dt>&lt;csvRegistrar:fWhoisUrl&gt;</dt>
+<dd>Contains the Whois URL of the registrar with type="anyURI".  
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "registrar" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatuses&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fAdminContacts&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fTechContacts&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fBillingContacts&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpDate&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvContact" fields, defined in section <a class='info' href='#contactObject'>Section&nbsp;4.3<span> (</span><span class='info'>Contact Object</span><span>)</span></a>,  
+                  MAY be used in the "registrar" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvContact:fStreet&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fCity&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fSp&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fPc&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fCc&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fVoice&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fFax&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fFaxExt&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fEmail&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "registrar" &lt;rdeCsv:csv&gt; element 
+                        with no registrar contact object references:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvRegistrar:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="registrar"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvRegistrar:fId/&gt;
+      &lt;rdeCsv:fRoid/&gt;
+      &lt;csvRegistrar:fName isLoc="false"/&gt;
+      &lt;csvRegistrar:fGurid/&gt;
+      &lt;csvRegistrar:fStatus/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="0"/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="1"/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="2"/&gt;
+      &lt;csvContact:fCity isLoc="false" /&gt;
+      &lt;csvContact:fSp isLoc="false" /&gt;
+      &lt;csvContact:fPc isLoc="false" /&gt;
+      &lt;csvContact:fCc isLoc="false" /&gt;
+      &lt;csvContact:fVoice/&gt;
+      &lt;csvContact:fVoiceExt/&gt;
+      &lt;csvContact:fFax/&gt;
+      &lt;csvContact:fFaxExt/&gt;
+      &lt;csvContact:fEmail/&gt;
+      &lt;csvRegistrar:fUrl/&gt;
+      &lt;csvRegistrar:fWhoisUrl/&gt;
+      &lt;rdeCsv:fCrID/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+      &lt;rdeCsv:fUpID/&gt;
+      &lt;rdeCsv:fUpDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1924040625 268"&gt;
+        registrar-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvRegistrar:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the registrar-YYYYMMDD.csv file.
+                        The file contains one registrar record.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+EXAMPLE,REGISTRAR123-TEST,"Example Inc.",1234,ok,"123 Example Dr.",
+"Suite 100",,Dulles,VA,20166-6503,US,+1.7035555555,1234,
++1.7035555556,,jdoe@example.test,http://www.example.test,
+http://whois.example.test,clientX,2005-04-23T11:49:00.0Z,
+clientY,2009-02-17T17:51:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "registrar" &lt;rdeCsv:csv&gt; element 
+                        with registrant contact object references:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvRegistrar:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="registrar"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvRegistrar:fId/&gt;
+      &lt;rdeCsv:fRoid/&gt;
+      &lt;csvRegistrar:fName isLoc="false"/&gt;
+      &lt;csvRegistrar:fGurid/&gt;
+      &lt;csvRegistrar:fStatus/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="0"/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="1"/&gt;
+      &lt;csvContact:fStreet isLoc="false" index="2"/&gt;
+      &lt;csvContact:fCity isLoc="false" /&gt;
+      &lt;csvContact:fSp isLoc="false" /&gt;
+      &lt;csvContact:fPc isLoc="false" /&gt;
+      &lt;csvContact:fCc isLoc="false" /&gt;
+      &lt;csvContact:fVoice/&gt;
+      &lt;csvContact:fVoiceExt/&gt;
+      &lt;csvContact:fFax/&gt;
+      &lt;csvContact:fFaxExt/&gt;
+      &lt;csvContact:fEmail/&gt;
+      &lt;csvRegistrar:fUrl/&gt;
+      &lt;csvRegistrar:fWhoisUrl/&gt;
+      &lt;rdeCsv:fAdminContacts&gt;
+      &lt;rdeCsv:fTechContacts&gt;
+      &lt;rdeCsv:fBillingContacts&gt;
+      &lt;rdeCsv:fCrID/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+      &lt;rdeCsv:fUpID/&gt;
+      &lt;rdeCsv:fUpDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1924040625 268"&gt;
+        registrar-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvRegistrar:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the registrar-YYYYMMDD.csv file.
+                        The file contains one registrar record with 
+                        the registrar contact object references.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+EXAMPLE,REGISTRAR123-TEST,"Example Inc.",1234,ok,"123 Example Dr.",
+"Suite 100",,Dulles,VA,20166-6503,US,+1.7035555555,1234,
++1.7035555556,,jdoe@example.test,http://www.example.test,
+http://whois.example.test,"sh8013,mycontactid","sh8013,mycontactid",
+"sh8013,mycontactid",clientX,2005-04-23T11:49:00.0Z,
+clientY,2009-02-17T17:51:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "registrar" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+  ...
+  &lt;rdeCsv:csvDelete name="registrar"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvRegistrar:fId/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1924040625 268"&gt;
+        registrar-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+  ...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the registrar-delete-YYYYMMDD.csv file.
+                        The file contains two registrar records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+EXAMPLE
+EXAMPLE2
+</pre></div>
+                    
+</dd>
+<dt>&quot;registrarContact&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the registrar contact attribute records.  The registrar contact attribute records SHALL NOT be referenced by 
+                  more than one registrar or referenced by any other object.  
+                  The following field elements were added for use in the "registrarContact" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvRegistrar:fContactTypes&gt;</dt>
+<dd>List of registrar contact types for the registrar contact attribute 
+                record with list elements type="csvRegistrar:contactTypeType", which is an enumerated list of values "admin", "tech", "billing", and "custom".  
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvRegistrar" fields, defined for the "registrar" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element, 
+                  is used in the "registrarContact" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvRegistrar:fId&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvContact" fields, defined for the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element, 
+                  MAY be used in the "registrarContact" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvContact:fId&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fName&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fPostalType&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fStreet&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fCity&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fSp&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fPc&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fCc&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fVoice&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fVoiceExt&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fFax&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fFaxExt&gt;
+</dd>
+<dt></dt>
+<dd>&lt;csvContact:fEmail&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "registrarContact" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpID&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUpDate&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "registrarContact" &lt;rdeCsv:csv&gt; element without 
+                        any postal information information:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvRegistrar:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="registrarContact"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+     &lt;csvRegistrar:fId/&gt;
+     &lt;csvContact:fId/&gt;
+     &lt;rdeCsv:fRoid/&gt;
+     &lt;csvContact:fName isLoc="false"/&gt;
+     &lt;csvContact:fVoice/&gt;
+     &lt;csvContact:fVoiceExt/&gt;
+     &lt;csvContact:fFax/&gt;
+     &lt;csvContact:fFaxExt/&gt;
+     &lt;csvContact:fEmail/&gt;
+     &lt;rdeCsv:fCrID/&gt;
+     &lt;rdeCsv:fCrDate/&gt;
+     &lt;rdeCsv:fUpID/&gt;
+     &lt;rdeCsv:fUpDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+     &lt;rdeCsv:file
+      cksum="2186160075 371"&gt;
+      registrarcontact-YYYYMMDD.csv
+     &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvRegistrar:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the registrarcontact-YYYYMMDD.csv file.
+                        The file contains two registrar contact records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+EXAMPLE,rr0013,REGISTRARCONTACT12345-VRSN,"John Doe",
+"admin",+1.7035555555,1234,+1.7035555556,,johndoe@example.test,
+clientY,clientX,2009-09-13T08:01:00.0Z,
+clientX,2009-11-26T09:10:00.0Z
+EXAMPLE,rr0012,REGISTRARCONTACT12346-VRSN,"Jane Doe",
+"tech",+1.7035555555,1235,+1.7035555556,,janedoe@example.test,
+clientY,clientX,2009-09-13T08:01:00.0Z,
+clientX,2009-11-26T09:10:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "registrarContact" &lt;rdeCsv:csv&gt; element with 
+                        support for both "int" and "loc" postal information:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvRegistrar:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="registrarContact"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+     &lt;csvRegistrar:fId/&gt;
+     &lt;csvContact:fId/&gt;
+     &lt;rdeCsv:fRoid/&gt;
+     &lt;csvContact:fName isLoc="false"/&gt;
+     &lt;csvRegistrar:fContactTypes/&gt;
+     &lt;!-- "int" type of postal information --&gt;
+     &lt;csvContact:fPostalType/&gt;
+     &lt;csvContact:fStreet index="0"/&gt;
+     &lt;csvContact:fStreet index="1"/&gt;
+     &lt;csvContact:fStreet index="2"/&gt;
+     &lt;csvContact:fCity/&gt;
+     &lt;csvContact:fSp/&gt;
+     &lt;csvContact:fPc/&gt;
+     &lt;csvContact:fCc/&gt;
+     &lt;!-- "loc" type of postal information --&gt;
+     &lt;csvContact:fPostalType/&gt;
+     &lt;csvContact:fStreet index="0"/&gt;
+     &lt;csvContact:fStreet index="1"/&gt;
+     &lt;csvContact:fStreet index="2"/&gt;
+     &lt;csvContact:fCity/&gt;
+     &lt;csvContact:fSp/&gt;
+     &lt;csvContact:fPc/&gt;
+     &lt;csvContact:fCc/&gt;
+     &lt;csvContact:fVoice/&gt;
+     &lt;csvContact:fVoiceExt/&gt;
+     &lt;csvContact:fFax/&gt;
+     &lt;csvContact:fFaxExt/&gt;
+     &lt;csvContact:fEmail/&gt;
+     &lt;rdeCsv:fCrID/&gt;
+     &lt;rdeCsv:fCrDate/&gt;
+     &lt;rdeCsv:fUpID/&gt;
+     &lt;rdeCsv:fUpDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+     &lt;rdeCsv:file
+      cksum="2186160075 371"&gt;
+      registrarcontact-YYYYMMDD.csv
+     &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvRegistrar:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the registrarcontact-YYYYMMDD.csv file.
+                        The file contains one registrar contact record.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+EXAMPLE,rr0013,REGISTRARCONTACT12345-VRSN,"John Doe","admin",
+int,"123 Example Dr.","Suite 100",,Reston,VA,20190,US,
+loc,int,"123 Example Dr.","Suite 100",,Reston,VA,20190,US,
++1.7035555555,1234,+1.7035555556,,johndoe@example.test,
+clientY,clientX,2009-09-13T08:01:00.0Z,
+clientX,2009-11-26T09:10:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "registrarContact" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+  ...
+  &lt;rdeCsv:csvDelete name="registrarContact"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvRegistrar:fId/&gt;
+      &lt;csvContact:fId/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="2670296305 91797970"&gt;
+        registrarContact-delete-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+  ...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the registrarContact-delete-YYYYMMDD.csv file.
+                        The file contains two registrar contact record.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+EXAMPLE,rr0013
+EXAMPLE,rr0012
+</pre></div>
+                    
+</dd>
+</dl></blockquote>
+
+<a name="idnLanguageObject"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.5"></a><h3>4.5.&nbsp;
+IDN Language Object</h3>
+
+<p>
+                    The IDN domain names, defined in <a class='info' href='#domainNameObject'>Section&nbsp;4.1<span> (</span><span class='info'>Domain Name Object</span><span>)</span></a>, MAY have references 
+                    to the IDN language using the &lt;rdeCsv:fLanguage&gt; field element.  
+                    The IDN language object defines the mapping of a language to a language table URL.
+                    The language table URL defines the character code points that can be used for 
+                    the language. The elements used for the IDN language object is defined in this section.
+                    The &lt;csvIDN:contents&gt; child 
+                    element of the &lt;rde:contents&gt; element is used to hold the IDN language objects for the deposit. 
+                    The &lt;rdeCsv:csv&gt; and the 
+                &lt;rdeCsv:csvDelete&gt; elements, defined in the 
+                "<a class='info' href='#rdeCsv-csv-csvDelete'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements<span> (</span><span class='info'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</span><span>)</span></a>" section, 
+                are used with the following supported "name" attribute values:
+                
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>&quot;idnLanguage&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the IDN language object records.  
+                  
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in <a class='info' href='#csvCommonFieldElements'>Section&nbsp;3.6.2<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "idnLanguage" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                   
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fLanguage&gt;
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fUrl&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "idnLanguage" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvIDN:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="idnLanguage"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fLanguage/&gt;
+      &lt;rdeCsv:fUrl/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1924040625 268"&gt;
+        idnLanguage-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvIDN:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding idnLanguage-YYYYMMDD.csv file.
+                        The file contains two IDN language records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+LANG1,http://www.iana.org/domains/idn-tables/tables/test_tab1_1.1.txt
+LANG2,http://www.iana.org/domains/idn-tables/tables/test_tab2_1.1.txt
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "idnLanguage" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="idnLanguage"&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fLanguage/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1924040625 268"&gt;
+        idnLanguage-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the idnLanguage-delete-YYYYMMDD.csv file.
+                        The file contains two IDN language records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+LANG1
+LANG2
+</pre></div>
+                    
+</dd>
+</dl></blockquote>
+
+<a name="formalSyntax"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5"></a><h3>5.&nbsp;
+Formal Syntax</h3>
+
+<p>
+                Six schemas are presented here.  The first schema is the base CSV
+                schema.  The second schema defines domain name CSV object for RDE.  The third
+                schema defines host CSV object for RDE.  The fourth schema defines
+                contact CSV object for RDE.  The fifth schema defines registrar CSV object
+                for RDE. The sixth schema defines the IDN language CSV object.
+            
+</p>
+<a name="anchor9"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.1"></a><h3>5.1.&nbsp;
+RDE CSV Schema</h3>
+
+<p>
+                    Copyright (c) 2012 IETF Trust and the persons identified as authors
+                    of the code.  All rights reserved.
+                
+</p>
+<p>                
+                    Redistribution and use in source and binary forms, with or without
+                    modification, are permitted provided that the following conditions
+                    are met:
+                
+</p>
+<p>                
+                    </p>
+<ul class="text">
+<li>
+                            Redistributions of source code must retain the above copyright
+                            notice, this list of conditions and the following disclaimer.
+                        
+</li>
+<li>
+                            Redistributions in binary form must reproduce the above copyright
+                            notice, this list of conditions and the following disclaimer in
+                            the documentation and/or other materials provided with the
+                            distribution.                            
+                        
+</li>
+<li>
+                            Neither the name of Internet Society, IETF or IETF Trust, nor the
+                            names of specific contributors, may be used to endorse or promote
+                            products derived from this software without specific prior written
+                            permission.
+                        
+</li>
+</ul><p>
+                
+</p>
+<p>
+                    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+                    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+                    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+                    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+                    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+                    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+                    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                
+</p>
+<p>
+                    </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>BEGIN
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;schema targetNamespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+       xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       elementFormDefault="qualified"&gt;
+
+  &lt;!--
+  Import common element types
+  --&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+       schemaLocation="eppcom-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rde-1.0"
+       schemaLocation="rde-1.0.xsd"/&gt;
+
+  &lt;annotation&gt;
+   &lt;documentation&gt;
+    Registry Data Escrow Comma-Seperated Values (CSV)
+   &lt;/documentation&gt;
+  &lt;/annotation&gt;
+
+  &lt;!-- csv content element --&gt;
+  &lt;element name="csv" type="rdeCsv:csvType"
+  substitutionGroup="rde:content"/&gt;
+
+
+  &lt;!-- Definition of CSV file --&gt;
+ &lt;complexType name="csvType"&gt;
+  &lt;complexContent&gt;
+  &lt;extension base="rde:contentType"&gt;
+   &lt;sequence&gt;
+    &lt;element name="sep" type="token" default=","
+      minOccurs="0"/&gt;
+    &lt;element name="fields" type="rdeCsv:fieldsType"/&gt;
+    &lt;element name="files" type="rdeCsv:filesType"/&gt;
+   &lt;/sequence&gt;
+   &lt;attribute name="name" type="token" use="required"/&gt;
+  &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+  &lt;element name="csvDelete" type="rdeCsv:csvDeleteType"
+  substitutionGroup="rde:delete"/&gt;
+
+ &lt;complexType name="csvDeleteType"&gt;
+  &lt;complexContent&gt;
+  &lt;extension base="rde:deleteType"&gt;
+   &lt;sequence&gt;
+    &lt;element name="sep" type="token" default=","
+      minOccurs="0"/&gt;
+    &lt;element name="fields" type="rdeCsv:fieldsType"/&gt;
+    &lt;element name="files" type="rdeCsv:filesType"/&gt;
+   &lt;/sequence&gt;
+   &lt;attribute name="name" type="token" use="required"/&gt;
+  &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- Abstract field type --&gt;
+ &lt;element name="field" type="rdeCsv:fieldType"
+  abstract="true"/&gt;
+ &lt;complexType name="fieldType"&gt;
+  &lt;sequence/&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Concrete field types --&gt;
+
+ &lt;!-- Name field (e.g. domain name) --&gt;
+ &lt;element name="fName" type="rdeCsv:fNameType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- UTF-8 Name field (e.g. domain name) --&gt;
+ &lt;element name="fUName" type="rdeCsv:fNameType"
+   substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fNameType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:labelType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Registry Object IDentifier (roid) field --&gt;
+ &lt;element name="fRoid" type="rdeCsv:fRoidType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fRoidType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:roidType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Registrant field --&gt;
+ &lt;element name="fRegistrant" type="rdeCsv:fRegistrantType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fRegistrantType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:clIDType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Contact fields (Admin, Tech, Billing) --&gt;
+ &lt;element name="fAdminContacts" type="rdeCsv:fContactsType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fTechContacts" type="rdeCsv:fContactsType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fBillingContacts" type="rdeCsv:fContactsType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fContactsType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:clIDType"/&gt;
+      &lt;attribute name="list" type="boolean"
+        default="true"/&gt;
+      &lt;attribute name="sep" type="token"
+        default=","/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+
+ &lt;!-- Statuses as a list of delimited statuses
+      with ',' as delimeter --&gt;
+ &lt;element name="fStatuses" type="rdeCsv:fStatusesType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fStatusesType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:statusType"/&gt;
+      &lt;attribute name="list" type="boolean"
+        default="true"/&gt;
+      &lt;attribute name="sep" type="token"
+        default=","/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- clID fields (fClID, fCrID, fUpID) --&gt;
+ &lt;!-- Identifier of client that sponsors the object --&gt;
+ &lt;element name="fClID" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of client that created the object --&gt;
+ &lt;element name="fCrID" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of client that updated the object --&gt;
+ &lt;element name="fUpID" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of client that requested the transfer --&gt;
+ &lt;element name="fReID" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of client that should take or took action --&gt;
+ &lt;element name="fAcID" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fClIDType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:clIDType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- datetime fields (fCrDate, fUpDate, fExDate) --&gt;
+ &lt;element name="fCrDate" type="rdeCsv:fDatetimeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fUpDate" type="rdeCsv:fDatetimeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fExDate" type="rdeCsv:fDatetimeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Date and time that transfer was requested --&gt;
+ &lt;element name="fReDate" type="rdeCsv:fDatetimeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Date and time of a required or completed response --&gt;
+ &lt;element name="fAcDate" type="rdeCsv:fDatetimeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fTrDate" type="rdeCsv:fDatetimeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fDatetimeType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="datetime"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- boolean type --&gt;
+ &lt;complexType name="fBooleanType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="boolean"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- unsignedbyte type --&gt;
+ &lt;complexType name="fUnsignedByteType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="unsignedbyte"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- unsignedShort type --&gt;
+ &lt;complexType name="fUnsignedShortType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="unsignedShort"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- hexBinary type --&gt;
+ &lt;complexType name="fHexBinaryType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="hexBinary"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- language type --&gt;
+ &lt;element name="fLanguage" type="rdeCsv:fLanguageType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fLanguageType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="language"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- State of the most recent transfer request --&gt;
+ &lt;element name="fTrStatus" type="rdeCsv:fTrStatusType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fTrStatusType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:trStatusType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- General token type --&gt;
+ &lt;complexType name="fTokenType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="token"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- positive integer type --&gt;
+ &lt;complexType name="fPositiveIntegerType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="positiveInteger"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- Password authorization info --&gt;
+ &lt;element name="fPwAuthInfo" type="rdeCsv:fPwAuthInfoType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fPwAuthInfoType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="normalizedString"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- Custom / extension field type --&gt;
+ &lt;element name="fCustom" type="rdeCsv:fCustomType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fCustomType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="name" type="token"/&gt;
+      &lt;attribute name="type" type="token"
+        default="token"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Ordered list of field definitions for the csv --&gt;
+ &lt;complexType name="fieldsType"&gt;
+  &lt;sequence maxOccurs="unbounded"&gt;
+    &lt;element ref="rdeCsv:field"/&gt;
+  &lt;/sequence&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- List of files --&gt;
+ &lt;complexType name="filesType"&gt;
+  &lt;sequence&gt;
+    &lt;element name="file" type="rdeCsv:fileType"
+      maxOccurs="unbounded"/&gt;
+  &lt;/sequence&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- File definition --&gt;
+ &lt;complexType name="fileType"&gt;
+  &lt;simpleContent&gt;
+    &lt;extension base="token"&gt;
+      &lt;attribute name="compression" type="token"/&gt;
+      &lt;attribute name="encoding" type="token"
+        default="UTF-8"/&gt;
+      &lt;attribute name="cksum" type="token"/&gt;
+    &lt;/extension&gt;
+  &lt;/simpleContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- URL fields --&gt;
+ &lt;element name="fUrl" type="rdeCsv:anyURIType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="anyURIType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="anyURI"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+  &lt;!--
+  End of schema.
+  --&gt;
+&lt;/schema&gt;
+END</pre></div><p>
+
+                
+</p>
+<a name="anchor10"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.2"></a><h3>5.2.&nbsp;
+Domain Object</h3>
+
+<p>
+                    Copyright (c) 2012 IETF Trust and the persons identified as authors
+                    of the code.  All rights reserved.
+                
+</p>
+<p>                
+                    Redistribution and use in source and binary forms, with or without
+                    modification, are permitted provided that the following conditions
+                    are met:
+                
+</p>
+<p>                
+                    </p>
+<ul class="text">
+<li>
+                            Redistributions of source code must retain the above copyright
+                            notice, this list of conditions and the following disclaimer.
+                        
+</li>
+<li>
+                            Redistributions in binary form must reproduce the above copyright
+                            notice, this list of conditions and the following disclaimer in
+                            the documentation and/or other materials provided with the
+                            distribution.                            
+                        
+</li>
+<li>
+                            Neither the name of Internet Society, IETF or IETF Trust, nor the
+                            names of specific contributors, may be used to endorse or promote
+                            products derived from this software without specific prior written
+                            permission.
+                        
+</li>
+</ul><p>
+                
+</p>
+<p>
+                    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+                    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+                    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+                    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+                    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+                    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+                    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                
+</p>
+<p>
+                    </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>BEGIN
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;schema targetNamespace="urn:ietf:params:xml:ns:csvDomain-1.0"
+       xmlns:csvDomain="urn:ietf:params:xml:ns:csvDomain-1.0"
+       xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+       xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       xmlns:rgp="urn:ietf:params:xml:ns:rgp-1.0"
+       xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.1"
+       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+       xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       elementFormDefault="qualified"&gt;
+
+  &lt;!--
+  Import common element types
+  --&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+       schemaLocation="eppcom-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:domain-1.0"
+       schemaLocation="domain-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:secDNS-1.1"
+       schemaLocation="secDNS-1.1.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rgp-1.0"
+       schemaLocation="rgp-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rde-1.0"
+       schemaLocation="rde-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       schemaLocation="rdeCsv-1.0.xsd"/&gt;
+
+  &lt;annotation&gt;
+   &lt;documentation&gt;
+    Domain Name Comma-Separated Values (CSV) Object
+   &lt;/documentation&gt;
+  &lt;/annotation&gt;
+
+  &lt;!--
+  Child elements of the &lt;rde:contents&gt; object
+  --&gt;
+  &lt;element name="contents" type="csvDomain:contentsType"
+  substitutionGroup="rde:contents"/&gt;
+
+  &lt;complexType name="contentsType"&gt;
+   &lt;complexContent&gt;
+    &lt;extension base="rde:contentsType"/&gt;
+   &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+
+
+ &lt;!-- RGP statuses field --&gt;
+ &lt;element name="fRgpStatuses"
+ type="csvDomain:fRgpStatusesType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fRgpStatusesType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="rgp\:statusType"/&gt;
+      &lt;attribute name="list" type="boolean"
+      default="true"/&gt;
+      &lt;attribute name="sep" type="token"
+      default=","/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Name server object list field --&gt;
+ &lt;element name="fNsObjs" type="csvDomain:fNsObjsType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fNsObjsType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="eppcom\:labelType"/&gt;
+      &lt;attribute name="list" type="boolean"
+      default="true"/&gt;
+      &lt;attribute name="sep" type="token"
+      default=","/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- DNSSEC field types --&gt;
+
+ &lt;!-- Maximum signature lifetime field --&gt;
+ &lt;element name="fMaxSigLife" type="csvDomain:fMaxSigLifeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fMaxSigLifeType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="secDNS\:maxSigLifeType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Key tag field --&gt;
+ &lt;element name="fKeyTag" type="rdeCsv:fUnsignedShortType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- DS Algorithm field --&gt;
+ &lt;element name="fDsAlg" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Digest type field --&gt;
+ &lt;element name="fDigestType" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Digest field --&gt;
+ &lt;element name="fDigest" type="rdeCsv:fHexBinaryType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Flags field --&gt;
+ &lt;element name="fFlags" type="rdeCsv:fUnsignedShortType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Protocol field --&gt;
+ &lt;element name="fProtocol" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Key Algorithm field --&gt;
+ &lt;element name="fKeyAlg" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Public Key field --&gt;
+ &lt;element name="fPubKey" type="csvDomain:fPubKeyType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fPubKeyType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="secDNS\:keyType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- Boolean type  fields --&gt;
+ &lt;element name="fIdn" type="rdeCsv:fBooleanType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fVariant" type="rdeCsv:fBooleanType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fReserved" type="rdeCsv:fBooleanType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Original Domain Name for Variant field --&gt;
+ &lt;element name="fOriginalName" type="rdeCsv:fNameType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+  &lt;!--
+  End of schema.
+  --&gt;
+&lt;/schema&gt;
+END</pre></div><p>
+
+                
+</p>
+<a name="anchor11"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.3"></a><h3>5.3.&nbsp;
+Host Object</h3>
+
+<p>
+                Copyright (c) 2012 IETF Trust and the persons identified as authors
+                of the code.  All rights reserved.
+            
+</p>
+<p>                
+                Redistribution and use in source and binary forms, with or without
+                modification, are permitted provided that the following conditions
+                are met:
+            
+</p>
+<p>                
+                </p>
+<ul class="text">
+<li>
+                        Redistributions of source code must retain the above copyright
+                        notice, this list of conditions and the following disclaimer.
+                    
+</li>
+<li>
+                        Redistributions in binary form must reproduce the above copyright
+                        notice, this list of conditions and the following disclaimer in
+                        the documentation and/or other materials provided with the
+                        distribution.                            
+                    
+</li>
+<li>
+                        Neither the name of Internet Society, IETF or IETF Trust, nor the
+                        names of specific contributors, may be used to endorse or promote
+                        products derived from this software without specific prior written
+                        permission.
+                    
+</li>
+</ul><p>
+            
+</p>
+<p>
+                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+                OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+                SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+                DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+                THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+                (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+                OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            
+</p>
+<p>
+                </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>BEGIN
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;schema targetNamespace="urn:ietf:params:xml:ns:csvHost-1.0"
+      xmlns:csvHost="urn:ietf:params:xml:ns:csvHost-1.0"
+      xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+      xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+      xmlns:host="urn:ietf:params:xml:ns:host-1.0"
+      xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+      xmlns="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified"&gt;
+
+  &lt;!--
+  Import common element types
+  --&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+       schemaLocation="eppcom-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:host-1.0"
+       schemaLocation="host-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rde-1.0"
+       schemaLocation="rde-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       schemaLocation="rdeCsv-1.0.xsd"/&gt;
+
+  &lt;annotation&gt;
+   &lt;documentation&gt;
+    Host Comma-Separated Values (CSV) Object
+   &lt;/documentation&gt;
+  &lt;/annotation&gt;
+
+  &lt;!--
+  Child elements of the &lt;rde:contents&gt; object
+  --&gt;
+  &lt;element name="contents" type="csvHost:contentsType"
+  substitutionGroup="rde:contents"/&gt;
+
+  &lt;complexType name="contentsType"&gt;
+   &lt;complexContent&gt;
+    &lt;extension base="rde:contentsType"/&gt;
+   &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+
+
+ &lt;!-- IP address fields (fV4Addrs, fV6Addrs) --&gt;
+ &lt;element name="fV4Addrs" type="csvHost:fAddrsType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fV6Addrs" type="csvHost:fAddrsType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fAddrsType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="host\:addrStringType"/&gt;
+      &lt;attribute name="list" type="boolean"
+        default="true"/&gt;
+      &lt;attribute name="sep" type="token"
+        default=","/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Boolean type  fields --&gt;
+ &lt;element name="fIdn" type="rdeCsv:fBooleanType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Parent domain name for subordinate host field --&gt;
+ &lt;element name="fParentDomain" type="rdeCsv:fNameType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+  &lt;!--
+  End of schema.
+  --&gt;
+&lt;/schema&gt;
+END</pre></div><p>
+
+            
+</p>
+<a name="anchor12"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.4"></a><h3>5.4.&nbsp;
+Contact Object</h3>
+
+<p>
+                    Copyright (c) 2012 IETF Trust and the persons identified as authors
+                    of the code.  All rights reserved.
+                
+</p>
+<p>                
+                    Redistribution and use in source and binary forms, with or without
+                    modification, are permitted provided that the following conditions
+                    are met:
+                
+</p>
+<p>                
+                    </p>
+<ul class="text">
+<li>
+                            Redistributions of source code must retain the above copyright
+                            notice, this list of conditions and the following disclaimer.
+                        
+</li>
+<li>
+                            Redistributions in binary form must reproduce the above copyright
+                            notice, this list of conditions and the following disclaimer in
+                            the documentation and/or other materials provided with the
+                            distribution.                            
+                        
+</li>
+<li>
+                            Neither the name of Internet Society, IETF or IETF Trust, nor the
+                            names of specific contributors, may be used to endorse or promote
+                            products derived from this software without specific prior written
+                            permission.
+                        
+</li>
+</ul><p>
+                
+</p>
+<p>
+                    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+                    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+                    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+                    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+                    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+                    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+                    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                
+</p>
+<p>
+                    </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>BEGIN
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;schema targetNamespace="urn:ietf:params:xml:ns:csvContact-1.0"
+    xmlns:csvContact="urn:ietf:params:xml:ns:csvContact-1.0"
+    xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+    xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+    xmlns:contact="urn:ietf:params:xml:ns:contact-1.0"
+    xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"&gt;
+
+&lt;!--
+Import common element types.
+--&gt;
+&lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+      schemaLocation="eppcom-1.0.xsd"/&gt;
+&lt;import namespace="urn:ietf:params:xml:ns:contact-1.0"
+      schemaLocation="contact-1.0.xsd"/&gt;
+&lt;import namespace="urn:ietf:params:xml:ns:rde-1.0"
+      schemaLocation="rde-1.0.xsd"/&gt;
+&lt;import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+      schemaLocation="rdeCsv-1.0.xsd"/&gt;
+
+&lt;annotation&gt;
+  &lt;documentation&gt;
+    Contact Comma-Separated Values (CSV) Object
+  &lt;/documentation&gt;
+&lt;/annotation&gt;
+
+&lt;!--
+Child elements of the &lt;rde:contents&gt; object
+--&gt;
+&lt;element name="contents" type="csvContact:contentsType"
+ substitutionGroup="rde:contents"/&gt;
+
+&lt;complexType name="contentsType"&gt;
+  &lt;complexContent&gt;
+   &lt;extension base="rde:contentsType"/&gt;
+  &lt;/complexContent&gt;
+&lt;/complexType&gt;
+
+ &lt;!-- Server-unique contact identifier field --&gt;
+ &lt;element name="fId" type="csvContact:fIdType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fIdType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="eppcom\:clIDType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- voice and fax telephone number fields --&gt;
+ &lt;element name="fVoice" type="csvContact:fE164StringType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fFax" type="csvContact:fE164StringType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fE164StringType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="contact\:e164StringType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- voice and fax telephone extension fields --&gt;
+ &lt;element name="fVoiceExt" type="rdeCsv:fTokenType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fFaxExt" type="rdeCsv:fTokenType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- contact email address field --&gt;
+ &lt;element name="fEmail" type="csvContact:fEmailType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fEmailType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="eppcom\:minTokenType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+
+ &lt;!--
+   Postal type field
+   ("loc" = localized, "int" = internationalized)
+ --&gt;
+ &lt;element name="fPostalType" type="csvContact:fPostalTypeType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fPostalTypeType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="contact\:postalInfoEnumType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Standard postal line field --&gt;
+ &lt;complexType name="fPostalLineType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="contact\:postalLineType"/&gt;
+      &lt;attribute name="isLoc" type="boolean"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Standard optional postal line field --&gt;
+ &lt;complexType name="fOptPostalLineType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="contact\:optPostalLineType"/&gt;
+      &lt;attribute name="isLoc" type="boolean"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Name of the individual or role field --&gt;
+ &lt;element name="fName" type="csvContact:fPostalLineType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+
+ &lt;!-- Name organization field --&gt;
+ &lt;element name="fOrg" type="csvContact:fOptPostalLineType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+
+ &lt;!-- Street address line field with required index attribute  --&gt;
+ &lt;!-- starting with index 0.  --&gt;
+ &lt;element name="fStreet" type="csvContact:fStreetType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fStreetType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="csvContact:fPostalLineType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="index" type="int"
+      use="required"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Contact's city field --&gt;
+ &lt;element name="fCity" type="csvContact:fPostalLineType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Contact's state or province field --&gt;
+ &lt;element name="fSp" type="csvContact:fOptPostalLineType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Contact's postal code field --&gt;
+ &lt;element name="fPc" type="csvContact:fPcType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fPcType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="contact\:pcType"/&gt;
+      &lt;attribute name="isLoc" type="boolean"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Contact's country code field --&gt;
+ &lt;element name="fCc" type="csvContact:fCcType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fCcType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="contact\:ccType"/&gt;
+      &lt;attribute name="isLoc" type="boolean"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Disclosure element fields --&gt;
+ &lt;!-- Flag of "1" to allow disclosure
+      and "0" to disallow disclosure --&gt;
+ &lt;element name="fDiscloseFlag" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure of localized name
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseNameLoc" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure of internationalized name
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseNameInt" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure of localized org
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseOrgLoc" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure of internationalized org
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseOrgInt" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure of localized address
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseAddrLoc" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure of internationalized address
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseAddrInt" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure voice telephone number
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseVoice" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure facsimile telephone number
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseFax" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Disclosure email address
+      based on fDiscloseFlag? --&gt;
+ &lt;element name="fDiscloseEmail" type="csvContact:fBoolean"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fBoolean"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="boolean"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+&lt;!--
+End of schema.
+--&gt;
+&lt;/schema&gt;
+END</pre></div><p>
+
+                
+</p>
+<a name="anchor13"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.5"></a><h3>5.5.&nbsp;
+Registrar Object</h3>
+
+<p>
+                    Copyright (c) 2012 IETF Trust and the persons identified as authors
+                    of the code.  All rights reserved.
+                
+</p>
+<p>                
+                    Redistribution and use in source and binary forms, with or without
+                    modification, are permitted provided that the following conditions
+                    are met:
+                
+</p>
+<p>                
+                    </p>
+<ul class="text">
+<li>
+                            Redistributions of source code must retain the above copyright
+                            notice, this list of conditions and the following disclaimer.
+                        
+</li>
+<li>
+                            Redistributions in binary form must reproduce the above copyright
+                            notice, this list of conditions and the following disclaimer in
+                            the documentation and/or other materials provided with the
+                            distribution.                            
+                        
+</li>
+<li>
+                            Neither the name of Internet Society, IETF or IETF Trust, nor the
+                            names of specific contributors, may be used to endorse or promote
+                            products derived from this software without specific prior written
+                            permission.
+                        
+</li>
+</ul><p>
+                
+</p>
+<p>
+                    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+                    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+                    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+                    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+                    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+                    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+                    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                
+</p>
+<p>
+                    </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>BEGIN
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;schema targetNamespace="urn:ietf:params:xml:ns:csvRegistrar-1.0"
+      xmlns:csvRegistrar="urn:ietf:params:xml:ns:csvRegistrar-1.0"
+      xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+    xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+      xmlns:contact="urn:ietf:params:xml:ns:contact-1.0"
+      xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+      xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+      xmlns="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified"&gt;
+
+  &lt;!--
+  Import common element types.
+  --&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+       schemaLocation="eppcom-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:domain-1.0"
+       schemaLocation="domain-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:contact-1.0"
+       schemaLocation="contact-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rde-1.0"
+       schemaLocation="rde-1.0.xsd"/&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+        schemaLocation="rdeCsv-1.0.xsd"/&gt;
+
+  &lt;annotation&gt;
+   &lt;documentation&gt;
+    Registar Comma-Separated Values (CSV) Object
+   &lt;/documentation&gt;
+  &lt;/annotation&gt;
+
+  &lt;!--
+  Child elements of the &lt;rde:contents&gt; object
+  --&gt;
+  &lt;element name="contents" type="csvRegistrar:contentsType"
+  substitutionGroup="rde:contents"/&gt;
+
+  &lt;complexType name="contentsType"&gt;
+   &lt;complexContent&gt;
+    &lt;extension base="rde:contentsType"/&gt;
+   &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+  Supported form / type of postal information
+  --&gt;
+  &lt;simpleType name="postalInfoEnumType"&gt;
+    &lt;restriction base="token"&gt;
+      &lt;enumeration value="loc"/&gt;
+      &lt;enumeration value="int"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+
+ &lt;!-- Registrar unique identifier (short name / id) --&gt;
+ &lt;element name="fId" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Registrar name (full name) --&gt;
+ &lt;element name="fName" type="csvRegistrar:fNameType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Registrar name field --&gt;
+ &lt;complexType name="fNameType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="normalizedString"/&gt;
+      &lt;attribute name="isLoc" type="boolean" default="false"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+
+ &lt;!-- Registrar GURID field --&gt;
+ &lt;element name="fGurid"
+  type="rdeCsv:fPositiveIntegerType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Registrar status field --&gt;
+ &lt;element name="fStatus" type="csvRegistrar:fStatusType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;element name="fStatusName" type="rdeCsv:fTokenType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fStatusType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+      default="csvRegistrar\:statusType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Registrar status type with optional name attr --&gt;
+ &lt;complexType name="statusType"&gt;
+   &lt;simpleContent&gt;
+     &lt;extension base="csvRegistrar:statusValueType"&gt;
+       &lt;attribute name="name" type="token"/&gt;
+     &lt;/extension&gt;
+   &lt;/simpleContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Registrar status enumerated values --&gt;
+ &lt;simpleType name="statusValueType"&gt;
+   &lt;restriction base="token"&gt;
+     &lt;enumeration value="ok"/&gt;
+     &lt;enumeration value="hold"/&gt;
+     &lt;enumeration value="terminated"/&gt;
+     &lt;enumeration value="custom"/&gt;
+   &lt;/restriction&gt;
+ &lt;/simpleType&gt;
+
+   &lt;!-- URL fields --&gt;
+ &lt;element name="fWhoisUrl" type="rdeCsv:anyURIType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Registrar contact types field --&gt;
+ &lt;element name="fContactTypes"
+  type="csvRegistrar:contactTypesType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="contactTypesType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="csvRegistrar\:contactTypeType"/&gt;
+      &lt;attribute name="list" type="boolean"
+        default="true"/&gt;
+      &lt;attribute name="sep" type="token"
+        default=","/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- Contact type enumerated values --&gt;
+  &lt;simpleType name="contactTypeType"&gt;
+    &lt;restriction base="token"&gt;
+      &lt;enumeration value="admin"/&gt;
+      &lt;enumeration value="billing"/&gt;
+      &lt;enumeration value="tech"/&gt;
+      &lt;enumeration value="custom"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+
+  &lt;!--
+  End of schema.
+  --&gt;
+&lt;/schema&gt;
+END</pre></div><p>
+
+                
+</p>
+<a name="anchor14"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.6"></a><h3>5.6.&nbsp;
+IDN Language Object</h3>
+
+<p>
+                    Copyright (c) 2012 IETF Trust and the persons identified as authors
+                    of the code.  All rights reserved.
+                
+</p>
+<p>                
+                    Redistribution and use in source and binary forms, with or without
+                    modification, are permitted provided that the following conditions
+                    are met:
+                
+</p>
+<p>                
+                    </p>
+<ul class="text">
+<li>
+                            Redistributions of source code must retain the above copyright
+                            notice, this list of conditions and the following disclaimer.
+                        
+</li>
+<li>
+                            Redistributions in binary form must reproduce the above copyright
+                            notice, this list of conditions and the following disclaimer in
+                            the documentation and/or other materials provided with the
+                            distribution.                            
+                        
+</li>
+<li>
+                            Neither the name of Internet Society, IETF or IETF Trust, nor the
+                            names of specific contributors, may be used to endorse or promote
+                            products derived from this software without specific prior written
+                            permission.
+                        
+</li>
+</ul><p>
+                
+</p>
+<p>
+                    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+                    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+                    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+                    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+                    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+                    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+                    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                
+</p>
+<p>
+                    </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>BEGIN
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;schema targetNamespace="urn:ietf:params:xml:ns:csvIDN-1.0"
+      xmlns:csvIDN="urn:ietf:params:xml:ns:csvIDN-1.0"
+      xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+      xmlns="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified"&gt;
+
+  &lt;!--
+  Import common element types
+  --&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:rde-1.0"
+  schemaLocation="rde-1.0.xsd"/&gt;
+
+  &lt;annotation&gt;
+   &lt;documentation&gt;
+    IDN Language Comma-Separated Values (CSV) Object
+   &lt;/documentation&gt;
+  &lt;/annotation&gt;
+
+  &lt;!--
+  Child elements of the &lt;rde:contents&gt; object
+  --&gt;
+  &lt;element name="contents" type="csvIDN:contentsType"
+   substitutionGroup="rde:contents"/&gt;
+
+  &lt;complexType name="contentsType"&gt;
+   &lt;complexContent&gt;
+    &lt;extension base="rde:contentsType"/&gt;
+   &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+  End of schema.
+  --&gt;
+&lt;/schema&gt;
+END</pre></div><p>
+
+                
+</p>
+<a name="extension"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.7"></a><h3>5.7.&nbsp;
+Extension Guidelines</h3>
+
+<p>
+                TBD
+            
+</p>
+<a name="anchor15"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.8"></a><h3>5.8.&nbsp;
+Internationalization Considerations</h3>
+
+<p>
+                Data Escrow deposits are represented in XML, which provides native support for encoding information 
+                using the Unicode character set and its more compact representations including UTF-8. Conformant XML 
+                processors recognize both UTF-8 and UTF-16. Though XML includes provisions to identify and use other 
+                character encodings through use of an "encoding" attribute in an &lt;?xml?&gt; declaration, use of UTF-8 
+                is RECOMMENDED.
+            
+</p>
+<a name="anchor16"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.9"></a><h3>5.9.&nbsp;
+IANA Considerations</h3>
+
+<p>
+                This document uses URNs to describe XML namespaces and XML schemas
+                conforming to a registry mechanism described in <a class='info' href='#RFC3688'>[RFC3688]<span> (</span><span class='info'>Mealling, M., &ldquo;The IETF XML Registry,&rdquo; January&nbsp;2004.</span><span>)</span></a>.
+                Fourteen URI assignments have been registered by the IANA.
+            
+</p>
+<p>Registration request for the RDE CSV namespace:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:ns:rdeCsv-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>XML: None.  Namespace URIs do not represent an XML specification.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV XML schema:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:schema:rdeCsv-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>See the &quot;Formal Syntax&quot; section of this document.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV domain namespace:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:ns:csvDomain-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>XML: None.  Namespace URIs do not represent an XML specification.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV domain XML schema:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:schema:csvDomain-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>See the &quot;Formal Syntax&quot; section of this document.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV host namespace:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:ns:csvHost-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>XML: None.  Namespace URIs do not represent an XML specification.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV host XML schema:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:schema:csvHost-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>See the &quot;Formal Syntax&quot; section of this document.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV contact namespace:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:ns:csvContact-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>XML: None.  Namespace URIs do not represent an XML specification.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV contact XML schema:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:schema:csvContact-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>See the &quot;Formal Syntax&quot; section of this document.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV registrar namespace:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:ns:csvRegistrar-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>XML: None.  Namespace URIs do not represent an XML specification.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV registrar XML schema:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:schema:csvRegistrar-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>See the &quot;Formal Syntax&quot; section of this document.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV IDN namespace:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:ns:csvIDN-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>XML: None.  Namespace URIs do not represent an XML specification.
+</p>
+</blockquote><p>
+            
+</p>
+<p>Registration request for the RDE CSV IDN XML schema:
+                </p>
+<blockquote class="text">
+<p>URI: urn:ietf:params:xml:schema:csvIDN-1.0
+</p>
+<p>Registrant Contact: See the &quot;Author&#039;s Address&quot; section of this document.
+</p>
+<p>See the &quot;Formal Syntax&quot; section of this document.
+</p>
+</blockquote><p>
+            
+</p>
+<a name="anchor17"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.10"></a><h3>5.10.&nbsp;
+Security Considerations</h3>
+
+<p>
+                This specification does not define the security mechanisms to be used in the transmission of the data escrow 
+                deposits, since it only specifies the minimum necessary to enable the rebuilding of a Registry from 
+                deposits without intervention from the original Registry.
+            
+</p>
+<p>
+                Depending on local policies, some elements or most likely, the whole deposit will be considered confidential. As
+                such the Registry transmitting the data to the Escrow Agent SHOULD take all the necessary precautions
+                like encrypting the data itself and/or the transport channel to avoid inadvertent disclosure of private data.
+            
+</p>
+<p>
+                It is also of the utmost importance the authentication of the parties passing data escrow deposit files. The 
+                Escrow Agent SHOULD properly authenticate the identity of the Registry before accepting data escrow
+                deposits. In a similar manner, the Registry SHOULD authenticate the identity of the Escrow Agent
+                before submitting any data.
+            
+</p>
+<p>
+                Additionally, the Registry and the Escrow Agent SHOULD use integrity checking mechanisms to ensure the
+                data transmitted is what the source intended. Validation of the contents by the Escrow Agent is RECOMMENDED
+                to ensure not only the file was transmitted correctly from the Registry, but also the contents are also
+                &quot;meaningful&quot;.
+            
+</p>
+<a name="anchor18"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.11"></a><h3>5.11.&nbsp;
+Acknowledgments</h3>
+
+<p>
+                Parts of this document are based on EPP <a class='info' href='#RFC5730'>[RFC5730]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a> and related RFCs by Scott Hollenbeck.  
+                The structure and some of the sample data and content of this document is based on 
+                the <a href='http://tools.ietf.org/id/draft-arias-noguchi-dnrd-objects-mapping-01.txt'>Domain Name Registration Data (DNRD) Objects Mapping</a> by Francisco Arias and Shoji Noguchi.  
+            
+</p>
+<p>
+                TBD
+            
+</p>
+<a name="anchor19"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.12"></a><h3>5.12.&nbsp;
+Change History</h3>
+
+<p>
+                [[RFC Editor: Please remove this section.]]
+            
+</p>
+<a name="rfc.references"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.6"></a><h3>6.&nbsp;
+References</h3>
+
+<a name="rfc.references1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>6.1.&nbsp;Normative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="ISO-3166-1">[ISO-3166-1]</a></td>
+<td class="author-text">International Organization for Standardization, &ldquo;Codes for the representation of names of countries and their 
+            subdivisions - Part 1: Country codes,&rdquo; ISO Standard&nbsp;3166, November&nbsp;2006.</td></tr>
+<tr><td class="author-text" valign="top"><a name="ITU-E164">[ITU-E164]</a></td>
+<td class="author-text">International Telecommunication Union, &ldquo;The international public telecommunication numbering plan,&rdquo; ITU-T Recommendation&nbsp;E.164, February&nbsp;2005.</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
+<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3339">[RFC3339]</a></td>
+<td class="author-text"><a href="mailto:GK@ACM.ORG">Klyne, G., Ed.</a> and <a href="mailto:chris.newman@sun.com">C. Newman</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc3339">Date and Time on the Internet: Timestamps</a>,&rdquo; RFC&nbsp;3339, July&nbsp;2002 (<a href="http://www.rfc-editor.org/rfc/rfc3339.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc3339.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc3339.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3915">[RFC3915]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc3915">Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)</a>,&rdquo; RFC&nbsp;3915, September&nbsp;2004 (<a href="http://www.rfc-editor.org/rfc/rfc3915.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5730">[RFC5730]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5730">Extensible Provisioning Protocol (EPP)</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5730, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5730.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5731">[RFC5731]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5731">Extensible Provisioning Protocol (EPP) Domain Name Mapping</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5731, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5731.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5732">[RFC5732]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5732">Extensible Provisioning Protocol (EPP) Host Mapping</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5732, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5732.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5733">[RFC5733]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5733">Extensible Provisioning Protocol (EPP) Contact Mapping</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5733, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5733.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5910">[RFC5910]</a></td>
+<td class="author-text">Gould, J. and S. Hollenbeck, &ldquo;<a href="http://tools.ietf.org/html/rfc5910">Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)</a>,&rdquo; RFC&nbsp;5910, May&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5910.txt">TXT</a>).</td></tr>
+</table>
+
+<a name="rfc.references2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>6.2.&nbsp;Informative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="RFC0791">[RFC0791]</a></td>
+<td class="author-text">Postel, J., &ldquo;<a href="http://tools.ietf.org/html/rfc791">Internet Protocol</a>,&rdquo; STD&nbsp;5, RFC&nbsp;791, September&nbsp;1981 (<a href="http://www.rfc-editor.org/rfc/rfc791.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3688">[RFC3688]</a></td>
+<td class="author-text">Mealling, M., &ldquo;<a href="http://tools.ietf.org/html/rfc3688">The IETF XML Registry</a>,&rdquo; BCP&nbsp;81, RFC&nbsp;3688, January&nbsp;2004 (<a href="http://www.rfc-editor.org/rfc/rfc3688.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC4291">[RFC4291]</a></td>
+<td class="author-text">Hinden, R. and S. Deering, &ldquo;<a href="http://tools.ietf.org/html/rfc4291">IP Version 6 Addressing Architecture</a>,&rdquo; RFC&nbsp;4291, February&nbsp;2006 (<a href="http://www.rfc-editor.org/rfc/rfc4291.txt">TXT</a>).</td></tr>
+</table>
+
+<a name="rfc.authors"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>Authors' Addresses</h3>
+<table width="99%" border="0" cellpadding="0" cellspacing="0">
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">James Gould</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Verisign</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">12061 Bluemont Way</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Reston, VA  20190</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">US</td></tr>
+<tr><td class="author" align="right">Email:&nbsp;</td>
+<td class="author-text"><a href="mailto:jgould@verisign.com">jgould@verisign.com</a></td></tr>
+<tr><td class="author" align="right">URI:&nbsp;</td>
+<td class="author-text"><a href="http://www.verisigninc.com">http://www.verisigninc.com</a></td></tr>
+<tr cellpadding="3"><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Chethan Thippeswamy</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Verisign</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">12061 Bluemont Way</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Reston, VA  20190</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">US</td></tr>
+<tr><td class="author" align="right">Email:&nbsp;</td>
+<td class="author-text"><a href="mailto:cthippeswamy@verisign.com">cthippeswamy@verisign.com</a></td></tr>
+<tr><td class="author" align="right">URI:&nbsp;</td>
+<td class="author-text"><a href="http://www.verisigninc.com">http://www.verisigninc.com</a></td></tr>
+</table>
+</body></html>

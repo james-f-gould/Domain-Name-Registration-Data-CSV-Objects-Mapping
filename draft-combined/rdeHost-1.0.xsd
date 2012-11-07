@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:rdeHost-1.0"
+      xmlns:rdeHost="urn:ietf:params:xml:ns:rdeHost-1.0"
+      xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+      xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+      xmlns:host="urn:ietf:params:xml:ns:host-1.0"
+      xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+      xmlns="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified">
+
+  <!--
+  Import common element types
+  -->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+       schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:host-1.0"
+       schemaLocation="host-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+       schemaLocation="rde-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       schemaLocation="rdeCsv-1.0.xsd"/>
+
+  <annotation>
+   <documentation>
+    Registry Data Escrow (RDE) Host Object
+   </documentation>
+  </annotation>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="rdeHost:contentsType"
+  substitutionGroup="rde:contents"/>
+
+  <complexType name="contentsType">
+   <complexContent>
+    <extension base="rde:contentsType"/>
+   </complexContent>
+  </complexType>
+
+  <!--
+  Child elements of the <rde:content> object
+  -->
+  <!-- host content element for XML model-->  
+  <element name="host" type="rdeHost:contentType"
+  substitutionGroup="rde:content"/>
+  
+  <!-- Host content type for XML model -->
+  <complexType name="contentType">
+   <complexContent>
+    <extension base="rde:contentType">
+      <sequence>
+       <element name="name" type="eppcom:labelType"/>
+       <element name="uName" type="eppcom:labelType"
+        minOccurs="0"/>
+       <element name="parentDomain" type="eppcom:labelType"
+        minOccurs="0"/>
+       <element name="roid" type="eppcom:roidType"/>
+       <element name="idn" type="boolean"
+         minOccurs="0" default="false"/>
+       <element name="status" type="host:statusType"
+        maxOccurs="7"/>
+       <element name="addr" type="host:addrType"
+        minOccurs="0" maxOccurs="unbounded"/>
+       <element name="clID" type="eppcom:clIDType"/>
+       <element name="crID" type="eppcom:clIDType"/>
+       <element name="crDate" type="dateTime"/>
+       <element name="upID" type="eppcom:clIDType"
+        minOccurs="0"/>
+       <element name="upDate" type="dateTime"
+        minOccurs="0"/>
+       <element name="trDate" type="dateTime"
+        minOccurs="0"/>
+       <element name="extension" type="rde:extAnyType"
+        minOccurs="0"/>
+      </sequence>
+    </extension>
+   </complexContent>
+  </complexType>
+
+ 
+ <!-- IP address fields (fV4Addrs, fV6Addrs) -->
+ <element name="fV4Addrs" type="rdeHost:fAddrsType" 
+  substitutionGroup="rdeCsv:field"/>
+ <element name="fV6Addrs" type="rdeHost:fAddrsType" 
+  substitutionGroup="rdeCsv:field"/>
+ <complexType name="fAddrsType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="host\:addrStringType"/>
+      <attribute name="list" type="boolean" 
+        default="true"/>
+      <attribute name="sep" type="token" 
+        default=","/>
+    </extension>
+  </complexContent>
+ </complexType>
+
+ <!-- Boolean type  fields -->
+ <element name="fIdn" type="rdeCsv:fBooleanType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Parent domain name for subordinate host field -->
+ <element name="fParentDomain" type="rdeCsv:fNameType" 
+  substitutionGroup="rdeCsv:field"/>
+
+  
+  <!--
+  Child elements of the <rde:delete> object
+  -->
+  <element name="delete" type="rdeHost:deleteType"
+  substitutionGroup="rde:delete"/>
+
+  <complexType name="deleteType">
+   <complexContent>
+    <extension base="rde:deleteType">
+      <sequence>
+       <element name="name" type="eppcom:labelType"
+        minOccurs="0" maxOccurs="unbounded"/>
+      </sequence>
+    </extension>
+   </complexContent>
+  </complexType>
+
+  <!--
+  End of schema.
+  -->
+</schema>

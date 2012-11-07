@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:csvHost-1.0"
+      xmlns:csvHost="urn:ietf:params:xml:ns:csvHost-1.0"
+      xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+      xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+      xmlns:host="urn:ietf:params:xml:ns:host-1.0"
+      xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+      xmlns="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified">
+
+  <!--
+  Import common element types
+  -->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+       schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:host-1.0"
+       schemaLocation="host-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+       schemaLocation="rde-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       schemaLocation="rdeCsv-1.0.xsd"/>
+
+  <annotation>
+   <documentation>
+    Host Comma-Separated Values (CSV) Object 
+   </documentation>
+  </annotation>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="csvHost:contentsType"
+  substitutionGroup="rde:contents"/>
+
+  <complexType name="contentsType">
+   <complexContent>
+    <extension base="rde:contentsType"/>
+   </complexContent>
+  </complexType>
+
+ <!-- Host name field -->
+ <element name="fName" type="rdeCsv:fNameType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ 
+ <!-- IP address fields (fV4Addrs, fV6Addrs) -->
+ <element name="fV4Addrs" type="csvHost:fAddrsType" 
+  substitutionGroup="rdeCsv:field"/>
+ <element name="fV6Addrs" type="csvHost:fAddrsType" 
+  substitutionGroup="rdeCsv:field"/>
+ <complexType name="fAddrsType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="host\:addrStringType"/>
+      <attribute name="list" type="boolean" 
+        default="true"/>
+      <attribute name="sep" type="token" 
+        default=","/>
+    </extension>
+  </complexContent>
+ </complexType>
+
+ <!-- Boolean type  fields -->
+ <element name="fIdn" type="rdeCsv:fBooleanType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Parent domain name for subordinate host field -->
+ <element name="fParentDomain" type="rdeCsv:fNameType" 
+  substitutionGroup="rdeCsv:field"/>
+
+  <!--
+  End of schema.
+  -->
+</schema>

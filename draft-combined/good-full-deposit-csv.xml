@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rde:deposit
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+	 xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+	 xmlns:rdeDomain="urn:ietf:params:xml:ns:rdeDomain-1.0"
+	 xmlns:rdeHost="urn:ietf:params:xml:ns:rdeHost-1.0"
+	 xmlns:rdeContact="urn:ietf:params:xml:ns:rdeContact-1.0"
+	 xmlns:rdeRegistrar="urn:ietf:params:xml:ns:rdeRegistrar-1.0"
+	 xmlns:rdeIDN="urn:ietf:params:xml:ns:rdeIDN-1.0"
+	 xmlns:rdeEppParams="urn:ietf:params:xml:ns:rdeEppParams-1.0"
+	 xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+	 xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+	 xmlns:contact="urn:ietf:params:xml:ns:contact-1.0"
+	 xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.1"
+    xsi:schemaLocation="
+    urn:ietf:params:xml:ns:rde-1.0 rde-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeDomain-1.0 rdeDomain-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeHost-1.0 rdeHost-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeContact-1.0 rdeContact-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeRegistrar-1.0 rdeRegistrar-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeIDN-1.0 rdeIDN-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeEppParams-1.0 rdeEppParams-1.0.xsd 
+    urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd 
+    urn:ietf:params:xml:ns:domain-1.0 domain-1.0.xsd 
+    urn:ietf:params:xml:ns:contact-1.0 contact-1.0.xsd 
+    urn:ietf:params:xml:ns:secDNS-1.1 secDNS-1.1.xsd"
+    type="FULL"
+	 id="20101017001" prevId="20101010001">
+	 <rde:watermark>2010-10-18T00:00:00Z</rde:watermark>
+	 <rde:rdeMenu>
+   	<rde:version>1.0</rde:version>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeDomain-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeHost-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeContact-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeRegistrar-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeIDN-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeEppParams-1.0</rde:objURI>
+	 </rde:rdeMenu>
+	 <rde:contents>
+	 	<rdeDomain:contents>
+	 		<rdeCsv:csv name="domain">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<!-- VRSN: DOMAIN.DOMAINNAME -->
+	 				<rdeCsv:fName/>
+	 				<!-- VRSN: DOMAIN<DOMAIN.DOMAINID>-VRSN -->
+	 				<rdeCsv:fRoid/>
+	 				<!-- VRSN: true if DOMAIN.ENCODINGTYPE != 3 (ASCII); false otherwise -->
+	 				<rdeDomain:fIdn/>
+	 				<!-- VRSN: DOMAIN.LANGUAGEID -> LANGUAGE.LANGUAGECODE3 -->
+	 				<rdeCsv:fLanguage/>
+	 				<!-- VRSN: NOT supported -->
+	 				<rdeDomain:fVariant/>
+	 				<!-- VRSN: NOT supported -->
+	 				<rdeDomain:fOriginalName/>
+	 				<!-- VRSN: NOT supported -->
+	 				<rdeDomain:fReserved/>
+	 				<!-- VRSN: DOMAINSTATUS.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME -> Custom Mapping --> 
+	 				<rdeCsv:fStatuses/>
+	 				<!-- VRSN: DOMAINSTATUS.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME -> Custom Mapping --> 
+	 				<rdeDomain:fRgpStatuses/>
+	 				<!-- VRSN: DOMAIN.REGISTRANTCONTACTID -> CONTACT.CLIENTID --> 
+	 				<rdeCsv:fRegistrant/>
+	 				<!-- VRSN: DOMAINCONTACTLINK.CONTACTID -> CONTACT.CLIENTID, filtered by CONTACTTYPE = '1' AND DOMAINCONTACTLINK.DOMAINID = DOMAIN.DOMAINID --> 
+	 				<rdeCsv:fAdminContacts/>
+	 				<!-- VRSN: DOMAINCONTACTLINK.CONTACTID -> CONTACT.CLIENTID, filtered by CONTACTTYPE = '2' AND DOMAINCONTACTLINK.DOMAINID = DOMAIN.DOMAINID --> 
+	 				<rdeCsv:fTechContacts/>
+	 				<!-- VRSN: DOMAINCONTACTLINK.CONTACTID -> CONTACT.CLIENTID, filtered by CONTACTTYPE = '3' AND DOMAINCONTACTLINK.DOMAINID = DOMAIN.DOMAINID --> 
+	 				<rdeCsv:fBillingContacts/>
+	 				<!-- VRSN: DOMAINNAMESERERLINK.NAMESERVERID -> NAMESERVER.SERVERNAME --> 
+	 				<rdeDomain:fNsObjs/>
+	 				<!-- VRSN: DOMAIN.REGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<rdeCsv:fClID/>
+	 				<!-- VRSN: DOMAIN.CREATEDBY -> REGISTRYUSER.LOGON_NAME -->
+	 				<rdeCsv:fCrID/>
+	 				<!-- VRSN: DOMAIN.CREATEDDATE -> XML UTC Date/Time -->
+	 				<rdeCsv:fCrDate/>
+	 				<!-- VRSN: DOMAIN.UPDATEDBY -> REGISTRYUSER.LOGON_NAME -->
+	 				<rdeCsv:fUpID/>
+	 				<!-- VRSN: DOMAIN.UPDATEDDATE -> XML UTC Date/Time -->
+	 				<rdeCsv:fUpDate/>
+	 				<!-- VRSN: DOMAIN.REGISTRATIONEXPIRATIONDATE -> XML UTC Date/Time -->
+	 				<rdeCsv:fExDate/>
+	 				<!-- VRSN: DOMAIN.AUTHINFO -> Decrypted -->
+	 				<rdeCsv:fPwAuthInfo/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="2670296305 91797970">
+	 					domain-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+	 		<rdeCsv:csv name="dnssec">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<!-- TODO Fill in with DNSSEC DS table columns -->
+	 			<rdeCsv:fields>
+	 				<rdeCsv:fName/>
+	 				<rdeDomain:fMaxSigLife/>
+	 				<rdeDomain:fKeyTag/>
+	 				<rdeDomain:fDsAlg/>
+	 				<rdeDomain:fDigestType/>
+	 				<rdeDomain:fDigest/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="2670296305 91797970">
+	 					dnssec-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+	 		<rdeCsv:csv name="domainTransfer">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<!-- If DOMAIN.DOMAINID = DOMAINPENDINGTRANSFER.DOMAINID, then [1]
+	 				     Else if DOMAIN.DOMAINID = DOMAINTRANSFER.DOMAINID, then latest DOMAINTRANSFER.CREATEDDATE [2] -->
+	 				     
+	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.DOMAINID -> DOMAIN.DOMAINNAME -->
+	 				<!-- VRSN: [2] DOMAINTRANSFER.DOMAINID -> DOMAIN.DOMAINNAME -->
+	 				<rdeCsv:fName/>
+	 				<!-- VRSN: [1] pendingTransfer -->
+	 				<!-- VRSN: [2] DOMAINTRANSFER.TRANSSTATUSCODE -> TRANSFERSTATUS.TRANSSTATUSNAME -->
+	 				<rdeCsv:fTrStatus/>
+	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.REQUESTREGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<!-- VRSN: [2] DOMAINTRANSFER.REQUESTREGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<rdeCsv:fReID/>
+	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.REQUESTDATE -> XML UTC Date/Time -->
+	 				<!-- VRSN: [2] DOMAINTRANSFER.REQUESTDATE -> XML UTC Date/Time -->	 				
+	 				<rdeCsv:fReDate/>
+	 				<!-- VRSN: [1] DOMAIN.REGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<!-- VRSN: [2] DOMAINTRANSFER.LOSINGREGISTRARID -> REGISTRAR.SHORTNAME -->	 				
+	 				<!-- Question - Does DOMAINTRANSFER get set to REQUESTREGISTRARID if cancelled or to VRSN when autoApproved? -->
+	 				<rdeCsv:fAcID/>
+	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.RESPONSEDATE -> XML UTC Date/Time -->
+	 				<!-- VRSN: [2] DOMAINTRANSFER.RESPONSEDATE -> XML UTC Date/Time -->	 				
+	 				<rdeCsv:fAcDate/>
+	 				<!-- VRSN: [1] Calculated - DOMAIN.REGISTRATIONEXPIRATIONDATE + DOMAINPENDINGTRANSFER.TRANSFERPERIOD - [Applicable Auto Renew Grace Period] -> XML UTC Date/Time -->
+	 				<!-- (ISSUE: The expiration date should be a field in DOMAINPENDINGTRANSFER) -->
+	 				<!-- VRSN: [2] Empty -->	 				
+	 				<rdeCsv:fExDate/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="2670296305 91797970">
+	 					domainTransfer-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+		</rdeDomain:contents>
+	 	<rdeHost:contents>
+	 		<rdeCsv:csv name="host">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<!-- VRSN: NAMESERVER.SERVERNAME -->
+	 				<rdeCsv:fName/>
+	 				<!-- VRSN: HOST<NAMESERVER.NAMESERVERID>-VRSN -->
+	 				<rdeCsv:fRoid/>
+	 				<!-- VRSN: NAMESERVERSTATUS.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME and NAMESERVER.ISLINKED = 'linked' -> Custom Mapping --> 
+	 				<rdeCsv:fStatuses/>
+	 				<!-- VRSN: NAMESERVERIPADDRESSLINK.IPADDRESS, filtered by NAMESERVERIPADDRESSLINK.IPADDRESS -> IPADDRESS.IPVERSION = 'v4' --> 
+	 				<rdeHost:fV4Addrs/>
+	 				<!-- VRSN: NAMESERVERIPADDRESSLINK.IPADDRESS, filtered by NAMESERVERIPADDRESSLINK.IPADDRESS -> IPADDRESS.IPVERSION = 'v6' --> 
+	 				<rdeHost:fV6Addrs/>
+	 				<!-- VRSN: NAMESERVER.REGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<rdeCsv:fClID/>
+	 				<!-- VRSN: NAMESERVER.CREATEDBY -> REGISTRYUSER.LOGON_NAME -->
+	 				<rdeCsv:fCrID/>
+	 				<!-- VRSN: NAMESERVER.CREATEDDATE -> XML UTC Date/Time -->
+	 				<rdeCsv:fCrDate/>
+	 				<!-- VRSN: NAMESERVER.UPDATEDBY -> REGISTRYUSER.LOGON_NAME -->
+	 				<rdeCsv:fUpID/>
+	 				<!-- VRSN: NAMESERVER.UPDATEDDATE -> XML UTC Date/Time -->
+	 				<rdeCsv:fUpDate/>
+	 				<!-- VRSN: NAMESERVER.PARENTDOMAINID -> DOMAIN.REGISTRARTRANSFERDATE -> XML UTC Date/Time or Empty -->
+	 				<rdeCsv:fTrDate/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="1410255126 216">
+	 					host-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+		</rdeHost:contents>
+	 	<rdeContact:contents>
+	 		<rdeCsv:csv name="contact">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<!-- VRSN: CONTACT.CLIENTID -->
+	 				<rdeContact:fId/>
+	 				<!-- VRSN: HOST<CONTACT.CONTACTID>-VRSN -->
+	 				<rdeCsv:fRoid/>
+	 				<!-- VRSN: CONTACT.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME -> Custom Mapping --> 
+	 				<rdeCsv:fStatuses/>
+	 				<!-- VRSN: CONTACT.PHONENUMBER -->
+	 				<rdeContact:fVoice/>
+	 				<rdeContact:fVoiceExt/>
+	 				<!-- VRSN: CONTACT.FAXNUMBER -->
+	 				<rdeContact:fFax/>
+	 				<rdeContact:fFaxExt/>
+	 				<!-- VRSN: CONTACT.EMAIL -->
+	 				<rdeContact:fEmail/>
+	 				<!-- VRSN: CONTACT.REGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<rdeCsv:fClID/>
+	 				<!-- VRSN: CONTACT.CREATEDBY -> REGISTRYUSER.LOGON_NAME -->
+	 				<rdeCsv:fCrID/>
+	 				<!-- VRSN: CONTACT.CREATEDDATE -> XML UTC Date/Time -->
+	 				<rdeCsv:fCrDate/>
+	 				<!-- VRSN: CONTACT.UPDATEDBY -> REGISTRYUSER.LOGON_NAME -->
+	 				<rdeCsv:fUpID/>
+	 				<!-- VRSN: CONTACT.UPDATEDDATE -> XML UTC Date/Time -->
+	 				<rdeCsv:fUpDate/>
+	 				<!-- VRSN: DOMAIN.AUTHINFO -> Decrypted -->
+	 				<rdeCsv:fPwAuthInfo/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="1410255126 216">
+	 					contact-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+	 		<rdeCsv:csv name="contactPostal">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<!-- Driven from CONTACT.CONTADDRESSID ("int" postal type)
+	 			     and CONTACT.INTLCONTADDRESSID ("loc" postal type).
+	 			     All fields (except fId) of contactPostal follows foreign key to 
+	 			     CONTACTADDRESS.CONTADDRESSID.
+	 			-->
+	 			<rdeCsv:fields>
+	 				<!-- VRSN: CONTACT.CLIENTID -->
+	 				<rdeContact:fId/>
+	 				<!-- VRSN: IF CONTACTADDRESS.ISINTERNATIONAL == 'loc' else 'int' -->
+	 				<rdeContact:fPostalType/>
+	 				<!-- VRSN: CONTACT.NAME (ISSUE: Should be in CONTACTADDRESS) -->
+	 				<rdeContact:fName/>
+	 				<!-- VRSN: CONTACT.ORGANIZATION (ISSUE: Should be in CONTACTADDRESS) -->
+	 				<rdeContact:fOrg/>
+	 				<!-- VRSN: CONTACTADDRESS.ADDRESSLINE1 -->
+	 				<rdeContact:fStreet index="0"/>
+	 				<!-- VRSN: CONTACTADDRESS.ADDRESSLINE2 -->
+	 				<rdeContact:fStreet index="1"/>
+	 				<!-- VRSN: CONTACTADDRESS.ADDRESSLINE3 -->
+	 				<rdeContact:fStreet index="2"/>
+	 				<!-- VRSN: CONTACTADDRESS.CITY -->
+	 				<rdeContact:fCity/>
+	 				<!-- VRSN: CONTACTADDRESS.STATEPROVINCE -->
+	 				<rdeContact:fSp/>
+	 				<!-- VRSN: CONTACTADDRESS.POSTALCODE -->
+		 			<rdeContact:fPc/>
+	 				<!-- VRSN: CONTACTADDRESS.COUNTRYCODE -->
+		 			<rdeContact:fCc/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="2670296305 91797970">
+	 					contactPostal-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>	 		
+	 		<rdeCsv:csv name="contactTransfer">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<!-- VRSN: CONTACTTRANSFER.CONTACTID -> CONTACT.CLIENTID -->
+	 				<rdeContact:fId/>
+	 				<!-- VRSN: CONTACTTRANSFER.TRANSSTATUSCODE -> TRANSFERSTATUS.TRANSSTATUSNAME -->
+	 				<rdeCsv:fTrStatus/>
+	 				<!-- VRSN: CONTACTTRANSFER.REQUESTREGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<rdeCsv:fReID/>
+	 				<!-- VRSN: CONTACTTRANSFER.REQUESTDATE -> XML UTC Date/Time -->	 				
+	 				<rdeCsv:fReDate/>
+	 				<!-- VRSN: CONTACTTRANSFER.LOSINGREGISTRARID -> REGISTRAR.SHORTNAME -->
+	 				<!-- Question - Does LOSINGREGISTRARID get set to REQUESTREGISTRARID if cancelled or to VRSN when autoApproved? -->
+	 				<rdeCsv:fAcID/>
+	 				<!-- VRSN: CONTACTTRANSFER.RESPONSEDATE -> XML UTC Date/Time -->	 				
+	 				<rdeCsv:fAcDate/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="2670296305 91797970">
+	 					contactTransfer-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+	 		<!-- VRSN: NOT SUPPORTED -->
+	 		<rdeCsv:csv name="contactDisclose">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<rdeContact:fId/>
+	 				<rdeContact:fDiscloseFlag/>
+	 				<rdeContact:fDiscloseNameLoc/>
+	 				<rdeContact:fDiscloseNameInt/>
+	 				<rdeContact:fDiscloseOrgLoc/>
+	 				<rdeContact:fDiscloseOrgInt/>
+	 				<rdeContact:fDiscloseAddrLoc/>
+	 				<rdeContact:fDiscloseAddrInt/>
+	 				<rdeContact:fDiscloseVoice/>
+	 				<rdeContact:fDiscloseFax/>
+	 				<rdeContact:fDiscloseEmail/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="2670296305 91797970">
+	 					contactDisclose-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+		</rdeContact:contents>
+	 	<rdeRegistrar:contents>
+	 		<rdeCsv:csv name="registrar">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<!-- VRSN: Account ACCOUNTS.SHORT_NAME -->
+	 				<rdeRegistrar:fId/>
+	 				<!-- VRSN: REGISTRAR<ACCOUNTS.ACCOUNT_ID>-VRSN -->
+	 				<rdeCsv:fRoid/>
+	 				<!-- VRSN: FULL_NAME -->
+	 				<rdeRegistrar:fName isLoc="false"/>
+	 				<!-- VRSN: ACCOUNTS.GUR_ID -->
+	 				<rdeRegistrar:fIcannId/>
+	 				<!-- VRSN: ACCOUNTS.ACCT_STATUS_ID -> ACCOUNT_STATUSES.ACCT_STATUS_NAME or ACCOUNT_STATUSES.ACCT_ESCROW_NAME -->
+	 				<rdeRegistrar:fStatus/>
+	 				<!-- VRSN: UNSUPPORTED -->
+	 				<rdeRegistrar:fStatusName/>
+	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.ADDRESS_LINE1 -->
+	 				<rdeContact:fStreet isLoc="false" index="0"/>
+	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.ADDRESS_LINE2 -->
+	 				<rdeContact:fStreet isLoc="false" index="1"/>
+	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.ADDRESS_LINE3 -->
+	 				<rdeContact:fStreet isLoc="false"index="2"/>
+	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.CITY -->
+	 				<rdeContact:fCity isLoc="false" />
+	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.STATE_PROVINCE -->
+	 				<rdeContact:fSp isLoc="false" />
+	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.POSTAL_CODE -->
+		 			<rdeContact:fPc isLoc="false" />
+	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.COUNTRY_CODE -->
+		 			<rdeContact:fCc isLoc="false" />
+	 				<!-- VRSN: ACCOUNTS.PHONE_NUMBER -->
+	 				<rdeContact:fVoice/>
+	 				<rdeContact:fVoiceExt/>
+	 				<!-- VRSN: ACCOUNTS.FAX_NUMBER -->
+	 				<rdeContact:fFax/>
+	 				<rdeContact:fFaxExt/>
+	 				<!-- VRSN: ACCOUNTS.ADMIN_EMAIL_ADDRESS -->
+	 				<rdeContact:fEmail/>
+	 				<!-- VRSN: ACCOUNTS.COMPANY_URL -->
+	 				<rdeRegistrar:fUrl/>
+	 				<!-- VRSN: ACCOUNTS.WHOIS_URL -->
+	 				<rdeRegistrar:fWhoisUrl/>
+	 				<!-- VRSN: ACCOUNTS.CREATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
+	 				<rdeCsv:fCrID/>
+	 				<!-- VRSN: ACCOUNTS.CREATED_DATE -->
+	 				<rdeCsv:fCrDate/>
+	 				<!-- VRSN: ACCOUNTS.UPDATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
+	 				<rdeCsv:fUpID/>
+	 				<!-- VRSN: ACCOUNTS.UPDATED_DATE -->
+	 				<rdeCsv:fUpDate/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="1924040625 268">
+	 					registrar-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+	 		<rdeCsv:csv name="registrarContact">
+	 			<rdeCsv:sep>,</rdeCsv:sep>
+	 			<rdeCsv:fields>
+	 				<!-- VRSN: Account ACCOUNTS.SHORT_NAME -->
+	 				<rdeRegistrar:fId/>
+	 				<!-- VRSN: CONTACTS.CONTACT_ID -->
+	 				<rdeContact:fId/>
+	 				<!-- VRSN: REGISTRARCONTACT<CONTACTS.CONTACT_ID>-VRSN -->
+	 				<rdeCsv:fRoid/>
+	 				<!-- VRSN: CONTACTS.FIRST_NAME + [" " + CONTACTS.MIDDLE_NAME] + [" " + CONTACTS.LAST_NAME] -->
+	 				<rdeContact:fName isLoc="false"/>
+	 				<!-- VRSN: CONTACTS_CONTACT_TYPES_LINK.CONTACT_ID -> CONTACT_TYPES.CONTACT_TYPE_NAME -->
+	 				<rdeRegistrar:fContactTypes/>
+	 				<!-- VRSN: CONTACTS.PHONE_NUMBER -->
+	 				<rdeContact:fVoice/>
+	 				
+	 				<rdeContact:fVoiceExt/>
+	 				<!-- VRSN: CONTACTS.FAX_NUMBER -->
+	 				<rdeContact:fFax/>
+	 				<rdeContact:fFaxExt/>
+	 				<!-- VRSN: CONTACTS.EMAIL_ADDRESS -->
+	 				<rdeContact:fEmail/>
+	 				<!-- VRSN: CONTACTS.CREATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
+	 				<rdeCsv:fCrID/>
+	 				<!-- VRSN: CONTACTS.CREATED_DATE -->
+	 				<rdeCsv:fCrDate/>
+	 				<!-- VRSN: CONTACTS.UPDATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
+	 				<rdeCsv:fUpID/>
+	 				<!-- VRSN: CONTACTS.UPDATED_DATE -->
+	 				<rdeCsv:fUpDate/>
+	 			</rdeCsv:fields>
+	 			<rdeCsv:files>
+	 				<rdeCsv:file 
+	 					cksum="2186160075 371">
+	 					registrarcontact-20120830.csv
+	 				</rdeCsv:file> 
+	 			</rdeCsv:files>
+	 		</rdeCsv:csv>
+		</rdeRegistrar:contents>
+	 	<rdeIDN:contents>
+			<rdeIDN:languageRules>
+				<rdeIDN:language>CHI</rdeIDN:language>
+				<rdeIDN:table>
+					<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_zh_1.0.txt</rdeIDN:url>
+				</rdeIDN:table>
+			</rdeIDN:languageRules>
+			<rdeIDN:languageRules>
+				<rdeIDN:language>FRE</rdeIDN:language>
+				<rdeIDN:language>GER</rdeIDN:language>
+				<rdeIDN:table use="one">
+					<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_bopo_1.1.txt</rdeIDN:url>
+					<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_bamu_1.1.txt</rdeIDN:url>
+					<rdeIDN:table use="all">
+						<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_batk_1.1.txt</rdeIDN:url>
+						<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_buhd_1.1.txt</rdeIDN:url>
+					</rdeIDN:table>
+				</rdeIDN:table>
+			</rdeIDN:languageRules>
+		</rdeIDN:contents>
+	 	<rdeEppParams:contents>
+			<rdeEppParams:eppParams>
+				 <rdeEppParams:version>1.0</rdeEppParams:version>
+				 <rdeEppParams:lang>en</rdeEppParams:lang>
+				 <rdeEppParams:objURI>
+					 urn:ietf:params:xml:ns:domain-1.0
+				 </rdeEppParams:objURI>
+				 <rdeEppParams:objURI>
+					 urn:ietf:params:xml:ns:contact-1.0
+				 </rdeEppParams:objURI>
+				 <rdeEppParams:objURI>
+					 urn:ietf:params:xml:ns:host-1.0
+				 </rdeEppParams:objURI>
+				 <rdeEppParams:svcExtension>
+					  <epp:extURI>
+						  urn:ietf:params:xml:ns:rgp-1.0
+					  </epp:extURI>
+					  <epp:extURI>
+						  urn:ietf:params:xml:ns:secDNS-1.1
+					  </epp:extURI>
+				 </rdeEppParams:svcExtension>
+				 <rdeEppParams:dcp>
+					  <epp:access><epp:all/></epp:access>
+					  <epp:statement>
+							<epp:purpose>
+								 <epp:admin/>
+								 <epp:prov/>
+							</epp:purpose>
+							<epp:recipient>
+								 <epp:ours/>
+								 <epp:public/>
+							</epp:recipient>
+							<epp:retention>
+								 <epp:stated/>
+							</epp:retention>
+					  </epp:statement>
+				 </rdeEppParams:dcp>
+			</rdeEppParams:eppParams>
+		</rdeEppParams:contents>
+	 </rde:contents>
+</rde:deposit>

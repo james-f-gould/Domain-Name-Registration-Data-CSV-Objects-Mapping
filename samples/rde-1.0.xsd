@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:rde-1.0"
+		  xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+		  xmlns="http://www.w3.org/2001/XMLSchema"
+		  elementFormDefault="qualified">
+
+  <annotation>
+	 <documentation>
+		Registry Data Escrow schema
+	 </documentation>
+  </annotation>
+
+  <!--
+  Root element
+  -->
+  <element name="deposit" type="rde:escrowDepositType"/>
+
+  <!--
+  RDE types
+  -->
+  <complexType name="escrowDepositType">
+	 <sequence>
+		<element name="watermark" type="dateTime"/>
+		<element name="rdeMenu" type="rde:rdeMenuType"/>
+		<element name="deletes" type="rde:rdeDeletesType"
+		 minOccurs="0"/>
+		<element name="contents" type="rde:rdeContentsType"/>
+	 </sequence>
+	 <attribute name="type" type="rde:depositType"
+	  use="required"/>
+	 <attribute name="id" type="rde:depositIdType"
+	  use="required"/>
+	 <attribute name="prevId" type="rde:depositIdType"
+	  use="optional"/>
+	 <attribute name="resend" type="unsignedShort"
+	  default="0"/>
+  </complexType>
+
+  <complexType name="rdeContentsType">
+	 <sequence
+	  minOccurs="0" maxOccurs="unbounded">
+		<element ref="rde:contents"/>
+	 </sequence>
+  </complexType>
+
+  <element name="contents" type="rde:contentsType" abstract="true"/>
+  <complexType name="contentsType">
+	 <sequence
+	  minOccurs="0" maxOccurs="unbounded">
+		<element ref="rde:content"/>
+		<element name="extension" type="rde:extAnyType"
+		 minOccurs="0" maxOccurs="unbounded"/>
+	 </sequence>
+  </complexType>
+
+  <element name="content" type="rde:contentType" abstract="true" />
+  <complexType name="contentType">
+	 <sequence/>
+  </complexType>
+
+  <complexType name="rdeDeletesType">
+	 <sequence
+	  minOccurs="0" maxOccurs="unbounded">
+		<element ref="rde:delete"/>
+		<element name="extension" type="rde:extAnyType"
+		  minOccurs="0" maxOccurs="unbounded"/>
+	 </sequence>
+  </complexType>
+
+  <element name="delete" type="rde:deleteType" abstract="true" />
+  <complexType name="deleteType">
+	 <sequence/>
+  </complexType>
+
+  <!--
+  Type of deposit
+  -->
+  <simpleType name="depositType">
+	 <restriction base="token">
+		<enumeration value="FULL"/>
+		<enumeration value="INCR"/>
+		<enumeration value="DIFF"/>
+	 </restriction>
+  </simpleType>
+
+  <!--
+  Deposit identifier type
+  -->
+  <simpleType name="depositIdType">
+	 <restriction base="token">
+		<pattern value="\w{1,13}"/>
+	 </restriction>
+  </simpleType>
+
+  <!--
+	 Identifies available object services.
+  -->
+  <complexType name="rdeMenuType">
+	 <sequence>
+		<element name="version" type="rde:versionType"
+		  maxOccurs="unbounded"/>
+		<element name="objURI" type="anyURI"
+		  maxOccurs="unbounded"/>
+		<element name="svcExtension" type="rde:extURIType"
+		  minOccurs="0"/>
+	 </sequence>
+  </complexType>
+
+  <!--
+  Extension framework type
+  -->
+  <complexType name="extAnyType">
+	 <sequence>
+		<any namespace="##other"
+		 maxOccurs="unbounded"/>
+	 </sequence>
+  </complexType>
+
+  <complexType name="extURIType">
+	 <sequence>
+		<element name="extURI" type="anyURI"
+		  maxOccurs="unbounded"/>
+	 </sequence>
+  </complexType>
+
+  <!--
+	 A RDE version number is a dotted pair of decimal numbers.
+  -->
+  <simpleType name="versionType">
+	 <restriction base="token">
+		<pattern value="[1-9]+\.[0-9]+"/>
+		<enumeration value="1.0"/>
+	 </restriction>
+  </simpleType>
+
+  <!--
+  End of schema.
+  -->
+</schema>

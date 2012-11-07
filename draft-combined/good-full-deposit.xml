@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rde:deposit
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+	 xmlns:rdeDomain="urn:ietf:params:xml:ns:rdeDomain-1.0"
+	 xmlns:rdeHost="urn:ietf:params:xml:ns:rdeHost-1.0"
+	 xmlns:rdeContact="urn:ietf:params:xml:ns:rdeContact-1.0"
+	 xmlns:rdeRegistrar="urn:ietf:params:xml:ns:rdeRegistrar-1.0"
+	 xmlns:rdeIDN="urn:ietf:params:xml:ns:rdeIDN-1.0"
+	 xmlns:rdeEppParams="urn:ietf:params:xml:ns:rdeEppParams-1.0"
+	 xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+	 xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+	 xmlns:contact="urn:ietf:params:xml:ns:contact-1.0"
+	 xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.1"
+    xsi:schemaLocation="
+    urn:ietf:params:xml:ns:rde-1.0 rde-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeDomain-1.0 rdeDomain-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeHost-1.0 rdeHost-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeContact-1.0 rdeContact-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeRegistrar-1.0 rdeRegistrar-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeIDN-1.0 rdeIDN-1.0.xsd 
+    urn:ietf:params:xml:ns:rdeEppParams-1.0 rdeEppParams-1.0.xsd 
+    urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd 
+    urn:ietf:params:xml:ns:domain-1.0 domain-1.0.xsd 
+    urn:ietf:params:xml:ns:contact-1.0 contact-1.0.xsd 
+    urn:ietf:params:xml:ns:secDNS-1.1 secDNS-1.1.xsd"
+    type="FULL"
+	 id="20101017001" prevId="20101010001">
+	 <rde:watermark>2010-10-18T00:00:00Z</rde:watermark>
+	 <rde:rdeMenu>
+   	<rde:version>1.0</rde:version>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeDomain-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeHost-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeContact-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeRegistrar-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeIDN-1.0</rde:objURI>
+   	<rde:objURI>urn:ietf:params:xml:ns:rdeEppParams-1.0</rde:objURI>
+	 </rde:rdeMenu>
+	 <rde:contents>
+	 	<rdeDomain:contents>
+			<rdeDomain:domain>
+				 <rdeDomain:name>pinguino.test</rdeDomain:name>
+				 <rdeDomain:roid>Dpinguino-TEST</rdeDomain:roid>
+				 <rdeDomain:status s="pendingDelete"/>
+				 <rdeDomain:rgpStatus s="redemptionPeriod"/>
+				 <rdeDomain:registrant>jd1234</rdeDomain:registrant>
+				 <rdeDomain:contact type="admin">sh8013</rdeDomain:contact>
+				 <rdeDomain:contact type="tech">sh8013</rdeDomain:contact>
+				 <rdeDomain:ns>
+					  <domain:hostObj>ns1.example.com</domain:hostObj>
+					  <domain:hostObj>ns1.example.net</domain:hostObj>
+				 </rdeDomain:ns>
+				 <rdeDomain:host>ns1.pinguino.test</rdeDomain:host>
+				 <rdeDomain:host>ns2.pinguino.test</rdeDomain:host>
+				 <rdeDomain:clID>clientX</rdeDomain:clID>
+				 <rdeDomain:crID>clientY</rdeDomain:crID>
+				 <rdeDomain:crDate>1999-04-03T22:00:00.0Z</rdeDomain:crDate>
+				 <rdeDomain:exDate>2015-04-03T22:00:00.0Z</rdeDomain:exDate>
+				 <rdeDomain:upID>clientX</rdeDomain:upID>
+				 <rdeDomain:upDate>2009-12-03T09:05:00.0Z</rdeDomain:upDate>
+				 <rdeDomain:authInfo>
+					  <domain:pw>2fooBAR</domain:pw>
+				 </rdeDomain:authInfo>
+				 <rdeDomain:dnssec>
+					  <secDNS:maxSigLife>604800</secDNS:maxSigLife>
+					  <secDNS:dsData>
+							<secDNS:keyTag>12345</secDNS:keyTag>
+							<secDNS:alg>7</secDNS:alg>
+							<secDNS:digestType>1</secDNS:digestType>
+							<secDNS:digest>
+							  93358db22e956a451eb5ae8d2ec39526ca6a87b9
+							</secDNS:digest>
+					  </secDNS:dsData>
+				 </rdeDomain:dnssec>
+				 <rdeDomain:transfer>
+					  <rdeDomain:trStatus>pending</rdeDomain:trStatus>
+					  <rdeDomain:reID>clientW</rdeDomain:reID>
+					  <rdeDomain:reDate>2011-03-08T19:38:00.0Z</rdeDomain:reDate>
+					  <rdeDomain:acID>clientX</rdeDomain:acID>
+					  <rdeDomain:acDate>2011-03-13T23:59:59.0Z</rdeDomain:acDate>
+					  <rdeDomain:exDate>2016-04-03T22:00:00.0Z</rdeDomain:exDate>
+				 </rdeDomain:transfer>
+			</rdeDomain:domain>
+			<rdeDomain:domain>
+				 <rdeDomain:name>xn--pingino-q2a.test</rdeDomain:name>
+				 <rdeDomain:uName>pingueino.test</rdeDomain:uName>
+				 <rdeDomain:roid>Dxnpinguinoq2a-TEST</rdeDomain:roid>
+				 <rdeDomain:idn>true</rdeDomain:idn>
+				 <rdeDomain:language>CHI</rdeDomain:language>
+				 <rdeDomain:status s="ok"/>
+				 <rdeDomain:registrant>jd1234</rdeDomain:registrant>
+				 <rdeDomain:contact type="admin">sh8013</rdeDomain:contact>
+				 <rdeDomain:contact type="tech">sh8013</rdeDomain:contact>
+				 <rdeDomain:ns>
+					  <domain:hostObj>ns1.example.com</domain:hostObj>
+					  <domain:hostObj>ns1.example.net</domain:hostObj>
+				 </rdeDomain:ns>
+				 <rdeDomain:host>ns1.xn--pingino-q2a.test</rdeDomain:host>
+				 <rdeDomain:host>ns2.xn--pingino-q2a.test</rdeDomain:host>
+				 <rdeDomain:clID>clientX</rdeDomain:clID>
+				 <rdeDomain:crID>clientY</rdeDomain:crID>
+				 <rdeDomain:crDate>1999-04-03T22:00:00.0Z</rdeDomain:crDate>
+				 <rdeDomain:exDate>2015-04-03T22:00:00.0Z</rdeDomain:exDate>
+				 <rdeDomain:upID>clientX</rdeDomain:upID>
+				 <rdeDomain:upDate>2009-12-03T09:05:00.0Z</rdeDomain:upDate>
+				 <rdeDomain:authInfo>
+					  <domain:pw>2fooBAR</domain:pw>
+				 </rdeDomain:authInfo>
+			</rdeDomain:domain>
+			<rdeDomain:domain>
+				 <rdeDomain:name>xn--pingxyz-q2a.test</rdeDomain:name>
+				 <rdeDomain:roid>Dxnpingxyzq2a-TEST</rdeDomain:roid>
+				 <rdeDomain:idn>true</rdeDomain:idn>
+				 <rdeDomain:language>CHI</rdeDomain:language>
+				 <rdeDomain:variant>true</rdeDomain:variant>
+				 <rdeDomain:originalName>xn--pingino-q2a.test</rdeDomain:originalName>
+				 <rdeDomain:status s="ok"/>
+				 <rdeDomain:registrant>jd1234</rdeDomain:registrant>
+				 <rdeDomain:contact type="admin">sh8013</rdeDomain:contact>
+				 <rdeDomain:contact type="tech">sh8013</rdeDomain:contact>
+				 <rdeDomain:ns>
+					  <domain:hostObj>ns1.example.com</domain:hostObj>
+					  <domain:hostObj>ns1.example.net</domain:hostObj>
+				 </rdeDomain:ns>
+				 <rdeDomain:host>ns1.xn--pingino-q2a.test</rdeDomain:host>
+				 <rdeDomain:host>ns2.xn--pingino-q2a.test</rdeDomain:host>
+				 <rdeDomain:clID>clientX</rdeDomain:clID>
+				 <rdeDomain:crID>clientY</rdeDomain:crID>
+				 <rdeDomain:crDate>1999-04-03T22:00:00.0Z</rdeDomain:crDate>
+				 <rdeDomain:exDate>2015-04-03T22:00:00.0Z</rdeDomain:exDate>
+				 <rdeDomain:upID>clientX</rdeDomain:upID>
+				 <rdeDomain:upDate>2009-12-03T09:05:00.0Z</rdeDomain:upDate>
+				 <rdeDomain:authInfo>
+					  <domain:pw>2fooBAR</domain:pw>
+				 </rdeDomain:authInfo>
+			</rdeDomain:domain>
+			<rdeDomain:domain>
+				 <rdeDomain:name>reserved.test</rdeDomain:name>
+				 <rdeDomain:roid>reservedtest-TEST</rdeDomain:roid>
+				 <rdeDomain:reserved>true</rdeDomain:reserved>
+				 <rdeDomain:status s="ok"/>
+				 <rdeDomain:clID>server</rdeDomain:clID>
+			</rdeDomain:domain>
+		</rdeDomain:contents>
+	 	<rdeHost:contents>
+			<rdeHost:host>
+				 <rdeHost:name>ns1.example.test</rdeHost:name>
+				 <rdeHost:parentDomain>example.test</rdeHost:parentDomain>
+				 <rdeHost:roid>Hns1_example_test-TEST</rdeHost:roid>
+				 <rdeHost:status s="linked"/>
+				 <rdeHost:status s="clientUpdateProhibited"/>
+				 <rdeHost:addr ip="v4">192.0.2.2</rdeHost:addr>
+				 <rdeHost:addr ip="v4">192.0.2.29</rdeHost:addr>
+				 <rdeHost:addr ip="v6">1080:0:0:0:8:800:200C:417A</rdeHost:addr>
+				 <rdeHost:clID>clientY</rdeHost:clID>
+				 <rdeHost:crID>clientX</rdeHost:crID>
+				 <rdeHost:crDate>1999-05-08T12:10:00.0Z</rdeHost:crDate>
+				 <rdeHost:upID>clientX</rdeHost:upID>
+				 <rdeHost:upDate>2009-10-03T09:34:00.0Z</rdeHost:upDate>
+				 <rdeHost:trDate>2007-01-08T09:19:00.0Z</rdeHost:trDate>
+			</rdeHost:host>
+			<rdeHost:host>
+				 <rdeHost:name>ns1.example.exttld</rdeHost:name>
+				 <rdeHost:roid>Hns1_example_exttld-TEST</rdeHost:roid>
+				 <rdeHost:status s="linked"/>
+				 <rdeHost:status s="clientUpdateProhibited"/>
+				 <rdeHost:clID>clientY</rdeHost:clID>
+				 <rdeHost:crID>clientX</rdeHost:crID>
+				 <rdeHost:crDate>1999-05-08T12:10:00.0Z</rdeHost:crDate>
+				 <rdeHost:upID>clientX</rdeHost:upID>
+				 <rdeHost:upDate>2009-10-03T09:34:00.0Z</rdeHost:upDate>
+				 <rdeHost:trDate>2007-01-08T09:19:00.0Z</rdeHost:trDate>
+			</rdeHost:host>
+		</rdeHost:contents>
+	 	<rdeContact:contents>
+			<rdeContact:contact>
+				 <rdeContact:id>sh8013</rdeContact:id>
+				 <rdeContact:roid>Csh8013-TEST</rdeContact:roid>
+				 <rdeContact:status s="linked"/>
+				 <rdeContact:status s="clientDeleteProhibited"/>
+				 <rdeContact:postalInfo type="int">
+					  <contact:name>John Doe</contact:name>
+					  <contact:org>Example Inc.</contact:org>
+					  <contact:addr>
+							<contact:street>123 Example Dr.</contact:street>
+							<contact:street>Suite 100</contact:street>
+							<contact:city>Dulles</contact:city>
+							<contact:sp>VA</contact:sp>
+							<contact:pc>20166-6503</contact:pc>
+							<contact:cc>US</contact:cc>
+					  </contact:addr>
+				 </rdeContact:postalInfo>
+				 <rdeContact:voice x="1234">+1.7035555555</rdeContact:voice>
+				 <rdeContact:fax>+1.7035555556</rdeContact:fax>
+				 <rdeContact:email>jdoe@example.test</rdeContact:email>
+				 <rdeContact:clID>clientY</rdeContact:clID>
+				 <rdeContact:crID>clientX</rdeContact:crID>
+				 <rdeContact:crDate>2009-09-13T08:01:00.0Z</rdeContact:crDate>
+				 <rdeContact:upID>clientX</rdeContact:upID>
+				 <rdeContact:upDate>2009-11-26T09:10:00.0Z</rdeContact:upDate>
+				 <rdeContact:authInfo>
+					  <contact:pw>2fooBAR</contact:pw>
+				 </rdeContact:authInfo>
+				 <rdeContact:disclose flag="0">
+					  <contact:voice/>
+					  <contact:email/>
+				 </rdeContact:disclose>
+				 <rdeContact:transfer>
+					  <rdeContact:trStatus>pending</rdeContact:trStatus>
+					  <rdeContact:reID>clientW</rdeContact:reID>
+					  <rdeContact:reDate>2011-03-08T19:38:00.0Z</rdeContact:reDate>
+					  <rdeContact:acID>clientX</rdeContact:acID>
+					  <rdeContact:acDate>2011-03-13T23:59:59.0Z</rdeContact:acDate>
+				 </rdeContact:transfer>
+			</rdeContact:contact>
+		</rdeContact:contents>
+	 	<rdeRegistrar:contents>
+			<rdeRegistrar:registrar>
+				 <rdeRegistrar:id>EXAMPLE</rdeRegistrar:id>
+				 <rdeRegistrar:roid>REGISTRAR1234-TEST</rdeRegistrar:roid>
+				 <rdeRegistrar:name type="int">Example Inc.</rdeRegistrar:name>
+				 <rdeRegistrar:icannId>1234</rdeRegistrar:icannId>
+				 <rdeRegistrar:status>ok</rdeRegistrar:status>
+				 <rdeRegistrar:addr type="int">
+					<rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+					<rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+					<rdeRegistrar:city>Dulles</rdeRegistrar:city>
+					<rdeRegistrar:sp>VA</rdeRegistrar:sp>
+					<rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+					<rdeRegistrar:cc>US</rdeRegistrar:cc>
+				 </rdeRegistrar:addr>
+				 <rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+				 <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+				 <rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+				 <rdeRegistrar:url>http://www.example.test</rdeRegistrar:url>
+				 <rdeRegistrar:whoisUrl>http://whois.example.test</rdeRegistrar:whoisUrl>
+				 <rdeRegistrar:contactObj type="admin">rr0013</rdeRegistrar:contactObj>
+				 <rdeRegistrar:contactObj type="tech">rr0012</rdeRegistrar:contactObj>
+				 <rdeRegistrar:crID>clientX</rdeRegistrar:crID>
+				 <rdeRegistrar:crDate>2005-04-23T11:49:00.0Z</rdeRegistrar:crDate>
+				 <rdeRegistrar:upID>clientY</rdeRegistrar:upID>
+				 <rdeRegistrar:upDate>2009-02-17T17:51:00.0Z</rdeRegistrar:upDate>
+			</rdeRegistrar:registrar>
+			<rdeRegistrar:registrar>
+				 <rdeRegistrar:id>EXAMPLE2</rdeRegistrar:id>
+				 <rdeRegistrar:roid>REGISTRAR21234-TEST</rdeRegistrar:roid>
+				 <rdeRegistrar:name type="int">Example 2 Inc.</rdeRegistrar:name>
+				 <rdeRegistrar:icannId>21234</rdeRegistrar:icannId>
+				 <rdeRegistrar:status>ok</rdeRegistrar:status>
+				 <rdeRegistrar:addr type="int">
+					<rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+					<rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+					<rdeRegistrar:city>Dulles</rdeRegistrar:city>
+					<rdeRegistrar:sp>VA</rdeRegistrar:sp>
+					<rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+					<rdeRegistrar:cc>US</rdeRegistrar:cc>
+				 </rdeRegistrar:addr>
+				 <rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+				 <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+				 <rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+				 <rdeRegistrar:url>http://www.example2.test</rdeRegistrar:url>
+				 <rdeRegistrar:whoisUrl>http://whois.example2.test</rdeRegistrar:whoisUrl>
+				 <rdeRegistrar:contactAttr>
+				 	<rdeRegistrar:id>1234</rdeRegistrar:id>
+				 	<rdeRegistrar:roid>REGISTRARCONTACT1234-TEST</rdeRegistrar:roid>
+				 	<rdeRegistrar:name type="int">John Doe</rdeRegistrar:name>
+				 	<rdeRegistrar:type>admin</rdeRegistrar:type>
+				 	<rdeRegistrar:type>tech</rdeRegistrar:type>
+				 	<rdeRegistrar:type>billing</rdeRegistrar:type>
+				 	<rdeRegistrar:addr type="int">
+						<rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+						<rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+						<rdeRegistrar:city>Dulles</rdeRegistrar:city>
+						<rdeRegistrar:sp>VA</rdeRegistrar:sp>
+						<rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+						<rdeRegistrar:cc>US</rdeRegistrar:cc>
+				 	</rdeRegistrar:addr>
+					<rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+					<rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+					<rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+				 </rdeRegistrar:contactAttr>
+				 <rdeRegistrar:crID>clientX</rdeRegistrar:crID>
+				 <rdeRegistrar:crDate>2005-04-23T11:49:00.0Z</rdeRegistrar:crDate>
+				 <rdeRegistrar:upID>clientY</rdeRegistrar:upID>
+				 <rdeRegistrar:upDate>2009-02-17T17:51:00.0Z</rdeRegistrar:upDate>
+			</rdeRegistrar:registrar>
+		</rdeRegistrar:contents>
+	 	<rdeIDN:contents>
+			<rdeIDN:languageRules>
+				<rdeIDN:language>CHI</rdeIDN:language>
+				<rdeIDN:table>
+					<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_zh_1.0.txt</rdeIDN:url>
+				</rdeIDN:table>
+			</rdeIDN:languageRules>
+			<rdeIDN:languageRules>
+				<rdeIDN:language>FRE</rdeIDN:language>
+				<rdeIDN:language>GER</rdeIDN:language>
+				<rdeIDN:table use="one">
+					<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_bopo_1.1.txt</rdeIDN:url>
+					<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_bamu_1.1.txt</rdeIDN:url>
+					<rdeIDN:table use="all">
+						<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_batk_1.1.txt</rdeIDN:url>
+						<rdeIDN:url>http://www.iana.org/domains/idn-tables/tables/test_buhd_1.1.txt</rdeIDN:url>
+					</rdeIDN:table>
+				</rdeIDN:table>
+			</rdeIDN:languageRules>
+		</rdeIDN:contents>
+	 	<rdeEppParams:contents>
+			<rdeEppParams:eppParams>
+				 <rdeEppParams:version>1.0</rdeEppParams:version>
+				 <rdeEppParams:lang>en</rdeEppParams:lang>
+				 <rdeEppParams:objURI>
+					 urn:ietf:params:xml:ns:domain-1.0
+				 </rdeEppParams:objURI>
+				 <rdeEppParams:objURI>
+					 urn:ietf:params:xml:ns:contact-1.0
+				 </rdeEppParams:objURI>
+				 <rdeEppParams:objURI>
+					 urn:ietf:params:xml:ns:host-1.0
+				 </rdeEppParams:objURI>
+				 <rdeEppParams:svcExtension>
+					  <epp:extURI>
+						  urn:ietf:params:xml:ns:rgp-1.0
+					  </epp:extURI>
+					  <epp:extURI>
+						  urn:ietf:params:xml:ns:secDNS-1.1
+					  </epp:extURI>
+				 </rdeEppParams:svcExtension>
+				 <rdeEppParams:dcp>
+					  <epp:access><epp:all/></epp:access>
+					  <epp:statement>
+							<epp:purpose>
+								 <epp:admin/>
+								 <epp:prov/>
+							</epp:purpose>
+							<epp:recipient>
+								 <epp:ours/>
+								 <epp:public/>
+							</epp:recipient>
+							<epp:retention>
+								 <epp:stated/>
+							</epp:retention>
+					  </epp:statement>
+				 </rdeEppParams:dcp>
+			</rdeEppParams:eppParams>
+		</rdeEppParams:contents>
+	 </rde:contents>
+</rde:deposit>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:rdeEppParams-1.0"
+		  xmlns:rdeEppParams="urn:ietf:params:xml:ns:rdeEppParams-1.0"
+		  xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+		  xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+		  xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+		  xmlns="http://www.w3.org/2001/XMLSchema"
+		  elementFormDefault="qualified">
+
+  <!--
+  Import common element types
+  -->
+  <import namespace="urn:ietf:params:xml:ns:epp-1.0"
+	schemaLocation="epp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+	schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+	schemaLocation="rde-1.0.xsd"/>
+
+  <annotation>
+	 <documentation>
+		Registry Data Escrow EPP Parameters schema
+	 </documentation>
+  </annotation>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="rdeEppParams:contentsType"
+	 substitutionGroup="rde:contents"/>
+
+  <complexType name="contentsType">
+	 <complexContent>
+		<extension base="rde:contentsType"/>
+	 </complexContent>
+  </complexType>
+
+  <!--
+  Child elements of the <rde:content> object
+  -->
+  <element name="eppParams" type="rdeEppParams:contentType"
+	 substitutionGroup="rde:content"/>
+
+  <complexType name="contentType">
+	 <complexContent>
+		<extension base="rde:contentType">
+		  <sequence>
+			 <element name="version" type="epp:versionType"
+				maxOccurs="unbounded"/>
+			 <element name="lang" type="language"
+				maxOccurs="unbounded"/>
+			 <element name="objURI" type="anyURI"
+				maxOccurs="unbounded"/>
+			 <element name="svcExtension" type="epp:extURIType"
+				minOccurs="0"/>
+			 <element name="dcp" type="epp:dcpType"/>
+		  </sequence>
+		</extension>
+	 </complexContent>
+  </complexType>
+
+  <!--
+  End of schema.
+  -->
+</schema>

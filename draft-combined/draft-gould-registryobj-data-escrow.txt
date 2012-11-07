@@ -1,0 +1,6048 @@
+
+
+
+Network Working Group                                           J. Gould
+Internet-Draft                                            C. Thippeswamy
+Intended status: Standards Track                          VeriSign, Inc.
+Expires: April 21, 2013                                         F. Arias
+                                                                   ICANN
+                                                              S. Noguchi
+                                                                    JPRS
+                                                        October 18, 2012
+
+
+               Registry Object Data Escrow Specification
+                 draft-gould-registryobj-data-escrow-00
+
+Abstract
+
+   This document specifies the format and contents of Data Escrow
+   deposits for the standard set of Registry objects including domain,
+   host, contact, registrar, IDN language rules, and EPP parameters
+   (mappings, extensions, data collection policy).
+
+Status of this Memo
+
+   This Internet-Draft is submitted to IETF in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF), its areas, and its working groups.  Note that
+   other groups may also distribute working documents as Internet-
+   Drafts.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   The list of current Internet-Drafts can be accessed at
+   http://www.ietf.org/ietf/1id-abstracts.txt.
+
+   The list of Internet-Draft Shadow Directories can be accessed at
+   http://www.ietf.org/shadow.html.
+
+   This Internet-Draft will expire on April 21, 2013.
+
+Copyright Notice
+
+   Copyright (c) 2012 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 1]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the BSD License.
+
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Models  . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  Conventions Used in This Document . . . . . . . . . . . . . .   4
+   3.  Object Attributes . . . . . . . . . . . . . . . . . . . . . .   4
+     3.1.  Date and Time . . . . . . . . . . . . . . . . . . . . . .   4
+     3.2.  Country names . . . . . . . . . . . . . . . . . . . . . .   4
+     3.3.  Telephone numbers . . . . . . . . . . . . . . . . . . . .   4
+     3.4.  Internationalized and Localized Elements  . . . . . . . .   4
+     3.5.  IP addresses  . . . . . . . . . . . . . . . . . . . . . .   5
+     3.6.  CSV elements  . . . . . . . . . . . . . . . . . . . . . .   5
+   4.  Protocol Description  . . . . . . . . . . . . . . . . . . . .  10
+     4.1.  Domain Name Object  . . . . . . . . . . . . . . . . . . .  10
+     4.2.  Host Object . . . . . . . . . . . . . . . . . . . . . . .  24
+     4.3.  Contact Object  . . . . . . . . . . . . . . . . . . . . .  29
+     4.4.  Registrar Object  . . . . . . . . . . . . . . . . . . . .  44
+     4.5.  IDN Language Rules Object . . . . . . . . . . . . . . . .  60
+     4.6.  EPP Parameters Object . . . . . . . . . . . . . . . . . .  63
+   5.  Formal Syntax . . . . . . . . . . . . . . . . . . . . . . . .  65
+     5.1.  RDE CSV Schema  . . . . . . . . . . . . . . . . . . . . .  65
+     5.2.  Domain Object . . . . . . . . . . . . . . . . . . . . . .  73
+     5.3.  Host Object . . . . . . . . . . . . . . . . . . . . . . .  79
+     5.4.  Contact Object  . . . . . . . . . . . . . . . . . . . . .  82
+     5.5.  Registrar Object  . . . . . . . . . . . . . . . . . . . .  90
+     5.6.  IDN Language Rules Object . . . . . . . . . . . . . . . .  97
+     5.7.  EPP Parameters Object . . . . . . . . . . . . . . . . . . 100
+     5.8.  Extension Guidelines  . . . . . . . . . . . . . . . . . . 102
+     5.9.  Internationalization Considerations . . . . . . . . . . . 102
+     5.10. IANA Considerations . . . . . . . . . . . . . . . . . . . 102
+     5.11. Security Considerations . . . . . . . . . . . . . . . . . 105
+     5.12. Acknowledgments . . . . . . . . . . . . . . . . . . . . . 105
+     5.13. Change History  . . . . . . . . . . . . . . . . . . . . . 106
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 106
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . . 106
+     6.2.  Informative References  . . . . . . . . . . . . . . . . . 107
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 107
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 2]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+1.  Introduction
+
+   The Registry Data Escrow Specification [1] can be extended to support
+   any type of object that is included in a data escrow.  This document
+   defines the data escrow structure of the standard set of objects for
+   a Domain Name Registry which include:
+
+   Domain:  Internet domain names that are typically provisioned in a
+      Domain Name Registry using the EPP domain name mapping [RFC5731].
+      The attributes defined in the EPP domain name mapping [RFC5731]
+      are fully supported by this document.
+
+   Host:  Internet host names that are typically provisioned in a Domain
+      Name Registry using the EPP host mapping [RFC5732].  The
+      attributes defined in the EPP host mapping [RFC5732] are fully
+      supported by this document.
+
+   Contact:  Individual or organization social information provisioned
+      in a Domain Name Registry using the EPP contact mapping [RFC5733].
+      The attributes defined in the EPP contact mapping [RFC5733] are
+      fully supported by this document.
+
+   Registrar:  The organization that sponsors objects like domains,
+      hosts, and contacts in a Domain Name Registry.  The Registrar MAY
+      also be associated with contacts, referred to as Registrars
+      contacts.
+
+   IDN language rules:  Internationalized Domain Names (IDN) included in
+      the Domain Object Data Escrow include references to the languages
+      rules that define the set of character code points allowed for a
+      specific language.
+
+   EPP parameters:  Each Domain Name Registry supports a set of EPP
+      object mappings, EPP extensions, and data collection policy (DCP).
+
+1.1.  Models
+
+   This document defines two different models that can be used to
+   deposit data escrow objects that follow the structure defined in the
+   Registry Data Escrow Specification [1].  The models include:
+
+   XML  The XML model includes all of the deposit information (meta-data
+      and data) in an XML document.  The definition of the XML format is
+      fully defined in the XML schemas.  This model is appropriate for
+      small to medium sized registries that can fully validate the data
+      escrow deposit using a standard validation XML parser.
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 3]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   CSV  The CSV model uses XML to define the data escrow format of the
+      data contained in referenced Comma-Seperated Values (CSV) files.
+      This model is appropriate for medium to large sized registries
+      that will be overly expensive to generate and validate a large
+      data escrow deposit.  This model MAY also be used where it is more
+      cost effective to generate and consume the CSV data from and to a
+      database.
+
+   The data escrow file MAY contain a mix of both models but SHOULD
+   contain a single model.
+
+
+2.  Conventions Used in This Document
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119 [RFC2119].
+
+
+3.  Object Attributes
+
+3.1.  Date and Time
+
+   Numerous fields indicate "dates", such as the creation and expiry
+   dates for domains.  These fields SHALL contain timestamps indicating
+   the date and time in UTC as specified in [RFC3339], with no offset
+   from the zero meridian.
+
+3.2.  Country names
+
+   Country identifiers SHALL be represented using two character
+   identifiers as specified in [ISO-3166-1].
+
+3.3.  Telephone numbers
+
+   Telephone numbers (both voice and fax) SHALL be formatted based on
+   structures defined in [ITU-E164].  Telephone numbers described in
+   this specification are character strings that MUST begin with a plus
+   sign ("+", ASCII value 0x002B), followed by a country code defined in
+   [ITU-E164], followed by a dot (".", ASCII value 0x002E), followed by
+   a sequence of digits representing the telephone number.
+
+3.4.  Internationalized and Localized Elements
+
+   Some elements MAY be provided in either internationalized form
+   ("int") or provided in localized form ("loc").  Those elements use a
+   "type" or "isLoc" attribute to specify the form used.  If an "isLoc"
+   attribute is used, a value of "true" indicates the use of the
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 4]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   localized form and a value of "false" indicates the use of the
+   internationalized form.  This MAY override the form specified for a
+   parent element.  A "type" attribute value of "int" is used to
+   indicate the internationalized form and a value of "loc" is used to
+   indicate the localized form.  When the internalized form ("int") is
+   provided, the element value MUST be represented in a subset of UTF-8
+   that can be represented in the 7-bit US-ASCII character set.  When
+   the localized form ("loc") is provided, the element value MAY be
+   represented in unrestricted UTF-8.  The <rdeContact:postalInfo>
+   element below is an example of an internationalized element:
+
+
+   ...
+       <rdeContact:postalInfo type="int">
+         <contact:name>John Doe</contact:name>
+         <contact:org>Example Inc.</contact:org>
+         <contact:addr>
+           <contact:street>123 Example Dr.</contact:street>
+           <contact:street>Suite 100</contact:street>
+           <contact:city>Dulles</contact:city>
+           <contact:sp>VA</contact:sp>
+           <contact:pc>20166-6503</contact:pc>
+           <contact:cc>US</contact:cc>
+         </contact:addr>
+       </rdeContact:postalInfo>
+   ...
+
+3.5.  IP addresses
+
+   IP addresses syntax MUST conform either to, Internet Protocol
+   [RFC0791], for IPv4 addresses, or IP Version 6 Addressing
+   Architecture [RFC4291], for IPv6 addresses.
+
+3.6.  CSV elements
+
+3.6.1.  <rdeCsv:csv> and <rdeCsv:csvDelete> elements
+
+   To support a CSV model with the Registry Data Escrow
+   Specification [1], a <rdeCsv:csv> element is defined that substitutes
+   for <rde:content> as a child element of a <rde:contents> substitute
+   element like the <rdeDomain:contents> element.  A <rdeCsv:csvDelete>
+   element substitutes for <rde:delete> as a child element of the <rde:
+   deletes> element.  The <rdeCsv:csv> and <rdeCsv:csvDelete> elements
+   share the following child elements:
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 5]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeCsv:sep>  Optional definition of the CSV separator characters
+      with the default separator character of ",".
+
+   <rdeCsv:fields>  Ordered list of CSV fields used in the CSV files.
+      There is one or more child elements that substitute for the
+      <rdeCsv:field> abstract element.  Each element defines the format
+      of the CSV field contained in the CSV files. <rdeCsv:field>
+      elements by convention support the "type" attribute that defines
+      the XML data type of the field elements, an optional "list"
+      attribute that when "true" indicates that the field is a list with
+      the list elements type defined by the "type" attribute, and an
+      optional "sep" attribute for list fields that defines the list
+      element separator characters with a default seperator of ','.
+      List fields MUST be enclosed in double quotes '"'.  By convention
+      all fields are optional, where an undefined field can be
+      represented with an empty field value ",," in the CSV file, where
+      ',' is the seperator character.
+
+   <rdeCsv:files>  A list of one or more CSV files using the <rdeCsv:
+      file> child element.  The <rdeCsv:file> child element defines a
+      reference to the CSV file name and has the following optional
+      attributes:
+
+
+
+      compression  If the CSV file is compressed, the "compression"
+         attribute defines the compression format like "gzip" or "zip".
+
+      encoding  Defines the encoding of the CSV file with the default
+         encoding of "UTF-8".
+
+      chksum  Defines the checksum CRC (UNIX cksum) of the CSV file.
+         This attribute is used to validate that the full CSV file
+         exists and has not been tampered with.
+
+   The <rdeCsv:csv> and <rdeCsv:csvDelete> elements requires a "name"
+   attribute that defines the purpose of the CSV file with values like
+   "domain", "host", "contact".  The supported "name" attribute values
+   are defined for each object type.
+
+   The following is an example of the <rdeCsv:csv> element for domain
+   name records.
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 6]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeCsv:csv name="domain">
+     <rdeCsv:sep>,</rdeCsv:sep>
+     <rdeCsv:fields>
+       <rdeCsv:fName/>
+       <rdeCsv:fRoid/>
+       <rdeDomain:fIdn/>
+       <rdeDomain:fLanguage/>
+       <rdeDomain:fVariant/>
+       <rdeDomain:fOriginalName/>
+       <rdeDomain:fReserved/>
+       <rdeCsv:fStatuses/>
+       <rdeDomain:fRgpStatuses/>
+       <rdeCsv:fRegistrant/>
+       <rdeCsv:fAdminContacts/>
+       <rdeCsv:fTechContacts/>
+       <rdeCsv:fBillingContacts/>
+       <rdeDomain:fNsObjs/>
+       <rdeCsv:fClID/>
+       <rdeCsv:fCrID/>
+       <rdeCsv:fCrDate/>
+       <rdeCsv:fUpID/>
+       <rdeCsv:fUpDate/>
+       <rdeCsv:fExDate/>
+       <rdeCsv:fPwAuthInfo/>
+     </rdeCsv:fields>
+     <rdeCsv:files>
+       <rdeCsv:file
+         cksum="2670296305 91797970">
+         domain-YYYYMMDD.csv
+       </rdeCsv:file>
+     </rdeCsv:files>
+   </rdeCsv:csv>
+
+
+   The following is example of the "domain-YYYYMMDD.csv" file with a
+   single record matching the <rdeCsv:fields> definition.
+
+
+   pinguino.test,Dpinguino-TEST,0,,0,,0,"pendingDelete",,jd1234,
+   "sh8013","sh8013",,"ns1.example.com,ns1.example.net",
+   clientX,clientY,1999-04-03T22:00:00.0Z,clientX,
+   2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+
+
+   The following is an example of the <rde:csvDelete> element for domain
+   name records.
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 7]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeCsv:csvDelete name="domain">
+     <rdeCsv:fields>
+       <rdeCsv:fName/>
+     </rdeCsv:fields>
+     <rdeCsv:files>
+       <rdeCsv:file
+         cksum="2670296305 91797970">
+         domain-delete-YYYYMMDD.csv
+       </rdeCsv:file>
+     </rdeCsv:files>
+   </rdeCsv:csvDelete>
+   j
+
+   The following is example of the "domain-delete-YYYYMMDD.csv" file
+   with a single record and matching the single <rdeCsv:fName> field.
+
+
+   pinguino.test
+
+
+3.6.2.  CSV common field elements
+
+   The <rdeCsv:fields> element defined in the <rdeCsv:csv> and <rdeCsv:
+   csvDelete> elements (Section 3.6.1) section has child elements that
+   substitute for the abstract <rdeCsv:field> element.  By convention
+   <rdeCsv:field> elements incude an 'f' prefix to identify it as a
+   field definition element.  There are a set of common field elements
+   that are used across multiple data escrow objects.  The common field
+   elements are defined using the "urn:ietf:params:xml:ns:rdeCsv-1.0"
+   namespace and using the "rdeCsv" sample namespace prefix.  The CSV
+   common field elements include:
+
+   <rdeCsv:fName>  Name field with type="eppcom:labelType".
+
+   <rdeCsv:fUName>  UTF-8 encoded name field with type="eppcom:
+      labelType".
+
+   <rdeCsv:fRoid>  Repository Object IDentifier (ROID) field with
+      type="eppcom:roidType".
+
+   <rdeCsv:fRegistrant>  Registrant contact identifier with
+      type="eppcom:clIDType".
+
+   <rdeCsv:fAdminContacts>  List of administration contact identifiers
+      with the list elements type="eppcom:clIDType".
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 8]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeCsv:fTechContacts>  List of technical contact identifiers with
+      the list elements type="eppcom:clIDType".
+
+   <rdeCsv:fBillingContacts>  List of billing contact identifiers with
+      the list elements type="eppcom:clIDType".
+
+   <rdeCsv:fStatuses>  List of statuses with the list element
+      type="eppcom:statusType".
+
+   <rdeCsv:fClID>  Identifier of client that sponsors the object with
+      type="eppcom:clIDType".
+
+   <rdeCsv:fCrID>  Identifier of client that created the object with
+      type="eppcom:clIDType".
+
+   <rdeCsv:fUpID>  Identifier of client that updated the object with
+      type="eppcom:clIDType".
+
+   <rdeCsv:fReID>  Identifier of client that requested the transfer with
+      type="eppcom:clIDType".
+
+   <rdeCsv:fAcID>  Identifier of client that should take or took action
+      for transfer with type="eppcom:clIDType".
+
+   <rdeCsv:fCrDate>  Created date of object with type="datetime".
+
+   <rdeCsv:fUpDate>  Updated date of object with type="datetime".
+
+   <rdeCsv:fExDate>  Expiration date of object with type="datetime".
+
+   <rdeCsv:fReDate>  Date that transfer was requested with
+      type="datetime".
+
+   <rdeCsv:fAcDate>  Date that transfer action should be taken or has
+      been taken with type="datetime".
+
+   <rdeCsv:fTrDate>  Date of last transfer with type="datetime".
+
+   <rdeCsv:fTrStatus>  State of the most recent transfer request with
+      type="eppcom:trStatusType".
+
+   <rdeCsv:fTokenType>  General token field with type="token".
+
+   <rdeCsv:fLanguage>  General language field with type="language".
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                 [Page 9]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeCsv:fPositiveIntegerType>  General positive integer field with
+      type="positiveInteger".
+
+   <rdeCsv:fPwAuthInfo>  Password authorization info value with
+      type="normalizedString".
+
+   <rdeCsv:fCustom>  Custom field with name attribute that defines the
+      custom field name" with type="token".
+
+
+4.  Protocol Description
+
+   The following is a format for Data Escrow deposits for the standard
+   set of objects of a Domain Name Registry.  Format elements are reused
+   from the EPP [RFC5730] and related RFCs.
+
+4.1.  Domain Name Object
+
+   The domain name object is based on the EPP domain name mapping in
+   [RFC5731].  The domain name object supports both the XML Model and
+   the CSV Model, defined in the Models (Section 1.1) section.  The
+   elements used for both models are defined in the following sections.
+   Both models use the <rdeDomain:contents> child element of the <rde:
+   contents> element to hold the domain name objects for the deposit.
+
+4.1.1.  XML Model
+
+   There are two elements used in the data escrow of the domain name
+   objects for the XML model including the <rdeDomain:domain>, under the
+   <rdeDomain:contents> element, and the <rdeDomain:delete> element,
+   under the <rde:deletes> element.
+
+4.1.1.1.  <rdeDomain:domain> element
+
+   The <rdeDomain:domain> element is based the EPP Domain Name Mapping
+   [RFC5731] for both the domain name object information and domain name
+   transfer information.  The DNSSEC information is based on the EPP
+   DNSSSEC Extension [RFC5910].  The <rdeDomain:domain> element contains
+   the following child elements:
+
+   <rdeDomain:name>  Contains the fully qualified name of the domain
+      name object.
+
+   <rdeDomain:uName>  An OPTIONAL UTF-8 encoded fully qualified name of
+      the IDN domain name object.
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 10]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeDomain:roid>  Contains the Repository Object IDentifier assigned
+      to the domain name object when the object was created.
+
+   <rdeDomain:idn>  An OPTIONAL boolean flag indicating if the domain
+      name object is an IDN domain name object.
+
+   <rdeDomain:language>  An OPTIONAL language tag value for an IDN
+      domain name object.  The language tag value MUST be one of the
+      <rdeIDN:language> elements contained in an <rdeIDN:languageRules>
+      element, described in Section 4.5.
+
+   <rdeDomain:variant>  An OPTIONAL boolean flag indicating if the
+      domain name object is an IDN variant domain name object.  If the
+      <rdeDomain:variant> value is "true" the <rdeDomain:originalName>
+      SHOULD be set with the original IDN domain name object.
+
+   <rdeDomain:originalName>  An OPTIONAL fully qualified name of the
+      original IDN domain name object related to the variant domain name
+      object.  This value SHOULD be set if <rdeDomain:variant> is
+      "true".
+
+   <rdeDomain:reserved>  An OPTIONAL boolean flag indicating if the
+      domain name object is a reserved domain name object.  A reserved
+      domain name object is not registered by a client but by the server
+      to ensure that it can't be registered by a client.
+
+   <rdeDomain:status>  Zero or more OPTIONAL <rdeDomain:status> elements
+      that contain the current status descriptors associated with the
+      domain name object using the status values defined in [RFC5731].
+
+   <rdeDomain:rgpStatus>  Zero or more OPTIONAL <rdeDomain:rgpStatus>
+      elements that contain the current Registry Grace Period (RGP)
+      status descriptors associated with the domain name object using
+      the status values defined in [RFC3915].
+
+   <rdeDomain:registrant>  An OPTIONAL registrant contact identifier
+      associated with the domain name object.
+
+   <rdeDomain:contact>  Zero or more OPTIONAL <rdeDomain:contact>
+      elements that contain the contact identifiers and the contact
+      types as defined in [RFC5731] associated with the domain name
+      object.
+
+   <rdeDomain:ns>  An OPTIONAL element that contains the fully qualified
+      names of the delegated host objects or host attributes (name
+      servers) associated with the domain name object.  Refer to section
+      1.1 of [RFC5731] for a description of the elements used to specify
+      host objects or host attributes.
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 11]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeDomain:host>  Zero or more OPTIONAL <rdeDomain:host> elements
+      that contain the fully qualified names of the subordinate host
+      objects that exist under this superordinate domain name object.
+
+   <rdeDomain:clID>  Contains the identifier of the sponsoring client.
+
+   <rdeDomain:crID>  An OPTIONAL element that contains the identifier of
+      the client that created the domain name object.
+
+   <rdeDomain:crDate>  An OPTIONAL element that contains the date and
+      time of domain name object creation.
+
+   <rdeDomain:exDate>  An OPTIONAL element that contains the date and
+      time identifying the end of the domain object's registration
+      period.
+
+   <rdeDomain:upID>  An OPTIONAL element that contains the identifier of
+      the client that last updated the domain name object.
+
+   <rdeDomain:upDate>  An OPTIONAL element that contains the date and
+      time of the most recent domain-object modification.
+
+   <rdeDomain:trDate>  An OPTIONAL element that contains the date and
+      time of the most recent domain-object transfer.
+
+   <rdeDomain:authInfo>  An OPTIONAL element that contains the
+      authorization information associated with the domain name object
+      per [RFC5731].
+
+   <rdeDomain:dnssec>  An OPTIONAL element containing the DNSSEC
+      information associated with the domain name object per [RFC5910].
+
+   <rdeDomain:transfer>  Zero or more optional <rdeDomain:transfer>
+      elements that contain the information of pending transfer and
+      completed transfer requests.
+
+   <rdeDomain:extension>  An OPTIONAL element containing the custom
+      domain name object attribute extensions.
+
+   Example of a <rdeDomain:domain> element:
+
+
+   ...
+   <rdeDomain:contents>
+     ...
+     <rdeDomain:domain>
+        <rdeDomain:name>pinguino.test</rdeDomain:name>
+        <rdeDomain:roid>Dpinguino-TEST</rdeDomain:roid>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 12]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+        <rdeDomain:status s="pendingDelete"/>
+        <rdeDomain:rgpStatus s="redemptionPeriod"/>
+        <rdeDomain:registrant>jd1234</rdeDomain:registrant>
+        <rdeDomain:contact type="admin">sh8013</rdeDomain:contact>
+        <rdeDomain:contact type="tech">sh8013</rdeDomain:contact>
+        <rdeDomain:ns>
+           <domain:hostObj>ns1.example.com</domain:hostObj>
+           <domain:hostObj>ns1.example.net</domain:hostObj>
+        </rdeDomain:ns>
+        <rdeDomain:host>ns1.pinguino.test</rdeDomain:host>
+        <rdeDomain:host>ns2.pinguino.test</rdeDomain:host>
+        <rdeDomain:clID>clientX</rdeDomain:clID>
+        <rdeDomain:crID>clientY</rdeDomain:crID>
+        <rdeDomain:crDate>1999-04-03T22:00:00.0Z</rdeDomain:crDate>
+        <rdeDomain:exDate>2015-04-03T22:00:00.0Z</rdeDomain:exDate>
+        <rdeDomain:upID>clientX</rdeDomain:upID>
+        <rdeDomain:upDate>2009-12-03T09:05:00.0Z</rdeDomain:upDate>
+        <rdeDomain:authInfo>
+           <domain:pw>2fooBAR</domain:pw>
+        </rdeDomain:authInfo>
+        <rdeDomain:dnssec>
+           <secDNS:maxSigLife>604800</secDNS:maxSigLife>
+           <secDNS:dsData>
+             <secDNS:keyTag>12345</secDNS:keyTag>
+             <secDNS:alg>7</secDNS:alg>
+             <secDNS:digestType>1</secDNS:digestType>
+             <secDNS:digest>
+               93358db22e956a451eb5ae8d2ec39526ca6a87b9
+             </secDNS:digest>
+           </secDNS:dsData>
+        </rdeDomain:dnssec>
+        <rdeDomain:transfer>
+           <rdeDomain:trStatus>pending</rdeDomain:trStatus>
+           <rdeDomain:reID>clientW</rdeDomain:reID>
+           <rdeDomain:reDate>2011-03-08T19:38:00.0Z</rdeDomain:reDate>
+           <rdeDomain:acID>clientX</rdeDomain:acID>
+           <rdeDomain:acDate>2011-03-13T23:59:59.0Z</rdeDomain:acDate>
+           <rdeDomain:exDate>2016-04-03T22:00:00.0Z</rdeDomain:exDate>
+        </rdeDomain:transfer>
+     </rdeDomain:domain>
+     ...
+   </rdeDomain:contents>
+   ...
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 13]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+4.1.1.2.  <rdeDomain:delete> object
+
+   The <rdeDomain:delete> is contained under the <rde:deletes> element
+   to define the list of domain name objects that have been deleted in a
+   differential (DIFF) or incremental (INCR) deposit.  The <rdeDomain:
+   delete> element contains the following child elements:
+
+   <rdeDomain:name>  Zero or more <rdeDomain:name> elements that contain
+      the fully qualified names of the deleted domain name objects.
+
+   Example of a <rdeDomain:delete> element:
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeDomain:delete>
+       <rdeDomain:name>foo.test</rdeDomain:name>
+       <rdeDomain:name>bar.test</rdeDomain:name>
+     </rdeDomain:delete>
+     ...
+   </rde:deletes>
+   ...
+
+4.1.2.  CSV Model
+
+   For the CSV Model of the domain name object, the <rdeCsv:csv> and the
+   <rdeCsv:csvDelete> elements, defined in the "<rdeCsv:csv> and
+   <rdeCsv:csvDelete> elements (Section 3.6.1)" section, are used with
+   the following supported "name" attribute values:
+
+   "domain"  Defines the fields and CSV file references used for the
+      domain name object records.  The following field elements were
+      added for use in the "domain" <rdeCsv:csv> <rdeCsv:fields>
+      element:
+
+
+
+      <rdeDomain:fIdn>  Boolean flag indicating if the domain name
+         object is an IDN domain name object with type="boolean".
+
+      <rdeDomain:fVariant>  Boolean flag indicating if the domain name
+         object is an IDN variant domain name object with
+         type="boolean".
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 14]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      <rdeDomain:fOriginalName>  Fully qualified name of the original
+         IDN domain name object related to the variant domain name
+         object with type="eppcom:labelType".
+
+      <rdeDomain:fReserved>  Boolean flag indicating if the domain name
+         object is a reserved domain with type="boolean".
+
+      <rdeDomain:fRgpStatuses>  List of Registry Grace Period (RGP)
+         status descriptors with the list elements type="rgp:statusType"
+         as defined in [RFC3915].
+
+      <rdeDomain:fNsObjs>  List of fully qualified names of the
+         delegated host objects associated with the domain name object
+         with the list elements type="eppcom:labelType".
+
+      The following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "domain" <rdeCsv:csv>
+      and <rdeCsv:csvDelete< rdeCsv:fields> elements:
+
+
+
+         <rdeCsv:fName>
+
+         <rdeCsv:fUName>
+
+         <rdeCsv:fRoid>
+
+         <rdeCsv:fLanguage>
+
+         <rdeCsv:fStatuses>
+
+         <rdeCsv:fRegistrant>
+
+         <rdeCsv:fAdminContacts>
+
+         <rdeCsv:fTechContacts>
+
+         <rdeCsv:fBillingContacts>
+
+         <rdeCsv:fClID>
+
+         <rdeCsv:fCrID>
+
+         <rdeCsv:fCrDate>
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 15]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         <rdeCsv:fUpID>
+
+         <rdeCsv:fUpDate>
+
+         <rdeCsv:fExDate>
+
+         <rdeCsv:fTrDate>
+
+         <rdeCsv:fPwAuthInfo>
+
+      Example of a "domain" <rdeCsv:csv> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 16]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeDomain:contents>
+     ...
+     <rdeCsv:csv name="domain">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeCsv:fName/>
+         <rdeCsv:fRoid/>
+         <rdeDomain:fIdn/>
+         <rdeDomain:fLanguage/>
+         <rdeDomain:fVariant/>
+         <rdeDomain:fOriginalName/>
+         <rdeDomain:fReserved/>
+         <rdeCsv:fStatuses/>
+         <rdeDomain:fRgpStatuses/>
+         <rdeCsv:fRegistrant/>
+         <rdeCsv:fAdminContacts/>
+         <rdeCsv:fTechContacts/>
+         <rdeCsv:fBillingContacts/>
+         <rdeDomain:fNsObjs/>
+         <rdeCsv:fClID/>
+         <rdeCsv:fCrID/>
+         <rdeCsv:fCrDate/>
+         <rdeCsv:fUpID/>
+         <rdeCsv:fUpDate/>
+         <rdeCsv:fExDate/>
+         <rdeCsv:fPwAuthInfo/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           domain-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeDomain:contents>
+   ...
+
+      Example of a "domain" <rdeCsv:csvDelete> element:
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 17]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rde:deletes>
+   ...
+    <rdeCsv:csvDelete name="domain">
+     <rdeCsv:fields>
+       <rdeCsv:fName/>
+     </rdeCsv:fields>
+     <rdeCsv:files>
+       <rdeCsv:file
+        cksum="2670296305 91797970">
+        domain-delete-YYYYMMDD.csv
+       </rdeCsv:file>
+     </rdeCsv:files>
+    </rdeCsv:csvDelete>
+   ...
+   </rde:deletes>
+   ...
+
+   "dnssec"  Defines the fields and CSV file referenes used for the
+      domain name object DNSSEC records (DS or Key Data).  The following
+      field elements were added for use in the "dnssec" <rdeCsv:csv> and
+      <rdeCsv:csvDelete< rdeCsv:fields> elements:
+
+
+
+      <rdeDomain:fMaxSigLife>  Indicates a child's preference for the
+         number of seconds after signature generation when the parent's
+         signature on the DS information provided by the child will
+         expire with type="secDNS:maxSigLifeType" defined in [RFC5910].
+
+      <rdeDomain:fKeyTag>  Contains the DS key tag value per [RFC5910]
+         with type="unsignedShort".
+
+      <rdeDomain:fDsAlg>  Contains the DS algorithm value per [RFC5910]
+         with type="unsignedByte".
+
+      <rdeDomain:fDigestType>  Contains the DS digest type value per
+         [RFC5910] with type="unsignedByte".
+
+      <rdeDomain:fDigest>  Contains the DS digest value per [RFC5910]
+         with type="hexBinary".
+
+      <rdeDomain:fFlags>  Contains the flags field value per [RFC5910]
+         with type="unsignedShort".
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 18]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      <rdeDomain:fProtocol>  Contains the Key protocol value per
+         [RFC5910] with type="unsignedByte".
+
+      <rdeDomain:fKeyAlg>  Contains the Key algorithm value per
+         [RFC5910] with type="unsignedByte".
+
+      <rdeDomain:fPubKey>  Contains the public key value per [RFC5910]
+         with type="secDNS:keyType".
+
+      The following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "dnssec" <rdeCsv:csv>
+      and <rdeCsv:csvDelete< rdeCsv:fields> elements:
+
+
+
+         <rdeCsv:fName>
+
+      Example of a "dnssec" <rdeCsv:csv> element with the DS Data
+      Interface of [RFC5910]:
+
+
+
+   <rdeDomain:contents>
+   ...
+     <rdeCsv:csv name="dnssec">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeCsv:fName/>
+         <rdeDomain:fMaxSigLife/>
+         <rdeDomain:fKeyTag/>
+         <rdeDomain:fDsAlg/>
+         <rdeDomain:fDigestType/>
+         <rdeDomain:fDigest/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+          cksum="2670296305 91797970">
+          dnssec-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+   ...
+   </rdeDomain:contents>
+   ...
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 19]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      Example of a "dnssec" <rdeCsv:csv> element with the Key Data
+      Interface of [RFC5910]:
+
+
+
+   <rdeDomain:contents>
+   ...
+     <rdeCsv:csv name="dnssec">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeCsv:fName/>
+         <rdeDomain:fMaxSigLife/>
+         <rdeDomain:fFlags/>
+         <rdeDomain:fProtocol/>
+         <rdeDomain:fKeyAlg/>
+         <rdeDomain:fPubKey/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+          cksum="2670296305 91797970">
+          dnssec-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+   ...
+   </rdeDomain:contents>
+   ...
+
+      Example of a "dnssec" <rdeCsv:csvDelete> element with the DS Data
+      Interface of [RFC5910]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 20]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rde:deletes>
+   ...
+     <rdeCsv:csvDelete name="dnssec">
+       <rdeCsv:fields>
+         <rdeCsv:fName/>
+         <rdeDomain:fKeyTag/>
+         <rdeDomain:fDsAlg/>
+         <rdeDomain:fDigestType/>
+         <rdeDomain:fDigest/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+          cksum="2670296305 91797970">
+          dnssec-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+   ...
+   </rde:deletes>
+   ...
+
+      Example of a "dnssec" <rdeCsv:csvDelete> element with the Key Data
+      Interface of [RFC5910]:
+
+
+
+   ...
+   <rde:deletes>
+   ...
+     <rdeCsv:csvDelete name="dnssec">
+       <rdeCsv:fields>
+         <rdeCsv:fName/>
+         <rdeDomain:fFlags/>
+         <rdeDomain:fProtocol/>
+         <rdeDomain:fKeyAlg/>
+         <rdeDomain:fPubKey/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+          cksum="2670296305 91797970">
+          dnssec-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+   ...
+   </rde:deletes>
+   ...
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 21]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   "domainTransfer"  Defines the fields and CSV file referenes used for
+      the domain name object pending and completed transfer records.  No
+      additional field elements were added for use in the
+      "domainTransfer" <rdeCsv:csv> <rdeCsv:fields> element.  The
+      following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "domainTransfer"
+      <rdeCsv:csv> and <rdeCsv:csvDelete> <rdeCsv:fields> elements:
+
+
+
+         <rdeCsv:fName>
+
+         <rdeCsv:fTrStatus>
+
+         <rdeCsv:fReID>
+
+         <rdeCsv:fReDate>
+
+         <rdeCsv:fAcID>
+
+         <rdeCsv:fAcDate>
+
+         <rdeCsv:fExDate>
+
+      Example of a "domainTransfer" <rdeCsv:csv> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 22]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeDomain:contents>
+   ...
+     <rdeCsv:csv name="domainTransfer">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeCsv:fName/>
+         <rdeCsv:fTrStatus/>
+         <rdeCsv:fReID/>
+         <rdeCsv:fReDate/>
+         <rdeCsv:fAcID/>
+         <rdeCsv:fAcDate/>
+         <rdeCsv:fExDate/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+          cksum="2670296305 91797970">
+          domainTransfer-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+   ...
+   </rdeDomain:contents>
+   ...
+
+
+      Example of a "domainTransfer" <rdeCsv:csvDelete> element:
+
+
+
+   ...
+   <rde:deletes>
+   ...
+     <rdeCsv:csvDelete name="domainTransfer">
+       <rdeCsv:fields>
+         <rdeCsv:fName/>
+         <rdeCsv:fReDate/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+          cksum="2670296305 91797970">
+          domainTransfer-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+   ...
+   </rde:deletes>
+   ...
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 23]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+4.2.  Host Object
+
+   The host object is based on the EPP host mapping in [RFC5732].  The
+   host object supports both the XML Model and the CSV Model, defined in
+   Models (Section 1.1) section.  The elements used for both models are
+   defined in the following sections.  Both models use the <rdeHost:
+   contents> child element of the <rde:contents> element to hold the
+   host objects for the deposit.
+
+4.2.1.  XML Model
+
+   There are two elements used in the data escrow of the host objects
+   for the XML model including the <rdeHost:host>, under the <rdeHost:
+   contents> element, and the <rdeHost:delete> element, under the <rde:
+   deletes> element.
+
+4.2.1.1.  <rdeHost:host> element
+
+   The <rdeHost:host> element is based the EPP Host Mapping [RFC5732]
+   for the host object information.  The <rdeHost:host> element contains
+   the following child elements:
+
+   <rdeHost:name>  Contains the fully qualified name of the host object.
+
+   <rdeHost:uName>  An OPTIONAL UTF-8 encoded fully qualified name of
+      the IDN host object.
+
+   <rdeHost:parentDomain>  An OPTIONAL parent domain name for the
+      subordinate host object.
+
+   <rdeHost:roid>  Contains the Repository Object IDentifier assigned to
+      the host object when the object was created.
+
+   <rdeHost:idn>  An OPTIONAL boolean flag indicating if the host object
+      is an IDN host object.
+
+   <rdeHost:status>  Zero or more OPTIONAL <rdeHost:status> elements
+      that contain the current status descriptors associated with the
+      host object using the status values defined in [RFC5732].
+
+   <rdeHost:addr>  Zero or more OPTIONAL <rdeHost:addr> elements that
+      contain the IP addresses associated with the host object.
+
+   <rdeHost:clID>  Contains the identifier of the sponsoring client.
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 24]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeHost:crID>  An OPTIONAL element that contains the identifier of
+      the client that created the host object.
+
+   <rdeHost:crDate>  An OPTIONAL element that contains the date and time
+      of host object creation.
+
+   <rdeHost:upID>  An OPTIONAL element that contains the identifier of
+      the client that last updated the host object.
+
+   <rdeHost:upDate>  An OPTIONAL element that contains the date and time
+      of the most recent host object modification.
+
+   <rdeHost:trDate>  An OPTIONAL element that contains the date and time
+      of the most recent host object transfer.
+
+   <rdeHost:extension>  An OPTIONAL element containing the custom host
+      object attribute extensions.
+
+   Example of a <rdeHost:host> element for an sub-ordinate host object:
+
+
+   ...
+   <rdeHost:contents>
+     ...
+     <rdeHost:host>
+       <rdeHost:name>ns1.example.test</rdeHost:name>
+       <rdeHost:parentDomain>example.test</rdeHost:parentDomain>
+       <rdeHost:roid>Hns1_example_test-TEST</rdeHost:roid>
+       <rdeHost:status s="linked"/>
+       <rdeHost:status s="clientUpdateProhibited"/>
+       <rdeHost:addr ip="v4">192.0.2.2</rdeHost:addr>
+       <rdeHost:addr ip="v4">192.0.2.29</rdeHost:addr>
+       <rdeHost:addr ip="v6">1080:0:0:0:8:800:200C:417A</rdeHost:addr>
+       <rdeHost:clID>clientY</rdeHost:clID>
+       <rdeHost:crID>clientX</rdeHost:crID>
+       <rdeHost:crDate>1999-05-08T12:10:00.0Z</rdeHost:crDate>
+       <rdeHost:upID>clientX</rdeHost:upID>
+       <rdeHost:upDate>2009-10-03T09:34:00.0Z</rdeHost:upDate>
+       <rdeHost:trDate>2007-01-08T09:19:00.0Z</rdeHost:trDate>
+     </rdeHost:host>
+     ...
+   </rdeHost:contents>
+   ...
+
+   Example of a <rdeHost:host> element for an external host object:
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 25]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeHost:contents>
+     ...
+     <rdeHost:host>
+       <rdeHost:name>ns1.example.exttld</rdeHost:name>
+       <rdeHost:roid>Hns1_example_exttld-TEST</rdeHost:roid>
+       <rdeHost:status s="linked"/>
+       <rdeHost:status s="clientUpdateProhibited"/>
+       <rdeHost:clID>clientY</rdeHost:clID>
+       <rdeHost:crID>clientX</rdeHost:crID>
+       <rdeHost:crDate>1999-05-08T12:10:00.0Z</rdeHost:crDate>
+       <rdeHost:upID>clientX</rdeHost:upID>
+       <rdeHost:upDate>2009-10-03T09:34:00.0Z</rdeHost:upDate>
+       <rdeHost:trDate>2007-01-08T09:19:00.0Z</rdeHost:trDate>
+     </rdeHost:host>
+     ...
+   </rdeHost:contents>
+   ...
+
+4.2.1.2.  <rdeHost:delete> object
+
+   The <rdeHost:delete> is contained under the <rde:deletes> element to
+   define the list of host objects that have been deleted in a
+   differential (DIFF) or incremental (INCR) deposit.  The <rdeHost:
+   delete> element contains the following child elements:
+
+   <rdeHost:name>  Zero or more <rdeHost:name> elements that contain the
+      fully qualified names of the deleted host objects.
+
+   Example of a <rdeHost:delete> element:
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeHost:delete>
+       <rdeHost:name>ns1.example.test</rdeHost:name>
+       <rdeHost:name>ns1.example.exttld</rdeHost:name>
+     </rdeHost:delete>
+     ...
+   </rde:deletes>
+   ...
+
+4.2.2.  CSV Model
+
+   For the CSV Model of the host object, the <rdeCsv:csv> and the
+   <rdeCsv:csvDelete> elements, defined in the "<rdeCsv:csv> and
+   <rdeCsv:csvDelete> elements (Section 3.6.1)" section, are used with
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 26]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   the following supported "name" attribute values:
+
+   "host"  Defines the fields and CSV file references used for the host
+      object records.  The following field elements were added for use
+      in the "host" <rdeCsv:csv> <rdeCsv:fields> element:
+
+
+
+      <rdeHost:parentDomain>  Contains parent domain name for the
+         subordinate host object with type="eppcom:labelType".
+
+      <rdeHost:fIdn>  Boolean flag indicating if the host object is an
+         IDN host object with type="boolean".
+
+      <rdeHost:fV4Addrs>  List of IPv4 IP addresses for the host object
+         with the list elements type="host:addrStringType".
+
+      <rdeHost:fV6Addrs>  List of IPv6 IP addresses for the host object
+         with the list elements type="host:addrStringType".
+
+      The following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "host" <rdeCsv:csv>
+      and <rdeCsv:csvDelete< rdeCsv:fields> elements:
+
+
+
+         <rdeCsv:fName>
+
+         <rdeCsv:fUName>
+
+         <rdeCsv:fRoid>
+
+         <rdeCsv:fStatuses>
+
+         <rdeCsv:fClID>
+
+         <rdeCsv:fCrID>
+
+         <rdeCsv:fCrDate>
+
+         <rdeCsv:fUpID>
+
+         <rdeCsv:fUpDate>
+
+         <rdeCsv:fTrDate>
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 27]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      Example of a "host" <rdeCsv:csv> element:
+
+
+
+   ...
+   <rdeHost:contents>
+     ...
+     <rdeCsv:csv name="host">
+      <rdeCsv:sep>,</rdeCsv:sep>
+      <rdeCsv:fields>
+        <rdeCsv:fName/>
+        <rdeCsv:fRoid/>
+        <rdeCsv:fStatuses/>
+        <rdeHost:fV4Addrs/>
+        <rdeHost:fV6Addrs/>
+        <rdeCsv:fClID/>
+        <rdeCsv:fCrID/>
+        <rdeCsv:fCrDate/>
+        <rdeCsv:fUpID/>
+        <rdeCsv:fUpDate/>
+        <rdeCsv:fTrDate/>
+      </rdeCsv:fields>
+      <rdeCsv:files>
+        <rdeCsv:file
+         cksum="1410255126 216">
+         host-YYYYMMDD.csv
+        </rdeCsv:file>
+      </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeHost:contents>
+   ...
+
+      Example of a "host" <rdeCsv:csvDelete> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 28]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rde:deletes>
+   ...
+    <rdeCsv:csvDelete name="host">
+     <rdeCsv:fields>
+       <rdeCsv:fName/>
+     </rdeCsv:fields>
+     <rdeCsv:files>
+       <rdeCsv:file
+        cksum="2670296305 91797970">
+        host-delete-YYYYMMDD.csv
+       </rdeCsv:file>
+     </rdeCsv:files>
+    </rdeCsv:csvDelete>
+   ...
+   </rde:deletes>
+   ...
+
+4.3.  Contact Object
+
+   The contact object is based on the EPP contact mapping in [RFC5733].
+   The contact object supports both the XML Model and the CSV Model,
+   defined in Models (Section 1.1) section.  The elements used for both
+   models are defined in the following sections.  Both models use the
+   <rdeContact:contents> child element of the <rde:contents> element to
+   hold the contact objects for the deposit.
+
+4.3.1.  XML Model
+
+   There are two elements used in the data escrow of the contact objects
+   for the XML model including the <rdeContact:contact>, under the
+   <rdeContact:contents> element, and the <rdeContact:delete> element,
+   under the <rde:deletes> element.
+
+4.3.1.1.  <rdeContact:contact> element
+
+   The <rdeContact:contact> element is based the EPP Contact Mapping
+   [RFC5733] for the contact object information.  The <rdeContact:
+   contact> element contains the following child elements:
+
+   <rdeContact:id>  Contains the server-unique identifier of the contact
+      object.
+
+   <rdeContact:roid>  Contains the Repository Object IDentifier assigned
+      to the contact object when the object was created.
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 29]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeContact:status>  Zero or more OPTIONAL <rdeContact:status>
+      elements that contain the current status descriptors associated
+      with the contact object using the status values defined in
+      [RFC5733].
+
+   <rdeContact:postalInfo>  One or two <rdeContact:postalInfo> elements
+      that contain the postal-address informaton associated with the
+      contact object based on what is defined in [RFC5733].  Two
+      elements are provided so that address information can be provided
+      in both internationlized and localized forms; a "type" attribute
+      is used to identify the two forms.  If an internationalized form
+      (type"int") is provided, the element content MUST be represented
+      in a subset of UTF-8 that can be represented in the 7-bit US-ASCII
+      character set.  If a localized form (type="loc") is provided,
+      element content MAY be represented in unrestricted UTF-8.  The
+      <rdeContact:postalInfo> has the same child elements as the
+      [RFC5733] <contact:postalInfo> element, which include:
+
+
+
+      <contact:name>  Contains the name of the individual or role
+         represented by the contact.
+
+      <contact:org>  An OPTIONAL element that contains the name of the
+         organization with which the contact is affiliated.
+
+      <contact:addr>  Contains address information associated with the
+         contact object.  A <contact:addr> element contains the
+         following child elements:
+
+
+
+         <contact:street>  One, two, or three OPTIONAL <contact:street>
+            elements that contact the contact's street address.
+
+         <contact:city>  Contains the contact's city.
+
+         <contact:sp>  An OPTIONAL element that contains the contact's
+            state or province.
+
+         <contact:pc>  An OPTIONAL element that contains the contact's
+            postal code.
+
+         <contact:cc>  An OPTIONAL element that contains the contact's
+            country code.
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 30]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeContact:voice>  An OPTIONAL element that contains the contact's
+      voice telephone number.
+
+   <rdeContact:fax>  An OPTIONAL element that contains the contact's
+      facsimile telephone number.
+
+   <rdeContact:email>  An OPTIONAL element that contains the contact's
+      email address.
+
+   <rdeContact:clID>  Contains the identifier of the sponsoring client.
+
+   <rdeContact:crID>  An OPTIONAL element that contains the identifier
+      of the client that created the contact object.
+
+   <rdeContact:crDate>  An OPTIONAL element that contains the date and
+      time of contact object creation.
+
+   <rdeContact:upID>  An OPTIONAL element that contains the identifier
+      of the client that last updated the contact object.
+
+   <rdeContact:upDate>  An OPTIONAL element that contains the date and
+      time of the most recent contact object modification.
+
+   <rdeContact:trDate>  An OPTIONAL element that contains the date and
+      time of the most recent successful contact-object transfer.
+
+   <rdeContact:authInfo>  Contains the authorization information
+      associated with the contact object per [RFC5733].
+
+   <rdeContact:disclose>  An OPTIONAL element that identifies elements
+      that require exceptoinal server-operator handling to allow or
+      restrict disclosure to third parties.  See section 2.9 of
+      [RFC5733] for a description of the child elements contained within
+      the <rdeContact:disclose> element.
+
+   <rdeContact:extension>  An OPTIONAL element containing the custom
+      contact object attribute extensions.
+
+   Example of a <rdeContact:contact> element:
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 31]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeContact:contents>
+     ...
+     <rdeContact:contact>
+       <rdeContact:id>sh8013</rdeContact:id>
+       <rdeContact:roid>Csh8013-TEST</rdeContact:roid>
+       <rdeContact:status s="linked"/>
+       <rdeContact:status s="clientDeleteProhibited"/>
+       <rdeContact:postalInfo type="int">
+         <contact:name>John Doe</contact:name>
+         <contact:org>Example Inc.</contact:org>
+         <contact:addr>
+           <contact:street>123 Example Dr.</contact:street>
+           <contact:street>Suite 100</contact:street>
+           <contact:city>Dulles</contact:city>
+           <contact:sp>VA</contact:sp>
+           <contact:pc>20166-6503</contact:pc>
+           <contact:cc>US</contact:cc>
+         </contact:addr>
+       </rdeContact:postalInfo>
+       <rdeContact:voice x="1234">+1.7035555555</rdeContact:voice>
+       <rdeContact:fax>+1.7035555556</rdeContact:fax>
+       <rdeContact:email>jdoe@example.test</rdeContact:email>
+       <rdeContact:clID>clientY</rdeContact:clID>
+       <rdeContact:crID>clientX</rdeContact:crID>
+       <rdeContact:crDate>2009-09-13T08:01:00.0Z</rdeContact:crDate>
+       <rdeContact:upID>clientX</rdeContact:upID>
+       <rdeContact:upDate>2009-11-26T09:10:00.0Z</rdeContact:upDate>
+       <rdeContact:authInfo>
+         <contact:pw>2fooBAR</contact:pw>
+       </rdeContact:authInfo>
+       <rdeContact:disclose flag="0">
+         <contact:voice/>
+         <contact:email/>
+       </rdeContact:disclose>
+       <rdeContact:transfer>
+         <rdeContact:trStatus>pending</rdeContact:trStatus>
+         <rdeContact:reID>clientW</rdeContact:reID>
+         <rdeContact:reDate>2011-03-08T19:38:00.0Z</rdeContact:reDate>
+         <rdeContact:acID>clientX</rdeContact:acID>
+         <rdeContact:acDate>2011-03-13T23:59:59.0Z</rdeContact:acDate>
+       </rdeContact:transfer>
+     </rdeContact:contact>
+     ...
+   </rdeContact:contents>
+   ...
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 32]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+4.3.1.2.  <rdeContact:delete> object
+
+   The <rdeContact:delete> is contained under the <rde:deletes> element
+   to define the list of contact objects that have been deleted in a
+   differential (DIFF) or incremental (INCR) deposit.  The <rdeContact:
+   delete> element contains the following child elements:
+
+   <rdeContact:id>  Zero or more <rdeContact:id> elements that contain
+      the server-unique identifier of the deleted contact objects.
+
+   Example of a <rdeContact:delete> element:
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeContact:delete>
+        <rdeContact:id>sh8013</rdeContact:id>
+     </rdeContact:delete>
+     ...
+   </rde:deletes>
+   ...
+
+4.3.2.  CSV Model
+
+   For the CSV Model of the contact object, the <rdeCsv:csv> and the
+   <rdeCsv:csvDelete> elements, defined in the "<rdeCsv:csv> and
+   <rdeCsv:csvDelete> elements (Section 3.6.1)" section, are used with
+   the following supported "name" attribute values:
+
+   "contact"  Defines the fields and CSV file references used for the
+      contact object records.  The following field elements were added
+      for use in the "contact" <rdeCsv:csv> and <rdeCsv:csvDelete<
+      rdeCsv:fields> elements:
+
+
+
+      <rdeContact:fId>  Contains the server-unique contact identifier
+         with type="eppcom:clIDType".
+
+      <rdeContact:fVoice>  Contains the contact's voice telephone number
+         with type="contact:e164StringType".
+
+      <rdeContact:fVoiceExt>  Contains the contact's voice telephone
+         number extension with type="token".
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 33]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      <rdeContact:fFax>  Contains the contact's facsimile telephone
+         number with type="contact:e164StringType".
+
+      <rdeContact:fFaxExt>  Contains the contact's facsimile telephone
+         number extension with type="token".
+
+      <rdeContact:fEmail>  Contains the contact's email address with
+         type="eppcom:minTokenType".
+
+      The following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "contact" <rdeCsv:
+      csv> <rdeCsv:fields> element:
+
+
+
+         <rdeCsv:fRoid>
+
+         <rdeCsv:fStatuses>
+
+         <rdeCsv:fClID>
+
+         <rdeCsv:fCrID>
+
+         <rdeCsv:fCrDate>
+
+         <rdeCsv:fUpID>
+
+         <rdeCsv:fUpDate>
+
+         <rdeCsv:fTrDate>
+
+         <rdeCsv:fPwAuthInfo>
+
+      Example of a "contact" <rdeCsv:csv> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 34]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeContact:contents>
+     ...
+     <rdeCsv:csv name="contact">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+        <rdeContact:fId/>
+        <rdeCsv:fRoid/>
+        <rdeCsv:fStatuses/>
+        <rdeContact:fVoice/>
+        <rdeContact:fVoiceExt/>
+        <rdeContact:fFax/>
+        <rdeContact:fFaxExt/>
+        <rdeContact:fEmail/>
+        <rdeCsv:fClID/>
+        <rdeCsv:fCrID/>
+        <rdeCsv:fCrDate/>
+        <rdeCsv:fUpID/>
+        <rdeCsv:fUpDate/>
+        <rdeCsv:fPwAuthInfo/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+        <rdeCsv:file
+         cksum="1410255126 216">
+         contact-YYYYMMDD.csv
+        </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeContact:contents>
+   ...
+
+      Example of a "contact" <rdeCsv:csvDelete> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 35]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeCsv:csvDelete name="contact">
+       <rdeCsv:fields>
+         <rdeContact:fId/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="1410255126 216">
+           contact-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+     ...
+   </rde:deletes>
+   ...
+
+   "contactPostal"  Defines the fields and CSV file references used for
+      the contact postal info object records.  The following field
+      elements were added for use in the "contactPostal" <rdeCsv:csv>
+      <rdeCsv:fields> element:
+
+
+
+      <rdeContact:fPostalType>  Contains the form of the postal-address
+         information with type="contact:postalLineType".  This field
+         specifies the form ("int" or "loc"), as defined in Section 3.4,
+         of the <rdeContact:fName>, <rdeContact:fOrg>, <rdeContact:
+         fStreet>, <rdeContact:fCity>, <rdeContact:fSp>, <rdeContact:
+         fPc>, <rdeContact:fCc> fields.
+
+      <rdeContact:fName>  Contains the contact's name of the individual
+         or role represented by the contact with type="contact:
+         postalLineType".  An OPTIONAL "isLoc" attribute to used to
+         indicate the localized or internationalized form as defined in
+         section Section 3.4.
+
+      <rdeContact:fOrg>  Contains the name of the organization with
+         which the contact is affiliated with type="contact:
+         optPostalLineType".  An OPTIONAL "isLoc" attribute to used to
+         indicate the localized or internationalized form as defined in
+         section Section 3.4.
+
+      <rdeContact:fStreet>  Contains the contact's contact's street
+         address line with type="contact:fPostalLineType".  An index
+         attribute is required to indicate which street address line the
+         field represents with index "0" for the first line and index
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 36]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         "2" for the last line.  An OPTIONAL "isLoc" attribute to used
+         to indicate the localized or internationalized form as defined
+         in section Section 3.4.
+
+      <rdeContact:fCity>  Contains the contact's city with
+         type="contact:postalLineType".  An OPTIONAL "isLoc" attribute
+         to used to indicate the localized or internationalized form as
+         defined in section Section 3.4.
+
+      <rdeContact:fSp>  Contains the contact's state or province with
+         type="contact:optPostalLineType".  An OPTIONAL "isLoc"
+         attribute to used to indicate the localized or
+         internationalized form as defined in section Section 3.4.
+
+      <rdeContact:fPc>  Contains the contact's postal code with
+         type="contact:pcType".  An OPTIONAL "isLoc" attribute to used
+         to indicate the localized or internationalized form as defined
+         in section Section 3.4.
+
+      <rdeContact:fCc>  Contains the contact's country code with
+         type="contact:ccType".  An OPTIONAL "isLoc" attribute to used
+         to indicate the localized or internationalized form as defined
+         in section Section 3.4.
+
+      The following "rdeContact" fields, defined for the "contact"
+      <rdeCsv:csv> <rdeCsv:fields> element, is used in the
+      "contactPostal" <rdeCsv:csv> and <rdeCsv:csvDelete< rdeCsv:fields>
+      elements:
+
+
+
+         <rdeContact:fId>
+
+      Example of a "contactPostal" <rdeCsv:csv> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 37]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeContact:contents>
+     ...
+     <rdeCsv:csv name="contactPostal">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeContact:fId/>
+         <rdeContact:fPostalType/>
+         <rdeContact:fName/>
+         <rdeContact:fOrg/>
+         <rdeContact:fStreet index="0"/>
+         <rdeContact:fStreet index="1"/>
+         <rdeContact:fStreet index="2"/>
+         <rdeContact:fCity/>
+         <rdeContact:fSp/>
+         <rdeContact:fPc/>
+         <rdeContact:fCc/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           contactPostal-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeContact:contents>
+   ...
+
+      Example of a "contactPostal" <rdeCsv:csvDelete> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 38]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeCsv:csvDelete name="contactPostal">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeContact:fId/>
+         <rdeContact:fPostalType/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           contactPostal-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+     ...
+   </rde:deletes>
+   ...
+
+   "contactTransfer"  Defines the fields and CSV file referenes used for
+      the contact object pending and completed transfer records.  No
+      additional field elements were added for use in the
+      "contactTransfer" <rdeCsv:csv> <rdeCsv:fields> element.  The
+      following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "domainTransfer"
+      <rdeCsv:csv> <rdeCsv:fields> element:
+
+
+
+         <rdeCsv:fTrStatus>
+
+         <rdeCsv:fReID>
+
+         <rdeCsv:fReDate>
+
+         <rdeCsv:fAcID>
+
+         <rdeCsv:fAcDate>
+
+      The following "rdeContact" fields, defined for the "contact"
+      <rdeCsv:csv> <rdeCsv:fields> element, is used in the
+      "contactTransfer" <rdeCsv:csv> and <rdeCsv:csvDelete< rdeCsv:
+      fields> elements:
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 39]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+
+
+         <rdeContact:fId>
+
+      Example of a "contactTransfer" <rdeCsv:csv> element:
+
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeCsv:csv name="contactTransfer">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeContact:fId/>
+         <rdeCsv:fTrStatus/>
+         <rdeCsv:fReID/>
+         <rdeCsv:fReDate/>
+         <rdeCsv:fAcID/>
+         <rdeCsv:fAcDate/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           contactTransfer-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeContact:contents>
+   ...
+
+
+      Example of a "contactTransfer" <rdeCsv:csvDelete> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 40]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeContact:contents>
+     ...
+     <rdeCsv:csvDelete name="contactTransfer">
+       <rdeCsv:fields>
+         <rdeContact:fId/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           contactTransfer-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+     ...
+   </rde:deletes>
+   ...
+
+
+   "contactDisclose"  Defines the fields and CSV file references used
+      for the contact disclose object records.  The following field
+      elements were added for use in the "contactDisclose" <rdeCsv:csv>
+      <rdeCsv:fields> element:
+
+
+
+      <rdeContact:fDiscloseFlag>  Contains flag with a value of "true"
+         or "1" (one) notes the preference to allow disclosure of the
+         specified elements as an exception to the stated data-
+         collection policy.  A value of "false" or "0" (zero) notes a
+         client preference to not allow disclosure of the specified
+         elements as an exception to the stated data-collection policy
+         with type="boolean".  The additional fields define specific
+         exceptional disclosure preferences based on the <rdeContact:
+         fDiscloseFlag> field.
+
+      <rdeContact:fDiscloseNameLoc>  Exceptional disclosure preference
+         flag for the localized form of the contact name with
+         type="boolean".
+
+      <rdeContact:fDiscloseNameInt>  Exceptional disclosure preference
+         flag for the internationalized form of the contact name with
+         type="boolean".
+
+      <rdeContact:fDiscloseOrgLoc>  Exceptional disclosure preference
+         flag for the localized form of the contact organization with
+         type="boolean". with type="boolean".
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 41]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      <rdeContact:fDiscloseOrgInt>  Exceptional disclosure preference
+         flag for the internationalized form of the contact organization
+         with type="boolean". with type="boolean".
+
+      <rdeContact:fDiscloseAddrLoc>  Exceptional disclosure preference
+         flag for the localized form of the contact address with
+         type="boolean".
+
+      <rdeContact:fDiscloseAddrInt>  Exceptional disclosure preference
+         flag for the internationalized form of the contact address with
+         type="boolean".
+
+      <rdeContact:fDiscloseVoice>  Exceptional disclosure preference
+         flag of the contact voice telephone number with type="boolean".
+
+      <rdeContact:fDiscloseFax>  Exceptional disclosure preference flag
+         of the contact facsimile telephone number with type="boolean".
+
+      <rdeContact:fDiscloseEmail>  Exceptional disclosure preference
+         flag of the contact email address with type="boolean".
+
+      The following "rdeContact" fields, defined for the "contact"
+      <rdeCsv:csv> <rdeCsv:fields> element, is used in the
+      "contactDisclose" <rdeCsv:csv> and <rdeCsv:csvDelete< rdeCsv:
+      fields> elements:
+
+
+
+         <rdeContact:fId>
+
+      Example of a "contactDisclose" <rdeCsv:csv> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 42]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeContact:contents>
+     ...
+     <rdeCsv:csv name="contactDisclose">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeContact:fId/>
+         <rdeContact:fDiscloseFlag/>
+         <rdeContact:fDiscloseNameLoc/>
+         <rdeContact:fDiscloseNameInt/>
+         <rdeContact:fDiscloseOrgLoc/>
+         <rdeContact:fDiscloseOrgInt/>
+         <rdeContact:fDiscloseAddrLoc/>
+         <rdeContact:fDiscloseAddrInt/>
+         <rdeContact:fDiscloseVoice/>
+         <rdeContact:fDiscloseFax/>
+         <rdeContact:fDiscloseEmail/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           contactDisclose-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeContact:contents>
+   ...
+
+
+      Example of a "contactDisclose" <rdeCsv:csvDelete> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 43]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeContact:contents>
+     ...
+     <rdeCsv:csvDelete name="contactDisclose">
+       <rdeCsv:fields>
+         <rdeContact:fId/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           contactDisclose-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+     ...
+   </rde:deletes>
+   ...
+
+
+4.4.  Registrar Object
+
+   The registrar object represents the sponsoring client for other
+   objects.  The registrar object MAY be related to registrar contacts
+   using Contact Object, as defined in Section 4.3, references using the
+   <rdeRegistrar:contactObj> element or MAY contain registrar contacts
+   using the <rdeRegistrar:contactAttr> element.  The registrar object
+   supports both the XML Model and the CSV Model, defined in
+   Section 1.1.  The elements used for both models are defined in the
+   following sections.  Both models use the <rdeRegistrar:contents>
+   child element of the <rde:contents> element to hold the registrar
+   objects for the deposit.
+
+4.4.1.  XML Model
+
+   There are two elements used in the data escrow of the registrar
+   objects for the XML model including the <rdeRegistrar:registrar>,
+   under the <rdeRegistrar:contents> element, and the <rdeRegistrar:
+   delete> element, under the <rde:deletes> element.
+
+4.4.1.1.  <rdeRegistrar:registrar> element
+
+   The <rdeRegistrar:registrar> element reuses some concepts from the
+   EPP Contact Mapping [RFC5733] for the registrar object and registrar
+   contact information.  The <rdeRegistrar:registrar> element contains
+   the following child elements:
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 44]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeRegistrar:id>  Contains the server-unique identifier of the
+      registrar object.
+
+   <rdeRegistrar:roid>  Contains the Repository Object IDentifier
+      assigned to the registrar object when the object was created.
+
+   <rdeRegistrar:name>  One or two <rdeRegistrar:name> elements that
+      contain the name of the registrar.  Two elements are provided so
+      that name information can be provided in both internationlized and
+      localized forms as defined in Section 3.4.
+
+   <rdeRegistrar:icannId>  An OPTIONAL element that contains the ID
+      assigned by ICANN.
+
+   <rdeRegistrar:status>  The status of the registrar object.  For
+      extensibility the <rdeRegistrar:status> element includes an
+      OPTIONAL "name" attribute that can define a sub-status or the full
+      name of the status when the status value is "custom".  The server
+      SHOULD NOT use the "custom" status value.  The <rdeRegistrar:
+      status> element has one of the following values:
+
+
+
+      ok A normal status value for a registrar object.
+
+      hold  A restricted status value for a registrar object.
+
+      terminated  A status for a registrar object that has no remaining
+         access or privileges.
+
+      custom  A custom status that is defined using the "name"
+         attribute.
+
+   <rdeRegistrar:addr>  One or two <rdeRegistrar:addr> elements that
+      contain the address informaton associated with the registrar
+      object.  Two elements are provided so that address information can
+      be provided in both internationlized and localized forms as
+      defined in Section 3.4.  The <rdeRegistrar:addr> element contains
+      the following child elements:
+
+
+
+      <rdeRegistrar:street>  One, two, or three OPTIONAL <rdeRegistrar:
+         street> elements that contain the registrar's street address.
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 45]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      <rdeRegistrar:city>  Contains the registrar's city.
+
+      <rdeRegistrar:sp>  An OPTIONAL element that contains the
+         registrar's state or province.
+
+      <rdeRegistrar:pc>  An OPTIONAL element that contains the
+         registrar's postal code.
+
+      <rdeRegistrar:cc>  An OPTIONAL element that contains the
+         registrar's country code.
+
+   <rdeRegistrar:voice>  An OPTIONAL element that contains the
+      registrar's voice telephone number.
+
+   <rdeRegistrar:fax>  An OPTIONAL element that contains the registrar's
+      facsimile telephone number.
+
+   <rdeRegistrar:email>  An OPTIONAL element that contains the
+      registrar's email address.
+
+   <rdeRegistrar:whoisUrl>  An OPTIONAL element that contains the
+      registrar's whois url.
+
+   <rdeRegistrar:contactObj> or <rdeRegistrar:contactAttr>  Zero or more
+      registrar contact object references or attributes.  A contact
+      object reference can be referenced by multiple objects while a
+      contact attribute is defined only for that registrar.  Either
+      <rdeRegistrar:contactObject> or <rdeRegistrar:contactAttr MAY be
+      used but both MUST NOT be used.
+
+
+
+      <rdeRegistrar:contactObj>  Zero or more OPTIONAL <rdeRegistrar:
+         contactObj< elements that contain the contact identifiers and
+         the contact types as defined in [RFC5731] associated with the
+         registrar object.
+
+      <rdeRegistrar:contactAttr>  Zero or more OPTIONAL <rdeRegistrar:
+         contactAttr< elements that contain the registrar contact
+         information.  The <rdeRegistrar:contactAttr> element contains
+         the following child elements:
+
+
+
+         <rdeRegistrar:id>  Contains the server-unique identifier of the
+            registrar contact object.
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 46]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         <rdeRegistrar:roid>  Contains the Repository Object IDentifier
+            assigned to the registrar contact object when the object was
+            created.
+
+         <rdeRegistrar:name>  One or two <rdeRegistrar:name> elements
+            that contain the name of the registrar contact object.  Two
+            elements are provided so that the name information can be
+            provided in both internationalized and localized forms as
+            defined in Section 3.4.
+
+         <rdeRegistrar:type>  One to three <rdeRegistrar:type> elements
+            that contain the registrar contact type.  A Registrar
+            contact object MAY be assigned more than one registrar
+            contact type.  The possible registrar contact type values
+            include:
+
+
+
+            admin  Administration registrar contact type.
+
+            tech  Technical registrar contact type.
+
+            billing  Billing registrar contact type.
+
+         <rdeRegistrar:addr>  One or two <rdeRegistrar:addr> elements
+            that contains the address information associated with the
+            registrar contact object.  Two elements are provided so that
+            the adddress information can be provided in both
+            internationalized and localized forms as defined in
+            Section 3.4. <rdeRegistrar:addr> element contains the
+            following child elements:
+
+
+
+            <rdeRegistrar:street>  One, two, or three OPTIONAL
+               <rdeRegistrar:street> elements that contain the registrar
+               contact's street address.
+
+            <rdeRegistrar:city>  Contains the registrar contact's city.
+
+            <rdeRegistrar:sp>  An OPTIONAL element that contains the
+               registrar contact's state or province.
+
+            <rdeRegistrar:pc>  An OPTIONAL element that contains the
+               registrar contact's postal code.
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 47]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+            <rdeRegistrar:cc>  An OPTIONAL element that contains the
+               registrar contact's country code.
+
+         <rdeRegistrar:voice>  An OPTIONAL element that contains the
+            registrar contact's voice telephone number.
+
+         <rdeRegistrar:fax>  An OPTIONAL element that contains the
+            registrar contact's facsimile telephone number.
+
+         <rdeRegistrar:email>  An OPTIONAL element that contains the
+            registrar contact's email address.
+
+         <rdeRegistrar:crID>  An OPTIONAL element that contains the
+            identifier of the client that created the registrar contact
+            object.
+
+         <rdeRegistrar:crDate>  An OPTIONAL element that contains the
+            date and time of registrar contact object creation.
+
+         <rdeRegistrar:upID>  An OPTIONAL element that contains the date
+            and time of the most recent registrar contact object
+            modification.
+
+         <rdeRegistrar:upDate>  An OPTIONAL element that contains the
+            date and time of the most recent registrar contact object
+            modification.
+
+         <rdeRegistrar:extension>  An OPTIONAL element containing the
+            custom registrar contact object attribute extensions.
+
+   <rdeRegistrar:url>  An OPTIONAL element that contains the registrar's
+      web url.
+
+   <rdeRegistrar:crID>  An OPTIONAL element that contains the identifier
+      of the client that created the registrar object.
+
+   <rdeRegistrar:crDate>  An OPTIONAL element that contains the date and
+      time of registrar object creation.
+
+   <rdeRegistrar:upID>  An OPTIONAL element that contains the identifier
+      of the client that last updated the registrar object.
+
+   <rdeRegistrar:upDate>  An OPTIONAL element that contains the date and
+      time of the most recent registrar object modification.
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 48]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <rdeRegistrar:extension>  An OPTIONAL element containing the custom
+      registrar object attribute extensions.
+
+   Example of a <rdeRegistrar:registrar> element using <rdeRegistrar:
+   contactObj> elements:
+
+
+   ...
+   <rdeRegistrar:contents>
+     ...
+     <rdeRegistrar:registrar>
+        <rdeRegistrar:id>EXAMPLE</rdeRegistrar:id>
+        <rdeRegistrar:roid>REGISTRAR1234-TEST</rdeRegistrar:roid>
+        <rdeRegistrar:name type="int">Example Inc.</rdeRegistrar:name>
+        <rdeRegistrar:icannId>1234</rdeRegistrar:icannId>
+        <rdeRegistrar:status>ok</rdeRegistrar:status>
+        <rdeRegistrar:addr type="int">
+         <rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+         <rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+         <rdeRegistrar:city>Dulles</rdeRegistrar:city>
+         <rdeRegistrar:sp>VA</rdeRegistrar:sp>
+         <rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+         <rdeRegistrar:cc>US</rdeRegistrar:cc>
+        </rdeRegistrar:addr>
+        <rdeRegistrar:voice x="1234">+1.7035555555
+        </rdeRegistrar:voice>
+        <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+        <rdeRegistrar:email>jdoe@example.test
+        </rdeRegistrar:email>
+        <rdeRegistrar:url>http://www.example.test
+        </rdeRegistrar:url>
+        <rdeRegistrar:whoisUrl>http://whois.example.test
+        </rdeRegistrar:whoisUrl>
+        <rdeRegistrar:contactObj type="admin">rr0013
+        </rdeRegistrar:contactObj>
+        <rdeRegistrar:contactObj type="tech">rr0012
+        </rdeRegistrar:contactObj>
+        <rdeRegistrar:crID>clientX</rdeRegistrar:crID>
+        <rdeRegistrar:crDate>2005-04-23T11:49:00.0Z
+        </rdeRegistrar:crDate>
+        <rdeRegistrar:upID>clientY</rdeRegistrar:upID>
+        <rdeRegistrar:upDate>2009-02-17T17:51:00.0Z
+        </rdeRegistrar:upDate>
+     </rdeRegistrar:registrar>
+     ...
+   </rdeRegistrar:contents>
+   ...
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 49]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   Example of a <rdeRegistrar:registrar> element using <rdeRegistrar:
+   contactAttr> elements:
+
+
+  ...
+  <rdeRegistrar:contents>
+    ...
+    <rdeRegistrar:registrar>
+       <rdeRegistrar:id>EXAMPLE2</rdeRegistrar:id>
+       <rdeRegistrar:roid>REGISTRAR21234-TEST</rdeRegistrar:roid>
+       <rdeRegistrar:name type="int">Example 2 Inc.</rdeRegistrar:name>
+       <rdeRegistrar:icannId>21234</rdeRegistrar:icannId>
+       <rdeRegistrar:status>ok</rdeRegistrar:status>
+       <rdeRegistrar:addr type="int">
+        <rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+        <rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+        <rdeRegistrar:city>Dulles</rdeRegistrar:city>
+        <rdeRegistrar:sp>VA</rdeRegistrar:sp>
+        <rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+        <rdeRegistrar:cc>US</rdeRegistrar:cc>
+       </rdeRegistrar:addr>
+       <rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+       <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+       <rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+       <rdeRegistrar:url>http://www.example2.test</rdeRegistrar:url>
+       <rdeRegistrar:whoisUrl>http://whois.example2.test
+       </rdeRegistrar:whoisUrl>
+       <rdeRegistrar:contactAttr>
+        <rdeRegistrar:id>1234</rdeRegistrar:id>
+        <rdeRegistrar:roid>REGISTRARCONTACT1234-TEST</rdeRegistrar:roid>
+        <rdeRegistrar:name type="int">John Doe</rdeRegistrar:name>
+        <rdeRegistrar:type>admin</rdeRegistrar:type>
+        <rdeRegistrar:type>tech</rdeRegistrar:type>
+        <rdeRegistrar:type>billing</rdeRegistrar:type>
+        <rdeRegistrar:addr type="int">
+          <rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+          <rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+          <rdeRegistrar:city>Dulles</rdeRegistrar:city>
+          <rdeRegistrar:sp>VA</rdeRegistrar:sp>
+          <rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+          <rdeRegistrar:cc>US</rdeRegistrar:cc>
+        </rdeRegistrar:addr>
+        <rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+        <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+        <rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+       </rdeRegistrar:contactAttr>
+       <rdeRegistrar:crID>clientX</rdeRegistrar:crID>
+       <rdeRegistrar:crDate>2005-04-23T11:49:00.0Z</rdeRegistrar:crDate>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 50]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+       <rdeRegistrar:upID>clientY</rdeRegistrar:upID>
+       <rdeRegistrar:upDate>2009-02-17T17:51:00.0Z</rdeRegistrar:upDate>
+    </rdeRegistrar:registrar>
+    ...
+  </rdeRegistrar:contents>
+  ...
+
+
+4.4.1.2.  <rdeRegistrar:delete> object
+
+   The <rdeRegistrar:delete> is contained under the <rde:deletes>
+   element to define the list of registrar objects that have been
+   deleted in a differential (DIFF) or incremental (INCR) deposit.  The
+   <rdeRegistrar:delete> element contains the following child elements:
+
+   <rdeRegistrar:id>  Zero or more <rdeRegistrar:id> elements that
+      contain the server-unique identifier of the deleted registrar
+      objects.
+
+   Example of a <rdeRegistrar:delete> element:
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeRegistrar:delete>
+        <rdeRegistrar:id>EXAMPLE</rdeRegistrar:id>
+        <rdeRegistrar:id>EXAMPLE2</rdeRegistrar:id>
+     </rdeRegistrar:delete>
+     ...
+   </rde:deletes>
+   ...
+
+
+4.4.2.  CSV Model
+
+   For the CSV Model of the registrar object, the <rdeCsv:csv> and the
+   <rdeCsv:csvDelete> elements, defined in the "<rdeCsv:csv> and
+   <rdeCsv:csvDelete> elements (Section 3.6.1)" section, are used with
+   the following supported "name" attribute values:
+
+   "registrar"  Defines the fields and CSV file references used for the
+      registrar object records.  The following field elements were added
+      for use in the "registrar" <rdeCsv:csv> and <rdeCsv:csvDelete<
+      rdeCsv:fields> elements:
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 51]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+
+
+      <rdeRegistrar:fId>  Contains the server-unique registrar
+         identifier with type="eppcom:clIDType".
+
+      <rdeRegistrar:fName>  Contains the name of the registrar with
+         type="normalizedString".
+
+      <rdeRegistrar:fIcannId>  Contains the ID assigned by ICANN with
+         type="positiveInteger".
+
+      <rdeRegistrar:fStatus>  Contains the status of the registrar with
+         type="rdeRegistrar:statusValueType".
+
+      <rdeRegistrar:fStatusName>  Contains the name of the registrar
+         sub-status or the full name of the status when the fStatus
+         value is "custom" with type="token".
+
+      <rdeRegistrar:fUrl>  Contains the URL of the registrar with
+         type="anyURI".
+
+      <rdeRegistrar:fWhoisUrl>  Contains the Whois URL of the registrar
+         with type="anyURI".
+
+      The following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "registrar" <rdeCsv:
+      csv> <rdeCsv:fields> element:
+
+
+
+         <rdeCsv:fRoid>
+
+         <rdeCsv:fStatuses>
+
+         <rdeCsv:fAdminContacts>
+
+         <rdeCsv:fTechContacts>
+
+         <rdeCsv:fBillingContacts>
+
+         <rdeCsv:fCrID>
+
+         <rdeCsv:fCrDate>
+
+         <rdeCsv:fUpID>
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 52]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         <rdeCsv:fUpDate>
+
+      The following "rdeContact" fields, defined in section
+      Section 4.3.2, MAY be used in the "registrar" <rdeCsv:csv>
+      <rdeCsv:fields> element:
+
+
+
+         <rdeContact:fStreet>
+
+         <rdeContact:fCity>
+
+         <rdeContact:fSp>
+
+         <rdeContact:fPc>
+
+         <rdeContact:fCc>
+
+         <rdeContact:fVoice>
+
+         <rdeContact:fFax>
+
+         <rdeContact:fFaxExt>
+
+         <rdeContact:fEmail>
+
+      Example of a "registrar" <rdeCsv:csv> element:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 53]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   ...
+   <rdeRegistrar:contents>
+     ...
+     <rdeCsv:csv name="registrar">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeRegistrar:fId/>
+         <rdeCsv:fRoid/>
+         <rdeRegistrar:fName isLoc="false"/>
+         <rdeRegistrar:fIcannId/>
+         <rdeRegistrar:fStatus/>
+         <rdeContact:fStreet isLoc="false" index="0"/>
+         <rdeContact:fStreet isLoc="false" index="1"/>
+         <rdeContact:fStreet isLoc="false" index="2"/>
+         <rdeContact:fCity isLoc="false" />
+         <rdeContact:fSp isLoc="false" />
+         <rdeContact:fPc isLoc="false" />
+         <rdeContact:fCc isLoc="false" />
+         <rdeContact:fVoice/>
+         <rdeContact:fVoiceExt/>
+         <rdeContact:fFax/>
+         <rdeContact:fFaxExt/>
+         <rdeContact:fEmail/>
+         <rdeRegistrar:fUrl/>
+         <rdeRegistrar:fWhoisUrl/>
+         <rdeCsv:fCrID/>
+         <rdeCsv:fCrDate/>
+         <rdeCsv:fUpID/>
+         <rdeCsv:fUpDate/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="1924040625 268">
+           registrar-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeRegistrar:contents>
+   ...
+
+
+      Example of a "registrar" <rdeCsv:csv> element with registrant
+      contact object references:
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 54]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+
+
+   ...
+   <rdeRegistrar:contents>
+     ...
+     <rdeCsv:csv name="registrar">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeRegistrar:fId/>
+         <rdeCsv:fRoid/>
+         <rdeRegistrar:fName isLoc="false"/>
+         <rdeRegistrar:fIcannId/>
+         <rdeRegistrar:fStatus/>
+         <rdeContact:fStreet isLoc="false" index="0"/>
+         <rdeContact:fStreet isLoc="false" index="1"/>
+         <rdeContact:fStreet isLoc="false" index="2"/>
+         <rdeContact:fCity isLoc="false" />
+         <rdeContact:fSp isLoc="false" />
+         <rdeContact:fPc isLoc="false" />
+         <rdeContact:fCc isLoc="false" />
+         <rdeContact:fVoice/>
+         <rdeContact:fVoiceExt/>
+         <rdeContact:fFax/>
+         <rdeContact:fFaxExt/>
+         <rdeContact:fEmail/>
+         <rdeRegistrar:fUrl/>
+         <rdeRegistrar:fWhoisUrl/>
+         <rdeCsv:fAdminContacts>
+         <rdeCsv:fTechContacts>
+         <rdeCsv:fBillingContacts>
+         <rdeCsv:fCrID/>
+         <rdeCsv:fCrDate/>
+         <rdeCsv:fUpID/>
+         <rdeCsv:fUpDate/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="1924040625 268">
+           registrar-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeRegistrar:contents>
+   ...
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 55]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      Example of a "registrar" <rdeCsv:csvDelete> element:
+
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeCsv:csvDelete name="registrar">
+       <rdeCsv:fields>
+         <rdeRegistrar:fId/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="1924040625 268">
+           registrar-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+     ...
+   </rde:deletes>
+   ...
+
+
+   "registrarContact"  Defines the fields and CSV file references used
+      for the registrar contact attribute records.  The registrar
+      contact attribute records SHALL NOT be referenced by more than one
+      registrar or referenced by any other object.  The following field
+      elements were added for use in the "registrarContact" <rdeCsv:csv>
+      <rdeCsv:fields> element:
+
+
+
+      <rdeRegistrar:fContactTypes>  List of registrar contact types for
+         the registrar contact attribute record with list elements
+         type="rdeRegistrar:contactTypeType", which is an enumerated
+         list of values "admin", "tech", "billing", and "custom".
+
+      The following "rdeRegistrar" fields, defined for the "registrar"
+      <rdeCsv:csv> <rdeCsv:fields> element, is used in the
+      "registrarContact" <rdeCsv:csv> and <rdeCsv:csvDelete< rdeCsv:
+      fields> elements:
+
+
+
+         <rdeRegistrar:fId>
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 56]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      The following "rdeContact" fields, defined for the "contact"
+      <rdeCsv:csv> <rdeCsv:fields> element, MAY be used in the
+      "registrarContact" <rdeCsv:csv> and <rdeCsv:csvDelete< rdeCsv:
+      fields> elements:
+
+
+
+         <rdeContact:fId>
+
+         <rdeContact:fName>
+
+         <rdeContact:fPostalType>
+
+         <rdeContact:fStreet>
+
+         <rdeContact:fCity>
+
+         <rdeContact:fSp>
+
+         <rdeContact:fPc>
+
+         <rdeContact:fCc>
+
+         <rdeContact:fVoice>
+
+         <rdeContact:fVoiceExt>
+
+         <rdeContact:fFax>
+
+         <rdeContact:fFaxExt>
+
+         <rdeContact:fEmail>
+
+      The following "rdeCsv" fields, defined in section CSV common field
+      elements (Section 3.6.2), MAY be used in the "registrarContact"
+      <rdeCsv:csv> and <rdeCsv:csvDelete< rdeCsv:fields> elements:
+
+
+
+         <rdeCsv:fRoid>
+
+         <rdeCsv:fCrID>
+
+         <rdeCsv:fCrDate>
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 57]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         <rdeCsv:fUpID>
+
+         <rdeCsv:fUpDate>
+
+      Example of a "registrarContact" <rdeCsv:csv> element without any
+      postal information information:
+
+
+
+   ...
+   <rdeRegistrar:contents>
+     ...
+     <rdeCsv:csv name="registrarContact">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+        <rdeRegistrar:fId/>
+        <rdeContact:fId/>
+        <rdeCsv:fRoid/>
+        <rdeContact:fName isLoc="false"/>
+        <rdeContact:fVoice/>
+        <rdeContact:fVoiceExt/>
+        <rdeContact:fFax/>
+        <rdeContact:fFaxExt/>
+        <rdeContact:fEmail/>
+        <rdeCsv:fCrID/>
+        <rdeCsv:fCrDate/>
+        <rdeCsv:fUpID/>
+        <rdeCsv:fUpDate/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+        <rdeCsv:file
+         cksum="2186160075 371">
+         registrarcontact-YYYYMMDD.csv
+        </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeRegistrar:contents>
+   ...
+
+
+      Example of a "registrarContact" <rdeCsv:csv> element with support
+      for both "int" and "loc" postal information:
+
+
+
+   ...
+   <rdeRegistrar:contents>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 58]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+     ...
+     <rdeCsv:csv name="registrarContact">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+        <rdeRegistrar:fId/>
+        <rdeContact:fId/>
+        <rdeCsv:fRoid/>
+        <rdeContact:fName isLoc="false"/>
+        <rdeRegistrar:fContactTypes/>
+        <!-- "int" type of postal information -->
+        <rdeContact:fPostalType/>
+        <rdeContact:fStreet index="0"/>
+        <rdeContact:fStreet index="1"/>
+        <rdeContact:fStreet index="2"/>
+        <rdeContact:fCity/>
+        <rdeContact:fSp/>
+        <rdeContact:fPc/>
+        <rdeContact:fCc/>
+        <!-- "loc" type of postal information -->
+        <rdeContact:fPostalType/>
+        <rdeContact:fStreet index="0"/>
+        <rdeContact:fStreet index="1"/>
+        <rdeContact:fStreet index="2"/>
+        <rdeContact:fCity/>
+        <rdeContact:fSp/>
+        <rdeContact:fPc/>
+        <rdeContact:fCc/>
+        <rdeContact:fVoice/>
+        <rdeContact:fVoiceExt/>
+        <rdeContact:fFax/>
+        <rdeContact:fFaxExt/>
+        <rdeContact:fEmail/>
+        <rdeCsv:fCrID/>
+        <rdeCsv:fCrDate/>
+        <rdeCsv:fUpID/>
+        <rdeCsv:fUpDate/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+        <rdeCsv:file
+         cksum="2186160075 371">
+         registrarcontact-YYYYMMDD.csv
+        </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csv>
+     ...
+   </rdeRegistrar:contents>
+   ...
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 59]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      Example of a "registrarContact" <rdeCsv:csvDelete> element:
+
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeCsv:csvDelete name="registrarContact">
+       <rdeCsv:sep>,</rdeCsv:sep>
+       <rdeCsv:fields>
+         <rdeRegistrar:fId/>
+         <rdeContact:fId/>
+       </rdeCsv:fields>
+       <rdeCsv:files>
+         <rdeCsv:file
+           cksum="2670296305 91797970">
+           registrarContact-delete-YYYYMMDD.csv
+         </rdeCsv:file>
+       </rdeCsv:files>
+     </rdeCsv:csvDelete>
+     ...
+   </rde:deletes>
+   ...
+
+4.5.  IDN Language Rules Object
+
+   The IDN domain names, defined in Section 4.1, MAY have references to
+   the applicable IDN language rules using the language as a lookup key
+   with the <rdeDomain:language> element in the XML model or the
+   <rdeDomain:fLanguage> field element in the CSV model.  The language
+   rules are logical expressions that reference external URL's for the
+   detailed character code points.  Multiple <rdeDomain:language> or
+   <rdeDomain:fLanguage> values can share the same IDN language rule.
+   The IDN Language Rules only supports the XML model, since the
+   definition of the language rules does not work well with the CSV
+   model and the amount of data is relatively small.
+
+   There are two elements used in the data escrow of the IDN language
+   rule objects including the <rdeIDN:languageRules>, under the <rdeIDN:
+   contents> element, and the <rdeIDN:delete> element, under the <rde:
+   deletes> element.
+
+4.5.1.  <rdeIDN:languageRules> element
+
+   The <rdeIDN:languageRules> element defines the language rules for a
+   set of languages referenced from by the <rdeDomain:language> element
+   or the <rdeDomain:fLanguage> field element using a logical
+   expression.  The logical expression defines the language tables, with
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 60]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   an external URL reference per language table, that apply to the set
+   of languages.  There are two options in selecting the language
+   tables.  The first option is when the character code points of the
+   domain name MUST fall into only one of the language tables with the
+   use="one" attribute value.  The second option is when the character
+   code points of the domain name MAY fall into any one of the language
+   tables using the use="all" attribute value.  Each entry in the list
+   of language tables can be a list with a different "use" attribute
+   value, resulting in a recursive structure.  The <rdeIDN:
+   languageRules> element contains the following child elements:
+
+   <rdeIDN:language>  One or more <rdeIDN:language> elements
+      representing the language that the rules applies to.  The <rdeIDN:
+      language> element values MUST reside in a single <rdeIDN:
+      languageRules> element so that there is no conflict.  The
+      <rdeDomain:language> element and the <rdeDomain:fLanguage> field
+      element, defined in Section 4.1 MUST match one and only one
+      <rdeIDN:language> element in the set of <rdeIDN:languageRules>
+
+   <rdeIDN:table>  One or more <rdeIDN:table> element that define the
+      set of language tables that the domain name character code points
+      can fall in.  The "use" attribute has two different values
+      including "one" and "all".  The "one" value specifies that the
+      domain name character code points can only fall in one of the
+      child language table rule elements.  The "all" value specifies
+      that the domain name code points can fall in any one of the child
+      language table rule elements.  The <rdeIDN:table> element contains
+      the following child elements:
+
+
+
+      <rdeIDN:url>  Zero or more <rdeIDN:url> elements that reference
+         language table contain the applicable character code points.
+
+      <rdeIDN:table>  Zero or more <rdeIDN:table> elements that
+         reference an additional language table rule expression
+         recursively.
+
+   Example of a <rdeIDN:contents> element with two language rules across
+   three languages.
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 61]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+ <rde:contents>
+   ...
+   <rdeIDN:contents>
+     <rdeIDN:languageRules>
+      <rdeIDN:language>CHI</rdeIDN:language>
+      <rdeIDN:table>
+       <rdeIDN:url>
+       http://www.iana.org/domains/idn-tables/tables/test_zh_1.0.txt
+       </rdeIDN:url>
+      </rdeIDN:table>
+     </rdeIDN:languageRules>
+     <rdeIDN:languageRules>
+      <rdeIDN:language>LANG1</rdeIDN:language>
+      <rdeIDN:language>LANG2</rdeIDN:language>
+      <rdeIDN:table use="one">
+       <rdeIDN:url>
+       http://www.iana.org/domains/idn-tables/tables/test_tab1_1.1.txt
+       </rdeIDN:url>
+       <rdeIDN:url>
+       http://www.iana.org/domains/idn-tables/tables/test_tab2_1.1.txt
+       </rdeIDN:url>
+       <rdeIDN:table use="all">
+         <rdeIDN:url>
+         http://www.iana.org/domains/idn-tables/tables/test_tab3_1.1.txt
+         </rdeIDN:url>
+         <rdeIDN:url>
+         http://www.iana.org/domains/idn-tables/tables/test_tab3_1.1.txt
+         </rdeIDN:url>
+       </rdeIDN:table>
+      </rdeIDN:table>
+     </rdeIDN:languageRules>
+   </rdeIDN:contents>
+   ...
+ </rde:contents>
+
+
+4.5.2.  <rdeIDN:delete> object
+
+   The <rdeIDN:delete> is contained under the <rde:deletes> element to
+   define the list of language rules objects that have been deleted in a
+   differential (DIFF) or incremental (INCR) deposit.  The <rdeIDN:
+   delete> element contains the following child elements:
+
+   <rdeIDN:language>  Zero or more <rdeIDN:language> elements that
+      contain language defined within an existing language rule.  Once
+      all of the languages have been removed from a language rule, the
+      language rule itself MUST be deleted.  Any domain name <rdeDomain:
+      language> element or <rdeDomain;fLanguage> field element
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 62]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      references to the <rdeIDN:language> being deleted MUST be updated
+      to a different language.
+
+   Example of a <rdeIDN:delete> element:
+
+
+   ...
+   <rde:deletes>
+     ...
+     <rdeIDN:delete>
+        <rdeIDN:language>LANG1</rdeIDN:language>
+        <rdeIDN:language>LANG2</rdeIDN:language>
+        <rdeIDN:language>LANG3</rdeIDN:language>
+     </rdeIDN:delete>
+     ...
+   </rde:deletes>
+   ...
+
+
+4.6.  EPP Parameters Object
+
+   The OPTIONAL EPP Parameters Object defines the set of object and
+   object extension services supported by the registry, as defined in
+   [RFC5730].  The EPP Parameters Object only supports the XML model and
+   is defined using the <rdeEppParams:contents> element with the
+   <rdeEppParams:eppParams> child element.  The EPP Parameters Object
+   SHOULD be included if the registry uses EPP.
+
+   The syntax and content of the <rdeEppParams:eppParams> children
+   elements is as explained in section 2.4 of [RFC5730].  The children
+   of the <rdeEppParams:eppParams> are as follows:
+
+   o  One or more <version> elements that indicate the EPP versions
+      supported by the registry.
+
+   o  One or more <lang> elements that indicate the identifiers of the
+      text response languages supported by the registry's EPP server.
+
+   o  One or more <objURI> elements that contain namespace URIs
+      representing the objects that the registry's EPP server is capable
+      of managing.
+
+   o  An OPTIONAL <svcExtension> element that contains one or more
+      <extURI> elements that contain namespace URIs representing object
+      extensions supported by the registry's EPP server.
+
+   o  A <dcp> element that contains child elements used to describe the
+      server's privacy policy for data collection and management.  See
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 63]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      section 2.4 of [RFC5730] for more details.
+
+   Example of <eppParams> element object:
+
+
+   ...
+   <rdeEppParams:contents>
+     <rdeEppParams:eppParams>
+        <rdeEppParams:version>1.0</rdeEppParams:version>
+        <rdeEppParams:lang>en</rdeEppParams:lang>
+        <rdeEppParams:objURI>
+          urn:ietf:params:xml:ns:domain-1.0
+        </rdeEppParams:objURI>
+        <rdeEppParams:objURI>
+          urn:ietf:params:xml:ns:contact-1.0
+        </rdeEppParams:objURI>
+        <rdeEppParams:objURI>
+          urn:ietf:params:xml:ns:host-1.0
+        </rdeEppParams:objURI>
+        <rdeEppParams:svcExtension>
+           <epp:extURI>
+             urn:ietf:params:xml:ns:rgp-1.0
+           </epp:extURI>
+           <epp:extURI>
+             urn:ietf:params:xml:ns:secDNS-1.1
+           </epp:extURI>
+        </rdeEppParams:svcExtension>
+        <rdeEppParams:dcp>
+           <epp:access><epp:all/></epp:access>
+           <epp:statement>
+             <epp:purpose>
+                <epp:admin/>
+                <epp:prov/>
+             </epp:purpose>
+             <epp:recipient>
+                <epp:ours/>
+                <epp:public/>
+             </epp:recipient>
+             <epp:retention>
+                <epp:stated/>
+             </epp:retention>
+           </epp:statement>
+        </rdeEppParams:dcp>
+     </rdeEppParams:eppParams>
+   </rdeEppParams:contents>
+   ...
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 64]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+5.  Formal Syntax
+
+   Seven schemas are presented here.  The first schema is the base RDE
+   schema.  The second schema defines domain name object for RDE.  The
+   third schema defines host object for RDE.  The fourth schema defines
+   contact object for RDE.  The fifth schema defines registrar object
+   for RDE.  The sixth schema defines the idnTableRef and IDN objects.
+   The last schema defines the eppParams objects.
+
+5.1.  RDE CSV Schema
+
+   Copyright (c) 2011 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+   BEGIN
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <schema targetNamespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+          xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 65]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+          xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+          xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+          xmlns="http://www.w3.org/2001/XMLSchema"
+          elementFormDefault="qualified">
+
+     <!--
+     Import common element types
+     -->
+     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+     <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+          schemaLocation="rde-1.0.xsd"/>
+
+     <annotation>
+      <documentation>
+       Registry Data Escrow Comma-Seperated Values (CSV)
+      </documentation>
+     </annotation>
+
+     <!-- csv content element -->
+     <element name="csv" type="rdeCsv:csvType"
+     substitutionGroup="rde:content"/>
+
+
+     <!-- Definition of CSV file -->
+    <complexType name="csvType">
+     <complexContent>
+     <extension base="rde:contentType">
+      <sequence>
+       <element name="sep" type="token" default=","
+         minOccurs="0"/>
+       <element name="fields" type="rdeCsv:fieldsType"/>
+       <element name="files" type="rdeCsv:filesType"/>
+      </sequence>
+      <attribute name="name" type="token" use="required"/>
+     </extension>
+     </complexContent>
+    </complexType>
+
+
+     <element name="csvDelete" type="rdeCsv:csvDeleteType"
+     substitutionGroup="rde:delete"/>
+
+    <complexType name="csvDeleteType">
+     <complexContent>
+     <extension base="rde:deleteType">
+      <sequence>
+       <element name="sep" type="token" default=","
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 66]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         minOccurs="0"/>
+       <element name="fields" type="rdeCsv:fieldsType"/>
+       <element name="files" type="rdeCsv:filesType"/>
+      </sequence>
+      <attribute name="name" type="token" use="required"/>
+     </extension>
+     </complexContent>
+    </complexType>
+
+
+    <!-- Abstract field type -->
+    <element name="field" type="rdeCsv:fieldType"
+     abstract="true"/>
+    <complexType name="fieldType">
+     <sequence/>
+    </complexType>
+
+    <!-- Concrete field types -->
+
+    <!-- Name field (e.g. domain name) -->
+    <element name="fName" type="rdeCsv:fNameType"
+     substitutionGroup="rdeCsv:field"/>
+    <!-- UTF-8 Name field (e.g. domain name) -->
+    <element name="fUName" type="rdeCsv:fNameType"
+      substitutionGroup="rdeCsv:field"/>
+    <complexType name="fNameType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="eppcom\:labelType"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- Registry Object IDentifier (roid) field -->
+    <element name="fRoid" type="rdeCsv:fRoidType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fRoidType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="eppcom\:roidType"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 67]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+    <!-- Registrant field -->
+    <element name="fRegistrant" type="rdeCsv:fRegistrantType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fRegistrantType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="eppcom\:clIDType"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- Contact fields (Admin, Tech, Billing) -->
+    <element name="fAdminContacts" type="rdeCsv:fContactsType"
+     substitutionGroup="rdeCsv:field"/>
+    <element name="fTechContacts" type="rdeCsv:fContactsType"
+     substitutionGroup="rdeCsv:field"/>
+    <element name="fBillingContacts" type="rdeCsv:fContactsType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fContactsType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="eppcom\:clIDType"/>
+         <attribute name="list" type="boolean"
+           default="true"/>
+         <attribute name="sep" type="token"
+           default=","/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+
+
+    <!-- Statuses as a list of delimited statuses
+         with ',' as delimeter -->
+    <element name="fStatuses" type="rdeCsv:fStatusesType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fStatusesType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="eppcom\:statusType"/>
+         <attribute name="list" type="boolean"
+           default="true"/>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 68]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         <attribute name="sep" type="token"
+           default=","/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- clID fields (fClID, fCrID, fUpID) -->
+    <!-- Identifier of client that sponsors the object -->
+    <element name="fClID" type="rdeCsv:fClIDType"
+     substitutionGroup="rdeCsv:field"/>
+    <!-- Identifier of client that created the object -->
+    <element name="fCrID" type="rdeCsv:fClIDType"
+     substitutionGroup="rdeCsv:field"/>
+    <!-- Identifier of client that updated the object -->
+    <element name="fUpID" type="rdeCsv:fClIDType"
+     substitutionGroup="rdeCsv:field"/>
+    <!-- Identifier of client that requested the transfer -->
+    <element name="fReID" type="rdeCsv:fClIDType"
+     substitutionGroup="rdeCsv:field"/>
+    <!-- Identifier of client that should take or took action -->
+    <element name="fAcID" type="rdeCsv:fClIDType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fClIDType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="eppcom\:clIDType"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- datetime fields (fCrDate, fUpDate, fExDate) -->
+    <element name="fCrDate" type="rdeCsv:fDatetimeType"
+     substitutionGroup="rdeCsv:field"/>
+    <element name="fUpDate" type="rdeCsv:fDatetimeType"
+     substitutionGroup="rdeCsv:field"/>
+    <element name="fExDate" type="rdeCsv:fDatetimeType"
+     substitutionGroup="rdeCsv:field"/>
+    <!-- Date and time that transfer was requested -->
+    <element name="fReDate" type="rdeCsv:fDatetimeType"
+     substitutionGroup="rdeCsv:field"/>
+    <!-- Date and time of a required or completed response -->
+    <element name="fAcDate" type="rdeCsv:fDatetimeType"
+     substitutionGroup="rdeCsv:field"/>
+    <element name="fTrDate" type="rdeCsv:fDatetimeType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fDatetimeType">
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 69]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="datetime"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- boolean type -->
+    <complexType name="fBooleanType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="boolean"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- unsignedbyte type -->
+    <complexType name="fUnsignedByteType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="unsignedbyte"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- unsignedShort type -->
+    <complexType name="fUnsignedShortType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="unsignedShort"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- hexBinary type -->
+    <complexType name="fHexBinaryType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 70]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+           default="hexBinary"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+
+    <!-- language type -->
+    <element name="fLanguage" type="rdeCsv:fLanguageType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fLanguageType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="language"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+
+    <!-- State of the most recent transfer request -->
+    <element name="fTrStatus" type="rdeCsv:fTrStatusType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fTrStatusType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="eppcom\:trStatusType"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- General token type -->
+    <complexType name="fTokenType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="token"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- positive integer type -->
+    <complexType name="fPositiveIntegerType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 71]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+         <sequence/>
+         <attribute name="type" type="token"
+           default="positiveInteger"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+
+    <!-- Password authorization info -->
+    <element name="fPwAuthInfo" type="rdeCsv:fPwAuthInfoType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fPwAuthInfoType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="normalizedString"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+
+    <!-- Custom / extension field type -->
+    <element name="fCustom" type="rdeCsv:fCustomType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fCustomType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="name" type="token"/>
+         <attribute name="type" type="token"
+           default="token"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
+    <!-- Ordered list of field definitions for the csv -->
+    <complexType name="fieldsType">
+     <sequence maxOccurs="unbounded">
+       <element ref="rdeCsv:field"/>
+     </sequence>
+    </complexType>
+
+    <!-- List of files -->
+    <complexType name="filesType">
+     <sequence>
+       <element name="file" type="rdeCsv:fileType"
+         maxOccurs="unbounded"/>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 72]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+     </sequence>
+    </complexType>
+
+    <!-- File definition -->
+    <complexType name="fileType">
+     <simpleContent>
+       <extension base="token">
+         <attribute name="compression" type="token"/>
+         <attribute name="encoding" type="token"
+           default="UTF-8"/>
+         <attribute name="cksum" type="token"/>
+       </extension>
+     </simpleContent>
+    </complexType>
+
+     <!--
+     End of schema.
+     -->
+   </schema>
+   END
+
+5.2.  Domain Object
+
+   Copyright (c) 2011 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 73]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+BEGIN
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:rdeDomain-1.0"
+       xmlns:rdeDomain="urn:ietf:params:xml:ns:rdeDomain-1.0"
+       xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+       xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       xmlns:rgp="urn:ietf:params:xml:ns:rgp-1.0"
+       xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.1"
+       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+       xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       elementFormDefault="qualified">
+
+  <!--
+  Import common element types
+  -->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+       schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:domain-1.0"
+       schemaLocation="domain-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:secDNS-1.1"
+       schemaLocation="secDNS-1.1.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rgp-1.0"
+       schemaLocation="rgp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+       schemaLocation="rde-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       schemaLocation="rdeCsv-1.0.xsd"/>
+
+  <annotation>
+   <documentation>
+    Registry Data Escrow (RDE) Domain Object
+   </documentation>
+  </annotation>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="rdeDomain:contentsType"
+  substitutionGroup="rde:contents"/>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 74]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+  <complexType name="contentsType">
+   <complexContent>
+    <extension base="rde:contentsType"/>
+   </complexContent>
+  </complexType>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <!-- domain content element for XML model -->
+  <element name="domain" type="rdeDomain:contentType"
+  substitutionGroup="rde:content"/>
+
+  <!-- Domain content type for XML model -->
+ <complexType name="contentType">
+  <complexContent>
+  <extension base="rde:contentType">
+   <sequence>
+    <element name="name" type="eppcom:labelType"/>
+    <element name="uName" type="eppcom:labelType"
+      minOccurs="0"/>
+    <element name="roid" type="eppcom:roidType"/>
+    <element name="idn" type="boolean"
+       minOccurs="0" default="false"/>
+    <element name="language" type="language"
+       minOccurs="0"/>
+    <element name="variant" type="boolean"
+       minOccurs="0" default="false"/>
+    <element name="originalName" type="eppcom:labelType"
+       minOccurs="0"/>
+    <element name="reserved" type="boolean"
+       minOccurs="0" default="false"/>
+    <element name="status" type="domain:statusType"
+    maxOccurs="11"/>
+    <element name="rgpStatus" type="rgp:statusType"
+    minOccurs="0"/>
+    <element name="registrant" type="eppcom:clIDType"
+    minOccurs="0"/>
+    <element name="contact" type="domain:contactType"
+    minOccurs="0" maxOccurs="unbounded"/>
+    <element name="ns" type="domain:nsType"
+    minOccurs="0"/>
+    <element name="host" type="eppcom:labelType"
+    minOccurs="0" maxOccurs="unbounded"/>
+    <element name="clID" type="eppcom:clIDType"/>
+    <element name="crID" type="eppcom:clIDType"
+    minOccurs="0"/>
+    <element name="crDate" type="dateTime"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 75]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+    minOccurs="0"/>
+    <element name="exDate" type="dateTime"
+    minOccurs="0"/>
+    <element name="upID" type="eppcom:clIDType"
+    minOccurs="0"/>
+    <element name="upDate" type="dateTime"
+    minOccurs="0"/>
+    <element name="trDate" type="dateTime"
+    minOccurs="0"/>
+    <element name="authInfo" type="domain:authInfoType"
+    minOccurs="0"/>
+    <element name="dnssec" type="secDNS:dsOrKeyType"
+    minOccurs="0"/>
+    <element name="transfer" type="rdeDomain:transferDataType"
+    minOccurs="0" maxOccurs="unbounded"/>
+    <element name="extension" type="rde:extAnyType"
+    minOccurs="0"/>
+   </sequence>
+  </extension>
+  </complexContent>
+ </complexType>
+
+  <!-- Domain transfer information for XML model -->
+ <complexType name="transferDataType">
+  <sequence>
+  <element name="trStatus" type="eppcom:trStatusType"/>
+  <element name="reID" type="eppcom:clIDType"/>
+  <element name="reDate" type="dateTime"/>
+  <element name="acID" type="eppcom:clIDType"/>
+  <element name="acDate" type="dateTime"/>
+  <element name="exDate" type="dateTime"
+   minOccurs="0"/>
+  </sequence>
+ </complexType>
+
+
+ <!-- RGP statuses field -->
+ <element name="fRgpStatuses" type="rdeDomain:fRgpStatusesType"
+  substitutionGroup="rdeCsv:field"/>
+ <complexType name="fRgpStatusesType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  default="rgp\:statusType"/>
+      <attribute name="list" type="boolean" default="true"/>
+      <attribute name="sep" type="token" default=","/>
+    </extension>
+  </complexContent>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 76]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+ </complexType>
+
+ <!-- Name server object list field -->
+ <element name="fNsObjs" type="rdeDomain:fNsObjsType"
+  substitutionGroup="rdeCsv:field"/>
+ <complexType name="fNsObjsType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  default="eppcom\:labelType"/>
+      <attribute name="list" type="boolean" default="true"/>
+      <attribute name="sep" type="token" default=","/>
+    </extension>
+  </complexContent>
+ </complexType>
+
+
+ <!-- DNSSEC field types -->
+
+ <!-- Maximum signature lifetime field -->
+ <element name="fMaxSigLife" type="rdeDomain:fMaxSigLifeType"
+  substitutionGroup="rdeCsv:field"/>
+ <complexType name="fMaxSigLifeType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"
+        default="secDNS\:maxSigLifeType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+
+ <!-- Key tag field -->
+ <element name="fKeyTag" type="rdeCsv:fUnsignedShortType"
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- DS Algorithm field -->
+ <element name="fDsAlg" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Digest type field -->
+ <element name="fDigestType" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Digest field -->
+ <element name="fDigest" type="rdeCsv:fHexBinaryType"
+  substitutionGroup="rdeCsv:field"/>
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 77]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+ <!-- Flags field -->
+ <element name="fFlags" type="rdeCsv:fUnsignedShortType"
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Protocol field -->
+ <element name="fProtocol" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Key Algorithm field -->
+ <element name="fKeyAlg" type="rdeCsv:fUnsignedByteType"
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Public Key field -->
+ <element name="fPubKey" type="rdeDomain:fPubKeyType"
+  substitutionGroup="rdeCsv:field"/>
+ <complexType name="fPubKeyType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  default="secDNS\:keyType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+
+
+ <!-- Boolean type  fields -->
+ <element name="fIdn" type="rdeCsv:fBooleanType"
+  substitutionGroup="rdeCsv:field"/>
+ <element name="fVariant" type="rdeCsv:fBooleanType"
+  substitutionGroup="rdeCsv:field"/>
+ <element name="fReserved" type="rdeCsv:fBooleanType"
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Original Domain Name for Variant field -->
+ <element name="fOriginalName" type="rdeCsv:fNameType"
+  substitutionGroup="rdeCsv:field"/>
+
+  <!--
+  Child elements of the <rde:delete> object
+  -->
+  <element name="delete" type="rdeDomain:deleteType"
+  substitutionGroup="rde:delete"/>
+
+  <complexType name="deleteType">
+   <complexContent>
+    <extension base="rde:deleteType">
+      <sequence>
+       <element name="name" type="eppcom:labelType"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 78]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+        minOccurs="0" maxOccurs="unbounded"/>
+      </sequence>
+    </extension>
+   </complexContent>
+  </complexType>
+
+  <!--
+  End of schema.
+  -->
+</schema>
+END
+
+5.3.  Host Object
+
+   Copyright (c) 2011 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+   BEGIN
+   <?xml version="1.0" encoding="UTF-8"?>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 79]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   <schema targetNamespace="urn:ietf:params:xml:ns:rdeHost-1.0"
+         xmlns:rdeHost="urn:ietf:params:xml:ns:rdeHost-1.0"
+         xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+         xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+         xmlns:host="urn:ietf:params:xml:ns:host-1.0"
+         xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+         xmlns="http://www.w3.org/2001/XMLSchema"
+         elementFormDefault="qualified">
+
+     <!--
+     Import common element types
+     -->
+     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+          schemaLocation="eppcom-1.0.xsd"/>
+     <import namespace="urn:ietf:params:xml:ns:host-1.0"
+          schemaLocation="host-1.0.xsd"/>
+     <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+          schemaLocation="rde-1.0.xsd"/>
+     <import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+          schemaLocation="rdeCsv-1.0.xsd"/>
+
+     <annotation>
+      <documentation>
+       Registry Data Escrow (RDE) Host Object
+      </documentation>
+     </annotation>
+
+     <!--
+     Child elements of the <rde:contents> object
+     -->
+     <element name="contents" type="rdeHost:contentsType"
+     substitutionGroup="rde:contents"/>
+
+     <complexType name="contentsType">
+      <complexContent>
+       <extension base="rde:contentsType"/>
+      </complexContent>
+     </complexType>
+
+     <!--
+     Child elements of the <rde:content> object
+     -->
+     <!-- host content element for XML model-->
+     <element name="host" type="rdeHost:contentType"
+     substitutionGroup="rde:content"/>
+
+     <!-- Host content type for XML model -->
+     <complexType name="contentType">
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 80]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      <complexContent>
+       <extension base="rde:contentType">
+         <sequence>
+          <element name="name" type="eppcom:labelType"/>
+          <element name="uName" type="eppcom:labelType"
+           minOccurs="0"/>
+          <element name="parentDomain" type="eppcom:labelType"
+           minOccurs="0"/>
+          <element name="roid" type="eppcom:roidType"/>
+          <element name="idn" type="boolean"
+            minOccurs="0" default="false"/>
+          <element name="status" type="host:statusType"
+           maxOccurs="7"/>
+          <element name="addr" type="host:addrType"
+           minOccurs="0" maxOccurs="unbounded"/>
+          <element name="clID" type="eppcom:clIDType"/>
+          <element name="crID" type="eppcom:clIDType"/>
+          <element name="crDate" type="dateTime"/>
+          <element name="upID" type="eppcom:clIDType"
+           minOccurs="0"/>
+          <element name="upDate" type="dateTime"
+           minOccurs="0"/>
+          <element name="trDate" type="dateTime"
+           minOccurs="0"/>
+          <element name="extension" type="rde:extAnyType"
+           minOccurs="0"/>
+         </sequence>
+       </extension>
+      </complexContent>
+     </complexType>
+
+
+    <!-- IP address fields (fV4Addrs, fV6Addrs) -->
+    <element name="fV4Addrs" type="rdeHost:fAddrsType"
+     substitutionGroup="rdeCsv:field"/>
+    <element name="fV6Addrs" type="rdeHost:fAddrsType"
+     substitutionGroup="rdeCsv:field"/>
+    <complexType name="fAddrsType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="host\:addrStringType"/>
+         <attribute name="list" type="boolean"
+           default="true"/>
+         <attribute name="sep" type="token"
+           default=","/>
+       </extension>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 81]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+     </complexContent>
+    </complexType>
+
+    <!-- Boolean type  fields -->
+    <element name="fIdn" type="rdeCsv:fBooleanType"
+     substitutionGroup="rdeCsv:field"/>
+
+    <!-- Parent domain name for subordinate host field -->
+    <element name="fParentDomain" type="rdeCsv:fNameType"
+     substitutionGroup="rdeCsv:field"/>
+
+
+     <!--
+     Child elements of the <rde:delete> object
+     -->
+     <element name="delete" type="rdeHost:deleteType"
+     substitutionGroup="rde:delete"/>
+
+     <complexType name="deleteType">
+      <complexContent>
+       <extension base="rde:deleteType">
+         <sequence>
+          <element name="name" type="eppcom:labelType"
+           minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+       </extension>
+      </complexContent>
+     </complexType>
+
+     <!--
+     End of schema.
+     -->
+   </schema>
+   END
+
+5.4.  Contact Object
+
+   Copyright (c) 2011 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 82]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+  BEGIN
+  <?xml version="1.0" encoding="UTF-8"?>
+
+  <schema targetNamespace="urn:ietf:params:xml:ns:rdeContact-1.0"
+      xmlns:rdeContact="urn:ietf:params:xml:ns:rdeContact-1.0"
+      xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+      xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+      xmlns:contact="urn:ietf:params:xml:ns:contact-1.0"
+      xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+      xmlns="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified">
+
+  <!--
+  Import common element types.
+  -->
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+        schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:contact-1.0"
+        schemaLocation="contact-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+        schemaLocation="rde-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+        schemaLocation="rdeCsv-1.0.xsd"/>
+
+  <annotation>
+    <documentation>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 83]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      Registry Data Escrow (RDE) Contact Object
+    </documentation>
+  </annotation>
+
+  <!--
+  Child elements of the <rde:contents> object
+  -->
+  <element name="contents" type="rdeContact:contentsType"
+   substitutionGroup="rde:contents"/>
+
+  <complexType name="contentsType">
+    <complexContent>
+     <extension base="rde:contentsType"/>
+    </complexContent>
+  </complexType>
+
+  <!--
+  Child elements of the <rde:content> object
+  -->
+    <!-- contact content element for XML model -->
+  <element name="contact" type="rdeContact:contentType"
+   substitutionGroup="rde:content"/>
+
+    <!-- Contact content type for XML model -->
+  <complexType name="contentType">
+    <complexContent>
+     <extension base="rde:contentType">
+      <sequence>
+        <element name="id" type="eppcom:clIDType"/>
+        <element name="roid" type="eppcom:roidType"/>
+        <element name="status" type="contact:statusType"
+        maxOccurs="7"/>
+        <element name="postalInfo" type="contact:postalInfoType"
+        maxOccurs="2"/>
+        <element name="voice" type="contact:e164Type"
+        minOccurs="0"/>
+        <element name="fax" type="contact:e164Type"
+        minOccurs="0"/>
+        <element name="email" type="eppcom:minTokenType"/>
+        <element name="clID" type="eppcom:clIDType"/>
+        <element name="crID" type="eppcom:clIDType"/>
+        <element name="crDate" type="dateTime"/>
+        <element name="upID" type="eppcom:clIDType"
+        minOccurs="0"/>
+        <element name="upDate" type="dateTime"
+        minOccurs="0"/>
+        <element name="trDate" type="dateTime"
+        minOccurs="0"/>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 84]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+        <element name="authInfo" type="contact:authInfoType"
+        minOccurs="0"/>
+        <element name="disclose" type="contact:discloseType"
+        minOccurs="0"/>
+        <element name="transfer" type="rdeContact:transferDataType"
+        minOccurs="0"/>
+        <element name="extension" type="rde:extAnyType"
+        minOccurs="0"/>
+      </sequence>
+     </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="transferDataType">
+  <sequence>
+   <element name="trStatus" type="eppcom:trStatusType"/>
+   <element name="reID" type="eppcom:clIDType"/>
+   <element name="reDate" type="dateTime"/>
+   <element name="acID" type="eppcom:clIDType"/>
+   <element name="acDate" type="dateTime"/>
+  </sequence>
+  </complexType>
+
+
+
+   <!-- Server-unique contact identifier field -->
+   <element name="fId" type="rdeContact:fIdType"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fIdType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+        default="eppcom\:clIDType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- voice and fax telephone number fields -->
+   <element name="fVoice" type="rdeContact:fE164StringType"
+    substitutionGroup="rdeCsv:field"/>
+   <element name="fFax" type="rdeContact:fE164StringType"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fE164StringType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 85]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+        default="contact\:e164StringType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- voice and fax telephone extension fields -->
+   <element name="fVoiceExt" type="rdeCsv:fTokenType"
+    substitutionGroup="rdeCsv:field"/>
+   <element name="fFaxExt" type="rdeCsv:fTokenType"
+    substitutionGroup="rdeCsv:field"/>
+
+   <!-- contact email address field -->
+   <element name="fEmail" type="rdeContact:fEmailType"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fEmailType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+        default="eppcom\:minTokenType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+
+
+   <!--
+     Postal type field
+     ("loc" = localized, "int" = internationalized)
+   -->
+   <element name="fPostalType" type="rdeContact:fPostalTypeType"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fPostalTypeType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+        default="contact\:postalInfoEnumType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- Standard postal line field -->
+   <complexType name="fPostalLineType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 86]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+        default="contact\:postalLineType"/>
+        <attribute name="postalType" type="contact:postalInfoEnumType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- Standard optional postal line field -->
+   <complexType name="fOptPostalLineType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+        default="contact\:optPostalLineType"/>
+        <attribute name="postalType" type="contact:postalInfoEnumType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- Name of the individual or role field -->
+   <element name="fName" type="rdeContact:fPostalLineType"
+    substitutionGroup="rdeCsv:field"/>
+
+
+   <!-- Name organization field -->
+   <element name="fOrg" type="rdeContact:fOptPostalLineType"
+    substitutionGroup="rdeCsv:field"/>
+
+
+   <!-- Street address line field with required index attribute  -->
+   <!-- starting with index 0.  -->
+   <element name="fStreet" type="rdeContact:fStreetType"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fStreetType">
+    <complexContent>
+      <extension base="rdeContact:fPostalLineType">
+        <sequence/>
+        <attribute name="index" type="int"
+        use="required"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- Contact's city field -->
+   <element name="fCity" type="rdeContact:fPostalLineType"
+    substitutionGroup="rdeCsv:field"/>
+
+   <!-- Contact's state or province field -->
+   <element name="fSp" type="rdeContact:fOptPostalLineType"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 87]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+    substitutionGroup="rdeCsv:field"/>
+
+   <!-- Contact's postal code field -->
+   <element name="fPc" type="rdeContact:fPcType"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fPcType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+        default="contact\:pcType"/>
+        <attribute name="postalType" type="contact:postalInfoEnumType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- Contact's country code field -->
+   <element name="fCc" type="rdeContact:fCcType"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fCcType">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+        default="contact\:ccType"/>
+        <attribute name="postalType" type="contact:postalInfoEnumType"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+   <!-- Disclosure element fields -->
+   <!-- Flag of "1" to allow disclosure
+        and "0" to disallow disclosure -->
+   <element name="fDiscloseFlag" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure of localized name
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseNameLoc" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure of internationalized name
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseNameInt" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure of localized org
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseOrgLoc" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure of internationalized org
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 88]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseOrgInt" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure of localized address
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseAddrLoc" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure of internationalized address
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseAddrInt" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure voice telephone number
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseVoice" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure facsimile telephone number
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseFax" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <!-- Disclosure email address
+        based on fDiscloseFlag? -->
+   <element name="fDiscloseEmail" type="rdeContact:fBoolean"
+    substitutionGroup="rdeCsv:field"/>
+   <complexType name="fBoolean">
+    <complexContent>
+      <extension base="rdeCsv:fieldType">
+        <sequence/>
+        <attribute name="type" type="token"
+        default="boolean"/>
+      </extension>
+    </complexContent>
+   </complexType>
+
+
+  <!--
+  Child elements of the <rde:delete> object
+  -->
+  <element name="delete" type="rdeContact:deleteType"
+   substitutionGroup="rde:delete"/>
+
+  <complexType name="deleteType">
+    <complexContent>
+     <extension base="rde:deleteType">
+      <sequence>
+        <element name="id" type="eppcom:clIDType"
+        minOccurs="0" maxOccurs="unbounded"/>
+      </sequence>
+     </extension>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 89]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+    </complexContent>
+  </complexType>
+
+  <!--
+  End of schema.
+  -->
+  </schema>
+  END
+
+5.5.  Registrar Object
+
+   Copyright (c) 2011 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ BEGIN
+ <?xml version="1.0" encoding="UTF-8"?>
+
+ <schema targetNamespace="urn:ietf:params:xml:ns:rdeRegistrar-1.0"
+       xmlns:rdeRegistrar="urn:ietf:params:xml:ns:rdeRegistrar-1.0"
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 90]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+       xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+     xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
+       xmlns:contact="urn:ietf:params:xml:ns:contact-1.0"
+       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+       xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       elementFormDefault="qualified">
+
+   <!--
+   Import common element types.
+   -->
+   <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+        schemaLocation="eppcom-1.0.xsd"/>
+   <import namespace="urn:ietf:params:xml:ns:domain-1.0"
+        schemaLocation="domain-1.0.xsd"/>
+   <import namespace="urn:ietf:params:xml:ns:contact-1.0"
+        schemaLocation="contact-1.0.xsd"/>
+   <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+        schemaLocation="rde-1.0.xsd"/>
+   <import namespace="urn:ietf:params:xml:ns:rdeCsv-1.0"
+         schemaLocation="rdeCsv-1.0.xsd"/>
+
+   <annotation>
+    <documentation>
+     Registry Data Escrow (RDE) Registrar Object
+    </documentation>
+   </annotation>
+
+   <!--
+   Child elements of the <rde:contents> object
+   -->
+   <element name="contents" type="rdeRegistrar:contentsType"
+   substitutionGroup="rde:contents"/>
+
+   <complexType name="contentsType">
+    <complexContent>
+     <extension base="rde:contentsType"/>
+    </complexContent>
+   </complexType>
+
+   <!--
+   Child elements of the <rde:content> object
+   -->
+   <element name="registrar" type="rdeRegistrar:contentType"
+   substitutionGroup="rde:content"/>
+   <complexType name="contentType">
+    <complexContent>
+     <extension base="rde:contentType">
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 91]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+       <sequence>
+        <element name="id" type="eppcom:clIDType"/>
+        <element name="roid" type="eppcom:roidType"/>
+        <element name="name" type="rdeRegistrar:nameType"
+         maxOccurs="2"/>
+        <element name="icannId" type="positiveInteger"
+         minOccurs="0"/>
+        <element name="status" type="rdeRegistrar:statusType"/>
+        <element name="addr" type="rdeRegistrar:addrType"
+         maxOccurs="2"/>
+        <element name="voice" type="contact:e164Type"
+         minOccurs="0"/>
+        <element name="fax" type="contact:e164Type"
+         minOccurs="0"/>
+        <element name="email" type="eppcom:minTokenType"
+         minOccurs="0"/>
+        <element name="url" type="anyURI"
+         minOccurs="0"/>
+        <element name="whoisUrl" type="anyURI"
+         minOccurs="0"/>
+        <choice>
+         <element name="contactAttr" type="rdeRegistrar:contactAttrType"
+           minOccurs="0" maxOccurs="unbounded"/>
+           <element name="contactObj" type="rdeRegistrar:contactObjType"
+           minOccurs="0" maxOccurs="unbounded"/>
+        </choice>
+        <element name="crID" type="eppcom:clIDType"
+         minOccurs="0"/>
+        <element name="crDate" type="dateTime"
+         minOccurs="0"/>
+        <element name="upID" type="eppcom:clIDType"
+         minOccurs="0"/>
+        <element name="upDate" type="dateTime"
+         minOccurs="0"/>
+        <element name="extension" type="rde:extAnyType"
+         minOccurs="0"/>
+       </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+
+   <!--
+   Child elements of <rdeRegistar:addrType> element
+   -->
+   <complexType name="addrType">
+     <sequence>
+       <element name="street" type="contact:optPostalLineType"
+        minOccurs="0" maxOccurs="3"/>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 92]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+       <element name="city" type="contact:postalLineType"/>
+       <element name="sp" type="contact:optPostalLineType"
+        minOccurs="0"/>
+       <element name="pc" type="contact:pcType"
+        minOccurs="0"/>
+       <element name="cc" type="contact:ccType"/>
+     </sequence>
+     <attribute name="type" type="contact:postalInfoEnumType"
+      use="required"/>
+   </complexType>
+
+   <!--
+   Child elements of <rdeRegistar:contactAttr> element
+   -->
+   <complexType name="contactAttrType">
+     <sequence>
+      <element name="id" type="eppcom:clIDType"/>
+      <element name="roid" type="eppcom:roidType"/>
+      <element name="name" type="rdeRegistrar:nameType"
+       maxOccurs="2"/>
+      <element name="type" type="rdeRegistrar:contactTypeType"
+       maxOccurs="3"/>
+      <element name="addr" type="rdeRegistrar:addrType"
+       maxOccurs="2"/>
+      <element name="voice" type="contact:e164Type"
+       minOccurs="0"/>
+      <element name="fax" type="contact:e164Type"
+       minOccurs="0"/>
+      <element name="email" type="eppcom:minTokenType"
+       minOccurs="0"/>
+      <element name="crID" type="eppcom:clIDType"
+       minOccurs="0"/>
+      <element name="crDate" type="dateTime"
+       minOccurs="0"/>
+      <element name="upID" type="eppcom:clIDType"
+       minOccurs="0"/>
+      <element name="upDate" type="dateTime"
+       minOccurs="0"/>
+      <element name="extension" type="rde:extAnyType"
+       minOccurs="0"/>
+    </sequence>
+   </complexType>
+
+   <!--
+   Definition of <rdeRegistar:name> element
+   -->
+   <complexType name="nameType">
+     <simpleContent>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 93]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+       <extension base="normalizedString">
+        <attribute name="type"
+        type="rdeRegistrar:postalInfoEnumType"
+         use="required"/>
+       </extension>
+     </simpleContent>
+   </complexType>
+
+   <!--
+   Supported form / type of postal information
+   -->
+   <simpleType name="postalInfoEnumType">
+     <restriction base="token">
+       <enumeration value="loc"/>
+       <enumeration value="int"/>
+     </restriction>
+   </simpleType>
+
+   <!--
+   Definition of <rdeRegistrar:contactObj> element
+   -->
+   <complexType name="contactObjType">
+     <simpleContent>
+       <extension base="eppcom:clIDType">
+         <attribute name="type"
+         type="rdeRegistrar:contactTypeType"/>
+       </extension>
+     </simpleContent>
+   </complexType>
+
+
+  <!-- Registrar unique identifier (short name / id) -->
+  <element name="fId" type="rdeCsv:fClIDType"
+   substitutionGroup="rdeCsv:field"/>
+
+  <!-- Registrar name (full name) -->
+  <element name="fName" type="rdeRegistrar:fNameType"
+   substitutionGroup="rdeCsv:field"/>
+
+  <!-- Registrar name field -->
+  <complexType name="fNameType">
+   <complexContent>
+     <extension base="rdeCsv:fieldType">
+       <sequence/>
+       <attribute name="type" type="token"
+       default="normalizedString"/>
+       <attribute name="isLoc" type="boolean" default="false"/>
+     </extension>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 94]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   </complexContent>
+  </complexType>
+
+
+  <!-- Registrar GURID field -->
+  <element name="fIcannId"
+   type="rdeCsv:fPositiveIntegerType"
+   substitutionGroup="rdeCsv:field"/>
+
+  <!-- Registrar status field -->
+  <element name="fStatus" type="rdeRegistrar:fStatusType"
+   substitutionGroup="rdeCsv:field"/>
+  <element name="fStatusName" type="rdeCsv:fTokenType"
+   substitutionGroup="rdeCsv:field"/>
+  <complexType name="fStatusType">
+   <complexContent>
+     <extension base="rdeCsv:fieldType">
+       <sequence/>
+       <attribute name="type" type="token"
+       default="rdeRegistrar\:statusType"/>
+     </extension>
+   </complexContent>
+  </complexType>
+
+  <!-- Registrar status type with optional name attr -->
+  <complexType name="statusType">
+    <simpleContent>
+      <extension base="rdeRegistrar:statusValueType">
+        <attribute name="name" type="token"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <!-- Registrar status enumerated values -->
+  <simpleType name="statusValueType">
+    <restriction base="token">
+      <enumeration value="ok"/>
+      <enumeration value="hold"/>
+      <enumeration value="terminated"/>
+      <enumeration value="custom"/>
+    </restriction>
+  </simpleType>
+
+    <!-- URL fields -->
+  <element name="fUrl" type="rdeRegistrar:anyURIType"
+   substitutionGroup="rdeCsv:field"/>
+  <element name="fWhoisUrl" type="rdeRegistrar:anyURIType"
+   substitutionGroup="rdeCsv:field"/>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 95]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+  <complexType name="anyURIType">
+   <complexContent>
+     <extension base="rdeCsv:fieldType">
+       <sequence/>
+       <attribute name="type" type="token"
+       default="anyURI"/>
+     </extension>
+   </complexContent>
+  </complexType>
+
+  <!-- Registrar contact types field -->
+  <element name="fContactTypes"
+   type="rdeRegistrar:contactTypesType"
+   substitutionGroup="rdeCsv:field"/>
+  <complexType name="contactTypesType">
+   <complexContent>
+     <extension base="rdeCsv:fieldType">
+       <sequence/>
+       <attribute name="type" type="token"
+         default="rdeRegistrar\:contactTypeType"/>
+       <attribute name="list" type="boolean"
+         default="true"/>
+       <attribute name="sep" type="token"
+         default=","/>
+     </extension>
+   </complexContent>
+  </complexType>
+
+  <!-- Contact type enumerated values -->
+   <simpleType name="contactTypeType">
+     <restriction base="token">
+       <enumeration value="admin"/>
+       <enumeration value="billing"/>
+       <enumeration value="tech"/>
+       <enumeration value="custom"/>
+     </restriction>
+   </simpleType>
+
+
+   <!--
+   Child elements of the <rde:delete> object
+   -->
+   <element name="delete" type="rdeRegistrar:deleteType"
+   substitutionGroup="rde:delete"/>
+
+   <complexType name="deleteType">
+    <complexContent>
+     <extension base="rde:deleteType">
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 96]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+       <sequence>
+        <element name="id" type="eppcom:clIDType"
+         minOccurs="0" maxOccurs="unbounded"/>
+       </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+
+   <!--
+   End of schema.
+   -->
+ </schema>
+ END
+
+5.6.  IDN Language Rules Object
+
+   Copyright (c) 2011 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 97]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   BEGIN
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <schema targetNamespace="urn:ietf:params:xml:ns:rdeIDN-1.0"
+         xmlns:rdeIDN="urn:ietf:params:xml:ns:rdeIDN-1.0"
+         xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+         xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+         xmlns="http://www.w3.org/2001/XMLSchema"
+         elementFormDefault="qualified">
+
+     <!--
+     Import common element types
+     -->
+     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+     schemaLocation="eppcom-1.0.xsd"/>
+     <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+     schemaLocation="rde-1.0.xsd"/>
+
+     <annotation>
+      <documentation>
+       Registry Data Escrow (RDE) IDN Language Rules Object
+      </documentation>
+     </annotation>
+
+     <!--
+     Child elements of the <rde:contents> object
+     -->
+     <element name="contents" type="rdeIDN:contentsType"
+      substitutionGroup="rde:contents"/>
+
+     <complexType name="contentsType">
+      <complexContent>
+       <extension base="rde:contentsType"/>
+      </complexContent>
+     </complexType>
+
+
+     <!--
+     Child elements of the <rde:content> object
+     -->
+     <element name="languageRules"
+     type="rdeIDN:languageRulesType"
+     substitutionGroup="rde:content"/>
+
+     <complexType name="languageRulesType">
+      <complexContent>
+       <extension base="rde:contentType">
+         <sequence>
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 98]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+            <element name="language" type="language"
+             maxOccurs="unbounded"/>
+            <element name="table"
+            type="rdeIDN:languageTableType"
+             maxOccurs="unbounded"/>
+         </sequence>
+       </extension>
+      </complexContent>
+     </complexType>
+
+     <!--
+     Child elements of the <rdeIDN:rdeIDN:table> element.
+     -->
+     <complexType name="languageTableType">
+       <sequence>
+         <element name="url" type="anyURI"
+           maxOccurs="unbounded"/>
+         <element name="table" type="rdeIDN:languageTableType"
+           minOccurs="0" maxOccurs="unbounded"/>
+       </sequence>
+      <attribute name="use"
+      type="rdeIDN:languageUseType" default="one"/>
+     </complexType>
+
+     <simpleType name="languageUseType">
+       <restriction base="token">
+         <enumeration value="one"/>
+         <enumeration value="all"/>
+       </restriction>
+     </simpleType>
+
+      <!--
+     Child elements of the <rde:delete> object
+     -->
+     <element name="delete" type="rdeIDN:deleteType"
+     substitutionGroup="rde:delete"/>
+
+     <complexType name="deleteType">
+      <complexContent>
+       <extension base="rde:deleteType">
+         <sequence>
+            <element name="language" type="language"
+             minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+       </extension>
+      </complexContent>
+     </complexType>
+
+
+
+
+Gould, et al.            Expires April 21, 2013                [Page 99]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+     <!--
+     End of schema.
+     -->
+   </schema>
+   END
+
+5.7.  EPP Parameters Object
+
+   Copyright (c) 2011 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+   BEGIN
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <schema targetNamespace="urn:ietf:params:xml:ns:rdeEppParams-1.0"
+           xmlns:rdeEppParams="urn:ietf:params:xml:ns:rdeEppParams-1.0"
+           xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+           xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+           xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 100]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+           xmlns="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+     <!--
+     Import common element types
+     -->
+     <import namespace="urn:ietf:params:xml:ns:epp-1.0"
+      schemaLocation="epp-1.0.xsd"/>
+     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+      schemaLocation="eppcom-1.0.xsd"/>
+     <import namespace="urn:ietf:params:xml:ns:rde-1.0"
+      schemaLocation="rde-1.0.xsd"/>
+
+     <annotation>
+       <documentation>
+         Registry Data Escrow EPP Parameters schema
+       </documentation>
+     </annotation>
+
+     <!--
+     Child elements of the <rde:contents> object
+     -->
+     <element name="contents" type="rdeEppParams:contentsType"
+       substitutionGroup="rde:contents"/>
+
+     <complexType name="contentsType">
+       <complexContent>
+         <extension base="rde:contentsType"/>
+       </complexContent>
+     </complexType>
+
+     <!--
+     Child elements of the <rde:content> object
+     -->
+     <element name="eppParams" type="rdeEppParams:contentType"
+       substitutionGroup="rde:content"/>
+
+     <complexType name="contentType">
+       <complexContent>
+         <extension base="rde:contentType">
+           <sequence>
+             <element name="version" type="epp:versionType"
+               maxOccurs="unbounded"/>
+             <element name="lang" type="language"
+               maxOccurs="unbounded"/>
+             <element name="objURI" type="anyURI"
+               maxOccurs="unbounded"/>
+             <element name="svcExtension" type="epp:extURIType"
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 101]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+               minOccurs="0"/>
+             <element name="dcp" type="epp:dcpType"/>
+           </sequence>
+         </extension>
+       </complexContent>
+     </complexType>
+
+     <!--
+     End of schema.
+     -->
+   </schema>
+   END
+
+5.8.  Extension Guidelines
+
+   TBD
+
+5.9.  Internationalization Considerations
+
+   Data Escrow deposits are represented in XML, which provides native
+   support for encoding information using the Unicode character set and
+   its more compact representations including UTF-8.  Conformant XML
+   processors recognize both UTF-8 and UTF-16.  Though XML includes
+   provisions to identify and use other character encodings through use
+   of an "encoding" attribute in an <?xml?> declaration, use of UTF-8 is
+   RECOMMENDED.
+
+5.10.  IANA Considerations
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [RFC3688].  Fourteen
+   URI assignments have been registered by the IANA.
+
+   Registration request for the RDE CSV namespace:
+
+      URI: urn:ietf:params:xml:ns:rdeCsv-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the RDE XML schema:
+
+      URI: urn:ietf:params:xml:schema:rdeCsv-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 102]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      See the "Formal Syntax" section of this document.
+
+   Registration request for the RDE domain namespace:
+
+      URI: urn:ietf:params:xml:ns:rdeDomain-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the RDE domain XML schema:
+
+      URI: urn:ietf:params:xml:schema:rdeDomain-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      See the "Formal Syntax" section of this document.
+
+   Registration request for the RDE host namespace:
+
+      URI: urn:ietf:params:xml:ns:rdeHost-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the RDE host XML schema:
+
+      URI: urn:ietf:params:xml:schema:rdeHost-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      See the "Formal Syntax" section of this document.
+
+   Registration request for the RDE contact namespace:
+
+      URI: urn:ietf:params:xml:ns:rdeContact-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the RDE contact XML schema:
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 103]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      URI: urn:ietf:params:xml:schema:rdeContact-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      See the "Formal Syntax" section of this document.
+
+   Registration request for the RDE registrar namespace:
+
+      URI: urn:ietf:params:xml:ns:rdeRegistrar-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the RDE registrar XML schema:
+
+      URI: urn:ietf:params:xml:schema:rdeRegistrar-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      See the "Formal Syntax" section of this document.
+
+   Registration request for the RDE IDN namespace:
+
+      URI: urn:ietf:params:xml:ns:rdeIDN-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the RDE IDN XML schema:
+
+      URI: urn:ietf:params:xml:schema:rdeIDN-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      See the "Formal Syntax" section of this document.
+
+   Registration request for the RDE EPP parameters namespace:
+
+      URI: urn:ietf:params:xml:ns:rdeEppParams-1.0
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 104]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the RDE EPP parameters XML schema:
+
+      URI: urn:ietf:params:xml:schema:rdeEppParams-1.0
+
+      Registrant Contact: See the "Author's Address" section of this
+      document.
+
+      See the "Formal Syntax" section of this document.
+
+5.11.  Security Considerations
+
+   This specification does not define the security mechanisms to be used
+   in the transmission of the data escrow deposits, since it only
+   specifies the minimum necessary to enable the rebuilding of a
+   Registry from deposits without intervention from the original
+   Registry.
+
+   Depending on local policies, some elements or most likely, the whole
+   deposit will be considered confidential.  As such the Registry
+   transmitting the data to the Escrow Agent SHOULD take all the
+   necessary precautions like encrypting the data itself and/or the
+   transport channel to avoid inadvertent disclosure of private data.
+
+   It is also of the utmost importance the authentication of the parties
+   passing data escrow deposit files.  The Escrow Agent SHOULD properly
+   authenticate the identity of the Registry before accepting data
+   escrow deposits.  In a similar manner, the Registry SHOULD
+   authenticate the identity of the Escrow Agent before submitting any
+   data.
+
+   Additionally, the Registry and the Escrow Agent SHOULD use integrity
+   checking mechanisms to ensure the data transmitted is what the source
+   intended.  Validation of the contents by the Escrow Agent is
+   RECOMMENDED to ensure not only the file was transmitted correctly
+   from the Registry, but also the contents are also "meaningful".
+
+5.12.  Acknowledgments
+
+   Parts of this document are based on EPP [RFC5730] and related RFCs by
+   Scott Hollenbeck.
+
+   TBD
+
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 105]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+5.13.  Change History
+
+   [[RFC Editor: Please remove this section.]]
+
+
+6.  References
+
+6.1.  Normative References
+
+   [ISO-3166-1]
+              International Organization for Standardization, "Codes for
+              the representation of names of countries and their
+              subdivisions - Part 1: Country codes", ISO Standard 3166,
+              November 2006.
+
+   [ITU-E164]
+              International Telecommunication Union, "The international
+              public telecommunication numbering plan", ITU-T
+              Recommendation E.164, February 2005.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+   [RFC3339]  Klyne, G., Ed. and C. Newman, "Date and Time on the
+              Internet: Timestamps", RFC 3339, July 2002.
+
+   [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
+              the Extensible Provisioning Protocol (EPP)", RFC 3915,
+              September 2004.
+
+   [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, RFC 5730, August 2009.
+
+   [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, RFC 5731, August 2009.
+
+   [RFC5732]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Host Mapping", STD 69, RFC 5732, August 2009.
+
+   [RFC5733]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Contact Mapping", STD 69, RFC 5733, August 2009.
+
+   [RFC5910]  Gould, J. and S. Hollenbeck, "Domain Name System (DNS)
+              Security Extensions Mapping for the Extensible
+              Provisioning Protocol (EPP)", RFC 5910, May 2010.
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 106]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+6.2.  Informative References
+
+   [RFC0791]  Postel, J., "Internet Protocol", STD 5, RFC 791,
+              September 1981.
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              January 2004.
+
+   [RFC4291]  Hinden, R. and S. Deering, "IP Version 6 Addressing
+              Architecture", RFC 4291, February 2006.
+
+URIs
+
+   [1]  <http://tools.ietf.org/id/
+        draft-arias-noguchi-registry-data-escrow-03.txt>
+
+
+Authors' Addresses
+
+   James Gould
+   VeriSign, Inc.
+   12061 Bluemont Way
+   Reston, VA  20190
+   US
+
+   Email: jgould@verisign.com
+   URI:   http://www.verisigninc.com
+
+
+   Chethan Thippeswamy
+   VeriSign, Inc.
+   12061 Bluemont Way
+   Reston, VA  20190
+   US
+
+   Email: cthippeswamy@verisign.com
+   URI:   http://www.verisigninc.com
+
+
+   Francisco Arias
+   Internet Corporation for Assigned Names and Numbers
+   4676 Admiralty Way, Suite 330
+   Marina del Rey  90292
+   United States of America
+
+   Phone: +1.310.823.9358
+   Email: francisco.arias@icann.org
+
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 107]
+
+Internet-Draft         Registry Object Data Escrow          October 2012
+
+
+   Shoji Noguchi
+   Japan Registry Services Co., Ltd.
+   Chiyoda First Bldg. East 13F, 3-8-1 Nishi-Kanda
+   Chiyoda-ku, Tokyo  101-0065
+   Japan
+
+   Phone: +81.3.5215.8451
+   Email: noguchi@jprs.co.jp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould, et al.            Expires April 21, 2013               [Page 108]
+
