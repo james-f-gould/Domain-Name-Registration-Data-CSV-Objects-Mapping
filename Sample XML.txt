@@ -1,0 +1,705 @@
+<rdeCsv:csv name="domain">
+  <rdeCsv:sep>,</rdeCsv:sep>
+  <rdeCsv:fields>
+    <rdeCsv:fName/>
+    <rdeCsv:fRoid/>
+    <rdeDomain:fIdn/>
+    <rdeDomain:fLanguage/>
+    <rdeDomain:fVariant/>
+    <rdeDomain:fOriginalName/>
+    <rdeDomain:fReserved/>
+    <rdeCsv:fStatuses/>
+    <rdeDomain:fRgpStatuses/>
+    <rdeCsv:fRegistrant/>
+    <rdeCsv:fAdminContacts/>
+    <rdeCsv:fTechContacts/>
+    <rdeCsv:fBillingContacts/>
+    <rdeDomain:fNsObjs/>
+    <rdeCsv:fClID/>
+    <rdeCsv:fCrID/>
+    <rdeCsv:fCrDate/>
+    <rdeCsv:fUpID/>
+    <rdeCsv:fUpDate/>
+    <rdeCsv:fExDate/>
+    <rdeCsv:fPwAuthInfo/>
+  </rdeCsv:fields>
+  <rdeCsv:files>
+    <rdeCsv:file 
+      cksum="2670296305 91797970">
+      domain-20120830.csv
+    </rdeCsv:file> 
+  </rdeCsv:files>
+</rdeCsv:csv>
+
+
+<rdeCsv:csvDelete name="domain">
+  <rdeCsv:fields>
+    <rdeCsv:fName/>
+  </rdeCsv:fields>
+  <rdeCsv:files>
+    <rdeCsv:file 
+      cksum="2670296305 91797970">
+      domain-delete-20120830.csv
+    </rdeCsv:file> 
+  </rdeCsv:files>
+</rdeCsv:csvDelete>
+
+...
+<rde:deletes>
+...
+ <rdeCsv:csvDelete name="domain">
+	<rdeCsv:fields>
+	  <rdeCsv:fName/>
+	</rdeCsv:fields>
+	<rdeCsv:files>
+	  <rdeCsv:file 
+		 cksum="2670296305 91797970">
+		 domain-delete-20120830.csv
+	  </rdeCsv:file> 
+	</rdeCsv:files>
+ </rdeCsv:csvDelete>
+...
+</rde:deletes>
+...
+
+...
+<rdeDomain:contents>
+...
+	<rdeCsv:csv name="dnssec">
+	  <rdeCsv:sep>,</rdeCsv:sep>
+	  <rdeCsv:fields>
+		 <rdeCsv:fName/>
+		 <rdeDomain:fMaxSigLife/>
+		 <rdeDomain:fKeyTag/>
+		 <rdeDomain:fAlg/>
+		 <rdeDomain:fDigestType/>
+		 <rdeDomain:fDigest/>
+	  </rdeCsv:fields>
+	  <rdeCsv:files>
+		 <rdeCsv:file 
+			cksum="2670296305 91797970">
+			dnssec-20120830.csv
+		 </rdeCsv:file> 
+	  </rdeCsv:files>
+	</rdeCsv:csv>
+...
+</rdeDomain:contents>
+...
+
+
+...
+<rde:deletes>
+...
+ <rdeCsv:csvDelete name="dnssec">
+	<rdeCsv:fields>
+	  <rdeCsv:fName/>
+	  <rdeDomain:fKeyTag/>
+	  <rdeDomain:fAlg/>
+	  <rdeDomain:fDigestType/>
+	  <rdeDomain:fDigest/>
+	</rdeCsv:fields>
+	<rdeCsv:files>
+	  <rdeCsv:file 
+		 cksum="2670296305 91797970">
+		 dnssec-delete-20120830.csv
+	  </rdeCsv:file> 
+	</rdeCsv:files>
+ </rdeCsv:csvDelete>
+...
+</rde:deletes>
+...
+
+
+...
+<rdeDomain:contents>
+...
+	<rdeCsv:csv name="domainTransfer">
+	  <rdeCsv:sep>,</rdeCsv:sep>
+	  <rdeCsv:fields>
+		 <rdeCsv:fName/>
+		 <rdeCsv:fTrStatus/>
+		 <rdeCsv:fReID/>
+		 <rdeCsv:fReDate/>
+		 <rdeCsv:fAcID/>
+		 <rdeCsv:fAcDate/>
+		 <rdeCsv:fExDate/>
+	  </rdeCsv:fields>
+	  <rdeCsv:files>
+		 <rdeCsv:file 
+			cksum="2670296305 91797970">
+			domainTransfer-20120830.csv
+		 </rdeCsv:file> 
+	  </rdeCsv:files>
+	</rdeCsv:csv>
+...
+</rdeDomain:contents>
+...
+
+
+...
+<rde:deletes>
+...
+ <rdeCsv:csvDelete name="domainTransfer">
+	<rdeCsv:fields>
+	  <rdeCsv:fName/>
+	  <rdeCsv:fReDate/>
+	</rdeCsv:fields>
+	<rdeCsv:files>
+	  <rdeCsv:file 
+		 cksum="2670296305 91797970">
+		 domainTransfer-delete-20120830.csv
+	  </rdeCsv:file> 
+	</rdeCsv:files>
+ </rdeCsv:csvDelete>
+...
+</rde:deletes>
+...
+
+...
+<rdeHost:contents>
+  ...
+  <rdeHost:host>
+    <rdeHost:name>ns1.example.test</rdeHost:name>
+    <rdeHost:parentDomain>example.test</rdeHost:parentDomain>
+    <rdeHost:roid>Hns1_example_test-TEST</rdeHost:roid>
+    <rdeHost:status s="linked"/>
+    <rdeHost:status s="clientUpdateProhibited"/>
+    <rdeHost:addr ip="v4">192.0.2.2</rdeHost:addr>
+    <rdeHost:addr ip="v4">192.0.2.29</rdeHost:addr>
+    <rdeHost:addr ip="v6">1080:0:0:0:8:800:200C:417A</rdeHost:addr>
+    <rdeHost:clID>clientY</rdeHost:clID>
+    <rdeHost:crID>clientX</rdeHost:crID>
+    <rdeHost:crDate>1999-05-08T12:10:00.0Z</rdeHost:crDate>
+    <rdeHost:upID>clientX</rdeHost:upID>
+    <rdeHost:upDate>2009-10-03T09:34:00.0Z</rdeHost:upDate>
+    <rdeHost:trDate>2007-01-08T09:19:00.0Z</rdeHost:trDate>
+  </rdeHost:host>
+  ...
+</rdeHost:contents>
+...
+
+...
+<rdeHost:contents>
+  ...
+  <rdeHost:host>
+    <rdeHost:name>ns1.example.exttld</rdeHost:name>
+    <rdeHost:roid>Hns1_example_exttld-TEST</rdeHost:roid>
+    <rdeHost:status s="linked"/>
+    <rdeHost:status s="clientUpdateProhibited"/>
+    <rdeHost:clID>clientY</rdeHost:clID>
+    <rdeHost:crID>clientX</rdeHost:crID>
+    <rdeHost:crDate>1999-05-08T12:10:00.0Z</rdeHost:crDate>
+    <rdeHost:upID>clientX</rdeHost:upID>
+    <rdeHost:upDate>2009-10-03T09:34:00.0Z</rdeHost:upDate>
+    <rdeHost:trDate>2007-01-08T09:19:00.0Z</rdeHost:trDate>
+  </rdeHost:host>
+  ...
+</rdeHost:contents>
+...
+
+
+...
+<rde:deletes>
+  ...
+  <rdeHost:delete>
+    <rdeHost:name>ns1.example.test</rdeHost:name>
+    <rdeHost:name>ns1.example.exttld</rdeHost:name>     
+  </rdeHost:delete>
+  ...
+</rde:deletes>
+...
+
+
+
+...
+<rdeHost:contents>
+  ...
+  <rdeCsv:csv name="host">
+   <rdeCsv:sep>,</rdeCsv:sep>
+   <rdeCsv:fields>
+     <rdeCsv:fName/>
+     <rdeCsv:fRoid/>
+     <rdeCsv:fStatuses/>
+     <rdeHost:fV4Addrs/>
+     <rdeHost:fV6Addrs/>
+     <rdeCsv:fClID/>
+     <rdeCsv:fCrID/>
+     <rdeCsv:fCrDate/>
+     <rdeCsv:fUpID/>
+     <rdeCsv:fUpDate/>
+     <rdeCsv:fTrDate/>
+   </rdeCsv:fields>
+   <rdeCsv:files>
+     <rdeCsv:file 
+      cksum="1410255126 216">
+      host-20120830.csv
+     </rdeCsv:file> 
+   </rdeCsv:files>
+  </rdeCsv:csv>
+  ...
+</rdeHost:contents>
+...
+
+...
+<rdeContact:contents>
+  ...
+  <rdeContact:contact>
+    <rdeContact:id>sh8013</rdeContact:id>
+    <rdeContact:roid>Csh8013-TEST</rdeContact:roid>
+    <rdeContact:status s="linked"/>
+    <rdeContact:status s="clientDeleteProhibited"/>
+    <rdeContact:postalInfo type="int">
+      <contact:name>John Doe</contact:name>
+      <contact:org>Example Inc.</contact:org>
+      <contact:addr>
+        <contact:street>123 Example Dr.</contact:street>
+        <contact:street>Suite 100</contact:street>
+        <contact:city>Dulles</contact:city>
+        <contact:sp>VA</contact:sp>
+        <contact:pc>20166-6503</contact:pc>
+        <contact:cc>US</contact:cc>
+      </contact:addr>
+    </rdeContact:postalInfo>
+    <rdeContact:voice x="1234">+1.7035555555</rdeContact:voice>
+    <rdeContact:fax>+1.7035555556</rdeContact:fax>
+    <rdeContact:email>jdoe@example.test</rdeContact:email>
+    <rdeContact:clID>clientY</rdeContact:clID>
+    <rdeContact:crID>clientX</rdeContact:crID>
+    <rdeContact:crDate>2009-09-13T08:01:00.0Z</rdeContact:crDate>
+    <rdeContact:upID>clientX</rdeContact:upID>
+    <rdeContact:upDate>2009-11-26T09:10:00.0Z</rdeContact:upDate>
+    <rdeContact:authInfo>
+      <contact:pw>2fooBAR</contact:pw>
+    </rdeContact:authInfo>
+    <rdeContact:disclose flag="0">
+      <contact:voice/>
+      <contact:email/>
+    </rdeContact:disclose>
+    <rdeContact:transfer>
+      <rdeContact:trStatus>pending</rdeContact:trStatus>
+      <rdeContact:reID>clientW</rdeContact:reID>
+      <rdeContact:reDate>2011-03-08T19:38:00.0Z</rdeContact:reDate>
+      <rdeContact:acID>clientX</rdeContact:acID>
+      <rdeContact:acDate>2011-03-13T23:59:59.0Z</rdeContact:acDate>
+    </rdeContact:transfer>
+  </rdeContact:contact>
+  ...
+</rdeContact:contents>
+...
+
+
+...
+<rde:deletes>
+  ...
+  <rdeContact:delete>
+     <rdeContact:id>sh8013</rdeContact:id>
+  </rdeContact:delete>
+  ...
+</rde:deletes>
+...
+
+...
+<rdeContact:contents>
+  ...
+  <rdeCsv:csv name="contact">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+     <rdeContact:fId/>
+     <rdeCsv:fRoid/>
+     <rdeCsv:fStatuses/>
+     <rdeContact:fVoice/>
+     <rdeContact:fVoiceExt/>
+     <rdeContact:fFax/>
+     <rdeContact:fFaxExt/>
+     <rdeContact:fEmail/>
+     <rdeCsv:fClID/>
+     <rdeCsv:fCrID/>
+     <rdeCsv:fCrDate/>
+     <rdeCsv:fUpID/>
+     <rdeCsv:fUpDate/>
+     <rdeCsv:fPwAuthInfo/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+     <rdeCsv:file 
+      cksum="1410255126 216">
+      contact-20120830.csv
+     </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csv>
+  ...
+</rdeContact:contents>
+...
+
+...
+<rde:deletes>
+  ...
+  <rdeCsv:csvDelete name="contact">
+    <rdeCsv:fields>
+      <rdeContact:fId/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="1410255126 216">
+        contact-delete-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csvDelete>
+  ...
+</rde:deletes>
+...
+
+
+...
+<rdeContact:contents>
+  ...
+  <rdeCsv:csv name="contactPostal">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+      <rdeContact:fId/>
+      <rdeContact:fPostalType/>
+      <rdeContact:fName/>
+      <rdeContact:fOrg/>
+      <rdeContact:fStreet index="0"/>
+      <rdeContact:fStreet index="1"/>
+      <rdeContact:fStreet index="2"/>
+      <rdeContact:fCity/>
+      <rdeContact:fSp/>
+      <rdeContact:fPc/>
+      <rdeContact:fCc/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="2670296305 91797970">
+        contactPostal-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csv>     
+  ...
+</rdeContact:contents>
+...
+
+
+
+...
+<rde:deletes>
+  ...
+  <rdeCsv:csvDelete name="contactPostal">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+      <rdeContact:fId/>
+      <rdeContact:fPostalType/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="2670296305 91797970">
+        contactPostal-delete-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csvDelete>     
+  ...
+</rde:deletes>
+...
+
+
+...
+<rdeContact:contents>
+  ...
+  <rdeCsv:csv name="contactTransfer">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+      <rdeContact:fId/>
+      <rdeCsv:fTrStatus/>
+      <rdeCsv:fReID/>
+      <rdeCsv:fReDate/>
+      <rdeCsv:fAcID/>
+      <rdeCsv:fAcDate/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="2670296305 91797970">
+        contactTransfer-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csv>
+  ...
+</rdeContact:contents>
+...
+
+
+...
+<rde:deletes>
+  ...
+  <rdeCsv:csvDelete name="contactTransfer">
+    <rdeCsv:fields>
+      <rdeContact:fId/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="2670296305 91797970">
+        contactTransfer-delete-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csvDelete>
+  ...
+</rde:deletes>
+...
+
+
+...
+<rdeContact:contents>
+  ...
+  <rdeCsv:csv name="contactDisclose">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+      <rdeContact:fId/>
+      <rdeContact:fDiscloseFlag/>
+      <rdeContact:fDiscloseNameLoc/>
+      <rdeContact:fDiscloseNameInt/>
+      <rdeContact:fDiscloseOrgLoc/>
+      <rdeContact:fDiscloseOrgInt/>
+      <rdeContact:fDiscloseAddrLoc/>
+      <rdeContact:fDiscloseAddrInt/>
+      <rdeContact:fDiscloseVoice/>
+      <rdeContact:fDiscloseFax/>
+      <rdeContact:fDiscloseEmail/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="2670296305 91797970">
+        contactDisclose-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csv>
+  ...
+</rdeContact:contents>
+...
+
+
+...
+<rdeRegistrar:contents>
+  ...
+  <rdeRegistrar:registrar>
+     <rdeRegistrar:id>EXAMPLE</rdeRegistrar:id>
+     <rdeRegistrar:roid>REGISTRAR1234-TEST</rdeRegistrar:roid>
+     <rdeRegistrar:name type="int">Example Inc.</rdeRegistrar:name>
+     <rdeRegistrar:icannId>1234</rdeRegistrar:icannId>
+     <rdeRegistrar:status>ok</rdeRegistrar:status>
+     <rdeRegistrar:addr type="int">
+      <rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+      <rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+      <rdeRegistrar:city>Dulles</rdeRegistrar:city>
+      <rdeRegistrar:sp>VA</rdeRegistrar:sp>
+      <rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+      <rdeRegistrar:cc>US</rdeRegistrar:cc>
+     </rdeRegistrar:addr>
+     <rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+     <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+     <rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+     <rdeRegistrar:url>http://www.example.test</rdeRegistrar:url>
+     <rdeRegistrar:whoisUrl>http://whois.example.test</rdeRegistrar:whoisUrl>
+     <rdeRegistrar:contactObj type="admin">rr0013</rdeRegistrar:contactObj>
+     <rdeRegistrar:contactObj type="tech">rr0012</rdeRegistrar:contactObj>
+     <rdeRegistrar:crID>clientX</rdeRegistrar:crID>
+     <rdeRegistrar:crDate>2005-04-23T11:49:00.0Z</rdeRegistrar:crDate>
+     <rdeRegistrar:upID>clientY</rdeRegistrar:upID>
+     <rdeRegistrar:upDate>2009-02-17T17:51:00.0Z</rdeRegistrar:upDate>
+  </rdeRegistrar:registrar>
+  ...
+</rdeRegistrar:contents>
+...
+
+...
+<rdeRegistrar:contents>
+  ...
+  <rdeRegistrar:registrar>
+     <rdeRegistrar:id>EXAMPLE2</rdeRegistrar:id>
+     <rdeRegistrar:roid>REGISTRAR21234-TEST</rdeRegistrar:roid>
+     <rdeRegistrar:name type="int">Example 2 Inc.</rdeRegistrar:name>
+     <rdeRegistrar:icannId>21234</rdeRegistrar:icannId>
+     <rdeRegistrar:status>ok</rdeRegistrar:status>
+     <rdeRegistrar:addr type="int">
+      <rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+      <rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+      <rdeRegistrar:city>Dulles</rdeRegistrar:city>
+      <rdeRegistrar:sp>VA</rdeRegistrar:sp>
+      <rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+      <rdeRegistrar:cc>US</rdeRegistrar:cc>
+     </rdeRegistrar:addr>
+     <rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+     <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+     <rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+     <rdeRegistrar:url>http://www.example2.test</rdeRegistrar:url>
+     <rdeRegistrar:whoisUrl>http://whois.example2.test</rdeRegistrar:whoisUrl>
+     <rdeRegistrar:contactAttr>
+      <rdeRegistrar:id>1234</rdeRegistrar:id>
+      <rdeRegistrar:roid>REGISTRARCONTACT1234-TEST</rdeRegistrar:roid>
+      <rdeRegistrar:name type="int">John Doe</rdeRegistrar:name>
+      <rdeRegistrar:type>admin</rdeRegistrar:type>
+      <rdeRegistrar:type>tech</rdeRegistrar:type>
+      <rdeRegistrar:type>billing</rdeRegistrar:type>
+      <rdeRegistrar:addr type="int">
+        <rdeRegistrar:street>123 Example Dr.</rdeRegistrar:street>
+        <rdeRegistrar:street>Suite 100</rdeRegistrar:street>
+        <rdeRegistrar:city>Dulles</rdeRegistrar:city>
+        <rdeRegistrar:sp>VA</rdeRegistrar:sp>
+        <rdeRegistrar:pc>20166-6503</rdeRegistrar:pc>
+        <rdeRegistrar:cc>US</rdeRegistrar:cc>
+      </rdeRegistrar:addr>
+      <rdeRegistrar:voice x="1234">+1.7035555555</rdeRegistrar:voice>
+      <rdeRegistrar:fax>+1.7035555556</rdeRegistrar:fax>
+      <rdeRegistrar:email>jdoe@example.test</rdeRegistrar:email>
+     </rdeRegistrar:contactAttr>
+     <rdeRegistrar:crID>clientX</rdeRegistrar:crID>
+     <rdeRegistrar:crDate>2005-04-23T11:49:00.0Z</rdeRegistrar:crDate>
+     <rdeRegistrar:upID>clientY</rdeRegistrar:upID>
+     <rdeRegistrar:upDate>2009-02-17T17:51:00.0Z</rdeRegistrar:upDate>
+  </rdeRegistrar:registrar>
+  ...
+</rdeRegistrar:contents>
+...
+
+
+...
+<rde:deletes>
+  ...
+  <rdeRegistrar:delete>
+     <rdeRegistrar:id>EXAMPLE</rdeRegistrar:id>
+     <rdeRegistrar:id>EXAMPLE2</rdeRegistrar:id>
+  </rdeRegistrar:delete>
+  ...
+</rde:deletes>
+...
+
+
+...
+<rdeRegistrar:contents>
+  ...
+  <rdeCsv:csv name="registrar">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+      <rdeRegistrar:fId/>
+      <rdeCsv:fRoid/>
+      <rdeRegistrar:fName isLoc="false"/>
+      <rdeRegistrar:fIcannId/>
+      <rdeRegistrar:fStatus/>
+      <rdeContact:fStreet isLoc="false" index="0"/>
+      <rdeContact:fStreet isLoc="false" index="1"/>
+      <rdeContact:fStreet isLoc="false" index="2"/>
+      <rdeContact:fCity isLoc="false" />
+      <rdeContact:fSp isLoc="false" />
+      <rdeContact:fPc isLoc="false" />
+      <rdeContact:fCc isLoc="false" />
+      <rdeContact:fVoice/>
+      <rdeContact:fVoiceExt/>
+      <rdeContact:fFax/>
+      <rdeContact:fFaxExt/>
+      <rdeContact:fEmail/>
+      <rdeRegistrar:fUrl/>
+      <rdeRegistrar:fWhoisUrl/>
+      <rdeCsv:fCrID/>
+      <rdeCsv:fCrDate/>
+      <rdeCsv:fUpID/>
+      <rdeCsv:fUpDate/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="1924040625 268">
+        registrar-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csv>
+  ...
+</rdeRegistrar:contents>
+...
+
+
+...
+<rde:deletes>
+  ...
+  <rdeCsv:csvDelete name="registrar">
+    <rdeCsv:fields>
+      <rdeRegistrar:fId/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="1924040625 268">
+        registrar-delete-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csvDelete>
+  ...
+</rde:deletes>
+...
+
+
+
+...
+<rdeRegistrar:contents>
+  ...
+  <rdeCsv:csv name="registrarContact">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+     <rdeRegistrar:fId/>
+     <rdeContact:fId/>
+     <rdeCsv:fRoid/>
+     <rdeContact:fName isLoc="false"/>
+     <rdeRegistrar:fContactTypes/>
+     <!-- "int" type of postal information -->
+     <rdeContact:fPostalType/>
+     <rdeContact:fStreet index="0"/>
+     <rdeContact:fStreet index="1"/>
+     <rdeContact:fStreet index="2"/>
+     <rdeContact:fCity/>
+     <rdeContact:fSp/>
+     <rdeContact:fPc/>
+     <rdeContact:fCc/>
+     <!-- "loc" type of postal information -->
+     <rdeContact:fPostalType/>
+     <rdeContact:fStreet index="0"/>
+     <rdeContact:fStreet index="1"/>
+     <rdeContact:fStreet index="2"/>
+     <rdeContact:fCity/>
+     <rdeContact:fSp/>
+     <rdeContact:fPc/>
+     <rdeContact:fCc/>
+     <rdeContact:fVoice/>
+     <rdeContact:fVoiceExt/>
+     <rdeContact:fFax/>
+     <rdeContact:fFaxExt/>
+     <rdeContact:fEmail/>
+     <rdeCsv:fCrID/>
+     <rdeCsv:fCrDate/>
+     <rdeCsv:fUpID/>
+     <rdeCsv:fUpDate/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+     <rdeCsv:file 
+      cksum="2186160075 371">
+      registrarcontact-20120830.csv
+     </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csv>
+  ...
+</rdeRegistrar:contents>
+...
+
+
+...
+<csvIDN:contents>
+  ...
+  <rdeCsv:csv name="idnLanguage">
+    <rdeCsv:sep>,</rdeCsv:sep>
+    <rdeCsv:fields>
+      <csvDomain:fLanguage/>
+      <rdeCsv:fUrl/>
+    </rdeCsv:fields>
+    <rdeCsv:files>
+      <rdeCsv:file 
+        cksum="1924040625 268">
+        idnLanguage-20120830.csv
+      </rdeCsv:file> 
+    </rdeCsv:files>
+  </rdeCsv:csv>
+  ...
+</csvIDN:contents>
+...
