@@ -147,7 +147,7 @@
 <tr><td class="header">Intended status: Standards Track</td><td class="header">Verisign</td></tr>
 <tr><td class="header">Expires: May 9, 2013</td><td class="header">November 5, 2012</td></tr>
 </table></td></tr></table>
-<h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-00</h1>
+<h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-01</h1>
 
 <h3>Abstract</h3>
 
@@ -449,7 +449,7 @@ Internationalized and Localized Elements</h3>
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         contactPostal-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -498,12 +498,9 @@ CSV elements</h3>
 <dd>Ordered list of CSV fields used in the CSV files.  There is one or more 
                     child elements that substitute for the &lt;rdeCsv:field&gt; abstract element.  Each element 
                     defines the format of the CSV field contained in the CSV files.  &lt;rdeCsv:field&gt; elements by 
-                    convention support the "type" attribute that defines the XML data type of the field elements, an 
-                    optional "list" attribute that when "true" indicates that the field is a list with the list 
-                    elements type defined by the "type" attribute, and an optional "sep" attribute for list fields that 
-                    defines the list element separator characters with a default seperator of ','.  List fields 
-                    MUST be enclosed in double quotes '"'.  By convention all fields are optional, where an undefined field 
-                    can be represented with an empty field value ",," in the CSV file, where ',' is the seperator character.
+                    convention support the "type" attribute that defines the XML data type of the field elements.  
+                    By convention all fields are optional, where an undefined field 
+                    can be represented with an empty field value ",," in the CSV file, where ',' is the separator character.
 </dd>
 <dt>&lt;rdeCsv:files&gt;</dt>
 <dd>A list of one or more CSV files using the &lt;rdeCsv:file&gt; child element.  
@@ -543,7 +540,7 @@ CSV elements</h3>
 &lt;rdeCsv:csv name="domain"&gt;
   &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
   &lt;rdeCsv:fields&gt;
-    &lt;rdeCsv:fName/&gt;
+    &lt;csvDomain:fName/&gt;
     &lt;rdeCsv:fRoid/&gt;
     &lt;csvDomain:fIdn/&gt;
     &lt;rdeCsv:fLanguage/&gt;
@@ -567,7 +564,7 @@ CSV elements</h3>
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
-      cksum="2670296305 91797970"&gt;
+      cksum="1234567890 987654"&gt;
       domain-YYYYMMDD.csv
     &lt;/rdeCsv:file&gt;
   &lt;/rdeCsv:files&gt;
@@ -602,11 +599,11 @@ clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
 <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 &lt;rdeCsv:csvDelete name="domain"&gt;
   &lt;rdeCsv:fields&gt;
-    &lt;rdeCsv:fName/&gt;
+    &lt;csvDomain:fName/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
-      cksum="2670296305 91797970"&gt;
+      cksum="1234567890 987654"&gt;
       domain-delete-YYYYMMDD.csv
     &lt;/rdeCsv:file&gt;
   &lt;/rdeCsv:files&gt;
@@ -616,7 +613,7 @@ clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
                     
 </p>
 <p>The following is example of the "domain-delete-YYYYMMDD.csv" file 
-                  with a single record and matching the single &lt;rdeCsv:fName&gt; field.
+                  with a single record and matching the single &lt;csvDomain:fName&gt; field.
 </p>
 <p>
                         </p>
@@ -645,10 +642,6 @@ CSV common field elements</h3>
 </p>
 <p></p>
 <blockquote class="text"><dl>
-<dt>&lt;rdeCsv:fName&gt;</dt>
-<dd>Name field with type="eppcom:labelType".  
-                  
-</dd>
 <dt>&lt;rdeCsv:fUName&gt;</dt>
 <dd>UTF-8 encoded name field with type="eppcom:labelType".  
                   
@@ -661,23 +654,16 @@ CSV common field elements</h3>
 <dd>Registrant contact identifier with type="eppcom:clIDType". 
                   
 </dd>
-<dt>&lt;rdeCsv:fAdminContacts&gt;</dt>
-<dd>List of administration contact identifiers with the 
-                  list elements type="eppcom:clIDType". 
+<dt>&lt;rdeCsv:fStatus&gt;</dt>
+<dd>The object status with type="eppcom:statusType".  
                   
 </dd>
-<dt>&lt;rdeCsv:fTechContacts&gt;</dt>
-<dd>List of technical contact identifiers with the 
-                  list elements type="eppcom:clIDType". 
+<dt>&lt;rdeCsv:fStatusDescription&gt;</dt>
+<dd>The  object status description, which is free form text describing the rationale for the status, with type="normalizedString".  
                   
 </dd>
-<dt>&lt;rdeCsv:fBillingContacts&gt;</dt>
-<dd>List of billing contact identifiers with the 
-                  list elements type="eppcom:clIDType". 
-                  
-</dd>
-<dt>&lt;rdeCsv:fStatuses&gt;</dt>
-<dd>List of statuses with the list element type="eppcom:statusType".
+<dt>&lt;rdeCsv:fStatusDescriptionLanguage&gt;</dt>
+<dd>Language of the object status description with type="language".  
                   
 </dd>
 <dt>&lt;rdeCsv:fClID&gt;</dt>
@@ -785,6 +771,10 @@ Domain Name Object</h3>
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
+<dt>&lt;csvDomain:fName&gt;</dt>
+<dd>Domain name field with type="eppcom:labelType".  
+                  
+</dd>
 <dt>&lt;csvDomain:fIdn&gt;</dt>
 <dd>Boolean flag indicating if the domain name object is an IDN domain name object with type="boolean".
                 
@@ -802,16 +792,6 @@ Domain Name Object</h3>
 <dd>Boolean flag indicating if the domain name object is a reserved domain with type="boolean".
                 
 </dd>
-<dt>&lt;csvDomain:fRgpStatuses&gt;</dt>
-<dd>List of Registry Grace Period (RGP) status descriptors with the list elements type="rgp:statusType" as 
-                defined in <a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a>.  
-                
-</dd>
-<dt>&lt;csvDomain:fNsObjs&gt;</dt>
-<dd>List of fully qualified names of the delegated host objects associated with the domain name object with 
-                the list elements type="eppcom:labelType".
-                
-</dd>
 </dl></blockquote>
 </dd>
 <dt></dt>
@@ -823,9 +803,6 @@ Domain Name Object</h3>
 <dd>
 <blockquote class="text"><dl>
 <dt></dt>
-<dd>&lt;rdeCsv:fName&gt;
-</dd>
-<dt></dt>
 <dd>&lt;rdeCsv:fUName&gt;
 </dd>
 <dt></dt>
@@ -833,9 +810,6 @@ Domain Name Object</h3>
 </dd>
 <dt></dt>
 <dd>&lt;rdeCsv:fLanguage&gt;
-</dd>
-<dt></dt>
-<dd>&lt;rdeCsv:fStatuses&gt;
 </dd>
 <dt></dt>
 <dd>&lt;rdeCsv:fRegistrant&gt;
@@ -880,17 +854,14 @@ Domain Name Object</h3>
   &lt;rdeCsv:csv name="domain"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fRoid/&gt;
       &lt;csvDomain:fIdn/&gt;
       &lt;rdeCsv:fLanguage/&gt;
       &lt;csvDomain:fVariant/&gt;
       &lt;csvDomain:fOriginalName/&gt;
       &lt;csvDomain:fReserved/&gt;
-      &lt;rdeCsv:fStatuses/&gt;
-      &lt;csvDomain:fRgpStatuses/&gt;
       &lt;rdeCsv:fRegistrant/&gt;
-      &lt;csvDomain:fNsObjs/&gt;
       &lt;rdeCsv:fClID/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
@@ -901,7 +872,7 @@ Domain Name Object</h3>
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         domain-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -923,22 +894,19 @@ Domain Name Object</h3>
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,Ddomain2-TEST,0,,0,0,,0,"ok",,registrantid,
-"ns1.example.com,ns1.example.net",
+domain1.test,Ddomain2-TEST,0,,0,,0,registrantid,
 clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
 2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-domain2.test,Ddomain1-TEST,0,,0,0,,0,"pendingDelete","pendingDelete",
-registrantid,"ns1.example.com,ns1.example.net",clientX,clientY,
-1999-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,
-2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc123.test,Dxn-abc123-TEST,1,LANG1,0,1,,0,"ok",,
-registrantid,"ns1.example.com,ns1.example.net",clientX,clientY,
+domain2.test,Ddomain1-TEST,0,,0,,0,registrantid,
+clientX,clientY,1999-04-03T22:00:00.0Z,clientX,
+2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+xn-abc123.test,Dxn-abc123-TEST,1,LANG1,0,,0,
+registrantid,clientX,clientY,
 2009-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,
 2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc321.test,Dxn-abc321-TEST,1,LANG1,1,
-0,xn-abc123.test,0,"ok",,registrantid,"ns1.example.com,ns1.example.net",
-clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
-2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+xn-abc321.test,Dxn-abc321-TEST,1,LANG1,1,xn-abc123.test,
+0,registrantid,clientX,clientY,2009-04-03T22:00:00.0Z,
+clientX,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
 </pre></div>
                     
 </dd>
@@ -955,11 +923,11 @@ clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
 ...
  &lt;rdeCsv:csvDelete name="domain"&gt;
   &lt;rdeCsv:fields&gt;
-    &lt;rdeCsv:fName/&gt;
+    &lt;csvDomain:fName/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
-     cksum="2670296305 91797970"&gt;
+     cksum="1234567890 987654"&gt;
      domain-delete-YYYYMMDD.csv
     &lt;/rdeCsv:file&gt;
   &lt;/rdeCsv:files&gt;
@@ -1003,7 +971,7 @@ domainN.test
 </dl></blockquote>
 </dd>
 <dt></dt>
-<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+<dd>The following "csvDomain" fields, defined for the "domain" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
                   MAY be used in the "domainContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   
 </dd>
@@ -1011,8 +979,18 @@ domainN.test
 <dd>
 <blockquote class="text"><dl>
 <dt></dt>
-<dd>&lt;rdeCsv:fName&gt; for the domain name object reference.
+<dd>&lt;csvDomain:fName&gt;
 </dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "domainContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
 <dt></dt>
 <dd>&lt;csvContact:fId&gt; for the server-unique contact identifier reference.
 </dd>
@@ -1044,13 +1022,13 @@ domainN.test
   &lt;rdeCsv:csv name="domainContacts"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;csvContact:fId/&gt;
       &lt;csvDomain:fContactType/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         domainContacts-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -1091,15 +1069,15 @@ domain2.test,mycontactid,billing
 ...
 &lt;rde:deletes&gt;
 ...
- &lt;rdeCsv:csvDelete name="domain"&gt;
+ &lt;rdeCsv:csvDelete name="domainContacts"&gt;
   &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;csvContact:fId/&gt;
       &lt;csvDomain:fContactType/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
-     cksum="2670296305 91797970"&gt;
+     cksum="1234567890 987654"&gt;
      domainContacts-delete-YYYYMMDD.csv
     &lt;/rdeCsv:file&gt;
   &lt;/rdeCsv:files&gt;
@@ -1121,6 +1099,405 @@ domain2.test,mycontactid,billing
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 domain1.test,mycontactid,tech
 domain2.test,sh8013,tech
+</pre></div>
+                    
+</dd>
+<dt>&quot;domainStatuses&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the domain name object statuses.  
+                  The following field elements were added for use in the "domainStatuses" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvDomain:fRgpStatus&gt;</dt>
+<dd>The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusType" as 
+                defined in <a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a>.  
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvDomain" fields, defined for the "domain" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
+                  MAY be used in the "domainStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvDomain:fName&gt; - Domain name of status.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "domainStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatus&gt; - The domain object status a defined in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatusDescription&gt; - The domain object status description which is free form text describing the rationale for the status.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatusDescriptionLang&gt; - The language of the &lt;rdeCsv:fStatusDescription&gt; field.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt; - The date and time that the status was set for the domain name object.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainStatuses" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="domainStatuses"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvDomain:fName/&gt;
+      &lt;rdeCsv:fStatus/&gt;
+      &lt;rdeCsv:fStatusDescription/&gt;
+      &lt;rdeCsv:fStatusDescriptionLang/&gt;
+      &lt;csvDomain:fRgpStatus/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1234567890 987654"&gt;
+        domainStatuses-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainStatuses-YYYYMMDD.csv file.
+                        The file contains the statuses for  
+                        the two domain names domain1.test and domain2.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,clientUpdateProhibited,"Disallow update",
+en,,2009-12-03T09:05:00.0Z
+domain1.test,clientDeleteProhibited,"Disallow delete",
+en,,2010-12-04T10:05:00.0Z
+domain2.test,clientUpdateProhibited,"Disallow update",
+en,,2011-10-03T09:05:00.0Z
+domain2.test,pendingDelete,,,
+redemptionPeriod,2011-11-14T10:05:00.0Z
+
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainStatuses" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;csvDomain:fName/&gt;
+      &lt;rdeCsv:fStatus/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="1234567890 987654"&gt;
+     domainStatuses-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainStatuses-delete-YYYYMMDD.csv file.
+                        The file contains two status records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,clientUpdateProhibited
+domain2.test,pendingDelete
+
+</pre></div>
+                    
+</dd>
+<dt>&quot;domainNameServers&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the domain name delegated hosts (name servers).  The "domainNameServers" CSV files
+                  define the relationship between a domain name object and a delegated host, so it will 
+                  support both the &lt;domain:hostAttr&gt;, using a &lt;rdeCsv:fRoid&gt; field element, 
+                  or the &lt;domain:hostObj&gt; model, using a &lt;csvHost:fName&gt; field element, defined in 
+                  <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.  See <a class='info' href='#hostObject'>Section&nbsp;4.2<span> (</span><span class='info'>Host Object</span><span>)</span></a> for information in how 
+                  to support either the &lt;domain:hostAttr&gt; or &lt;domain:hostObj&gt; model defined in 
+                  <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> in the "host" CSV files.
+</dd>
+<dt></dt>
+<dd>The following "csvDomain" fields, defined for the "domain" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
+                  MAY be used in the "domainNameServers" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvDomain:fName&gt; - Domain name using the delegated host name &lt;csvHost:fName&gt;.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvHost" fields, defined for the "host" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
+                  MAY be used in the "domainNameServers" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvHost:fName&gt; - Host name of the delegated host.  The host name MAY be used to uniquely identify 
+                    the host object when using the &lt;domain:hostObj&gt; model defined in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "domainNameServers" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt; - The date and time that the delegated name server was set for the domain name object.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt; - To uniquely reference a delegated host record with the &lt;domain:hostAttr&gt; model in 
+                    <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>, the host Repository Object IDentifier (ROID) MAY be used in place of the host name using 
+                    the &lt;cvsHost:fName&gt; field element.  The &lt;rdeCsv:fRoid&gt; field element MAY also be defined for 
+                    external hosts when the server supports a separate set of external host objects per sponsoring client.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainNameServers" &lt;rdeCsv:csv&gt; element for a server supporting the 
+                        &lt;domain:hostObj&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.  
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="domainNameServers"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvDomain:fName/&gt;
+      &lt;csvHost:fName/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1234567890 987654"&gt;
+        domainNameServersObj-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainNameServersObj-YYYYMMDD.csv file.
+                        The file contains the delegated hosts (name servers) for  
+                        the two domain names domain1.test and domain2.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,ns1.domain2.test,2009-12-03T09:05:00.0Z
+domain1.test,ns2.domain2.test,2009-12-03T09:05:00.0Z
+domain2.test,ns1.domain.example,2009-12-03T09:05:00.0Z
+domain2.test,ns2.domain.example,2009-12-03T09:05:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainNameServers" &lt;rdeCsv:csv&gt; element for a server supporting the 
+                        &lt;domain:hostAttr&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.  
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="domainNameServers"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvDomain:fName/&gt;
+      &lt;rdeCsv:fRoid/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1234567890 987654"&gt;
+        domainNameServersAttr-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainNameServersAttr-YYYYMMDD.csv file.
+                        The file contains the delegated hosts (name servers) for  
+                        the two domain names domain1.test and domain2.test reference via 
+                        the &lt;rdeCsv:fRoid&gt; field element.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,Dns1.domain2.test-TEST,2009-12-03T09:05:00.0Z
+domain1.test,Dns2.domain2.test-TEST,2009-12-03T09:05:00.0Z
+domain2.test,Dns1.domain.example-TEST,2009-12-03T09:05:00.0Z
+domain2.test,Dns2.domain.example-TEST,2009-12-03T09:05:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainNameServers" &lt;rdeCsv:csvDelete&gt; element for a server supporting the 
+                        &lt;domain:hostObj&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>. 
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domainNameServers"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;csvDomain:fName/&gt;
+      &lt;csvHost:fName/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="1234567890 987654"&gt;
+     domainNameServersObj-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainNameServersObj-delete-YYYYMMDD.csv file.
+                        The file contains two status records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,ns1.domain2.test
+domain1.test,ns2.domain2.test
+domain2.test,ns1.domain.example
+domain2.test,ns2.domain.example
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "domainNameServers" &lt;rdeCsv:csvDelete&gt; element for a server supporting the 
+                        &lt;domain:hostAttr&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domainNameServers"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;csvDomain:fName/&gt;
+      &lt;rdeCsv:fRoid/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="1234567890 987654"&gt;
+     domainNameServers-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding domainNameServers-delete-YYYYMMDD.csv file.
+                        The file contains two status records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+domain1.test,Dns1.domain2.test-TEST
+domain1.test,Dns2.domain2.test-TEST
+domain2.test,Dns1.domain.example-TEST
+domain2.test,Dns2.domain.example-TEST
 </pre></div>
                     
 </dd>
@@ -1174,7 +1551,7 @@ domain2.test,sh8013,tech
 </dl></blockquote>
 </dd>
 <dt></dt>
-<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+<dd>The following "domain" fields, defined for the "domain" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
                   MAY be used in the "dnssec" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   
 </dd>
@@ -1182,7 +1559,7 @@ domain2.test,sh8013,tech
 <dd>
 <blockquote class="text"><dl>
 <dt></dt>
-<dd>&lt;rdeCsv:fName&gt;
+<dd>&lt;csvDomain:fName&gt;
 </dd>
 </dl></blockquote>
 </dd>
@@ -1199,7 +1576,7 @@ domain2.test,sh8013,tech
   &lt;rdeCsv:csv name="dnssec"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;csvDomain:fMaxSigLife/&gt;
       &lt;csvDomain:fKeyTag/&gt;
       &lt;csvDomain:fDsAlg/&gt;
@@ -1208,7 +1585,7 @@ domain2.test,sh8013,tech
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-       cksum="2670296305 91797970"&gt;
+       cksum="1234567890 987654"&gt;
        dnssec-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -1246,7 +1623,7 @@ domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B
   &lt;rdeCsv:csv name="dnssec"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;csvDomain:fMaxSigLife/&gt;
       &lt;csvDomain:fFlags/&gt;
       &lt;csvDomain:fProtocol/&gt;
@@ -1255,7 +1632,7 @@ domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-       cksum="2670296305 91797970"&gt;
+       cksum="1234567890 987654"&gt;
        dnssec-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -1293,7 +1670,7 @@ domain1.test,604800,257,3,1,AQPJ////4QQQ
 ...
   &lt;rdeCsv:csvDelete name="dnssec"&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;csvDomain:fKeyTag/&gt;
       &lt;csvDomain:fDsAlg/&gt;
       &lt;csvDomain:fDigestType/&gt;
@@ -1301,7 +1678,7 @@ domain1.test,604800,257,3,1,AQPJ////4QQQ
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-       cksum="2670296305 91797970"&gt;
+       cksum="1234567890 987654"&gt;
        dnssec-delete-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -1339,7 +1716,7 @@ domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B
 ...
   &lt;rdeCsv:csvDelete name="dnssec"&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;csvDomain:fFlags/&gt;
       &lt;csvDomain:fProtocol/&gt;
       &lt;csvDomain:fKeyAlg/&gt;
@@ -1347,7 +1724,7 @@ domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-       cksum="2670296305 91797970"&gt;
+       cksum="1234567890 987654"&gt;
        dnssec-delete-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -1384,9 +1761,6 @@ domain1.test,257,3,1,AQPJ////4QQQ
 <dd>
 <blockquote class="text"><dl>
 <dt></dt>
-<dd>&lt;rdeCsv:fName&gt;
-</dd>
-<dt></dt>
 <dd>&lt;rdeCsv:fTrStatus&gt;
 </dd>
 <dt></dt>
@@ -1407,6 +1781,19 @@ domain1.test,257,3,1,AQPJ////4QQQ
 </dl></blockquote>
 </dd>
 <dt></dt>
+<dd>The following "csvDomain" fields, defined for the "domain" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
+                  MAY be used in the "domainContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvDomain:fName&gt;
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
 <dd>
                         Example of a "domainTransfer" &lt;rdeCsv:csv&gt; element:
                     
@@ -1420,7 +1807,7 @@ domain1.test,257,3,1,AQPJ////4QQQ
   &lt;rdeCsv:csv name="domainTransfer"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fTrStatus/&gt;
       &lt;rdeCsv:fReID/&gt;
       &lt;rdeCsv:fReDate/&gt;
@@ -1430,7 +1817,7 @@ domain1.test,257,3,1,AQPJ////4QQQ
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-       cksum="2670296305 91797970"&gt;
+       cksum="1234567890 987654"&gt;
        domainTransfer-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -1471,12 +1858,12 @@ clientX,2012-03-09T23:59:59.0Z,2016-05-04T23:00:00.0Z
 ...
   &lt;rdeCsv:csvDelete name="domainTransfer"&gt;
     &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fName/&gt;
+      &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fReDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-       cksum="2670296305 91797970"&gt;
+       cksum="1234567890 987654"&gt;
        domainTransfer-delete-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -1521,27 +1908,24 @@ Host Object</h3>
 <blockquote class="text"><dl>
 <dt>&quot;host&quot;</dt>
 <dd>Defines the fields and CSV file references 
-                  used for the host object records.  The following field elements were added for use in the "host" 
+                  used for the host object records.  
+                  The following field elements were added for use in the "host" 
                   &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
                   
 </dd>
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
+<dt>&lt;csvHost:fName&gt;</dt>
+<dd>Host name field with type="eppcom:labelType".  
+                  
+</dd>
 <dt>&lt;csvHost:fParentDomain&gt;</dt>
 <dd>Contains parent domain name for the subordinate host object with type="eppcom:labelType".  
                 
 </dd>
 <dt>&lt;csvHost:fIdn&gt;</dt>
 <dd>Boolean flag indicating if the host object is an IDN host object with type="boolean".
-                
-</dd>
-<dt>&lt;csvHost:fV4Addrs&gt;</dt>
-<dd>List of IPv4 IP addresses for the host object with the list elements type="host:addrStringType".  
-                
-</dd>
-<dt>&lt;csvHost:fV6Addrs&gt;</dt>
-<dd>List of IPv6 IP addresses for the host object with the list elements type="host:addrStringType".
                 
 </dd>
 </dl></blockquote>
@@ -1555,19 +1939,21 @@ Host Object</h3>
 <dd>
 <blockquote class="text"><dl>
 <dt></dt>
-<dd>&lt;rdeCsv:fName&gt;
-</dd>
-<dt></dt>
 <dd>&lt;rdeCsv:fUName&gt;
 </dd>
 <dt></dt>
-<dd>&lt;rdeCsv:fRoid&gt;
+<dd>&lt;rdeCsv:fRoid&gt; - The Repository Object IDentifier (ROID) assigned to the host object.  The &lt;rdeCsv:fRoid&gt; uniquely 
+                    identifies the host object that MAY be used in place of the &lt;csvHost:fName&gt; field element to uniquely identify the 
+                    host object when the &;lt;csvHost:fName&gt; is not unique due to the server supporting the &lt;domain:hostAttr&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> or 
+                    when the server supports a set of external hosts per sponsoring client.
 </dd>
 <dt></dt>
 <dd>&lt;rdeCsv:fStatuses&gt;
 </dd>
 <dt></dt>
-<dd>&lt;rdeCsv:fClID&gt;
+<dd>&lt;rdeCsv:fClID&gt; - Contains the identifier of the sponsoring client.  In the case of external hosts, the server might create a unique set of external 
+                    hosts for each sponsoring client, so the &lt;cvsHost:fName&gt; itself won't be unique but instead the combination of the &lt;rdeCsv:fClID&gt; and the 
+                    &lt;csvHost:fName&gt; is unique.
 </dd>
 <dt></dt>
 <dd>&lt;rdeCsv:fCrID&gt;
@@ -1600,7 +1986,7 @@ Host Object</h3>
   &lt;rdeCsv:csv name="host"&gt;
    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
    &lt;rdeCsv:fields&gt;
-     &lt;rdeCsv:fName/&gt;
+     &lt;csvHost:fName/&gt;
      &lt;rdeCsv:fRoid/&gt;
      &lt;rdeCsv:fParentDomain/&gt;
      &lt;rdeCsv:fStatuses/&gt;
@@ -1661,11 +2047,11 @@ ns1.example.test2,Hns1_example_test2-TEST,,
 ...
  &lt;rdeCsv:csvDelete name="host"&gt;
   &lt;rdeCsv:fields&gt;
-    &lt;rdeCsv:fName/&gt;
+    &lt;csvHost:fName/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
-     cksum="2670296305 91797970"&gt;
+     cksum="1234567890 987654"&gt;
      host-delete-YYYYMMDD.csv
     &lt;/rdeCsv:file&gt;
   &lt;/rdeCsv:files&gt;
@@ -1687,6 +2073,387 @@ ns1.example.test2,Hns1_example_test2-TEST,,
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ns1.example.test
 ns1.example.test2
+</pre></div>
+                    
+</dd>
+<dt>&quot;hostStatuses&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the host object statuses.  
+                   
+</dd>
+<dt></dt>
+<dd>The following "csvHost" fields, defined for the "host" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
+                  MAY be used in the "hostStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvHost:fName&gt; - Host name of status.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "hostStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt; - The host object Registry Object IDentifier (ROID) that uniquely identifies the host object when 
+                    the &lt;csvHost:fName&gt; is not unique.  The &lgt;rdeCsv:fRoid&gt; is used for servers that support a set of external host objects 
+                    per sponsoring client.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatus&gt; - The host object status a defined in <a class='info' href='#RFC5732'>[RFC5732]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Host Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatusDescription&gt; - The host object status description which is free form text describing the rationale for the status.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatusDescriptionLang&gt; - The language of the &lt;rdeCsv:fStatusDescription&gt; field.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt; - The date and time that the status was set for the host name object.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "hostStatuses" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="hostStatuses"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvHost:fName/&gt;
+      &lt;rdeCsv:fStatus/&gt;
+      &lt;rdeCsv:fStatusDescription/&gt;
+      &lt;rdeCsv:fStatusDescriptionLang/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1234567890 987654"&gt;
+        hostStatuses-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding hostStatuses-YYYYMMDD.csv file.
+                        The file contains the statuses for  
+                        the two host names ns1.domain1.test and ns1.domain2.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+ns1.domain1.test,clientUpdateProhibited,"Disallow update",
+en,2009-12-03T09:05:00.0Z
+ns1.domain1.test,clientDeleteProhibited,"Disallow delete",
+en,2010-12-04T10:05:00.0Z
+ns1.domain2.test,ok,,,2011-10-03T09:05:00.0Z
+
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "hostStatuses" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;csvHost:fName/&gt;
+      &lt;rdeCsv:fStatus/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="1234567890 987654"&gt;
+     hostStatuses-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding hostStatuses-delete-YYYYMMDD.csv file.
+                        The file contains two status records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+ns1.domain1.test,clientUpdateProhibited
+ns1.domain1.test,deleteUpdateProhibited
+
+</pre></div>
+                    
+</dd>
+<dt>&quot;hostAddresses&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the host object statuses.  
+                 The following field elements were added for use in the "hostAddresses" 
+                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt>&lt;csvHost:fAddr&gt;</dt>
+<dd>IP addresses associated with the host object with type="host:addrStringType".  
+                
+</dd>
+<dt>&lt;csvHost:fAddrVersion&gt;</dt>
+<dd>IP addresses version associated with the host object with type="host:ipType".  
+                "host:ipType" has the enumerated values of "v4" or "v6".  
+                
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "csvHost" fields, defined for the "host" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
+                  MAY be used in the "hostAddresses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvHost:fName&gt; - Host name of IP address.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "hostAddresses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fRoid&gt; - The host object Registry Object IDentifier (ROID) that uniquely identifies the host object when 
+                    the &lt;csvHost:fName&gt; is not unique.  The &lgt;rdeCsv:fRoid&gt; is used for servers that support a set of external host objects 
+                    per sponsoring client or when the server support the &lt;domain:hostAttr&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt; - The date and time that the address is was set for the host object.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "hostAddresses" &lt;rdeCsv:csv&gt; element for server that supports the &lt;domain:hostObj&gt; model 
+                        of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="hostAddresses"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvHost:fName/&gt;
+      &lt;csvHost:fAddr/&gt;
+      &lt;csvHost:fAddrVersion/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1234567890 987654"&gt;
+        hostAddressesObj-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding hostAddressesObj-YYYYMMDD.csv file.
+                        The file contains the IP addresses for  
+                        the host name ns1.domain1.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+ns1.domain1.test,192.0.2.2,v4,2009-12-03T09:05:00.0Z
+ns1.domain1.test,192.0.2.29,v4,2009-12-03T09:05:00.0Z
+ns1.domain1.test,1080:0:0:0:8:800:200C:417A,
+v6,2009-12-03T09:05:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "hostAddresses" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;csvHost:fName/&gt;
+      &lt;csvHost:fAddr/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="1234567890 987654"&gt;
+     hostAddressesObj-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding hostAddressesObj-delete-YYYYMMDD.csv file.
+                        The file contains three IP address records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+ns1.domain1.test,192.0.2.2
+ns1.domain1.test,192.0.2.29
+ns1.domain1.test,1080:0:0:0:8:800:200C:417A
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "hostAddresses" &lt;rdeCsv:csv&gt; element for server that supports the &lt;domain:hostAttr&gt; model 
+                        of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="hostAddresses"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fRoid/&gt;
+      &lt;csvHost:fAddr/&gt;
+      &lt;csvHost:fAddrVersion/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1234567890 987654"&gt;
+        hostAddressesAttr-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding hostAddressesAttr-YYYYMMDD.csv file.
+                        The file contains the IP addresses for  
+                        the host name ns1.domain1.test.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+Dns1.domain1.test-TEST,192.0.2.2,v4,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,192.0.2.29,v4,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A,
+v6,2009-12-03T09:05:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "hostAddresses" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;rdeCsv:fRoid/&gt;
+      &lt;csvHost:fAddr/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="1234567890 987654"&gt;
+     hostAddressesAttr-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding hostAddressesAttr-delete-YYYYMMDD.csv file.
+                        The file contains three IP address records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+Dns1.domain1.test-TEST,192.0.2.2
+Dns1.domain1.test-TEST,192.0.2.29
+Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A
 </pre></div>
                     
 </dd>
@@ -1755,9 +2522,6 @@ Contact Object</h3>
 <dd>&lt;rdeCsv:fRoid&gt;
 </dd>
 <dt></dt>
-<dd>&lt;rdeCsv:fStatuses&gt;
-</dd>
-<dt></dt>
 <dd>&lt;rdeCsv:fClID&gt;
 </dd>
 <dt></dt>
@@ -1796,7 +2560,6 @@ Contact Object</h3>
     &lt;rdeCsv:fields&gt;
      &lt;csvContact:fId/&gt;
      &lt;rdeCsv:fRoid/&gt;
-     &lt;rdeCsv:fStatuses/&gt;
      &lt;csvContact:fVoice/&gt;
      &lt;csvContact:fVoiceExt/&gt;
      &lt;csvContact:fFax/&gt;
@@ -1831,11 +2594,11 @@ Contact Object</h3>
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-sh8013,Csh8013-TEST,"linked,clientDeleteProhibited",
-+1.7035555555,1234,+1.7035555556,,jdoe@example.test,clientY,
+sh8013,Csh8013-TEST,+1.7035555555,1234,+1.7035555556,,
+jdoe@example.test,clientY,
 clientX,2009-09-13T08:01:00.0Z,clientX,
 2009-11-26T09:10:00.0Z,2fooBAR
-mycontactid,Cmycontactid-TEST,"ok",+1.7034444444,1234,
+mycontactid,Cmycontactid-TEST,+1.7034444444,1234,
 +1.7033333333,,jsmith@example.test,clientY,clientX,
 2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,2fooBAR
 </pre></div>
@@ -1880,6 +2643,140 @@ mycontactid,Cmycontactid-TEST,"ok",+1.7034444444,1234,
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 sh8013
 mycontactid
+</pre></div>
+                    
+</dd>
+<dt>&quot;contactStatuses&quot;</dt>
+<dd>Defines the fields and CSV file references 
+                  used for the contact object statuses.  
+                  
+</dd>
+<dt></dt>
+<dd>The following "csvContact" fields, defined for the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
+                  MAY be used in the "contactStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;csvContact:fId&gt; - server-unique contact identifier of status.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
+                  MAY be used in the "contactStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  
+</dd>
+<dt></dt>
+<dd>
+<blockquote class="text"><dl>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatus&gt; - The contact object status a defined in <a class='info' href='#RFC5733'>[RFC5733]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Contact Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatusDescription&gt; - The contact object status description which is free form text describing the rationale for the status.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fStatusDescriptionLang&gt; - The language of the &lt;rdeCsv:fStatusDescription&gt; field.
+</dd>
+<dt></dt>
+<dd>&lt;rdeCsv:fCrDate&gt; - The date and time that the status was set for the contact object.
+</dd>
+</dl></blockquote>
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactStatuses" &lt;rdeCsv:csv&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;csvDomain:contents&gt;
+  ...
+  &lt;rdeCsv:csv name="contactStatuses"&gt;
+    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
+    &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;rdeCsv:fStatus/&gt;
+      &lt;rdeCsv:fStatusDescription/&gt;
+      &lt;rdeCsv:fStatusDescriptionLang/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
+    &lt;/rdeCsv:fields&gt;
+    &lt;rdeCsv:files&gt;
+      &lt;rdeCsv:file
+        cksum="1234567890 987654"&gt;
+        contactStatuses-YYYYMMDD.csv
+      &lt;/rdeCsv:file&gt;
+    &lt;/rdeCsv:files&gt;
+  &lt;/rdeCsv:csv&gt;
+  ...
+&lt;/csvDomain:contents&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding contactStatuses-YYYYMMDD.csv file.
+                        The file contains the statuses for  
+                        the two contact identifiers sh8013 and mycontactid.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,clientUpdateProhibited,"Disallow update",
+en,2009-12-03T09:05:00.0Z
+sh8013,clientDeleteProhibited,"Disallow delete",
+en,2010-12-04T10:05:00.0Z
+mycontactid,ok,,,2011-10-03T09:05:00.0Z
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of a "contactStatuses" &lt;rdeCsv:csvDelete&gt; element:
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+...
+&lt;rde:deletes&gt;
+...
+ &lt;rdeCsv:csvDelete name="contactStatuses"&gt;
+  &lt;rdeCsv:fields&gt;
+      &lt;csvContact:fId/&gt;
+      &lt;rdeCsv:fStatus/&gt;
+  &lt;/rdeCsv:fields&gt;
+  &lt;rdeCsv:files&gt;
+    &lt;rdeCsv:file
+     cksum="1234567890 987654"&gt;
+     contactStatuses-delete-YYYYMMDD.csv
+    &lt;/rdeCsv:file&gt;
+  &lt;/rdeCsv:files&gt;
+ &lt;/rdeCsv:csvDelete&gt;
+...
+&lt;/rde:deletes&gt;
+...
+</pre></div>
+                    
+</dd>
+<dt></dt>
+<dd>
+                        Example of the corresponding contactStatuses-delete-YYYYMMDD.csv file.
+                        The file contains two status records.
+                    
+</dd>
+<dt></dt>
+<dd>
+                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+sh8013,clientUpdateProhibited
+sh8013,clientDeleteProhibited
 </pre></div>
                     
 </dd>
@@ -1978,7 +2875,7 @@ mycontactid
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         contactPostal-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -2024,7 +2921,7 @@ mycontactid,int,"John Smith","Acme Inc.",
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         contactPostal-delete-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -2113,7 +3010,7 @@ mycontactid,int
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         contactTransfer-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -2160,7 +3057,7 @@ clientX,2011-04-09T20:38:00.0Z
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         contactTransfer-delete-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -2290,7 +3187,7 @@ mycontactid,2011-04-08T19:38:00.0Z
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         contactDisclose-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -2335,7 +3232,7 @@ mycontactid,1,1,1,0,0,0,0,0,0,0
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         contactDisclose-delete-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -2943,7 +3840,7 @@ clientX,2009-11-26T09:10:00.0Z
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
-        cksum="2670296305 91797970"&gt;
+        cksum="1234567890 987654"&gt;
         registrarContact-delete-YYYYMMDD.csv
       &lt;/rdeCsv:file&gt;
     &lt;/rdeCsv:files&gt;
@@ -3242,9 +4139,6 @@ RDE CSV Schema</h3>
 
  &lt;!-- Concrete field types --&gt;
 
- &lt;!-- Name field (e.g. domain name) --&gt;
- &lt;element name="fName" type="rdeCsv:fNameType"
-  substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- UTF-8 Name field (e.g. domain name) --&gt;
  &lt;element name="fUName" type="rdeCsv:fNameType"
    substitutionGroup="rdeCsv:field"/&gt;
@@ -3284,46 +4178,31 @@ RDE CSV Schema</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
- &lt;!-- Contact fields (Admin, Tech, Billing) --&gt;
- &lt;element name="fAdminContacts" type="rdeCsv:fContactsType"
+ &lt;!-- Object status field --&gt;
+ &lt;element name="fStatus" type="rdeCsv:fStatusType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fTechContacts" type="rdeCsv:fContactsType"
-  substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fBillingContacts" type="rdeCsv:fContactsType"
-  substitutionGroup="rdeCsv:field"/&gt;
- &lt;complexType name="fContactsType"&gt;
-  &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
-      &lt;sequence/&gt;
-      &lt;attribute name="type" type="token"
-        default="eppcom\:clIDType"/&gt;
-      &lt;attribute name="list" type="boolean"
-        default="true"/&gt;
-      &lt;attribute name="sep" type="token"
-        default=","/&gt;
-    &lt;/extension&gt;
-  &lt;/complexContent&gt;
- &lt;/complexType&gt;
 
-
-
- &lt;!-- Statuses as a list of delimited statuses
-      with ',' as delimeter --&gt;
- &lt;element name="fStatuses" type="rdeCsv:fStatusesType"
-  substitutionGroup="rdeCsv:field"/&gt;
- &lt;complexType name="fStatusesType"&gt;
+ &lt;!-- Object status based on eppcom-1.0.xsd  --&gt;
+ &lt;complexType name="fStatusType"&gt;
   &lt;complexContent&gt;
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="eppcom\:statusType"/&gt;
-      &lt;attribute name="list" type="boolean"
-        default="true"/&gt;
-      &lt;attribute name="sep" type="token"
-        default=","/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
+
+ &lt;!-- Object Status Description --&gt;
+ &lt;element name="fStatusDescription"
+  type="rdeCsv:fNormalizedStringType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Object Status Descrption Language --&gt;
+ &lt;element name="fStatusDescriptionLang"
+  type="rdeCsv:fLanguageType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
 
  &lt;!-- clID fields (fClID, fCrID, fUpID) --&gt;
  &lt;!-- Identifier of client that sponsors the object --&gt;
@@ -3459,6 +4338,17 @@ RDE CSV Schema</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
+ &lt;!-- General normalizedString type --&gt;
+ &lt;complexType name="fNormalizedStringType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="normalizedString"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
  &lt;!-- positive integer type --&gt;
  &lt;complexType name="fPositiveIntegerType"&gt;
   &lt;complexContent&gt;
@@ -3472,17 +4362,8 @@ RDE CSV Schema</h3>
 
 
  &lt;!-- Password authorization info --&gt;
- &lt;element name="fPwAuthInfo" type="rdeCsv:fPwAuthInfoType"
+ &lt;element name="fPwAuthInfo" type="rdeCsv:fNormalizedStringType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;complexType name="fPwAuthInfoType"&gt;
-  &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
-      &lt;sequence/&gt;
-      &lt;attribute name="type" type="token"
-        default="normalizedString"/&gt;
-    &lt;/extension&gt;
-  &lt;/complexContent&gt;
- &lt;/complexType&gt;
 
 
  &lt;!-- Custom / extension field type --&gt;
@@ -3653,42 +4534,38 @@ Domain Object</h3>
    &lt;/complexContent&gt;
   &lt;/complexType&gt;
 
-
- &lt;!-- RGP statuses field --&gt;
- &lt;element name="fRgpStatuses"
- type="csvDomain:fRgpStatusesType"
+ &lt;!-- Domain name field --&gt;
+ &lt;element name="fName" type="rdeCsv:fNameType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;complexType name="fRgpStatusesType"&gt;
+
+
+ &lt;!-- RGP status field --&gt;
+ &lt;element name="fRgpStatus"
+ type="csvDomain:fRgpStatusType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fRgpStatusType"&gt;
   &lt;complexContent&gt;
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="rgp\:statusType"/&gt;
-      &lt;attribute name="list" type="boolean"
-      default="true"/&gt;
-      &lt;attribute name="sep" type="token"
-      default=","/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
- &lt;!-- Name server object list field --&gt;
- &lt;element name="fNsObjs" type="csvDomain:fNsObjsType"
+ &lt;!-- Contact type field --&gt;
+ &lt;element name="fContactType" type="csvDomain:fContactsTypeType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;complexType name="fNsObjsType"&gt;
+
+ &lt;complexType name="fContactsTypeType"&gt;
   &lt;complexContent&gt;
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
-      default="eppcom\:labelType"/&gt;
-      &lt;attribute name="list" type="boolean"
-      default="true"/&gt;
-      &lt;attribute name="sep" type="token"
-      default=","/&gt;
+      default="domain\:contactAttrType"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
-
 
  &lt;!-- DNSSEC field types --&gt;
 
@@ -3866,25 +4743,37 @@ Host Object</h3>
    &lt;/complexContent&gt;
   &lt;/complexType&gt;
 
+ &lt;!-- Host name field --&gt;
+ &lt;element name="fName" type="rdeCsv:fNameType"
+  substitutionGroup="rdeCsv:field"/&gt;
 
- &lt;!-- IP address fields (fV4Addrs, fV6Addrs) --&gt;
- &lt;element name="fV4Addrs" type="csvHost:fAddrsType"
+
+ &lt;!-- IP address field --&gt;
+ &lt;element name="fAddr" type="csvHost:fAddrType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fV6Addrs" type="csvHost:fAddrsType"
-  substitutionGroup="rdeCsv:field"/&gt;
- &lt;complexType name="fAddrsType"&gt;
+ &lt;complexType name="fAddrType"&gt;
   &lt;complexContent&gt;
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="host\:addrStringType"/&gt;
-      &lt;attribute name="list" type="boolean"
-        default="true"/&gt;
-      &lt;attribute name="sep" type="token"
-        default=","/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
+
+ &lt;!-- IP address version field --&gt;
+ &lt;element name="fAddrVersion" type="csvHost:fAddrVersionType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;complexType name="fAddrVersionType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="host\:ipType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
 
  &lt;!-- Boolean type  fields --&gt;
  &lt;element name="fIdn" type="rdeCsv:fBooleanType"
@@ -4747,10 +5636,27 @@ Acknowledgments</h3>
 <a name="rfc.section.5.12"></a><h3>5.12.&nbsp;
 Change History</h3>
 
-<p>
-                [[RFC Editor: Please remove this section.]]
-            
-</p>
+<a name="change-00-to-01"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.12.1"></a><h3>5.12.1.&nbsp;
+Change from 00 to 01</h3>
+
+<p></p>
+<ol class="text">
+<li>Removed definition of &lt;rdeCsv:fName&gt; and replaced with &lt;csvDomain:fName&gt; and &lt;csvHost:fName&gt; to be more specific.
+</li>
+<li>Removed definition of the &lt;rdeCsv:fields&gt; optional "list" attribute.
+</li>
+<li>Removed definition of list field elements: &lt;rdeCsv:fStatuses&gt;, &lt;rdeCsv:fAdminContacts&gt;, &lt;rdeCsv:fTechContacts&gt;, &lt;rdeCsv:fBillingContacts&gt;, 
+        			&lt;csvDomain:fNsObjs&gt;, &lt;csvDomain:fRgpStatuses&gt;, &lt;csvHost:fV4Addrs&gt;, and &lt;csvHost:fV6Addrs&gt;.
+</li>
+<li>Added field elements &lt;rdeCsv:fStatus&gt;, &lt;rdeCsv:fStatusDescription&gt;, &lt;rdeCsv:fStatusDescriptionLang&gt;, &lt;csvDomain:fContactType&gt;, 
+        			 &lt;csvDomain:fRgpStatus&gt;, &lt;csvHost:fAddr&gt;, and &lt;csvHost:fAddrVersion&gt;.
+</li>
+<li>Added &lt;rdeCsv:csv&gt; name values and definition of "domainStatuses", "domainNameServers", "hostStatuses",  "hostAddresses", and "contactStatuses".
+</li>
+</ol>
+
 <a name="rfc.references"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.6"></a><h3>6.&nbsp;
