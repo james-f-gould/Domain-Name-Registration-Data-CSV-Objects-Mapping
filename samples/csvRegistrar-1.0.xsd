@@ -42,16 +42,6 @@
    </complexContent>
   </complexType>
 
-  <!--
-  Supported form / type of postal information
-  -->
-  <simpleType name="postalInfoEnumType">
-    <restriction base="token">
-      <enumeration value="loc"/>
-      <enumeration value="int"/>
-    </restriction>
-  </simpleType>
-
  <!-- Registrar unique identifier (short name / id) -->
  <element name="fId" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
@@ -111,39 +101,49 @@
      <enumeration value="custom"/>
    </restriction>
  </simpleType>
+ 
+  <!-- Contact type field -->
+ <element name="fContactType" 
+  type="csvRegistrar:fContactsTypeType" 
+  substitutionGroup="rdeCsv:field"/>
+ 
+ <element name="fCustomContactTypeName" 
+  type="rdeCsv:fTokenType" 
+  substitutionGroup="rdeCsv:field"/>
 
-   <!-- URL fields -->
- <element name="fWhoisUrl" type="rdeCsv:anyURIType" 
-  substitutionGroup="rdeCsv:field"/>
-  
- <!-- Registrar contact types field --> 
- <element name="fContactTypes" 
-  type="csvRegistrar:contactTypesType" 
-  substitutionGroup="rdeCsv:field"/>
- <complexType name="contactTypesType">
+ <complexType name="fContactsTypeType">
   <complexContent>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="csvRegistrar\:contactTypeType"/>
-      <attribute name="list" type="boolean" 
-        default="true"/>
-      <attribute name="sep" type="token" 
-        default=","/>
+      default="domain\:contactAttrType"/>
     </extension>
   </complexContent>
  </complexType>
- 
+
  <!-- Contact type enumerated values -->
-  <simpleType name="contactTypeType">
+  <simpleType name="contactAttrType">
     <restriction base="token">
       <enumeration value="admin"/>
       <enumeration value="billing"/>
+      <enumeration value="primaryBilling"/>
       <enumeration value="tech"/>
+      <enumeration value="legal"/>
+      <enumeration value="marketing"/>
+      <enumeration value="icann"/>
+      <enumeration value="support"/>
+      <enumeration value="abuse"/>
+      <enumeration value="ceo"/>     
       <enumeration value="custom"/>
     </restriction>
   </simpleType>
-  
+
+ <!-- Whois URL field -->
+ <element name="fWhoisUrl" 
+  type="rdeCsv:anyURIType" 
+  substitutionGroup="rdeCsv:field"/>
+
+
   <!--
   End of schema.
   -->
