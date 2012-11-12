@@ -1483,7 +1483,8 @@ ns1.example.test2]]>
                     <t hangText="&lt;rdeCsv:fStatus&gt;">Host object status a defined in <xref target="RFC5732"/>.</t>
                     <t hangText="&lt;rdeCsv:fStatusDescription&gt;">Host object status description which is free form text describing the rationale for the status.</t>
                     <t hangText="&lt;rdeCsv:fStatusDescriptionLang&gt;">Language of the &lt;rdeCsv:fStatusDescription&gt; field.</t>
-                    <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the status was set for the host name object.</t>
+                    <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the status for the host object.</t>
+                    <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the status was set for the host object.</t>
                   </list></t>
                     <t>
                         Example of a "hostStatuses" &lt;rdeCsv:csv&gt; element:
@@ -1594,7 +1595,8 @@ ns1.domain1.test,deleteUpdateProhibited]]>
                      <t hangText="&lt;rdeCsv:fRoid&gt;">Host object Registry Object IDentifier (ROID) that uniquely identifies the host object when 
                     the &lt;csvHost:fName&gt; is not unique.  The &lt;rdeCsv:fRoid&gt; is used for servers that supports a set of external host objects 
                     per sponsoring client or when the server supports the &lt;domain:hostAttr&gt; model of <xref target="RFC5731"/>.</t>
-                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the address is was set for the host object.</t>
+                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the address for the host object.</t>
+                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the address was set for the host object.</t>
                   </list></t>
                     <t>
                         Example of a "hostAddresses" &lt;rdeCsv:csv&gt; element for server that supports the &lt;domain:hostObj&gt; model 
