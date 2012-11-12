@@ -1147,7 +1147,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
       <rdeCsv:fRoid>  Registry Object IDentifier (ROID) used to uniquely
          reference a delegated host record with the <domain:hostAttr>
          model in [RFC5731].  The host ROID MAY be used in place of the
-         host name using the <cvsHost:fName> field element.  The
+         host name using the <csvHost:fName> field element.  The
          <rdeCsv:fRoid> field element MAY also be defined for external
          hosts when the server supports a separate set of external host
          objects per sponsoring client.
@@ -1829,7 +1829,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
       <rdeCsv:fClID>  Identifier of the sponsoring client.  In the case
          of external hosts, the server MAY create a unique set of
-         external hosts for each sponsoring client, so the <cvsHost:
+         external hosts for each sponsoring client, so the <csvHost:
          fName> itself won't be unique but instead the combination of
          the <rdeCsv:fClID> and the <csvHost:fName> is unique.
 
@@ -1867,7 +1867,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
       <rdeCsv:fields>
         <csvHost:fName/>
         <rdeCsv:fRoid/>
-        <rdeCsv:fParentDomain/>
+        <csvHost:fParentDomain/>
         <rdeCsv:fClID/>
         <rdeCsv:fCrID/>
         <rdeCsv:fCrDate/>

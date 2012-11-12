@@ -1304,7 +1304,7 @@ domain2.test,pendingDelete
 <dt>&lt;rdeCsv:fRoid&gt;</dt>
 <dd>Registry Object IDentifier (ROID) used to uniquely reference a delegated host record with the &lt;domain:hostAttr&gt; model in 
                     <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.  The host ROID MAY be used in place of the host name using 
-                    the &lt;cvsHost:fName&gt; field element.  The &lt;rdeCsv:fRoid&gt; field element MAY also be defined for 
+                    the &lt;csvHost:fName&gt; field element.  The &lt;rdeCsv:fRoid&gt; field element MAY also be defined for 
                     external hosts when the server supports a separate set of external host objects per sponsoring client.
 </dd>
 </dl></blockquote>
@@ -1950,7 +1950,7 @@ Host Object</h3>
 </dd>
 <dt>&lt;rdeCsv:fClID&gt;</dt>
 <dd>Identifier of the sponsoring client.  In the case of external hosts, the server MAY create a unique set of external 
-                    hosts for each sponsoring client, so the &lt;cvsHost:fName&gt; itself won't be unique but instead the combination of the &lt;rdeCsv:fClID&gt; and the 
+                    hosts for each sponsoring client, so the &lt;csvHost:fName&gt; itself won't be unique but instead the combination of the &lt;rdeCsv:fClID&gt; and the 
                     &lt;csvHost:fName&gt; is unique.
 </dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
@@ -1986,7 +1986,7 @@ Host Object</h3>
    &lt;rdeCsv:fields&gt;
      &lt;csvHost:fName/&gt;
      &lt;rdeCsv:fRoid/&gt;
-     &lt;rdeCsv:fParentDomain/&gt;
+     &lt;csvHost:fParentDomain/&gt;
      &lt;rdeCsv:fClID/&gt;
      &lt;rdeCsv:fCrID/&gt;
      &lt;rdeCsv:fCrDate/&gt;
