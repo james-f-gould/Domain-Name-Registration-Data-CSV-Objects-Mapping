@@ -51,6 +51,13 @@ Child elements of the <rde:contents> object
     </extension>
   </complexContent>
  </complexType>
+ 
+  
+ <!-- Is Registrar Contact field -->
+ <element name="fIsRegistrarContact" 
+  type="rdeCsv:fBooleanType" 
+  substitutionGroup="rdeCsv:field"/>
+
 
  <!-- voice and fax telephone number fields -->
  <element name="fVoice" type="csvContact:fE164StringType" 

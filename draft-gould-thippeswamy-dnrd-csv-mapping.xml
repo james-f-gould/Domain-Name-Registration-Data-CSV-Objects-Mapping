@@ -867,7 +867,7 @@ domain2.test,pendingDelete]]>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the delegated host (name server) was set for the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fRoid&gt;">Registry Object IDentifier (ROID) used to uniquely reference a delegated host record with the &lt;domain:hostAttr&gt; model in 
                     <xref target="RFC5731"/>.  The host ROID MAY be used in place of the host name using 
-                    the &lt;cvsHost:fName&gt; field element.  The &lt;rdeCsv:fRoid&gt; field element MAY also be defined for 
+                    the &lt;csvHost:fName&gt; field element.  The &lt;rdeCsv:fRoid&gt; field element MAY also be defined for 
                     external hosts when the server supports a separate set of external host objects per sponsoring client.</t>   
                      
                   </list></t>
@@ -1374,7 +1374,7 @@ domain2.test,2012-03-08T19:38:00.0Z]]>
                     host object when the &;lt;csvHost:fName&gt; is not unique due to the server supporting the &lt;domain:hostAttr&gt; model of <xref target="RFC5731"/> or 
                     when the server supports a set of external hosts per sponsoring client.</t>
                     <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of the sponsoring client.  In the case of external hosts, the server MAY create a unique set of external 
-                    hosts for each sponsoring client, so the &lt;cvsHost:fName&gt; itself won't be unique but instead the combination of the &lt;rdeCsv:fClID&gt; and the 
+                    hosts for each sponsoring client, so the &lt;csvHost:fName&gt; itself won't be unique but instead the combination of the &lt;rdeCsv:fClID&gt; and the 
                     &lt;csvHost:fName&gt; is unique.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the host object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the host object was created.</t>
@@ -1395,7 +1395,7 @@ domain2.test,2012-03-08T19:38:00.0Z]]>
    <rdeCsv:fields>
      <csvHost:fName/>
      <rdeCsv:fRoid/>
-     <rdeCsv:fParentDomain/>
+     <csvHost:fParentDomain/>
      <rdeCsv:fClID/>
      <rdeCsv:fCrID/>
      <rdeCsv:fCrDate/>

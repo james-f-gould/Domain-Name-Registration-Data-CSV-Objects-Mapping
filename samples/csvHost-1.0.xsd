@@ -44,24 +44,32 @@
   substitutionGroup="rdeCsv:field"/>
 
  
- <!-- IP address fields (fV4Addrs, fV6Addrs) -->
- <element name="fV4Addrs" type="csvHost:fAddrsType" 
+ <!-- IP address field -->
+ <element name="fAddr" type="csvHost:fAddrType" 
   substitutionGroup="rdeCsv:field"/>
- <element name="fV6Addrs" type="csvHost:fAddrsType" 
-  substitutionGroup="rdeCsv:field"/>
- <complexType name="fAddrsType">
+ <complexType name="fAddrType">
   <complexContent>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
         default="host\:addrStringType"/>
-      <attribute name="list" type="boolean" 
-        default="true"/>
-      <attribute name="sep" type="token" 
-        default=","/>
     </extension>
   </complexContent>
  </complexType>
+
+ <!-- IP address version field -->
+ <element name="fAddrVersion" type="csvHost:fAddrVersionType" 
+  substitutionGroup="rdeCsv:field"/>
+ <complexType name="fAddrVersionType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="host\:ipType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+
 
  <!-- Boolean type  fields -->
  <element name="fIdn" type="rdeCsv:fBooleanType" 

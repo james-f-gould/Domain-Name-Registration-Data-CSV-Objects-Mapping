@@ -48,44 +48,22 @@
  <!-- Domain name field -->
  <element name="fName" type="rdeCsv:fNameType" 
   substitutionGroup="rdeCsv:field"/>
-
  
- <!-- RGP statuses field -->
- <element name="fRgpStatuses" 
- type="csvDomain:fRgpStatusesType" 
+
+ <!-- RGP status field -->
+ <element name="fRgpStatus" 
+ type="csvDomain:fRgpStatusType" 
   substitutionGroup="rdeCsv:field"/>
- <complexType name="fRgpStatusesType">
+ <complexType name="fRgpStatusType">
   <complexContent>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
       default="rgp\:statusType"/>
-      <attribute name="list" type="boolean" 
-      default="true"/>
-      <attribute name="sep" type="token" 
-      default=","/>
     </extension>
   </complexContent>
  </complexType>
  
- <!-- Name server object list field -->
- <element name="fNsObjs" type="csvDomain:fNsObjsType" 
-  substitutionGroup="rdeCsv:field"/>
- <complexType name="fNsObjsType">
-  <complexContent>
-    <extension base="rdeCsv:fieldType">
-      <sequence/>
-      <attribute name="type" type="token"  
-      default="eppcom\:labelType"/>
-      <attribute name="list" type="boolean" 
-      default="true"/>
-      <attribute name="sep" type="token" 
-      default=","/>
-    </extension>
-  </complexContent>
- </complexType>
-
-
  <!-- Contact type field -->
  <element name="fContactType" type="csvDomain:fContactsTypeType" 
   substitutionGroup="rdeCsv:field"/>
