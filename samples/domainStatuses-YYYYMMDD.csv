@@ -1,0 +1,4 @@
+domain1.test,clientUpdateProhibited,"Disallow update",en,,clientX,2009-12-03T09:05:00.0Z
+domain1.test,clientDeleteProhibited,"Disallow delete",en,,clientX,2010-12-04T10:05:00.0Z
+domain2.test,clientUpdateProhibited,"Disallow update",en,,clientX,2011-10-03T09:05:00.0Z
+domain2.test,pendingDelete,,,redemptionPeriod,clientX,2011-11-14T10:05:00.0Z

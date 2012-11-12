@@ -1017,6 +1017,8 @@ domainN.test
       &lt;csvDomain:fName/&gt;
       &lt;csvContact:fId/&gt;
       &lt;csvDomain:fContactType/&gt;
+      &lt;rdeCsv:fCrID/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
@@ -1041,12 +1043,12 @@ domainN.test
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,sh8013,admin
-domain1.test,mycontactid,tech
-domain1.test,mycontactid,billing
-domain2.test,mycontactid,admin
-domain2.test,sh8013,tech
-domain2.test,mycontactid,billing
+domain1.test,sh8013,admin,clientX,2011-10-03T09:05:00.0Z
+domain1.test,mycontactid,tech,clientX,2011-10-03T09:05:00.0Z
+domain1.test,mycontactid,billing,clientX,2011-10-03T09:05:00.0Z
+domain2.test,mycontactid,admin,clientX,2011-10-03T09:05:00.0Z
+domain2.test,sh8013,tech,clientX,2011-10-03T09:05:00.0Z
+domain2.test,mycontactid,billing,clientX,2011-10-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1168,6 +1170,7 @@ domain2.test,sh8013,tech
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
       &lt;csvDomain:fRgpStatus/&gt;
+      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -1194,13 +1197,13 @@ domain2.test,sh8013,tech
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 domain1.test,clientUpdateProhibited,"Disallow update",
-en,,2009-12-03T09:05:00.0Z
+en,,clientX,2009-12-03T09:05:00.0Z
 domain1.test,clientDeleteProhibited,"Disallow delete",
-en,,2010-12-04T10:05:00.0Z
+en,,clientX,2010-12-04T10:05:00.0Z
 domain2.test,clientUpdateProhibited,"Disallow update",
-en,,2011-10-03T09:05:00.0Z
+en,,clientX,2011-10-03T09:05:00.0Z
 domain2.test,pendingDelete,,,
-redemptionPeriod,2011-11-14T10:05:00.0Z
+redemptionPeriod,clientX,2011-11-14T10:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1217,8 +1220,8 @@ redemptionPeriod,2011-11-14T10:05:00.0Z
 ...
  &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
   &lt;rdeCsv:fields&gt;
-      &lt;csvDomain:fName/&gt;
-      &lt;rdeCsv:fStatus/&gt;
+    &lt;csvDomain:fName/&gt;
+    &lt;rdeCsv:fStatus/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
@@ -1323,6 +1326,7 @@ domain2.test,pendingDelete
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;csvHost:fName/&gt;
+      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -1348,10 +1352,10 @@ domain2.test,pendingDelete
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,ns1.domain2.test,2009-12-03T09:05:00.0Z
-domain1.test,ns2.domain2.test,2009-12-03T09:05:00.0Z
-domain2.test,ns1.domain.example,2009-12-03T09:05:00.0Z
-domain2.test,ns2.domain.example,2009-12-03T09:05:00.0Z
+domain1.test,ns1.domain2.test,clientX,2009-12-03T09:05:00.0Z
+domain1.test,ns2.domain2.test,clientX,2009-12-03T09:05:00.0Z
+domain2.test,ns1.domain.example,clientX,2009-12-03T09:05:00.0Z
+domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1372,6 +1376,7 @@ domain2.test,ns2.domain.example,2009-12-03T09:05:00.0Z
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fRoid/&gt;
+      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -1398,10 +1403,10 @@ domain2.test,ns2.domain.example,2009-12-03T09:05:00.0Z
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,Dns1.domain2.test-TEST,2009-12-03T09:05:00.0Z
-domain1.test,Dns2.domain2.test-TEST,2009-12-03T09:05:00.0Z
-domain2.test,Dns1.domain.example-TEST,2009-12-03T09:05:00.0Z
-domain2.test,Dns2.domain.example-TEST,2009-12-03T09:05:00.0Z
+domain1.test,Dns1.domain2.test-TEST,clientX,2009-12-03T09:05:00.0Z
+domain1.test,Dns2.domain2.test-TEST,clientX,2009-12-03T09:05:00.0Z
+domain2.test,Dns1.domain.example-TEST,clientX,2009-12-03T09:05:00.0Z
+domain2.test,Dns2.domain.example-TEST,clientX,2009-12-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1471,7 +1476,7 @@ domain2.test,ns2.domain.example
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
      cksum="1234567890 987654"&gt;
-     domainNameServers-delete-YYYYMMDD.csv
+     domainNameServersAttr-delete-YYYYMMDD.csv
     &lt;/rdeCsv:file&gt;
   &lt;/rdeCsv:files&gt;
  &lt;/rdeCsv:csvDelete&gt;
@@ -1483,7 +1488,7 @@ domain2.test,ns2.domain.example
 </dd>
 <dt></dt>
 <dd>
-                        Example of the corresponding domainNameServers-delete-YYYYMMDD.csv file.
+                        Example of the corresponding domainNameServersAttr-delete-YYYYMMDD.csv file.
                         The file contains two status records.
                     
 </dd>
@@ -2101,11 +2106,14 @@ ns1.example.test2
 <dt>&lt;rdeCsv:fStatusDescription&gt;</dt>
 <dd>Host object status description which is free form text describing the rationale for the status.
 </dd>
-<dt>&lt;rdeCsv:fStatusDescriptionLang&gt;</dt>
+<dt>&lt;rdeCsv:fLanguage&gt;</dt>
 <dd>Language of the &lt;rdeCsv:fStatusDescription&gt; field.
 </dd>
+<dt>&lt;rdeCsv:fCrID&gt;</dt>
+<dd>Identifier of client that set the status for the host object.
+</dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
-<dd>Date and time that the status was set for the host name object.
+<dd>Date and time that the status was set for the host object.
 </dd>
 </dl></blockquote>
 </dd>
@@ -2126,7 +2134,8 @@ ns1.example.test2
       &lt;csvHost:fName/&gt;
       &lt;rdeCsv:fStatus/&gt;
       &lt;rdeCsv:fStatusDescription/&gt;
-      &lt;rdeCsv:fStatusDescriptionLang/&gt;
+      &lt;rdeCsv:fLanguage/&gt;
+      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -2153,10 +2162,10 @@ ns1.example.test2
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ns1.domain1.test,clientUpdateProhibited,"Disallow update",
-en,2009-12-03T09:05:00.0Z
+en,clientX,2009-12-03T09:05:00.0Z
 ns1.domain1.test,clientDeleteProhibited,"Disallow delete",
-en,2010-12-04T10:05:00.0Z
-ns1.domain2.test,ok,,,2011-10-03T09:05:00.0Z
+en,clientX,2010-12-04T10:05:00.0Z
+ns1.domain2.test,ok,,,clientX,2011-10-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -2171,7 +2180,7 @@ ns1.domain2.test,ok,,,2011-10-03T09:05:00.0Z
 ...
 &lt;rde:deletes&gt;
 ...
- &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
+ &lt;rdeCsv:csvDelete name="hostStatuses"&gt;
   &lt;rdeCsv:fields&gt;
       &lt;csvHost:fName/&gt;
       &lt;rdeCsv:fStatus/&gt;
@@ -2250,8 +2259,11 @@ ns1.domain1.test,deleteUpdateProhibited
                     the &lt;csvHost:fName&gt; is not unique.  The &lt;rdeCsv:fRoid&gt; is used for servers that supports a set of external host objects 
                     per sponsoring client or when the server supports the &lt;domain:hostAttr&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </dd>
+<dt>&lt;rdeCsv:fCrID&gt;</dt>
+<dd>Identifier of client that set the address for the host object.
+</dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
-<dd>Date and time that the address is was set for the host object.
+<dd>Date and time that the address was set for the host object.
 </dd>
 </dl></blockquote>
 </dd>
@@ -2273,6 +2285,7 @@ ns1.domain1.test,deleteUpdateProhibited
       &lt;csvHost:fName/&gt;
       &lt;csvHost:fAddr/&gt;
       &lt;csvHost:fAddrVersion/&gt;
+      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -2298,10 +2311,10 @@ ns1.domain1.test,deleteUpdateProhibited
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-ns1.domain1.test,192.0.2.2,v4,2009-12-03T09:05:00.0Z
-ns1.domain1.test,192.0.2.29,v4,2009-12-03T09:05:00.0Z
+ns1.domain1.test,192.0.2.2,v4,clientX,2009-12-03T09:05:00.0Z
+ns1.domain1.test,192.0.2.29,v4,clientX,2009-12-03T09:05:00.0Z
 ns1.domain1.test,1080:0:0:0:8:800:200C:417A,
-v6,2009-12-03T09:05:00.0Z
+v6,clientX,2009-12-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -2316,7 +2329,7 @@ v6,2009-12-03T09:05:00.0Z
 ...
 &lt;rde:deletes&gt;
 ...
- &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
+ &lt;rdeCsv:csvDelete name="hostAddresses"&gt;
   &lt;rdeCsv:fields&gt;
       &lt;csvHost:fName/&gt;
       &lt;csvHost:fAddr/&gt;
@@ -2367,6 +2380,7 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A
       &lt;rdeCsv:fRoid/&gt;
       &lt;csvHost:fAddr/&gt;
       &lt;csvHost:fAddrVersion/&gt;
+      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -2392,10 +2406,10 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-Dns1.domain1.test-TEST,192.0.2.2,v4,2009-12-03T09:05:00.0Z
-Dns1.domain1.test-TEST,192.0.2.29,v4,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,192.0.2.2,v4,clientX,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,192.0.2.29,v4,clientX,2009-12-03T09:05:00.0Z
 Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A,
-v6,2009-12-03T09:05:00.0Z
+v6,clientX,2009-12-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -2410,10 +2424,10 @@ v6,2009-12-03T09:05:00.0Z
 ...
 &lt;rde:deletes&gt;
 ...
- &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
+ &lt;rdeCsv:csvDelete name="hostAddresses"&gt;
   &lt;rdeCsv:fields&gt;
-      &lt;rdeCsv:fRoid/&gt;
-      &lt;csvHost:fAddr/&gt;
+    &lt;rdeCsv:fRoid/&gt;
+    &lt;csvHost:fAddr/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
@@ -2498,7 +2512,7 @@ Contact Object</h3>
 <dd>Defines whether the contact record is a registrar contact with type="boolean".  Registrar contacts 
                 MAY be mixed with other contacts but MAY not have the same set of required fields.  For example, a registrar contact should always have the sponsoring 
                 client identifier be that of the registrar.  This means that a registrar contact should not support transfer and subsequently does not 
-                require a authorization info value with the &lt;rdeCsv:fPwAuthInfo&gt; field element.  The &lt;svContact:fIsRegistrarContact&gt; flag MAY further be used to 
+                require an authorization info value with the &lt;rdeCsv:fPwAuthInfo&gt; field element.  The &lt;svContact:fIsRegistrarContact&gt; flag MAY further be used to 
                 validate against the list of contacts in the "registrarContacts" CSV file, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, to ensure that they are all registrar contacts.      
                 
 </dd>
@@ -2677,8 +2691,11 @@ mycontactid
 <dt>&lt;rdeCsv:fStatusDescription&gt;</dt>
 <dd>The contact object status description which is free form text describing the rationale for the status.
 </dd>
-<dt>&lt;rdeCsv:fStatusDescriptionLang&gt;</dt>
-<dd>The language of the &lt;rdeCsv:fStatusDescription&gt; field.
+<dt>&lt;rdeCsv:fLanguage&gt;</dt>
+<dd>Language of the &lt;rdeCsv:fStatusDescription&gt; field.
+</dd>
+<dt>&lt;rdeCsv:fCrID&gt;</dt>
+<dd>Identifier of client that set the status for the contact object.
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>The date and time that the status was set for the contact object.
@@ -2702,7 +2719,8 @@ mycontactid
       &lt;csvContact:fId/&gt;
       &lt;rdeCsv:fStatus/&gt;
       &lt;rdeCsv:fStatusDescription/&gt;
-      &lt;rdeCsv:fStatusDescriptionLang/&gt;
+      &lt;rdeCsv:fLanguage/&gt;
+      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -2729,10 +2747,10 @@ mycontactid
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 sh8013,clientUpdateProhibited,"Disallow update",
-en,2009-12-03T09:05:00.0Z
+en,clientX,2009-12-03T09:05:00.0Z
 sh8013,clientDeleteProhibited,"Disallow delete",
-en,2010-12-04T10:05:00.0Z
-mycontactid,ok,,,2011-10-03T09:05:00.0Z
+en,clientX,2010-12-04T10:05:00.0Z
+mycontactid,ok,,,clientX,2011-10-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -3537,7 +3555,7 @@ EXAMPLE2
 </dd>
 <dt>&quot;custom&quot;</dt>
 <dd>Custom registrar contact type.  If custom is used, the &lt;csvRegistrar:fCustomContactTypeName&gt; field element MUST be defined to define the name 
-                	of the custom contact type.
+                  of the custom contact type.
 </dd>
 </dl></blockquote>
 </dd>
@@ -3610,6 +3628,8 @@ EXAMPLE2
       &lt;csvContact:fId/&gt;
       &lt;csvRegistrar:fContactType/&gt;
       &lt;csvRegistrar:fCustomContactTypeName/&gt;
+      &lt;rdeCsv:fCrID/&gt;
+      &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
@@ -3634,11 +3654,11 @@ EXAMPLE2
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-EXAMPLE,johnsmithid,admin,
-EXAMPLE,janesmithid,tech,
-EXAMPLE,johnsmithid,billing,
-EXAMPLE,janesmithid,abuse,
-EXAMPLE,johnsmithid,custom,policy
+EXAMPLE,johnsmithid,admin,,clientX,2011-10-03T09:05:00.0Z
+EXAMPLE,janesmithid,tech,,clientX,2011-10-03T09:05:00.0Z
+EXAMPLE,johnsmithid,billing,,clientX,2011-10-03T09:05:00.0Z
+EXAMPLE,janesmithid,abuse,,clientX,2011-10-03T09:05:00.0Z
+EXAMPLE,johnsmithid,custom,policy,clientX,2011-10-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -4022,12 +4042,6 @@ RDE CSV Schema</h3>
  &lt;element name="fStatusDescription"
   type="rdeCsv:fNormalizedStringType"
   substitutionGroup="rdeCsv:field"/&gt;
-
- &lt;!-- Object Status Descrption Language --&gt;
- &lt;element name="fStatusDescriptionLang"
-  type="rdeCsv:fLanguageType"
-  substitutionGroup="rdeCsv:field"/&gt;
-
 
  &lt;!-- clID fields (fClID, fCrID, fUpID) --&gt;
  &lt;!-- Identifier of client that sponsors the object --&gt;
@@ -5478,10 +5492,10 @@ Change from 00 to 01</h3>
 <li>Removed definition of the &lt;rdeCsv:fields&gt; optional "list" attribute.
 </li>
 <li>Removed definition of list field elements: &lt;rdeCsv:fStatuses&gt;, &lt;rdeCsv:fAdminContacts&gt;, &lt;rdeCsv:fTechContacts&gt;, &lt;rdeCsv:fBillingContacts&gt;, 
-        			&lt;csvDomain:fNsObjs&gt;, &lt;csvDomain:fRgpStatuses&gt;, &lt;csvHost:fV4Addrs&gt;, &lt;csvHost:fV6Addrs&gt;, and &lt;csvRegistrar:fContactTypes&gt;.
+              &lt;csvDomain:fNsObjs&gt;, &lt;csvDomain:fRgpStatuses&gt;, &lt;csvHost:fV4Addrs&gt;, &lt;csvHost:fV6Addrs&gt;, and &lt;csvRegistrar:fContactTypes&gt;.
 </li>
 <li>Added field elements &lt;rdeCsv:fStatus&gt;, &lt;rdeCsv:fStatusDescription&gt;, &lt;rdeCsv:fStatusDescriptionLang&gt;, &lt;csvDomain:fContactType&gt;, 
-        			 &lt;csvDomain:fRgpStatus&gt;, &lt;csvHost:fAddr&gt;, and &lt;csvHost:fAddrVersion&gt;.
+               &lt;csvDomain:fRgpStatus&gt;, &lt;csvHost:fAddr&gt;, and &lt;csvHost:fAddrVersion&gt;.
 </li>
 <li>Added &lt;rdeCsv:csv&gt; name values and definition of "domainStatuses", "domainNameServers", "hostStatuses",  "hostAddresses", "contactStatuses", and "registrarContacts".
 </li>

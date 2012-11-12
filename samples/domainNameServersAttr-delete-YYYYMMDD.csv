@@ -1,0 +1,4 @@
+domain1.test,Dns1.domain2.test-TEST
+domain1.test,Dns2.domain2.test-TEST
+domain2.test,Dns1.domain.example-TEST
+domain2.test,Dns2.domain.example-TEST

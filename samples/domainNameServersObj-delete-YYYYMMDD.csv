@@ -1,0 +1,4 @@
+domain1.test,ns1.domain2.test
+domain1.test,ns2.domain2.test
+domain2.test,ns1.domain.example
+domain2.test,ns2.domain.example
