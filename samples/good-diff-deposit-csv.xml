@@ -37,7 +37,6 @@
 	 <rde:deletes>
 		<rdeCsv:csvDelete name="domain">
 			<rdeCsv:fields>
-				<!-- VRSN: DOMAIN.DOMAINNAME -->
 				<rdeCsv:fName/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
@@ -63,11 +62,6 @@
 			</rdeCsv:files>
 		</rdeCsv:csvDelete>
 		<rdeCsv:csvDelete name="domainTransfer">
-				<!-- If DOMAIN.DOMAINID = DOMAINPENDINGTRANSFER.DOMAINID, then [1]
-					  Else if DOMAIN.DOMAINID = DOMAINTRANSFER.DOMAINID, then latest DOMAINTRANSFER.CREATEDDATE [2] -->
-					  
-				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.DOMAINID -> DOMAIN.DOMAINNAME -->
-				<!-- VRSN: [2] DOMAINTRANSFER.DOMAINID -> DOMAIN.DOMAINNAME -->
 			<rdeCsv:fields>
 				<rdeCsv:fName/>
 				<rdeCsv:fReDate/>
@@ -81,7 +75,6 @@
 		</rdeCsv:csvDelete>
 		<rdeCsv:csvDelete name="host">
 			<rdeCsv:fields>
-				<!-- VRSN: NAMESERVER.SERVERNAME -->
 				<rdeCsv:fName/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
@@ -93,7 +86,6 @@
 		</rdeCsv:csvDelete>
 		<rdeCsv:csvDelete name="contact">
 			<rdeCsv:fields>
-				<!-- VRSN: CONTACT.CLIENTID -->
 				<csvContact:fId/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
@@ -104,16 +96,9 @@
 			</rdeCsv:files>
 		</rdeCsv:csvDelete>
 		<rdeCsv:csvDelete name="contactPostal">
-			<!-- Driven from CONTACT.CONTADDRESSID ("int" postal type)
-				  and CONTACT.INTLCONTADDRESSID ("loc" postal type).
-				  All fields (except fId) of contactPostal follows foreign key to 
-				  CONTACTADDRESS.CONTADDRESSID.
-			-->
 			<rdeCsv:sep>,</rdeCsv:sep>
 			<rdeCsv:fields>
-				<!-- VRSN: CONTACT.CLIENTID -->
 				<csvContact:fId/>
-				<!-- VRSN: IF CONTACTADDRESS.ISINTERNATIONAL == 'loc' else 'int' -->
 				<csvContact:fPostalType/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
@@ -125,7 +110,6 @@
 		</rdeCsv:csvDelete>	 		
 		<rdeCsv:csvDelete name="contactTransfer">
 			<rdeCsv:fields>
-				<!-- VRSN: CONTACTTRANSFER.CONTACTID -> CONTACT.CLIENTID -->
 				<csvContact:fId/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
@@ -135,7 +119,6 @@
 				</rdeCsv:file> 
 			</rdeCsv:files>
 		</rdeCsv:csvDelete>
-		<!-- VRSN: NOT SUPPORTED -->
 		<rdeCsv:csvDelete name="contactDisclose">
 			<rdeCsv:fields>
 				<csvContact:fId/>
@@ -149,7 +132,6 @@
 		</rdeCsv:csvDelete>
 		<rdeCsv:csvDelete name="registrar">
 			<rdeCsv:fields>
-				<!-- VRSN: Account ACCOUNTS.SHORT_NAME -->
 				<csvRegistrar:fId/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
@@ -162,9 +144,7 @@
 		<rdeCsv:csvDelete name="registrarContact">
 			<rdeCsv:sep>,</rdeCsv:sep>
 			<rdeCsv:fields>
-				<!-- VRSN: Account ACCOUNTS.SHORT_NAME -->
 				<csvRegistrar:fId/>
-				<!-- VRSN: CONTACTS.CONTACT_ID -->
 				<csvContact:fId/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
@@ -191,47 +171,26 @@
 	 		<rdeCsv:csv name="domain">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<!-- VRSN: DOMAIN.DOMAINNAME -->
 	 				<rdeCsv:fName/>
-	 				<!-- VRSN: DOMAIN<DOMAIN.DOMAINID>-VRSN -->
 	 				<rdeCsv:fRoid/>
-	 				<!-- VRSN: true if DOMAIN.ENCODINGTYPE != 3 (ASCII); false otherwise -->
 	 				<csvDomain:fIdn/>
-	 				<!-- VRSN: DOMAIN.LANGUAGEID -> LANGUAGE.LANGUAGECODE3 -->
 	 				<rdeCsv:fLanguage/>
-	 				<!-- VRSN: NOT supported -->
 	 				<csvDomain:fVariant/>
-	 				<!-- VRSN: NOT supported -->
 	 				<csvDomain:fOriginalName/>
-	 				<!-- VRSN: NOT supported -->
 	 				<csvDomain:fReserved/>
-	 				<!-- VRSN: DOMAINSTATUS.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME -> Custom Mapping --> 
 	 				<rdeCsv:fStatuses/>
-	 				<!-- VRSN: DOMAINSTATUS.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME -> Custom Mapping --> 
 	 				<csvDomain:fRgpStatuses/>
-	 				<!-- VRSN: DOMAIN.REGISTRANTCONTACTID -> CONTACT.CLIENTID --> 
 	 				<rdeCsv:fRegistrant/>
-	 				<!-- VRSN: DOMAINCONTACTLINK.CONTACTID -> CONTACT.CLIENTID, filtered by CONTACTTYPE = '1' AND DOMAINCONTACTLINK.DOMAINID = DOMAIN.DOMAINID --> 
 	 				<rdeCsv:fAdminContacts/>
-	 				<!-- VRSN: DOMAINCONTACTLINK.CONTACTID -> CONTACT.CLIENTID, filtered by CONTACTTYPE = '2' AND DOMAINCONTACTLINK.DOMAINID = DOMAIN.DOMAINID --> 
 	 				<rdeCsv:fTechContacts/>
-	 				<!-- VRSN: DOMAINCONTACTLINK.CONTACTID -> CONTACT.CLIENTID, filtered by CONTACTTYPE = '3' AND DOMAINCONTACTLINK.DOMAINID = DOMAIN.DOMAINID --> 
 	 				<rdeCsv:fBillingContacts/>
-	 				<!-- VRSN: DOMAINNAMESERERLINK.NAMESERVERID -> NAMESERVER.SERVERNAME --> 
 	 				<csvDomain:fNsObjs/>
-	 				<!-- VRSN: DOMAIN.REGISTRARID -> REGISTRAR.SHORTNAME -->
 	 				<rdeCsv:fClID/>
-	 				<!-- VRSN: DOMAIN.CREATEDBY -> REGISTRYUSER.LOGON_NAME -->
 	 				<rdeCsv:fCrID/>
-	 				<!-- VRSN: DOMAIN.CREATEDDATE -> XML UTC Date/Time -->
 	 				<rdeCsv:fCrDate/>
-	 				<!-- VRSN: DOMAIN.UPDATEDBY -> REGISTRYUSER.LOGON_NAME -->
 	 				<rdeCsv:fUpID/>
-	 				<!-- VRSN: DOMAIN.UPDATEDDATE -> XML UTC Date/Time -->
 	 				<rdeCsv:fUpDate/>
-	 				<!-- VRSN: DOMAIN.REGISTRATIONEXPIRATIONDATE -> XML UTC Date/Time -->
 	 				<rdeCsv:fExDate/>
-	 				<!-- VRSN: DOMAIN.AUTHINFO -> Decrypted -->
 	 				<rdeCsv:fPwAuthInfo/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -262,31 +221,12 @@
 	 		<rdeCsv:csv name="domainTransfer">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<!-- If DOMAIN.DOMAINID = DOMAINPENDINGTRANSFER.DOMAINID, then [1]
-	 				     Else if DOMAIN.DOMAINID = DOMAINTRANSFER.DOMAINID, then latest DOMAINTRANSFER.CREATEDDATE [2] -->
-	 				     
-	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.DOMAINID -> DOMAIN.DOMAINNAME -->
-	 				<!-- VRSN: [2] DOMAINTRANSFER.DOMAINID -> DOMAIN.DOMAINNAME -->
 	 				<rdeCsv:fName/>
-	 				<!-- VRSN: [1] pendingTransfer -->
-	 				<!-- VRSN: [2] DOMAINTRANSFER.TRANSSTATUSCODE -> TRANSFERSTATUS.TRANSSTATUSNAME -->
 	 				<rdeCsv:fTrStatus/>
-	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.REQUESTREGISTRARID -> REGISTRAR.SHORTNAME -->
-	 				<!-- VRSN: [2] DOMAINTRANSFER.REQUESTREGISTRARID -> REGISTRAR.SHORTNAME -->
 	 				<rdeCsv:fReID/>
-	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.REQUESTDATE -> XML UTC Date/Time -->
-	 				<!-- VRSN: [2] DOMAINTRANSFER.REQUESTDATE -> XML UTC Date/Time -->	 				
 	 				<rdeCsv:fReDate/>
-	 				<!-- VRSN: [1] DOMAIN.REGISTRARID -> REGISTRAR.SHORTNAME -->
-	 				<!-- VRSN: [2] DOMAINTRANSFER.LOSINGREGISTRARID -> REGISTRAR.SHORTNAME -->	 				
-	 				<!-- Question - Does DOMAINTRANSFER get set to REQUESTREGISTRARID if cancelled or to VRSN when autoApproved? -->
 	 				<rdeCsv:fAcID/>
-	 				<!-- VRSN: [1] DOMAINPENDINGTRANSFER.RESPONSEDATE -> XML UTC Date/Time -->
-	 				<!-- VRSN: [2] DOMAINTRANSFER.RESPONSEDATE -> XML UTC Date/Time -->	 				
 	 				<rdeCsv:fAcDate/>
-	 				<!-- VRSN: [1] Calculated - DOMAIN.REGISTRATIONEXPIRATIONDATE + DOMAINPENDINGTRANSFER.TRANSFERPERIOD - [Applicable Auto Renew Grace Period] -> XML UTC Date/Time -->
-	 				<!-- (ISSUE: The expiration date should be a field in DOMAINPENDINGTRANSFER) -->
-	 				<!-- VRSN: [2] Empty -->	 				
 	 				<rdeCsv:fExDate/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -301,29 +241,17 @@
 	 		<rdeCsv:csv name="host">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<!-- VRSN: NAMESERVER.SERVERNAME -->
 	 				<rdeCsv:fName/>
-	 				<!-- VRSN: HOST<NAMESERVER.NAMESERVERID>-VRSN -->
 	 				<rdeCsv:fRoid/>
-	 				<!-- VRSN: NAMESERVER.PARENTDOMAINID -> DOMAIN.DOMAINNAME -->
 	 				<rdeCsv:fParentDomain/>
-	 				<!-- VRSN: NAMESERVERSTATUS.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME and NAMESERVER.ISLINKED = 'linked' -> Custom Mapping --> 
 	 				<rdeCsv:fStatuses/>
-	 				<!-- VRSN: NAMESERVERIPADDRESSLINK.IPADDRESS, filtered by NAMESERVERIPADDRESSLINK.IPADDRESS -> IPADDRESS.IPVERSION = 'v4' --> 
 	 				<csvHost:fV4Addrs/>
-	 				<!-- VRSN: NAMESERVERIPADDRESSLINK.IPADDRESS, filtered by NAMESERVERIPADDRESSLINK.IPADDRESS -> IPADDRESS.IPVERSION = 'v6' --> 
 	 				<csvHost:fV6Addrs/>
-	 				<!-- VRSN: NAMESERVER.REGISTRARID -> REGISTRAR.SHORTNAME -->
 	 				<rdeCsv:fClID/>
-	 				<!-- VRSN: NAMESERVER.CREATEDBY -> REGISTRYUSER.LOGON_NAME -->
 	 				<rdeCsv:fCrID/>
-	 				<!-- VRSN: NAMESERVER.CREATEDDATE -> XML UTC Date/Time -->
 	 				<rdeCsv:fCrDate/>
-	 				<!-- VRSN: NAMESERVER.UPDATEDBY -> REGISTRYUSER.LOGON_NAME -->
 	 				<rdeCsv:fUpID/>
-	 				<!-- VRSN: NAMESERVER.UPDATEDDATE -> XML UTC Date/Time -->
 	 				<rdeCsv:fUpDate/>
-	 				<!-- VRSN: NAMESERVER.PARENTDOMAINID -> DOMAIN.REGISTRARTRANSFERDATE -> XML UTC Date/Time or Empty -->
 	 				<rdeCsv:fTrDate/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -338,31 +266,19 @@
 	 		<rdeCsv:csv name="contact">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<!-- VRSN: CONTACT.CLIENTID -->
 	 				<csvContact:fId/>
-	 				<!-- VRSN: HOST<CONTACT.CONTACTID>-VRSN -->
 	 				<rdeCsv:fRoid/>
-	 				<!-- VRSN: CONTACT.STATUSCODE -> OBJECTSTATUSDESCRIPTION.STATUSNAME -> Custom Mapping --> 
 	 				<rdeCsv:fStatuses/>
-	 				<!-- VRSN: CONTACT.PHONENUMBER -->
 	 				<csvContact:fVoice/>
 	 				<csvContact:fVoiceExt/>
-	 				<!-- VRSN: CONTACT.FAXNUMBER -->
 	 				<csvContact:fFax/>
 	 				<csvContact:fFaxExt/>
-	 				<!-- VRSN: CONTACT.EMAIL -->
 	 				<csvContact:fEmail/>
-	 				<!-- VRSN: CONTACT.REGISTRARID -> REGISTRAR.SHORTNAME -->
 	 				<rdeCsv:fClID/>
-	 				<!-- VRSN: CONTACT.CREATEDBY -> REGISTRYUSER.LOGON_NAME -->
 	 				<rdeCsv:fCrID/>
-	 				<!-- VRSN: CONTACT.CREATEDDATE -> XML UTC Date/Time -->
 	 				<rdeCsv:fCrDate/>
-	 				<!-- VRSN: CONTACT.UPDATEDBY -> REGISTRYUSER.LOGON_NAME -->
 	 				<rdeCsv:fUpID/>
-	 				<!-- VRSN: CONTACT.UPDATEDDATE -> XML UTC Date/Time -->
 	 				<rdeCsv:fUpDate/>
-	 				<!-- VRSN: DOMAIN.AUTHINFO -> Decrypted -->
 	 				<rdeCsv:fPwAuthInfo/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -374,33 +290,17 @@
 	 		</rdeCsv:csv>
 	 		<rdeCsv:csv name="contactPostal">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
-	 			<!-- Driven from CONTACT.CONTADDRESSID ("int" postal type)
-	 			     and CONTACT.INTLCONTADDRESSID ("loc" postal type).
-	 			     All fields (except fId) of contactPostal follows foreign key to 
-	 			     CONTACTADDRESS.CONTADDRESSID.
-	 			-->
 	 			<rdeCsv:fields>
-	 				<!-- VRSN: CONTACT.CLIENTID -->
 	 				<csvContact:fId/>
-	 				<!-- VRSN: IF CONTACTADDRESS.ISINTERNATIONAL == 'loc' else 'int' -->
 	 				<csvContact:fPostalType/>
-	 				<!-- VRSN: CONTACT.NAME (ISSUE: Should be in CONTACTADDRESS) -->
 	 				<csvContact:fName/>
-	 				<!-- VRSN: CONTACT.ORGANIZATION (ISSUE: Should be in CONTACTADDRESS) -->
 	 				<csvContact:fOrg/>
-	 				<!-- VRSN: CONTACTADDRESS.ADDRESSLINE1 -->
 	 				<csvContact:fStreet index="0"/>
-	 				<!-- VRSN: CONTACTADDRESS.ADDRESSLINE2 -->
 	 				<csvContact:fStreet index="1"/>
-	 				<!-- VRSN: CONTACTADDRESS.ADDRESSLINE3 -->
 	 				<csvContact:fStreet index="2"/>
-	 				<!-- VRSN: CONTACTADDRESS.CITY -->
 	 				<csvContact:fCity/>
-	 				<!-- VRSN: CONTACTADDRESS.STATEPROVINCE -->
 	 				<csvContact:fSp/>
-	 				<!-- VRSN: CONTACTADDRESS.POSTALCODE -->
 		 			<csvContact:fPc/>
-	 				<!-- VRSN: CONTACTADDRESS.COUNTRYCODE -->
 		 			<csvContact:fCc/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -413,18 +313,11 @@
 	 		<rdeCsv:csv name="contactTransfer">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<!-- VRSN: CONTACTTRANSFER.CONTACTID -> CONTACT.CLIENTID -->
 	 				<csvContact:fId/>
-	 				<!-- VRSN: CONTACTTRANSFER.TRANSSTATUSCODE -> TRANSFERSTATUS.TRANSSTATUSNAME -->
 	 				<rdeCsv:fTrStatus/>
-	 				<!-- VRSN: CONTACTTRANSFER.REQUESTREGISTRARID -> REGISTRAR.SHORTNAME -->
 	 				<rdeCsv:fReID/>
-	 				<!-- VRSN: CONTACTTRANSFER.REQUESTDATE -> XML UTC Date/Time -->	 				
 	 				<rdeCsv:fReDate/>
-	 				<!-- VRSN: CONTACTTRANSFER.LOSINGREGISTRARID -> REGISTRAR.SHORTNAME -->
-	 				<!-- Question - Does LOSINGREGISTRARID get set to REQUESTREGISTRARID if cancelled or to VRSN when autoApproved? -->
 	 				<rdeCsv:fAcID/>
-	 				<!-- VRSN: CONTACTTRANSFER.RESPONSEDATE -> XML UTC Date/Time -->	 				
 	 				<rdeCsv:fAcDate/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -434,7 +327,6 @@
 	 				</rdeCsv:file> 
 	 			</rdeCsv:files>
 	 		</rdeCsv:csv>
-	 		<!-- VRSN: NOT SUPPORTED -->
 	 		<rdeCsv:csv name="contactDisclose">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
@@ -462,49 +354,28 @@
 	 		<rdeCsv:csv name="registrar">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<!-- VRSN: Account ACCOUNTS.SHORT_NAME -->
 	 				<csvRegistrar:fId/>
-	 				<!-- VRSN: REGISTRAR<ACCOUNTS.ACCOUNT_ID>-VRSN -->
 	 				<rdeCsv:fRoid/>
-	 				<!-- VRSN: FULL_NAME -->
 	 				<csvRegistrar:fName isLoc="false"/>
-	 				<!-- VRSN: ACCOUNTS.GUR_ID -->
 	 				<csvRegistrar:fGurid/>
-	 				<!-- VRSN: ACCOUNTS.ACCT_STATUS_ID -> ACCOUNT_STATUSES.ACCT_STATUS_NAME or ACCOUNT_STATUSES.ACCT_ESCROW_NAME -->
 	 				<csvRegistrar:fStatus/>
-	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.ADDRESS_LINE1 -->
 	 				<csvContact:fStreet isLoc="false" index="0"/>
-	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.ADDRESS_LINE2 -->
 	 				<csvContact:fStreet isLoc="false" index="1"/>
-	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.ADDRESS_LINE3 -->
 	 				<csvContact:fStreet isLoc="false" index="2"/>
-	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.CITY -->
 	 				<csvContact:fCity isLoc="false" />
-	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.STATE_PROVINCE -->
 	 				<csvContact:fSp isLoc="false" />
-	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.POSTAL_CODE -->
 		 			<csvContact:fPc isLoc="false" />
-	 				<!-- VRSN: ACCOUNTS.ADDRESS_ID -> ADDRESS.COUNTRY_CODE -->
 		 			<csvContact:fCc isLoc="false" />
-	 				<!-- VRSN: ACCOUNTS.PHONE_NUMBER -->
 	 				<csvContact:fVoice/>
 	 				<csvContact:fVoiceExt/>
-	 				<!-- VRSN: ACCOUNTS.FAX_NUMBER -->
 	 				<csvContact:fFax/>
 	 				<csvContact:fFaxExt/>
-	 				<!-- VRSN: ACCOUNTS.ADMIN_EMAIL_ADDRESS -->
 	 				<csvContact:fEmail/>
-	 				<!-- VRSN: ACCOUNTS.COMPANY_URL -->
 	 				<rdeCsv:fUrl/>
-	 				<!-- VRSN: ACCOUNTS.WHOIS_URL -->
 	 				<csvRegistrar:fWhoisUrl/>
-	 				<!-- VRSN: ACCOUNTS.CREATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
 	 				<rdeCsv:fCrID/>
-	 				<!-- VRSN: ACCOUNTS.CREATED_DATE -->
 	 				<rdeCsv:fCrDate/>
-	 				<!-- VRSN: ACCOUNTS.UPDATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
 	 				<rdeCsv:fUpID/>
-	 				<!-- VRSN: ACCOUNTS.UPDATED_DATE -->
 	 				<rdeCsv:fUpDate/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -517,32 +388,19 @@
 	 		<rdeCsv:csv name="registrarContact">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<!-- VRSN: Account ACCOUNTS.SHORT_NAME -->
 	 				<csvRegistrar:fId/>
-	 				<!-- VRSN: CONTACTS.CONTACT_ID -->
 	 				<csvContact:fId/>
-	 				<!-- VRSN: REGISTRARCONTACT<CONTACTS.CONTACT_ID>-VRSN -->
 	 				<rdeCsv:fRoid/>
-	 				<!-- VRSN: CONTACTS.FIRST_NAME + [" " + CONTACTS.MIDDLE_NAME] + [" " + CONTACTS.LAST_NAME] -->
 	 				<csvContact:fName isLoc="false"/>
-	 				<!-- VRSN: CONTACTS_CONTACT_TYPES_LINK.CONTACT_ID -> CONTACT_TYPES.CONTACT_TYPE_NAME -->
 	 				<csvRegistrar:fContactTypes/>
-	 				<!-- VRSN: CONTACTS.PHONE_NUMBER -->
 	 				<csvContact:fVoice/>
-	 				
 	 				<csvContact:fVoiceExt/>
-	 				<!-- VRSN: CONTACTS.FAX_NUMBER -->
 	 				<csvContact:fFax/>
 	 				<csvContact:fFaxExt/>
-	 				<!-- VRSN: CONTACTS.EMAIL_ADDRESS -->
 	 				<csvContact:fEmail/>
-	 				<!-- VRSN: CONTACTS.CREATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
 	 				<rdeCsv:fCrID/>
-	 				<!-- VRSN: CONTACTS.CREATED_DATE -->
 	 				<rdeCsv:fCrDate/>
-	 				<!-- VRSN: CONTACTS.UPDATED_BY -> ACCOUNT_USERS.LOGON_NAME -->
 	 				<rdeCsv:fUpID/>
-	 				<!-- VRSN: CONTACTS.UPDATED_DATE -->
 	 				<rdeCsv:fUpDate/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
