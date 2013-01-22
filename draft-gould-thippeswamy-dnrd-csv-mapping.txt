@@ -3368,7 +3368,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          "billing"  Billing registrar contact.
 
          "primaryBilling"  Primary billing registrar contact.  If
-            supported, there should be at most one "primaryBilling"
+            supported, there SHOULD be at most one "primaryBilling"
             contact per registrar for invoicing.
 
          "tech"  Technical registrar contact.

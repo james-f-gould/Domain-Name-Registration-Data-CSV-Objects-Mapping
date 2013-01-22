@@ -2570,7 +2570,7 @@ EXAMPLE2]]>
                 <t><list style="hanging">
                   <t hangText="&quot;admin&quot;"> Administration registrar contact.</t>
                   <t hangText="&quot;billing&quot;">Billing registrar contact.</t>
-                  <t hangText="&quot;primaryBilling&quot;">Primary billing registrar contact.  If supported, there should be at most one "primaryBilling" contact per registrar for invoicing.</t>
+                  <t hangText="&quot;primaryBilling&quot;">Primary billing registrar contact.  If supported, there SHOULD be at most one "primaryBilling" contact per registrar for invoicing.</t>
                   <t hangText="&quot;tech&quot;">Technical registrar contact.</t>
                   <t hangText="&quot;marketing&quot;">Marketing registrar contact.</t>
                   <t hangText="&quot;icann&quot;">ICANN registrar registrar contact.</t>
