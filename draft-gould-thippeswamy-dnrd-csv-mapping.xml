@@ -27,7 +27,7 @@
 <?rfc comments="yes" ?>
 <?rfc sortrefs="yes" ?>
 
-<rfc category="std" ipr="trust200902" docName="draft-gould-thippeswamy-dnrd-csv-mapping-01">
+<rfc category="std" ipr="trust200902" docName="draft-gould-thippeswamy-dnrd-csv-mapping-02">
 
 
     <front>
@@ -82,7 +82,7 @@
       </address>
      </author>
 
-        <date day="13" month="November" year="2012"/>
+        <date day="28" month="February" year="2013"/>
         
         <area>Applications</area>
         
@@ -406,8 +406,6 @@ domainN.test]]>
                   </t>
                   <t hangText="&lt;rdeCsv:fRegistrant&gt;">Registrant contact identifier with type="eppcom:clIDType". 
                   </t>
-                  <t hangText="&lt;rdeCsv:fStatus&gt;">The object status with type="eppcom:statusType".  
-                  </t>
                   <t hangText="&lt;rdeCsv:fStatusDescription&gt;">The  object status description, which is free form text describing the rationale for the status, with type="normalizedString".  
                   </t>
                   <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client that sponsors the object with type="eppcom:clIDType".
@@ -420,17 +418,17 @@ domainN.test]]>
                   </t>
                   <t hangText="&lt;rdeCsv:fAcID&gt;">Identifier of client that should take or took action for transfer with type="eppcom:clIDType".
                   </t>
-                  <t hangText="&lt;rdeCsv:fCrDate&gt;">Created date of object with type="datetime".
+                  <t hangText="&lt;rdeCsv:fCrDate&gt;">Created date of object with type="dateTime".
                   </t>
-                  <t hangText="&lt;rdeCsv:fUpDate&gt;">Updated date of object with type="datetime".
+                  <t hangText="&lt;rdeCsv:fUpDate&gt;">Updated date of object with type="dateTime".
                   </t>
-                  <t hangText="&lt;rdeCsv:fExDate&gt;">Expiration date of object with type="datetime".
+                  <t hangText="&lt;rdeCsv:fExDate&gt;">Expiration date of object with type="dateTime".
                   </t>
-                  <t hangText="&lt;rdeCsv:fReDate&gt;">Date that transfer was requested with type="datetime".
+                  <t hangText="&lt;rdeCsv:fReDate&gt;">Date that transfer was requested with type="dateTime".
                   </t>
-                  <t hangText="&lt;rdeCsv:fAcDate&gt;">Date that transfer action should be taken or has been taken with type="datetime".
+                  <t hangText="&lt;rdeCsv:fAcDate&gt;">Date that transfer action should be taken or has been taken with type="dateTime".
                   </t>
-                  <t hangText="&lt;rdeCsv:fTrDate&gt;">Date of last transfer with type="datetime".
+                  <t hangText="&lt;rdeCsv:fTrDate&gt;">Date of last transfer with type="dateTime".
                   </t>
                   <t hangText="&lt;rdeCsv:fTrStatus&gt;">State of the most recent transfer request with type="eppcom:trStatusType".
                   </t>
@@ -488,7 +486,7 @@ domainN.test]]>
   
                 <t hangText="&lt;csvDomain:fReserved&gt;">Boolean flag indicating if the domain name object is a reserved domain with type="boolean".
                 </t>
-    
+                    
                   </list></t>
                   <t>The following "rdeCsv" fields, defined in section <xref target="csvCommonFieldElements">CSV common field elements</xref>,  
                   MAY be used in the "domain" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
@@ -727,6 +725,8 @@ domain2.test,sh8013,tech]]>
                   </t>
                   <t><list style="hanging">
                   
+               <t hangText="&lt;csvDomain:fStatus&gt;">The status of the domain name with type="domain:statusType"/>.  
+                </t>
                <t hangText="&lt;csvDomain:fRgpStatus&gt;">The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusType" as 
                 defined in <xref target="RFC3915"/>.  
                 </t>
@@ -744,7 +744,6 @@ domain2.test,sh8013,tech]]>
                   MAY be used in the "domainStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   </t>
                   <t><list style="hanging">
-                    <t hangText="&lt;rdeCsv:fStatus&gt;">Domain object status a defined in <xref target="RFC5731"/>.</t>
                     <t hangText="&lt;rdeCsv:fStatusDescription&gt;">Domain object status description which is free form text describing the rationale for the status.</t>
                     <t hangText="&lt;rdeCsv:fLanguage&gt;">Language of the &lt;rdeCsv:fStatusDescription&gt; field.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the status for the domain name object.</t>
@@ -762,7 +761,7 @@ domain2.test,sh8013,tech]]>
     <rdeCsv:sep>,</rdeCsv:sep>
     <rdeCsv:fields>
       <csvDomain:fName/>
-      <rdeCsv:fStatus/>
+      <csvDomain:fStatus/>
       <rdeCsv:fStatusDescription/>
       <rdeCsv:fLanguage/>
       <csvDomain:fRgpStatus/>
@@ -809,7 +808,7 @@ redemptionPeriod,clientX,2011-11-14T10:05:00.0Z]]>
  <rdeCsv:csvDelete name="domainStatuses">
   <rdeCsv:fields>
     <csvDomain:fName/>
-    <rdeCsv:fStatus/>
+    <csvDomain:fStatus/>
   </rdeCsv:fields>
   <rdeCsv:files>
     <rdeCsv:file 
@@ -1475,6 +1474,8 @@ ns1.example.test2]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;csvHost:fName&gt;">Host name of status.</t>
+               <t hangText="&lt;csvHost:fStatus&gt;">The status of the host with type="host:statusType"/>.  
+                </t>
                   </list></t>
                 
                 
@@ -1485,7 +1486,6 @@ ns1.example.test2]]>
                     <t hangText="&lt;rdeCsv:fRoid&gt;">Host object Registry Object IDentifier (ROID) that uniquely identifies the host object when 
                     the &lt;csvHost:fName&gt; is not unique.  The &lt;rdeCsv:fRoid&gt; is used for servers that support a set of external host objects 
                     per sponsoring client.</t>
-                    <t hangText="&lt;rdeCsv:fStatus&gt;">Host object status a defined in <xref target="RFC5732"/>.</t>
                     <t hangText="&lt;rdeCsv:fStatusDescription&gt;">Host object status description which is free form text describing the rationale for the status.</t>
                     <t hangText="&lt;rdeCsv:fLanguage&gt;">Language of the &lt;rdeCsv:fStatusDescription&gt; field.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the status for the host object.</t>
@@ -1503,7 +1503,7 @@ ns1.example.test2]]>
     <rdeCsv:sep>,</rdeCsv:sep>
     <rdeCsv:fields>
       <csvHost:fName/>
-      <rdeCsv:fStatus/>
+      <csvHost:fStatus/>
       <rdeCsv:fStatusDescription/>
       <rdeCsv:fLanguage/>
       <rdeCsv:fCrID/>
@@ -1546,7 +1546,7 @@ ns1.domain2.test,ok,,,clientX,2011-10-03T09:05:00.0Z]]>
  <rdeCsv:csvDelete name="hostStatuses">
   <rdeCsv:fields>
       <csvHost:fName/>
-      <rdeCsv:fStatus/>
+      <csvHost:fStatus/>
   </rdeCsv:fields>
   <rdeCsv:files>
     <rdeCsv:file 
@@ -1924,6 +1924,7 @@ mycontactid]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;csvContact:fId&gt;">Server-unique contact identifier of status.</t>
+               <t hangText="&lt;csvContact:fStatus&gt;">The status of the contact with type="contact:statusType".</t>
                   </list></t>
                 
                 
@@ -1931,7 +1932,6 @@ mycontactid]]>
                   MAY be used in the "contactStatuses" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   </t>
                   <t><list style="hanging">
-                    <t hangText="&lt;rdeCsv:fStatus&gt;">The contact object status a defined in <xref target="RFC5733"/>.</t>
                     <t hangText="&lt;rdeCsv:fStatusDescription&gt;">The contact object status description which is free form text describing the rationale for the status.</t>
                     <t hangText="&lt;rdeCsv:fLanguage&gt;">Language of the &lt;rdeCsv:fStatusDescription&gt; field.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the status for the contact object.</t>
@@ -1949,7 +1949,7 @@ mycontactid]]>
     <rdeCsv:sep>,</rdeCsv:sep>
     <rdeCsv:fields>
       <csvContact:fId/>
-      <rdeCsv:fStatus/>
+      <csvContact:fStatus/>
       <rdeCsv:fStatusDescription/>
       <rdeCsv:fLanguage/>
       <rdeCsv:fCrID/>
@@ -1992,7 +1992,7 @@ mycontactid,ok,,,clientX,2011-10-03T09:05:00.0Z]]>
  <rdeCsv:csvDelete name="contactStatuses">
   <rdeCsv:fields>
       <csvContact:fId/>
-      <rdeCsv:fStatus/>
+      <csvContact:fStatus/>
   </rdeCsv:fields>
   <rdeCsv:files>
     <rdeCsv:file 
@@ -2972,21 +2972,6 @@ LANG2]]>
     </extension>
   </complexContent>
  </complexType>
-
- <!-- Object status field -->
- <element name="fStatus" type="rdeCsv:fStatusType" 
-  substitutionGroup="rdeCsv:field"/>
-
- <!-- Object status based on eppcom-1.0.xsd  -->
- <complexType name="fStatusType">
-  <complexContent>
-    <extension base="rdeCsv:fieldType">
-      <sequence/>
-      <attribute name="type" type="token"  
-        default="eppcom\:statusType"/>
-    </extension>
-  </complexContent>
- </complexType>
  
  <!-- Object Status Description -->
  <element name="fStatusDescription" 
@@ -3019,27 +3004,27 @@ LANG2]]>
   </complexContent>
  </complexType>
  
- <!-- datetime fields (fCrDate, fUpDate, fExDate) -->
- <element name="fCrDate" type="rdeCsv:fDatetimeType" 
+ <!-- dateTime fields (fCrDate, fUpDate, fExDate) -->
+ <element name="fCrDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <element name="fUpDate" type="rdeCsv:fDatetimeType" 
+ <element name="fUpDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <element name="fExDate" type="rdeCsv:fDatetimeType" 
+ <element name="fExDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Date and time that transfer was requested -->
- <element name="fReDate" type="rdeCsv:fDatetimeType" 
+ <element name="fReDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Date and time of a required or completed response -->
- <element name="fAcDate" type="rdeCsv:fDatetimeType" 
+ <element name="fAcDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <element name="fTrDate" type="rdeCsv:fDatetimeType" 
+ <element name="fTrDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <complexType name="fDatetimeType">
+ <complexType name="fDateTimeType">
   <complexContent>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="datetime"/>
+        default="dateTime"/>
     </extension>
   </complexContent>
  </complexType>
@@ -3055,13 +3040,13 @@ LANG2]]>
   </complexContent>
  </complexType>
 
- <!-- unsignedbyte type -->
+ <!-- unsignedByte type -->
  <complexType name="fUnsignedByteType">
   <complexContent>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="unsignedbyte"/>
+        default="unsignedByte"/>
     </extension>
   </complexContent>
  </complexType>
@@ -3209,7 +3194,6 @@ LANG2]]>
   </complexContent>
  </complexType>
 
-  
   <!--
   End of schema.
   -->
@@ -3411,7 +3395,22 @@ END]]></artwork></figure>
  <!-- Original Domain Name for Variant field -->
  <element name="fOriginalName" type="rdeCsv:fNameType" 
   substitutionGroup="rdeCsv:field"/>
- 
+  
+ <!-- Domain status field -->
+ <element name="fStatus" type="csvDomain:fStatusType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Domain status based on domain-1.0.xsd  -->
+ <complexType name="fStatusType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="domain\:statusType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+  
   <!--
   End of schema.
   -->
@@ -3545,6 +3544,21 @@ END]]></artwork></figure>
  <!-- Parent domain name for subordinate host field -->
  <element name="fParentDomain" type="rdeCsv:fNameType" 
   substitutionGroup="rdeCsv:field"/>
+
+ <!-- Host status field -->
+ <element name="fStatus" type="csvHost:fStatusType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Host status based on host-1.0.xsd  -->
+ <complexType name="fStatusType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="host\:statusType"/>
+    </extension>
+  </complexContent>
+ </complexType>
 
   <!--
   End of schema.
@@ -3846,6 +3860,22 @@ Child elements of the <rde:contents> object
     </extension>
   </complexContent>
  </complexType>
+ 
+ <!-- Contact status field -->
+ <element name="fStatus" type="csvContact:fStatusType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Host status based on contact-1.0.xsd  -->
+ <complexType name="fStatusType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="contact\:statusType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+ 
  
 <!--
 End of schema.
@@ -4308,6 +4338,13 @@ END]]></artwork></figure>
               <t>Added &lt;rdeCsv:csv&gt; name values and definition of "domainStatuses", "domainNameServers", "hostStatuses",  "hostAddresses", "contactStatuses", and "registrarContacts".</t>
               <t>Remove "registrarContact" &lt;rdeCsv:csv&gt; name value to fully use the contact object for both domain contacts and registrar contacts.</t> 
               <t>Added definition of &lt;csvContact:fIsRegistrarContact&gt; to enable the mixing of registrar contacts and the object contacts in the same contact object CSV files.</t>
+            </list></t>
+          </section>
+          <section title="Change from 01 to 02" anchor="change-01-to-02">
+            <t><list style="numbers">
+              <t>Replaced the &lt;rdeCsv:fStatus&gt; field with the &lt;csvDomain:fStatus&gt;, &lt;csvHost:fStatus&gt;, and &lt;csvContact:fStatus&gt; fields, since there is no eppcom:statusType element, but there is a domain:statusType, host:statusType, and contact:statusType elements.</t>
+              <t>Fixed reference of XSD datatime to dateTime in the rdeCsv:fDatetimeType field, that was renamed to the rdeCsv:fDataTimeType field.</t>
+              <t>Fixed reference to XSD unsignedbyte to unsignedByte in the rdeCsv:fUnsignedByteType field.</t>    
             </list></t>
           </section>
         </section>

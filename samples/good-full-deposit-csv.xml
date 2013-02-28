@@ -74,7 +74,7 @@
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
 	 				<csvDomain:fName/>
-	 				<rdeCsv:fStatus/>
+	 				<csvDomain:fStatus/>
 	 				<rdeCsv:fStatusDescription/>
 	 				<rdeCsv:fLanguage/>
 	 				<csvDomain:fRgpStatus/>
@@ -164,7 +164,7 @@
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
 	 				<csvHost:fName/>
-	 				<rdeCsv:fStatus/>
+	 				<csvHost:fStatus/>
 	 				<rdeCsv:fStatusDescription/>
 	 				<rdeCsv:fLanguage/>
 	 				<rdeCsv:fCrID/>
@@ -224,7 +224,7 @@
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
       			<csvContact:fId/>
-      			<rdeCsv:fStatus/>
+      			<csvContact:fStatus/>
       			<rdeCsv:fStatusDescription/>
      				<rdeCsv:fLanguage/>
 	 				<rdeCsv:fCrID/>

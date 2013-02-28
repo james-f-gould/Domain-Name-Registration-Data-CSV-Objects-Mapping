@@ -145,9 +145,9 @@
 <tr><td class="header">Network Working Group</td><td class="header">J. Gould</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">C. Thippeswamy</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">Verisign</td></tr>
-<tr><td class="header">Expires: May 17, 2013</td><td class="header">November 13, 2012</td></tr>
+<tr><td class="header">Expires: September 1, 2013</td><td class="header">February 28, 2013</td></tr>
 </table></td></tr></table>
-<h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-01</h1>
+<h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-02</h1>
 
 <h3>Abstract</h3>
 
@@ -173,11 +173,11 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on May 17, 2013.</p>
+This Internet-Draft will expire on September 1, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
-Copyright (c) 2012 IETF Trust and the persons identified as the
+Copyright (c) 2013 IETF Trust and the persons identified as the
 document authors.  All rights reserved.</p>
 <p>
 This document is subject to BCP 78 and the IETF Trust's Legal
@@ -642,10 +642,6 @@ CSV common field elements</h3>
 <dd>Registrant contact identifier with type="eppcom:clIDType". 
                   
 </dd>
-<dt>&lt;rdeCsv:fStatus&gt;</dt>
-<dd>The object status with type="eppcom:statusType".  
-                  
-</dd>
 <dt>&lt;rdeCsv:fStatusDescription&gt;</dt>
 <dd>The  object status description, which is free form text describing the rationale for the status, with type="normalizedString".  
                   
@@ -671,27 +667,27 @@ CSV common field elements</h3>
                   
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
-<dd>Created date of object with type="datetime".
+<dd>Created date of object with type="dateTime".
                   
 </dd>
 <dt>&lt;rdeCsv:fUpDate&gt;</dt>
-<dd>Updated date of object with type="datetime".
+<dd>Updated date of object with type="dateTime".
                   
 </dd>
 <dt>&lt;rdeCsv:fExDate&gt;</dt>
-<dd>Expiration date of object with type="datetime".
+<dd>Expiration date of object with type="dateTime".
                   
 </dd>
 <dt>&lt;rdeCsv:fReDate&gt;</dt>
-<dd>Date that transfer was requested with type="datetime".
+<dd>Date that transfer was requested with type="dateTime".
                   
 </dd>
 <dt>&lt;rdeCsv:fAcDate&gt;</dt>
-<dd>Date that transfer action should be taken or has been taken with type="datetime".
+<dd>Date that transfer action should be taken or has been taken with type="dateTime".
                   
 </dd>
 <dt>&lt;rdeCsv:fTrDate&gt;</dt>
-<dd>Date of last transfer with type="datetime".
+<dd>Date of last transfer with type="dateTime".
                   
 </dd>
 <dt>&lt;rdeCsv:fTrStatus&gt;</dt>
@@ -1106,6 +1102,10 @@ domain2.test,sh8013,tech
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
+<dt>&lt;csvDomain:fStatus&gt;</dt>
+<dd>The status of the domain name with type="domain:statusType"/>.  
+                
+</dd>
 <dt>&lt;csvDomain:fRgpStatus&gt;</dt>
 <dd>The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusType" as 
                 defined in <a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a>.  
@@ -1134,9 +1134,6 @@ domain2.test,sh8013,tech
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
-<dt>&lt;rdeCsv:fStatus&gt;</dt>
-<dd>Domain object status a defined in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
-</dd>
 <dt>&lt;rdeCsv:fStatusDescription&gt;</dt>
 <dd>Domain object status description which is free form text describing the rationale for the status.
 </dd>
@@ -1166,7 +1163,7 @@ domain2.test,sh8013,tech
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
-      &lt;rdeCsv:fStatus/&gt;
+      &lt;csvDomain:fStatus/&gt;
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
       &lt;csvDomain:fRgpStatus/&gt;
@@ -1221,7 +1218,7 @@ redemptionPeriod,clientX,2011-11-14T10:05:00.0Z
  &lt;rdeCsv:csvDelete name="domainStatuses"&gt;
   &lt;rdeCsv:fields&gt;
     &lt;csvDomain:fName/&gt;
-    &lt;rdeCsv:fStatus/&gt;
+    &lt;csvDomain:fStatus/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
@@ -2085,6 +2082,10 @@ ns1.example.test2
 <dt>&lt;csvHost:fName&gt;</dt>
 <dd>Host name of status.
 </dd>
+<dt>&lt;csvHost:fStatus&gt;</dt>
+<dd>The status of the host with type="host:statusType"/>.  
+                
+</dd>
 </dl></blockquote>
 </dd>
 <dt></dt>
@@ -2099,9 +2100,6 @@ ns1.example.test2
 <dd>Host object Registry Object IDentifier (ROID) that uniquely identifies the host object when 
                     the &lt;csvHost:fName&gt; is not unique.  The &lt;rdeCsv:fRoid&gt; is used for servers that support a set of external host objects 
                     per sponsoring client.
-</dd>
-<dt>&lt;rdeCsv:fStatus&gt;</dt>
-<dd>Host object status a defined in <a class='info' href='#RFC5732'>[RFC5732]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Host Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </dd>
 <dt>&lt;rdeCsv:fStatusDescription&gt;</dt>
 <dd>Host object status description which is free form text describing the rationale for the status.
@@ -2132,7 +2130,7 @@ ns1.example.test2
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
       &lt;csvHost:fName/&gt;
-      &lt;rdeCsv:fStatus/&gt;
+      &lt;csvHost:fStatus/&gt;
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
       &lt;rdeCsv:fCrID/&gt;
@@ -2183,7 +2181,7 @@ ns1.domain2.test,ok,,,clientX,2011-10-03T09:05:00.0Z
  &lt;rdeCsv:csvDelete name="hostStatuses"&gt;
   &lt;rdeCsv:fields&gt;
       &lt;csvHost:fName/&gt;
-      &lt;rdeCsv:fStatus/&gt;
+      &lt;csvHost:fStatus/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
@@ -2675,6 +2673,9 @@ mycontactid
 <dt>&lt;csvContact:fId&gt;</dt>
 <dd>Server-unique contact identifier of status.
 </dd>
+<dt>&lt;csvContact:fStatus&gt;</dt>
+<dd>The status of the contact with type="contact:statusType".
+</dd>
 </dl></blockquote>
 </dd>
 <dt></dt>
@@ -2685,9 +2686,6 @@ mycontactid
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
-<dt>&lt;rdeCsv:fStatus&gt;</dt>
-<dd>The contact object status a defined in <a class='info' href='#RFC5733'>[RFC5733]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Contact Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
-</dd>
 <dt>&lt;rdeCsv:fStatusDescription&gt;</dt>
 <dd>The contact object status description which is free form text describing the rationale for the status.
 </dd>
@@ -2717,7 +2715,7 @@ mycontactid
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
     &lt;rdeCsv:fields&gt;
       &lt;csvContact:fId/&gt;
-      &lt;rdeCsv:fStatus/&gt;
+      &lt;csvContact:fStatus/&gt;
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
       &lt;rdeCsv:fCrID/&gt;
@@ -2768,7 +2766,7 @@ mycontactid,ok,,,clientX,2011-10-03T09:05:00.0Z
  &lt;rdeCsv:csvDelete name="contactStatuses"&gt;
   &lt;rdeCsv:fields&gt;
       &lt;csvContact:fId/&gt;
-      &lt;rdeCsv:fStatus/&gt;
+      &lt;csvContact:fStatus/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
@@ -4023,21 +4021,6 @@ RDE CSV Schema</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
- &lt;!-- Object status field --&gt;
- &lt;element name="fStatus" type="rdeCsv:fStatusType"
-  substitutionGroup="rdeCsv:field"/&gt;
-
- &lt;!-- Object status based on eppcom-1.0.xsd  --&gt;
- &lt;complexType name="fStatusType"&gt;
-  &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
-      &lt;sequence/&gt;
-      &lt;attribute name="type" type="token"
-        default="eppcom\:statusType"/&gt;
-    &lt;/extension&gt;
-  &lt;/complexContent&gt;
- &lt;/complexType&gt;
-
  &lt;!-- Object Status Description --&gt;
  &lt;element name="fStatusDescription"
   type="rdeCsv:fNormalizedStringType"
@@ -4069,27 +4052,27 @@ RDE CSV Schema</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
- &lt;!-- datetime fields (fCrDate, fUpDate, fExDate) --&gt;
- &lt;element name="fCrDate" type="rdeCsv:fDatetimeType"
+ &lt;!-- dateTime fields (fCrDate, fUpDate, fExDate) --&gt;
+ &lt;element name="fCrDate" type="rdeCsv:fDateTimeType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fUpDate" type="rdeCsv:fDatetimeType"
+ &lt;element name="fUpDate" type="rdeCsv:fDateTimeType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fExDate" type="rdeCsv:fDatetimeType"
+ &lt;element name="fExDate" type="rdeCsv:fDateTimeType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Date and time that transfer was requested --&gt;
- &lt;element name="fReDate" type="rdeCsv:fDatetimeType"
+ &lt;element name="fReDate" type="rdeCsv:fDateTimeType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Date and time of a required or completed response --&gt;
- &lt;element name="fAcDate" type="rdeCsv:fDatetimeType"
+ &lt;element name="fAcDate" type="rdeCsv:fDateTimeType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fTrDate" type="rdeCsv:fDatetimeType"
+ &lt;element name="fTrDate" type="rdeCsv:fDateTimeType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;complexType name="fDatetimeType"&gt;
+ &lt;complexType name="fDateTimeType"&gt;
   &lt;complexContent&gt;
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
-        default="datetime"/&gt;
+        default="dateTime"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
@@ -4105,13 +4088,13 @@ RDE CSV Schema</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
- &lt;!-- unsignedbyte type --&gt;
+ &lt;!-- unsignedByte type --&gt;
  &lt;complexType name="fUnsignedByteType"&gt;
   &lt;complexContent&gt;
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
-        default="unsignedbyte"/&gt;
+        default="unsignedByte"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
@@ -4258,7 +4241,6 @@ RDE CSV Schema</h3>
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
-
 
   &lt;!--
   End of schema.
@@ -4475,6 +4457,21 @@ Domain Object</h3>
  &lt;element name="fOriginalName" type="rdeCsv:fNameType"
   substitutionGroup="rdeCsv:field"/&gt;
 
+ &lt;!-- Domain status field --&gt;
+ &lt;element name="fStatus" type="csvDomain:fStatusType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Domain status based on domain-1.0.xsd  --&gt;
+ &lt;complexType name="fStatusType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="domain\:statusType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
   &lt;!--
   End of schema.
   --&gt;
@@ -4621,6 +4618,21 @@ Host Object</h3>
  &lt;!-- Parent domain name for subordinate host field --&gt;
  &lt;element name="fParentDomain" type="rdeCsv:fNameType"
   substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Host status field --&gt;
+ &lt;element name="fStatus" type="csvHost:fStatusType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Host status based on host-1.0.xsd  --&gt;
+ &lt;complexType name="fStatusType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="host\:statusType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
 
   &lt;!--
   End of schema.
@@ -4935,6 +4947,22 @@ Child elements of the &lt;rde:contents&gt; object
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
+
+ &lt;!-- Contact status field --&gt;
+ &lt;element name="fStatus" type="csvContact:fStatusType"
+  substitutionGroup="rdeCsv:field"/&gt;
+
+ &lt;!-- Host status based on contact-1.0.xsd  --&gt;
+ &lt;complexType name="fStatusType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="contact\:statusType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
 
 &lt;!--
 End of schema.
@@ -5502,6 +5530,21 @@ Change from 00 to 01</h3>
 <li>Remove "registrarContact" &lt;rdeCsv:csv&gt; name value to fully use the contact object for both domain contacts and registrar contacts.
 </li>
 <li>Added definition of &lt;csvContact:fIsRegistrarContact&gt; to enable the mixing of registrar contacts and the object contacts in the same contact object CSV files.
+</li>
+</ol>
+
+<a name="change-01-to-02"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.12.2"></a><h3>5.12.2.&nbsp;
+Change from 01 to 02</h3>
+
+<p></p>
+<ol class="text">
+<li>Replaced the &lt;rdeCsv:fStatus&gt; field with the &lt;csvDomain:fStatus&gt;, &lt;csvHost:fStatus&gt;, and &lt;csvContact:fStatus&gt; fields, since there is no eppcom:statusType element, but there is a domain:statusType, host:statusType, and contact:statusType elements.
+</li>
+<li>Fixed reference of XSD datatime to dateTime in the rdeCsv:fDatetimeType field, that was renamed to the rdeCsv:fDataTimeType field.
+</li>
+<li>Fixed reference to XSD unsignedbyte to unsignedByte in the rdeCsv:fUnsignedByteType field.
 </li>
 </ol>
 

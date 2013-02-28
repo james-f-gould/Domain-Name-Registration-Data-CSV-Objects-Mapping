@@ -4,12 +4,12 @@
 Network Working Group                                           J. Gould
 Internet-Draft                                            C. Thippeswamy
 Intended status: Standards Track                                Verisign
-Expires: May 17, 2013                                  November 13, 2012
+Expires: September 1, 2013                             February 28, 2013
 
 
    Domain Name Registration Data (DNRD) Comma-Separated Values (CSV)
                             Objects Mapping
-              draft-gould-thippeswamy-dnrd-csv-mapping-01
+              draft-gould-thippeswamy-dnrd-csv-mapping-02
 
 Abstract
 
@@ -33,11 +33,11 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 17, 2013.
+   This Internet-Draft will expire on September 1, 2013.
 
 Copyright Notice
 
-   Copyright (c) 2012 IETF Trust and the persons identified as the
+   Copyright (c) 2013 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -52,9 +52,9 @@ Copyright Notice
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 1]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 1]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 Table of Contents
@@ -71,26 +71,26 @@ Table of Contents
    4.  Protocol Description . . . . . . . . . . . . . . . . . . . . . 11
      4.1.  Domain Name Object . . . . . . . . . . . . . . . . . . . . 11
      4.2.  Host Object  . . . . . . . . . . . . . . . . . . . . . . . 32
-     4.3.  Contact Object . . . . . . . . . . . . . . . . . . . . . . 42
-     4.4.  Registrar Object . . . . . . . . . . . . . . . . . . . . . 56
-     4.5.  IDN Language Object  . . . . . . . . . . . . . . . . . . . 64
-   5.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . . . 66
-     5.1.  RDE CSV Schema . . . . . . . . . . . . . . . . . . . . . . 66
-     5.2.  Domain Object  . . . . . . . . . . . . . . . . . . . . . . 74
-     5.3.  Host Object  . . . . . . . . . . . . . . . . . . . . . . . 78
-     5.4.  Contact Object . . . . . . . . . . . . . . . . . . . . . . 81
-     5.5.  Registrar Object . . . . . . . . . . . . . . . . . . . . . 87
-     5.6.  IDN Language Object  . . . . . . . . . . . . . . . . . . . 90
-     5.7.  Extension Guidelines . . . . . . . . . . . . . . . . . . . 92
-     5.8.  Internationalization Considerations  . . . . . . . . . . . 92
-     5.9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . 93
-     5.10. Security Considerations  . . . . . . . . . . . . . . . . . 95
-     5.11. Acknowledgments  . . . . . . . . . . . . . . . . . . . . . 96
-     5.12. Change History . . . . . . . . . . . . . . . . . . . . . . 96
-   6.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 97
-     6.1.  Normative References . . . . . . . . . . . . . . . . . . . 97
-     6.2.  Informative References . . . . . . . . . . . . . . . . . . 97
-   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 98
+     4.3.  Contact Object . . . . . . . . . . . . . . . . . . . . . . 43
+     4.4.  Registrar Object . . . . . . . . . . . . . . . . . . . . . 57
+     4.5.  IDN Language Object  . . . . . . . . . . . . . . . . . . . 65
+   5.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . . . 67
+     5.1.  RDE CSV Schema . . . . . . . . . . . . . . . . . . . . . . 67
+     5.2.  Domain Object  . . . . . . . . . . . . . . . . . . . . . . 75
+     5.3.  Host Object  . . . . . . . . . . . . . . . . . . . . . . . 79
+     5.4.  Contact Object . . . . . . . . . . . . . . . . . . . . . . 82
+     5.5.  Registrar Object . . . . . . . . . . . . . . . . . . . . . 88
+     5.6.  IDN Language Object  . . . . . . . . . . . . . . . . . . . 92
+     5.7.  Extension Guidelines . . . . . . . . . . . . . . . . . . . 93
+     5.8.  Internationalization Considerations  . . . . . . . . . . . 94
+     5.9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . 94
+     5.10. Security Considerations  . . . . . . . . . . . . . . . . . 96
+     5.11. Acknowledgments  . . . . . . . . . . . . . . . . . . . . . 97
+     5.12. Change History . . . . . . . . . . . . . . . . . . . . . . 97
+   6.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 98
+     6.1.  Normative References . . . . . . . . . . . . . . . . . . . 98
+     6.2.  Informative References . . . . . . . . . . . . . . . . . . 99
+   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 99
 
 
 
@@ -108,9 +108,9 @@ Table of Contents
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 2]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 2]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 1.  Introduction
@@ -164,9 +164,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 3]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 3]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    document are to be interpreted as described in RFC 2119 [RFC2119].
@@ -220,9 +220,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 4]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 4]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -276,9 +276,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 5]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 5]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -332,9 +332,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 6]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 6]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    <rdeCsv:sep>  Optional definition of the CSV separator characters
@@ -388,9 +388,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 7]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 7]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    <rdeCsv:csv name="domain">
@@ -444,9 +444,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 8]
+Gould & Thippeswamy     Expires September 1, 2013               [Page 8]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    <rdeCsv:csvDelete name="domain">
@@ -490,8 +490,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    <rdeCsv:fRegistrant>  Registrant contact identifier with
       type="eppcom:clIDType".
 
-   <rdeCsv:fStatus>  The object status with type="eppcom:statusType".
-
    <rdeCsv:fStatusDescription>  The object status description, which is
       free form text describing the rationale for the status, with
       type="normalizedString".
@@ -500,9 +498,11 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                  [Page 9]
+
+
+Gould & Thippeswamy     Expires September 1, 2013               [Page 9]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    <rdeCsv:fClID>  Identifier of client that sponsors the object with
@@ -520,19 +520,19 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    <rdeCsv:fAcID>  Identifier of client that should take or took action
       for transfer with type="eppcom:clIDType".
 
-   <rdeCsv:fCrDate>  Created date of object with type="datetime".
+   <rdeCsv:fCrDate>  Created date of object with type="dateTime".
 
-   <rdeCsv:fUpDate>  Updated date of object with type="datetime".
+   <rdeCsv:fUpDate>  Updated date of object with type="dateTime".
 
-   <rdeCsv:fExDate>  Expiration date of object with type="datetime".
+   <rdeCsv:fExDate>  Expiration date of object with type="dateTime".
 
    <rdeCsv:fReDate>  Date that transfer was requested with
-      type="datetime".
+      type="dateTime".
 
    <rdeCsv:fAcDate>  Date that transfer action should be taken or has
-      been taken with type="datetime".
+      been taken with type="dateTime".
 
-   <rdeCsv:fTrDate>  Date of last transfer with type="datetime".
+   <rdeCsv:fTrDate>  Date of last transfer with type="dateTime".
 
    <rdeCsv:fTrStatus>  State of the most recent transfer request with
       type="eppcom:trStatusType".
@@ -556,9 +556,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 10]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 10]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    <rdeCsv:fCustom>  Custom field with name attribute that defines the
@@ -612,9 +612,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 11]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 11]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       The following "rdeCsv" fields, defined in section CSV common field
@@ -668,9 +668,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 12]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 12]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -724,9 +724,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 13]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 13]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    domain1.test,Ddomain2-TEST,0,,0,,0,registrantid,
@@ -780,9 +780,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 14]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 14]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    "domainContacts"  Defines the fields and CSV file references used for
@@ -836,9 +836,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 15]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 15]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       Example of a "domainContacts" <rdeCsv:csv> element:
@@ -892,9 +892,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 16]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 16]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -932,6 +932,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
+      <csvDomain:fStatus>  The status of the domain name with
+         type="domain:statusType"/>.
+
       <csvDomain:fRgpStatus>  The Registry Grace Period (RGP) status, as
          a sub-status of the <csvDomain:fStatus> "pendingDelete" status
          value, with type="rgp:statusType" as defined in [RFC3915].
@@ -945,12 +948,11 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 17]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 17]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
 
 
       <csvDomain:fName>  Domain name of status.
@@ -960,8 +962,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
       <rdeCsv:csv> and <rdeCsv:csvDelete> <rdeCsv:fields> elements:
 
 
-
-      <rdeCsv:fStatus>  Domain object status a defined in [RFC5731].
 
       <rdeCsv:fStatusDescription>  Domain object status description
          which is free form text describing the rationale for the
@@ -1004,9 +1004,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 18]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 18]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1016,7 +1016,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
        <rdeCsv:sep>,</rdeCsv:sep>
        <rdeCsv:fields>
          <csvDomain:fName/>
-         <rdeCsv:fStatus/>
+         <csvDomain:fStatus/>
          <rdeCsv:fStatusDescription/>
          <rdeCsv:fLanguage/>
          <csvDomain:fRgpStatus/>
@@ -1060,9 +1060,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 19]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 19]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1071,7 +1071,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <rdeCsv:csvDelete name="domainStatuses">
      <rdeCsv:fields>
        <csvDomain:fName/>
-       <rdeCsv:fStatus/>
+       <csvDomain:fStatus/>
      </rdeCsv:fields>
      <rdeCsv:files>
        <rdeCsv:file
@@ -1116,9 +1116,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 20]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 20]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       The following "csvHost" fields, defined for the "host" <rdeCsv:
@@ -1172,9 +1172,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 21]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 21]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1228,9 +1228,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 22]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 22]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1284,9 +1284,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 23]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 23]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1340,9 +1340,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 24]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 24]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1396,9 +1396,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 25]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 25]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <csvDomain:fDigestType>  Contains the DS digest type value per
@@ -1452,9 +1452,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 26]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 26]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    <csvDomain:contents>
@@ -1508,9 +1508,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 27]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 27]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    <csvDomain:contents>
@@ -1564,9 +1564,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 28]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 28]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1620,9 +1620,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 29]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 29]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -1676,9 +1676,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 30]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 30]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <rdeCsv:fAcID>  Identifier of client that should take or took
@@ -1732,9 +1732,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 31]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 31]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       Example of the corresponding domainTransfer-YYYYMMDD.csv file.
@@ -1788,9 +1788,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 32]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 32]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    the <rdeCsv:csvDelete> elements, defined in the "<rdeCsv:csv> and
@@ -1844,9 +1844,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 33]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 33]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <rdeCsv:fUpDate>  Date and time that the host object was last
@@ -1900,9 +1900,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 34]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 34]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    2009-05-08T12:10:00.0Z,clientX,2010-10-03T09:34:00.0Z,
@@ -1948,18 +1948,22 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
       <csvHost:fName>  Host name of status.
 
+      <csvHost:fStatus>  The status of the host with type="host:
+         statusType"/>.
+
+
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 35]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
       The following "rdeCsv" fields, defined in section CSV common field
       elements (Section 3.6.2), MAY be used in the "hostStatuses"
       <rdeCsv:csv> and <rdeCsv:csvDelete> <rdeCsv:fields> elements:
-
-
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 35]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
 
 
@@ -1967,8 +1971,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          uniquely identifies the host object when the <csvHost:fName> is
          not unique.  The <rdeCsv:fRoid> is used for servers that
          support a set of external host objects per sponsoring client.
-
-      <rdeCsv:fStatus>  Host object status a defined in [RFC5732].
 
       <rdeCsv:fStatusDescription>  Host object status description which
          is free form text describing the rationale for the status.
@@ -1986,6 +1988,35 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 36]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
    ...
    <csvDomain:contents>
      ...
@@ -1993,7 +2024,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
        <rdeCsv:sep>,</rdeCsv:sep>
        <rdeCsv:fields>
          <csvHost:fName/>
-         <rdeCsv:fStatus/>
+         <csvHost:fStatus/>
          <rdeCsv:fStatusDescription/>
          <rdeCsv:fLanguage/>
          <rdeCsv:fCrID/>
@@ -2009,13 +2040,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      ...
    </csvDomain:contents>
    ...
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 36]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
       Example of the corresponding hostStatuses-YYYYMMDD.csv file.  The
       file contains the statuses for the two host names ns1.domain1.test
@@ -2033,13 +2057,29 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 37]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
    ...
    <rde:deletes>
    ...
     <rdeCsv:csvDelete name="hostStatuses">
      <rdeCsv:fields>
          <csvHost:fName/>
-         <rdeCsv:fStatus/>
+         <csvHost:fStatus/>
      </rdeCsv:fields>
      <rdeCsv:files>
        <rdeCsv:file
@@ -2067,14 +2107,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 37]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
-
-
       <csvHost:fAddr>  IP addresses associated with the host object with
          type="host:addrStringType".
 
@@ -2085,6 +2117,17 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
       The following "csvHost" fields, defined for the "host" <rdeCsv:
       csv> <rdeCsv:fields> element, MAY be used in the "hostAddresses"
       <rdeCsv:csv> and <rdeCsv:csvDelete> <rdeCsv:fields> elements:
+
+
+
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 38]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
 
 
 
@@ -2124,9 +2167,22 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 38]
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 39]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -2180,9 +2236,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 39]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 40]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -2236,9 +2292,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 40]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 41]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -2292,9 +2348,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 41]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 42]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -2348,9 +2404,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 42]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 43]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <csvContact:fId>  Contains the server-unique contact identifier
@@ -2404,9 +2460,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 43]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 44]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <rdeCsv:fCrDate>  Created date and time of the contact object
@@ -2460,9 +2516,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 44]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 45]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -2516,9 +2572,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 45]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 46]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    "contactStatuses"  Defines the fields and CSV file references used
@@ -2533,14 +2589,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
       <csvContact:fId>  Server-unique contact identifier of status.
 
+      <csvContact:fStatus>  The status of the contact with
+         type="contact:statusType".
+
       The following "rdeCsv" fields, defined in section CSV common field
       elements (Section 3.6.2), MAY be used in the "contactStatuses"
       <rdeCsv:csv> and <rdeCsv:csvDelete> <rdeCsv:fields> elements:
 
 
-
-      <rdeCsv:fStatus>  The contact object status a defined in
-         [RFC5733].
 
       <rdeCsv:fStatusDescription>  The contact object status description
          which is free form text describing the rationale for the
@@ -2572,9 +2628,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 46]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 47]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -2584,7 +2640,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
        <rdeCsv:sep>,</rdeCsv:sep>
        <rdeCsv:fields>
          <csvContact:fId/>
-         <rdeCsv:fStatus/>
+         <csvContact:fStatus/>
          <rdeCsv:fStatusDescription/>
          <rdeCsv:fLanguage/>
          <rdeCsv:fCrID/>
@@ -2628,9 +2684,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 47]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 48]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -2639,7 +2695,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <rdeCsv:csvDelete name="contactStatuses">
      <rdeCsv:fields>
          <csvContact:fId/>
-         <rdeCsv:fStatus/>
+         <csvContact:fStatus/>
      </rdeCsv:fields>
      <rdeCsv:files>
        <rdeCsv:file
@@ -2684,9 +2740,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 48]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 49]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <csvContact:fOrg>  Contains the name of the organization with
@@ -2740,9 +2796,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 49]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 50]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       Example of a "contactPostal" <rdeCsv:csv> element:
@@ -2796,9 +2852,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 50]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 51]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 
@@ -2852,9 +2908,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 51]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 52]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <rdeCsv:fAcID>  Identifier of client that should take or took
@@ -2908,9 +2964,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 52]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 53]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       Example of the contactTransfer-YYYYMMDD.csv file.  The file
@@ -2964,9 +3020,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 53]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 54]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 
@@ -3020,9 +3076,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 54]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 55]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       The following "csvContact" fields, defined for the "contact"
@@ -3076,9 +3132,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 55]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 56]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 
@@ -3132,9 +3188,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 56]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 57]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    "registrar"  Defines the fields and CSV file references used for the
@@ -3188,9 +3244,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 57]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 58]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       <rdeCsv:fUrl>  URL for the registrar web home page.
@@ -3244,9 +3300,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 58]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 59]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -3300,9 +3356,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 59]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 60]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    EXAMPLE,REGISTRAR123-TEST,"Example Inc.",1234,ok,"123 Example Dr.",
@@ -3356,9 +3412,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 60]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 61]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 
@@ -3412,9 +3468,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 61]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 62]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 
@@ -3468,9 +3524,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 62]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 63]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
       Example of the corresponding registrarContacts-YYYYMMDD.csv file.
@@ -3524,9 +3580,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 63]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 64]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
 4.5.  IDN Language Object
@@ -3580,9 +3636,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 64]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 65]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -3636,9 +3692,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 65]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 66]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    ...
@@ -3692,9 +3748,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 66]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 67]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
@@ -3748,9 +3804,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 67]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 68]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
     </complexType>
@@ -3804,9 +3860,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 68]
+Gould & Thippeswamy     Expires September 1, 2013              [Page 69]
 
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
        <extension base="rdeCsv:fieldType">
@@ -3830,21 +3886,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      </complexContent>
     </complexType>
 
-    <!-- Object status field -->
-    <element name="fStatus" type="rdeCsv:fStatusType"
-     substitutionGroup="rdeCsv:field"/>
-
-    <!-- Object status based on eppcom-1.0.xsd  -->
-    <complexType name="fStatusType">
-     <complexContent>
-       <extension base="rdeCsv:fieldType">
-         <sequence/>
-         <attribute name="type" type="token"
-           default="eppcom\:statusType"/>
-       </extension>
-     </complexContent>
-    </complexType>
-
     <!-- Object Status Description -->
     <element name="fStatusDescription"
      type="rdeCsv:fNormalizedStringType"
@@ -3857,14 +3898,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <!-- Identifier of client that created the object -->
     <element name="fCrID" type="rdeCsv:fClIDType"
      substitutionGroup="rdeCsv:field"/>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 69]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
     <!-- Identifier of client that updated the object -->
     <element name="fUpID" type="rdeCsv:fClIDType"
      substitutionGroup="rdeCsv:field"/>
@@ -3880,31 +3913,39 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          <sequence/>
          <attribute name="type" type="token"
            default="eppcom\:clIDType"/>
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 70]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
        </extension>
      </complexContent>
     </complexType>
 
-    <!-- datetime fields (fCrDate, fUpDate, fExDate) -->
-    <element name="fCrDate" type="rdeCsv:fDatetimeType"
+    <!-- dateTime fields (fCrDate, fUpDate, fExDate) -->
+    <element name="fCrDate" type="rdeCsv:fDateTimeType"
      substitutionGroup="rdeCsv:field"/>
-    <element name="fUpDate" type="rdeCsv:fDatetimeType"
+    <element name="fUpDate" type="rdeCsv:fDateTimeType"
      substitutionGroup="rdeCsv:field"/>
-    <element name="fExDate" type="rdeCsv:fDatetimeType"
+    <element name="fExDate" type="rdeCsv:fDateTimeType"
      substitutionGroup="rdeCsv:field"/>
     <!-- Date and time that transfer was requested -->
-    <element name="fReDate" type="rdeCsv:fDatetimeType"
+    <element name="fReDate" type="rdeCsv:fDateTimeType"
      substitutionGroup="rdeCsv:field"/>
     <!-- Date and time of a required or completed response -->
-    <element name="fAcDate" type="rdeCsv:fDatetimeType"
+    <element name="fAcDate" type="rdeCsv:fDateTimeType"
      substitutionGroup="rdeCsv:field"/>
-    <element name="fTrDate" type="rdeCsv:fDatetimeType"
+    <element name="fTrDate" type="rdeCsv:fDateTimeType"
      substitutionGroup="rdeCsv:field"/>
-    <complexType name="fDatetimeType">
+    <complexType name="fDateTimeType">
      <complexContent>
        <extension base="rdeCsv:fieldType">
          <sequence/>
          <attribute name="type" type="token"
-           default="datetime"/>
+           default="dateTime"/>
        </extension>
      </complexContent>
     </complexType>
@@ -3913,14 +3954,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <complexType name="fBooleanType">
      <complexContent>
        <extension base="rdeCsv:fieldType">
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 70]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
          <sequence/>
          <attribute name="type" type="token"
            default="boolean"/>
@@ -3928,14 +3961,22 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      </complexContent>
     </complexType>
 
-    <!-- unsignedbyte type -->
+    <!-- unsignedByte type -->
     <complexType name="fUnsignedByteType">
      <complexContent>
        <extension base="rdeCsv:fieldType">
          <sequence/>
          <attribute name="type" type="token"
-           default="unsignedbyte"/>
+           default="unsignedByte"/>
        </extension>
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 71]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
      </complexContent>
     </complexType>
 
@@ -3969,14 +4010,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      <complexContent>
        <extension base="rdeCsv:fieldType">
          <sequence/>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 71]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
          <attribute name="type" type="token"
            default="language"/>
        </extension>
@@ -3992,6 +4025,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
        <extension base="rdeCsv:fieldType">
          <sequence/>
          <attribute name="type" type="token"
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 72]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
            default="eppcom\:trStatusType"/>
        </extension>
      </complexContent>
@@ -4025,14 +4066,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
        <extension base="rdeCsv:fieldType">
          <sequence/>
          <attribute name="type" type="token"
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 72]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
            default="positiveInteger"/>
        </extension>
      </complexContent>
@@ -4048,6 +4081,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <element name="fCustom" type="rdeCsv:fCustomType"
      substitutionGroup="rdeCsv:field"/>
     <complexType name="fCustomType">
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 73]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
      <complexContent>
        <extension base="rdeCsv:fieldType">
          <sequence/>
@@ -4081,14 +4122,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          <attribute name="encoding" type="token"
            default="UTF-8"/>
          <attribute name="cksum" type="token"/>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 73]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
        </extension>
      </simpleContent>
     </complexType>
@@ -4104,8 +4137,15 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          default="anyURI"/>
        </extension>
      </complexContent>
-    </complexType>
 
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 74]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
+    </complexType>
 
      <!--
      End of schema.
@@ -4137,14 +4177,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 74]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
@@ -4161,6 +4193,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    <schema targetNamespace="urn:ietf:params:xml:ns:csvDomain-1.0"
           xmlns:csvDomain="urn:ietf:params:xml:ns:csvDomain-1.0"
           xmlns:rde="urn:ietf:params:xml:ns:rde-1.0"
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 75]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
           xmlns:rdeCsv="urn:ietf:params:xml:ns:rdeCsv-1.0"
           xmlns:rgp="urn:ietf:params:xml:ns:rgp-1.0"
           xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.1"
@@ -4193,14 +4233,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
      <!--
      Child elements of the <rde:contents> object
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 75]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
      -->
      <element name="contents" type="csvDomain:contentsType"
      substitutionGroup="rde:contents"/>
@@ -4217,6 +4249,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
     <!-- RGP status field -->
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 76]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
     <element name="fRgpStatus"
     type="csvDomain:fRgpStatusType"
      substitutionGroup="rdeCsv:field"/>
@@ -4249,14 +4289,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <!-- Maximum signature lifetime field -->
     <element name="fMaxSigLife" type="csvDomain:fMaxSigLifeType"
      substitutionGroup="rdeCsv:field"/>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 76]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
     <complexType name="fMaxSigLifeType">
      <complexContent>
        <extension base="rdeCsv:fieldType">
@@ -4273,6 +4305,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
     <!-- DS Algorithm field -->
     <element name="fDsAlg" type="rdeCsv:fUnsignedByteType"
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 77]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
      substitutionGroup="rdeCsv:field"/>
 
     <!-- Digest type field -->
@@ -4305,14 +4345,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          <attribute name="type" type="token"
          default="secDNS\:keyType"/>
        </extension>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 77]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
      </complexContent>
     </complexType>
 
@@ -4328,6 +4360,29 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <!-- Original Domain Name for Variant field -->
     <element name="fOriginalName" type="rdeCsv:fNameType"
      substitutionGroup="rdeCsv:field"/>
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 78]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
+    <!-- Domain status field -->
+    <element name="fStatus" type="csvDomain:fStatusType"
+     substitutionGroup="rdeCsv:field"/>
+
+    <!-- Domain status based on domain-1.0.xsd  -->
+    <complexType name="fStatusType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="domain\:statusType"/>
+       </extension>
+     </complexContent>
+    </complexType>
 
      <!--
      End of schema.
@@ -4361,15 +4416,15 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 78]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 79]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
@@ -4417,15 +4472,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
       <complexContent>
        <extension base="rde:contentsType"/>
       </complexContent>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 79]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
      </complexType>
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 80]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
 
     <!-- Host name field -->
     <element name="fName" type="rdeCsv:fNameType"
@@ -4467,19 +4521,34 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <element name="fParentDomain" type="rdeCsv:fNameType"
      substitutionGroup="rdeCsv:field"/>
 
+    <!-- Host status field -->
+    <element name="fStatus" type="csvHost:fStatusType"
+     substitutionGroup="rdeCsv:field"/>
+
+    <!-- Host status based on host-1.0.xsd  -->
+    <complexType name="fStatusType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 81]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
+         <sequence/>
+         <attribute name="type" type="token"
+           default="host\:statusType"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
      <!--
      End of schema.
      -->
    </schema>
    END
-
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 80]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
 5.4.  Contact Object
 
@@ -4516,6 +4585,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
    BEGIN
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 82]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
    <?xml version="1.0" encoding="UTF-8"?>
 
    <schema targetNamespace="urn:ietf:params:xml:ns:csvContact-1.0"
@@ -4529,14 +4606,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
    <!--
    Import common element types.
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 81]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
    -->
    <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
          schemaLocation="eppcom-1.0.xsd"/>
@@ -4572,6 +4641,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      <complexContent>
        <extension base="rdeCsv:fieldType">
          <sequence/>
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 83]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
          <attribute name="type" type="token"
          default="eppcom\:clIDType"/>
        </extension>
@@ -4583,14 +4660,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <element name="fIsRegistrarContact"
      type="rdeCsv:fBooleanType"
      substitutionGroup="rdeCsv:field"/>
-
-
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 82]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
     <!-- voice and fax telephone number fields -->
@@ -4629,6 +4698,13 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
 
 
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 84]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
     <!--
       Postal type field
       ("loc" = localized, "int" = internationalized)
@@ -4641,14 +4717,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          <sequence/>
          <attribute name="type" type="token"
          default="contact\:postalInfoEnumType"/>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 83]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
        </extension>
      </complexContent>
     </complexType>
@@ -4687,6 +4755,12 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      substitutionGroup="rdeCsv:field"/>
 
 
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 85]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
     <!-- Street address line field with required index attribute  -->
     <!-- starting with index 0.  -->
     <element name="fStreet" type="csvContact:fStreetType"
@@ -4697,14 +4771,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          <sequence/>
          <attribute name="index" type="int"
          use="required"/>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 84]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
        </extension>
      </complexContent>
     </complexType>
@@ -4743,6 +4809,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          <attribute name="isLoc" type="boolean"/>
        </extension>
      </complexContent>
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 86]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
     </complexType>
 
     <!-- Disclosure element fields -->
@@ -4753,14 +4827,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
     <!-- Disclosure of localized name
          based on fDiscloseFlag? -->
     <element name="fDiscloseNameLoc" type="csvContact:fBoolean"
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 85]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
      substitutionGroup="rdeCsv:field"/>
     <!-- Disclosure of internationalized name
          based on fDiscloseFlag? -->
@@ -4799,23 +4865,40 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
        <extension base="rdeCsv:fieldType">
          <sequence/>
          <attribute name="type" type="token"
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 87]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
          default="boolean"/>
        </extension>
      </complexContent>
     </complexType>
+
+    <!-- Contact status field -->
+    <element name="fStatus" type="csvContact:fStatusType"
+     substitutionGroup="rdeCsv:field"/>
+
+    <!-- Host status based on contact-1.0.xsd  -->
+    <complexType name="fStatusType">
+     <complexContent>
+       <extension base="rdeCsv:fieldType">
+         <sequence/>
+         <attribute name="type" type="token"
+           default="contact\:statusType"/>
+       </extension>
+     </complexContent>
+    </complexType>
+
 
    <!--
    End of schema.
    -->
    </schema>
    END
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 86]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
 5.5.  Registrar Object
 
@@ -4838,6 +4921,13 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
       names of specific contributors, may be used to endorse or promote
       products derived from this software without specific prior written
       permission.
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 88]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -4865,14 +4955,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          elementFormDefault="qualified">
 
      <!--
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 87]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
      Import common element types.
      -->
      <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
@@ -4895,6 +4977,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      <!--
      Child elements of the <rde:contents> object
      -->
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 89]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
      <element name="contents" type="csvRegistrar:contentsType"
      substitutionGroup="rde:contents"/>
 
@@ -4921,14 +5011,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          default="normalizedString"/>
          <attribute name="isLoc" type="boolean" default="false"/>
        </extension>
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 88]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
      </complexContent>
     </complexType>
 
@@ -4951,6 +5033,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          default="csvRegistrar\:statusType"/>
        </extension>
      </complexContent>
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 90]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
     </complexType>
 
     <!-- Registrar status type with optional name attr -->
@@ -4977,14 +5067,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
      type="csvRegistrar:fContactsTypeType"
      substitutionGroup="rdeCsv:field"/>
 
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 89]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
     <element name="fCustomContactTypeName"
      type="rdeCsv:fTokenType"
      substitutionGroup="rdeCsv:field"/>
@@ -5007,6 +5089,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
          <enumeration value="primaryBilling"/>
          <enumeration value="tech"/>
          <enumeration value="legal"/>
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 91]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
          <enumeration value="marketing"/>
          <enumeration value="icann"/>
          <enumeration value="support"/>
@@ -5033,14 +5123,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 90]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
    are met:
 
    o  Redistributions of source code must retain the above copyright
@@ -5063,39 +5145,18 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 92]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 91]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
    BEGIN
    <?xml version="1.0" encoding="UTF-8"?>
@@ -5140,19 +5201,19 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
    TBD
 
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 93]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
 5.8.  Internationalization Considerations
 
    Data Escrow deposits are represented in XML, which provides native
    support for encoding information using the Unicode character set and
    its more compact representations including UTF-8.  Conformant XML
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 92]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
    processors recognize both UTF-8 and UTF-16.  Though XML includes
    provisions to identify and use other character encodings through use
    of an "encoding" attribute in an <?xml?> declaration, use of UTF-8 is
@@ -5195,19 +5256,21 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
       URI: urn:ietf:params:xml:schema:csvDomain-1.0
 
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 94]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
       Registrant Contact: See the "Author's Address" section of this
       document.
 
       See the "Formal Syntax" section of this document.
 
    Registration request for the RDE CSV host namespace:
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 93]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
       URI: urn:ietf:params:xml:ns:csvHost-1.0
 
@@ -5250,20 +5313,19 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
       Registrant Contact: See the "Author's Address" section of this
       document.
 
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 95]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
       XML: None.  Namespace URIs do not represent an XML specification.
 
    Registration request for the RDE CSV registrar XML schema:
 
       URI: urn:ietf:params:xml:schema:csvRegistrar-1.0
-
-
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 94]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
       Registrant Contact: See the "Author's Address" section of this
       document.
@@ -5307,20 +5369,20 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    authenticate the identity of the Registry before accepting data
    escrow deposits.  In a similar manner, the Registry SHOULD
    authenticate the identity of the Escrow Agent before submitting any
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 96]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
    data.
 
    Additionally, the Registry and the Escrow Agent SHOULD use integrity
    checking mechanisms to ensure the data transmitted is what the source
    intended.  Validation of the contents by the Escrow Agent is
    RECOMMENDED to ensure not only the file was transmitted correctly
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 95]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
    from the Registry, but also the contents are also "meaningful".
 
 5.11.  Acknowledgments
@@ -5363,19 +5425,32 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
 
    7.  Added definition of <csvContact:fIsRegistrarContact> to enable
        the mixing of registrar contacts and the object contacts in the
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 97]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
        same contact object CSV files.
+
+5.12.2.  Change from 01 to 02
+
+   1.  Replaced the <rdeCsv:fStatus> field with the <csvDomain:fStatus>,
+       <csvHost:fStatus>, and <csvContact:fStatus> fields, since there
+       is no eppcom:statusType element, but there is a domain:
+       statusType, host:statusType, and contact:statusType elements.
+
+   2.  Fixed reference of XSD datatime to dateTime in the rdeCsv:
+       fDatetimeType field, that was renamed to the rdeCsv:fDataTimeType
+       field.
+
+   3.  Fixed reference to XSD unsignedbyte to unsignedByte in the
+       rdeCsv:fUnsignedByteType field.
 
 
 6.  References
-
-
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 96]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
 
 6.1.  Normative References
 
@@ -5406,6 +5481,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
    [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
               Domain Name Mapping", STD 69, RFC 5731, August 2009.
 
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 98]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
+
+
    [RFC5732]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
               Host Mapping", STD 69, RFC 5732, August 2009.
 
@@ -5425,14 +5508,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
               January 2004.
 
    [RFC4291]  Hinden, R. and S. Deering, "IP Version 6 Addressing
-
-
-
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 97]
-
-Internet-Draft  Domain Name Registration Data CSV Mapping  November 2012
-
-
               Architecture", RFC 4291, February 2006.
 
 URIs
@@ -5454,6 +5529,20 @@ Authors' Addresses
 
    Email: jgould@verisign.com
    URI:   http://www.verisigninc.com
+
+
+
+
+
+
+
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013              [Page 99]
+
+Internet-Draft  Domain Name Registration Data CSV Mapping  February 2013
 
 
    Chethan Thippeswamy
@@ -5484,5 +5573,28 @@ Authors' Addresses
 
 
 
-Gould & Thippeswamy       Expires May 17, 2013                 [Page 98]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gould & Thippeswamy     Expires September 1, 2013             [Page 100]
 

@@ -79,6 +79,22 @@
  <element name="fParentDomain" type="rdeCsv:fNameType" 
   substitutionGroup="rdeCsv:field"/>
 
+ <!-- Host status field -->
+ <element name="fStatus" type="csvHost:fStatusType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Host status based on host-1.0.xsd  -->
+ <complexType name="fStatusType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="host\:statusType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+
+
   <!--
   End of schema.
   -->

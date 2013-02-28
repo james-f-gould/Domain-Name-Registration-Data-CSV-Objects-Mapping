@@ -246,6 +246,22 @@ Child elements of the <rde:contents> object
   </complexContent>
  </complexType>
  
+ <!-- Contact status field -->
+ <element name="fStatus" type="csvContact:fStatusType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Host status based on contact-1.0.xsd  -->
+ <complexType name="fStatusType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="contact\:statusType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+ 
+ 
 <!--
 End of schema.
 -->

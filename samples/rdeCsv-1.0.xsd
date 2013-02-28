@@ -107,21 +107,6 @@
     </extension>
   </complexContent>
  </complexType>
-
- <!-- Object status field -->
- <element name="fStatus" type="rdeCsv:fStatusType" 
-  substitutionGroup="rdeCsv:field"/>
-
- <!-- Object status based on eppcom-1.0.xsd  -->
- <complexType name="fStatusType">
-  <complexContent>
-    <extension base="rdeCsv:fieldType">
-      <sequence/>
-      <attribute name="type" type="token"  
-        default="eppcom\:statusType"/>
-    </extension>
-  </complexContent>
- </complexType>
  
  <!-- Object Status Description -->
  <element name="fStatusDescription" 
@@ -154,27 +139,27 @@
   </complexContent>
  </complexType>
  
- <!-- datetime fields (fCrDate, fUpDate, fExDate) -->
- <element name="fCrDate" type="rdeCsv:fDatetimeType" 
+ <!-- dateTime fields (fCrDate, fUpDate, fExDate) -->
+ <element name="fCrDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <element name="fUpDate" type="rdeCsv:fDatetimeType" 
+ <element name="fUpDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <element name="fExDate" type="rdeCsv:fDatetimeType" 
+ <element name="fExDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Date and time that transfer was requested -->
- <element name="fReDate" type="rdeCsv:fDatetimeType" 
+ <element name="fReDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Date and time of a required or completed response -->
- <element name="fAcDate" type="rdeCsv:fDatetimeType" 
+ <element name="fAcDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <element name="fTrDate" type="rdeCsv:fDatetimeType" 
+ <element name="fTrDate" type="rdeCsv:fDateTimeType" 
   substitutionGroup="rdeCsv:field"/>
- <complexType name="fDatetimeType">
+ <complexType name="fDateTimeType">
   <complexContent>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="datetime"/>
+        default="dateTime"/>
     </extension>
   </complexContent>
  </complexType>
@@ -190,13 +175,13 @@
   </complexContent>
  </complexType>
 
- <!-- unsignedbyte type -->
+ <!-- unsignedByte type -->
  <complexType name="fUnsignedByteType">
   <complexContent>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="unsignedbyte"/>
+        default="unsignedByte"/>
     </extension>
   </complexContent>
  </complexType>

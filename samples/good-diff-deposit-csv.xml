@@ -54,7 +54,7 @@
 		<rdeCsv:csvDelete name="domainStatuses">
 			<rdeCsv:fields>
 				<csvDomain:fName/>
-     			<rdeCsv:fStatus/>
+     			<csvDomain:fStatus/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
 				<rdeCsv:file 
@@ -116,7 +116,7 @@
 		<rdeCsv:csvDelete name="hostStatuses">
 			<rdeCsv:fields>
 				<csvHost:fName/>
-				<rdeCsv:fStatus/>
+				<csvHost:fStatus/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
 				<rdeCsv:file 
@@ -151,7 +151,7 @@
 		<rdeCsv:csvDelete name="contactStatuses">
 			<rdeCsv:fields>
 				<csvContact:fId/>
-				<rdeCsv:fStatus/>
+				<csvContact:fStatus/>
 			</rdeCsv:fields>
 			<rdeCsv:files>
 				<rdeCsv:file 
@@ -282,7 +282,7 @@
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
 	 				<csvDomain:fName/>
-	 				<rdeCsv:fStatus/>
+	 				<csvDomain:fStatus/>
 	 				<rdeCsv:fStatusDescription/>
 	 				<rdeCsv:fLanguage/>
 	 				<csvDomain:fRgpStatus/>
@@ -372,7 +372,7 @@
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
 	 				<csvHost:fName/>
-	 				<rdeCsv:fStatus/>
+	 				<csvHost:fStatus/>
 	 				<rdeCsv:fStatusDescription/>
 	 				<rdeCsv:fLanguage/>
 	 				<rdeCsv:fCrID/>
@@ -432,7 +432,7 @@
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
       			<csvContact:fId/>
-      			<rdeCsv:fStatus/>
+      			<csvContact:fStatus/>
       			<rdeCsv:fStatusDescription/>
      				<rdeCsv:fLanguage/>
 	 				<rdeCsv:fCrID/>

@@ -146,6 +146,22 @@
  <!-- Original Domain Name for Variant field -->
  <element name="fOriginalName" type="rdeCsv:fNameType" 
   substitutionGroup="rdeCsv:field"/>
+  
+ <!-- Domain status field -->
+ <element name="fStatus" type="csvDomain:fStatusType" 
+  substitutionGroup="rdeCsv:field"/>
+
+ <!-- Domain status based on domain-1.0.xsd  -->
+ <complexType name="fStatusType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="domain\:statusType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+  
  
   <!--
   End of schema.
