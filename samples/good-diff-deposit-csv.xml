@@ -86,7 +86,22 @@
 			<rdeCsv:files>
 				<rdeCsv:file 
 					cksum="1234567890 98765432">
-					dnssec-delete-YYYYMMDD.csv
+					dnssec-ds-delete-YYYYMMDD.csv
+				</rdeCsv:file> 
+			</rdeCsv:files>
+		</rdeCsv:csvDelete>
+		<rdeCsv:csvDelete name="dnssec">
+			<rdeCsv:fields>
+				<csvDomain:fName/>
+				<csvDomain:fFlags/>
+				<csvDomain:fProtocol/>
+				<csvDomain:fKeyAlg/>
+				<csvDomain:fPubKey/>
+			</rdeCsv:fields>
+			<rdeCsv:files>
+				<rdeCsv:file 
+					cksum="1234567890 98765432">
+					dnssec-key-delete-YYYYMMDD.csv
 				</rdeCsv:file> 
 			</rdeCsv:files>
 		</rdeCsv:csvDelete>
@@ -207,21 +222,6 @@
 				</rdeCsv:file> 
 			</rdeCsv:files>
 		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="registrarContacts">
-			<rdeCsv:sep>,</rdeCsv:sep>
-			<rdeCsv:fields>
-				<csvRegistrar:fId/>
-				<csvContact:fId/>
-     			<csvRegistrar:fContactType/>
-      		<csvRegistrar:fCustomContactTypeName/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="2186160075 371">
-					registrarContacts-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
 		<rdeCsv:csvDelete name="idnLanguage">
 			<rdeCsv:fields>
 				<rdeCsv:fLanguage/>
@@ -241,19 +241,17 @@
 	 			<rdeCsv:fields>
 	 				<csvDomain:fName/> 				
 	 				<rdeCsv:fRoid/> 				
-	 				<csvDomain:fIdn/>	 				
 	 				<rdeCsv:fLanguage/>	 				
-	 				<csvDomain:fVariant/>
 	 				<csvDomain:fOriginalName/>
-	 				<csvDomain:fReserved/>
 	 				<rdeCsv:fRegistrant/>
 	 				<rdeCsv:fClID/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
+	 				<rdeCsv:fUpRr/>
 	 				<rdeCsv:fUpID/>
 	 				<rdeCsv:fUpDate/>
 	 				<rdeCsv:fExDate/>
-	 				<rdeCsv:fPwAuthInfo/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
 	 				<rdeCsv:file 
@@ -268,6 +266,7 @@
 	 				<csvDomain:fName/>
 	 				<csvContact:fId/>
 	 				<csvDomain:fContactType/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
 	 			</rdeCsv:fields>
@@ -286,6 +285,7 @@
 	 				<rdeCsv:fStatusDescription/>
 	 				<rdeCsv:fLanguage/>
 	 				<csvDomain:fRgpStatus/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
 	 			</rdeCsv:fields>
@@ -301,6 +301,7 @@
 	 			<rdeCsv:fields>
 	 				<csvDomain:fName/>
 	 				<csvHost:fName/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
 	 			</rdeCsv:fields>
@@ -333,8 +334,10 @@
 	 			<rdeCsv:fields>
 	 				<csvDomain:fName/>
 	 				<rdeCsv:fTrStatus/>
+	 				<rdeCsv:fReRr/>
 	 				<rdeCsv:fReID/>
 	 				<rdeCsv:fReDate/>
+	 				<rdeCsv:fAcRr/>
 	 				<rdeCsv:fAcID/>
 	 				<rdeCsv:fAcDate/>
 	 				<rdeCsv:fExDate/>
@@ -353,10 +356,11 @@
 	 			<rdeCsv:fields>
 	 				<csvHost:fName/>
 	 				<rdeCsv:fRoid/>
-	 				<csvHost:fParentDomain/>
 	 				<rdeCsv:fClID/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
+	 				<rdeCsv:fUpRr/>
 	 				<rdeCsv:fUpID/>
 	 				<rdeCsv:fUpDate/>
 	 				<rdeCsv:fTrDate/>
@@ -375,6 +379,7 @@
 	 				<csvHost:fStatus/>
 	 				<rdeCsv:fStatusDescription/>
 	 				<rdeCsv:fLanguage/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
 	 			</rdeCsv:fields>
@@ -391,6 +396,7 @@
 	 				<csvHost:fName/>
 	 				<csvHost:fAddr/>
 	 				<csvHost:fAddrVersion/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
 	 			</rdeCsv:fields>
@@ -408,18 +414,18 @@
 	 			<rdeCsv:fields>
 	 				<csvContact:fId/>
 	 				<rdeCsv:fRoid/>
-	 				<csvContact:fIsRegistrarContact/>
 	 				<csvContact:fVoice/>
 	 				<csvContact:fVoiceExt/>
 	 				<csvContact:fFax/>
 	 				<csvContact:fFaxExt/>
 	 				<csvContact:fEmail/>
 	 				<rdeCsv:fClID/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
+	 				<rdeCsv:fUpRr/>
 	 				<rdeCsv:fUpID/>
 	 				<rdeCsv:fUpDate/>
-	 				<rdeCsv:fPwAuthInfo/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
 	 				<rdeCsv:file 
@@ -435,6 +441,7 @@
       			<csvContact:fStatus/>
       			<rdeCsv:fStatusDescription/>
      				<rdeCsv:fLanguage/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
       		</rdeCsv:fields>
@@ -472,8 +479,10 @@
 	 			<rdeCsv:fields>
 	 				<csvContact:fId/>
 	 				<rdeCsv:fTrStatus/>
+	 				<rdeCsv:fReRr/>
 	 				<rdeCsv:fReID/>
 	 				<rdeCsv:fReDate/>
+	 				<rdeCsv:fAcRr/>
 	 				<rdeCsv:fAcID/>
 	 				<rdeCsv:fAcDate/>
 	 			</rdeCsv:fields>
@@ -530,8 +539,10 @@
 	 				<csvContact:fEmail/>
 	 				<rdeCsv:fUrl/>
 	 				<csvRegistrar:fWhoisUrl/>
+	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
+	 				<rdeCsv:fUpRr/>
 	 				<rdeCsv:fUpID/>
 	 				<rdeCsv:fUpDate/>
 	 			</rdeCsv:fields>
@@ -542,23 +553,6 @@
 	 				</rdeCsv:file> 
 	 			</rdeCsv:files>
 	 		</rdeCsv:csv>
-  			<rdeCsv:csv name="registrarContacts">
-    			<rdeCsv:sep>,</rdeCsv:sep>
-    			<rdeCsv:fields>
-      			<csvRegistrar:fId/>
-      			<csvContact:fId/>
-      			<csvRegistrar:fContactType/>
-      			<csvRegistrar:fCustomContactTypeName/>
-	 				<rdeCsv:fCrID/>
-	 				<rdeCsv:fCrDate/>
-    			</rdeCsv:fields>
-    			<rdeCsv:files>
-      			<rdeCsv:file
-        				cksum="1234567890 987654">
-        				registrarContacts-YYYYMMDD.csv
-      			</rdeCsv:file>
-    			</rdeCsv:files>
-  			</rdeCsv:csv>	 		
 		</csvRegistrar:contents>
 	 	<csvIDN:contents>
 	 		<rdeCsv:csv name="idnLanguage">

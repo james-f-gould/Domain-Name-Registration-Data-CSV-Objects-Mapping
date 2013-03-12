@@ -1,4 +1,4 @@
-domain1.test,Ddomain2-TEST,0,,0,,0,registrantid,clientX,clientY,2009-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-domain2.test,Ddomain1-TEST,0,,0,,0,registrantid,clientX,clientY,1999-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc123.test,Dxn-abc123-TEST,1,LANG1,0,,0,registrantid,clientX,clientY,2009-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc321.test,Dxn-abc321-TEST,1,LANG1,1,xn-abc123.test,0,registrantid,clientX,clientY,2009-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+domain1.test,Ddomain2-TEST,,,registrantid,registrarX,registrarX,clientY,2009-04-03T22:00:00.0Z,registrarX,clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
+domain2.test,Ddomain1-TEST,,,registrantid,registrarX,registrarX,clientY,1999-04-03T22:00:00.0Z,registrarX,clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
+xn--abc123.test,Dxnabc123-TEST,LANG-1,,registrantid,registrarX,registrarX,clientY,2009-04-03T22:00:00.0Z,registrarX,clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
+xn--abc321.test,Dxnabc321-TEST,LANG-2,xn-abc123.test,registrantid,registrarX,registrarX,clientY,2009-04-03T22:00:00.0Z,registrarX,clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z

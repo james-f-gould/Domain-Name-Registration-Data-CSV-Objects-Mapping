@@ -1,2 +1,2 @@
-ns1.example.test,Hns1_example_test-TEST,example.test,clientY,clientX,1999-05-08T12:10:00.0Z,clientX,2009-10-03T09:34:00.0Z,2007-01-08T09:19:00.0Z
-ns1.example.test2,Hns1_example_test2-TEST,,clientY,clientX,2009-05-08T12:10:00.0Z,clientX,2010-10-03T09:34:00.0Z,
+ns1.example.test,Hns1_example_test-TEST,registrarX,registrarX,clientY,1999-05-08T12:10:00.0Z,registrarX,clientY,2009-10-03T09:34:00.0Z,2007-01-08T09:19:00.0Z
+ns1.example.test2,Hns1_example_test2-TEST,registrarX,registrarX,clientY,2009-05-08T12:10:00.0Z,registrarX,clientY,2010-10-03T09:34:00.0Z,

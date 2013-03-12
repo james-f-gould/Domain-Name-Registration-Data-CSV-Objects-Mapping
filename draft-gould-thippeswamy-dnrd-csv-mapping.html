@@ -145,7 +145,7 @@
 <tr><td class="header">Network Working Group</td><td class="header">J. Gould</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">C. Thippeswamy</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">Verisign</td></tr>
-<tr><td class="header">Expires: September 1, 2013</td><td class="header">February 28, 2013</td></tr>
+<tr><td class="header">Expires: September 12, 2013</td><td class="header">March 11, 2013</td></tr>
 </table></td></tr></table>
 <h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-02</h1>
 
@@ -173,7 +173,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on September 1, 2013.</p>
+This Internet-Draft will expire on September 12, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -402,8 +402,10 @@ Internationalized and Localized Elements</h3>
       &lt;csvContact:fEmail/&gt;
       &lt;rdeCsv:fUrl/&gt;
       &lt;csvRegistrar:fWhoisUrl/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
+      &lt;rdeCsv:fUpRr/&gt;
       &lt;rdeCsv:fUpID/&gt;
       &lt;rdeCsv:fUpDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -542,19 +544,17 @@ CSV elements</h3>
   &lt;rdeCsv:fields&gt;
     &lt;csvDomain:fName/&gt;
     &lt;rdeCsv:fRoid/&gt;
-    &lt;csvDomain:fIdn/&gt;
     &lt;rdeCsv:fLanguage/&gt;
-    &lt;csvDomain:fVariant/&gt;
     &lt;csvDomain:fOriginalName/&gt;
-    &lt;csvDomain:fReserved/&gt;
     &lt;rdeCsv:fRegistrant/&gt;
     &lt;rdeCsv:fClID/&gt;
+    &lt;rdeCsv:fCrRr/&gt;
     &lt;rdeCsv:fCrID/&gt;
     &lt;rdeCsv:fCrDate/&gt;
+    &lt;rdeCsv:fUpRr/&gt;
     &lt;rdeCsv:fUpID/&gt;
     &lt;rdeCsv:fUpDate/&gt;
     &lt;rdeCsv:fExDate/&gt;
-    &lt;rdeCsv:fPwAuthInfo/&gt;
   &lt;/rdeCsv:fields&gt;
   &lt;rdeCsv:files&gt;
     &lt;rdeCsv:file
@@ -573,9 +573,9 @@ CSV elements</h3>
 <p>
                         </p>
 <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,Ddomain2-TEST,0,,0,,0,registrantid,
-clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
-2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+domain1.test,Ddomain2-TEST,,,registrantid,registrarX,registrarX,
+clientY,2009-04-03T22:00:00.0Z,registrarX,clientX
+2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
 </pre></div><p>
 
                     
@@ -650,16 +650,32 @@ CSV common field elements</h3>
 <dd>Identifier of client that sponsors the object with type="eppcom:clIDType".
                   
 </dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object with type="eppcom:clIDType".
+                  
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that created the object with type="eppcom:clIDType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fUpRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that updated the object with type="eppcom:clIDType".
                   
 </dd>
 <dt>&lt;rdeCsv:fUpID&gt;</dt>
 <dd>Identifier of client that updated the object with type="eppcom:clIDType".
                   
 </dd>
+<dt>&lt;rdeCsv:fReRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that requested the transfer with type="eppcom:clIDType".
+                  
+</dd>
 <dt>&lt;rdeCsv:fReID&gt;</dt>
 <dd>Identifier of client that requested the transfer with type="eppcom:clIDType".
+                  
+</dd>
+<dt>&lt;rdeCsv:fAcRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that should take or took action with type="eppcom:clIDType".
                   
 </dd>
 <dt>&lt;rdeCsv:fAcID&gt;</dt>
@@ -704,10 +720,6 @@ CSV common field elements</h3>
 </dd>
 <dt>&lt;rdeCsv:fPositiveIntegerType&gt;</dt>
 <dd>General positive integer field with type="positiveInteger".
-                  
-</dd>
-<dt>&lt;rdeCsv:fPwAuthInfo&gt;</dt>
-<dd>Password authorization info value with type="normalizedString".
                   
 </dd>
 <dt>&lt;rdeCsv:fUrl&gt;</dt>
@@ -759,21 +771,9 @@ Domain Name Object</h3>
 <dd>Domain name field with type="eppcom:labelType".  
                   
 </dd>
-<dt>&lt;csvDomain:fIdn&gt;</dt>
-<dd>Boolean flag indicating if the domain name object is an IDN domain name object with type="boolean".
-                
-</dd>
-<dt>&lt;csvDomain:fVariant&gt;</dt>
-<dd>Boolean flag indicating if the domain name object is an IDN variant domain name object with type="boolean". 
-                
-</dd>
 <dt>&lt;csvDomain:fOriginalName&gt;</dt>
 <dd>Fully qualified name of the original IDN domain name object related to the 
                       variant domain name object with type="eppcom:labelType".
-                
-</dd>
-<dt>&lt;csvDomain:fReserved&gt;</dt>
-<dd>Boolean flag indicating if the domain name object is a reserved domain with type="boolean".
                 
 </dd>
 </dl></blockquote>
@@ -801,11 +801,17 @@ Domain Name Object</h3>
 <dt>&lt;rdeCsv:fClID&gt;</dt>
 <dd>Identifier of client that sponsors the domain name object.
 </dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that created the domain name object.
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>Created date and time of the domain name object.
+</dd>
+<dt>&lt;rdeCsv:fUpRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that updated the object.
 </dd>
 <dt>&lt;rdeCsv:fUpID&gt;</dt>
 <dd>Identifier of the client that last updated the domain name object.
@@ -818,9 +824,6 @@ Domain Name Object</h3>
 </dd>
 <dt>&lt;rdeCsv:fTrDate&gt;</dt>
 <dd>Date and time of the last transfer for the domain name object.
-</dd>
-<dt>&lt;rdeCsv:fPwAuthInfo&gt;</dt>
-<dd> - Password authorization info value for the domain name object.
 </dd>
 </dl></blockquote>
 </dd>
@@ -840,19 +843,17 @@ Domain Name Object</h3>
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fRoid/&gt;
-      &lt;csvDomain:fIdn/&gt;
       &lt;rdeCsv:fLanguage/&gt;
-      &lt;csvDomain:fVariant/&gt;
       &lt;csvDomain:fOriginalName/&gt;
-      &lt;csvDomain:fReserved/&gt;
       &lt;rdeCsv:fRegistrant/&gt;
       &lt;rdeCsv:fClID/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
+      &lt;rdeCsv:fUpRr/&gt;
       &lt;rdeCsv:fUpID/&gt;
       &lt;rdeCsv:fUpDate/&gt;
       &lt;rdeCsv:fExDate/&gt;
-      &lt;rdeCsv:fPwAuthInfo/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
       &lt;rdeCsv:file
@@ -878,19 +879,19 @@ Domain Name Object</h3>
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,Ddomain2-TEST,0,,0,,0,registrantid,
-clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
-2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-domain2.test,Ddomain1-TEST,0,,0,,0,registrantid,
-clientX,clientY,1999-04-03T22:00:00.0Z,clientX,
-2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc123.test,Dxn-abc123-TEST,1,LANG1,0,,0,
-registrantid,clientX,clientY,
-2009-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,
-2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc321.test,Dxn-abc321-TEST,1,LANG1,1,xn-abc123.test,
-0,registrantid,clientX,clientY,2009-04-03T22:00:00.0Z,
-clientX,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
+domain1.test,Ddomain2-TEST,,,registrantid,
+registrarX,registrarX,clientY,2009-04-03T22:00:00.0Z,registrarX,
+clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
+domain2.test,Ddomain1-TEST,,,registrantid,
+registrarX,registrarX,clientY,1999-04-03T22:00:00.0Z,registrarX,
+clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
+xn-abc123.test,Dxn-abc123-TEST,LANG1,,,
+registrantid,registrarX,registrarX,clientY,
+2009-04-03T22:00:00.0Z,registrarX,clientY,2009-12-03T09:05:00.0Z,
+2015-04-03T22:00:00.0Z
+xn-abc321.test,Dxn-abc321-TEST,LANG1,xn-abc123.test,
+registrantid,registrarX,registrarX,clientY,2009-04-03T22:00:00.0Z,
+registrarX,clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
 </pre></div>
                     
 </dd>
@@ -988,8 +989,11 @@ domainN.test
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
-<dd>Identifier of client that created the domain object link to the contact object.
+<dd>Identifier of clisent that created the domain object link to the contact object.
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>Date and time that the domain object link to the contact object was created.
@@ -1013,6 +1017,7 @@ domainN.test
       &lt;csvDomain:fName/&gt;
       &lt;csvContact:fId/&gt;
       &lt;csvDomain:fContactType/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -1039,12 +1044,18 @@ domainN.test
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,sh8013,admin,clientX,2011-10-03T09:05:00.0Z
-domain1.test,mycontactid,tech,clientX,2011-10-03T09:05:00.0Z
-domain1.test,mycontactid,billing,clientX,2011-10-03T09:05:00.0Z
-domain2.test,mycontactid,admin,clientX,2011-10-03T09:05:00.0Z
-domain2.test,sh8013,tech,clientX,2011-10-03T09:05:00.0Z
-domain2.test,mycontactid,billing,clientX,2011-10-03T09:05:00.0Z
+domain1.test,sh8013,admin,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain1.test,mycontactid,tech,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain1.test,mycontactid,billing,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain2.test,mycontactid,admin,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain2.test,sh8013,tech,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain2.test,mycontactid,billing,registrarX,
+clientY,2011-10-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1103,11 +1114,11 @@ domain2.test,sh8013,tech
 <dd>
 <blockquote class="text"><dl>
 <dt>&lt;csvDomain:fStatus&gt;</dt>
-<dd>The status of the domain name with type="domain:statusType"/>.  
+<dd>The status of the domain name with type="domain:statusValueType"/>.  
                 
 </dd>
 <dt>&lt;csvDomain:fRgpStatus&gt;</dt>
-<dd>The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusType" as 
+<dd>The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusValueType" as 
                 defined in <a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a>.  
                 
 </dd>
@@ -1140,6 +1151,9 @@ domain2.test,sh8013,tech
 <dt>&lt;rdeCsv:fLanguage&gt;</dt>
 <dd>Language of the &lt;rdeCsv:fStatusDescription&gt; field.
 </dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that set the status for the domain name object.
 </dd>
@@ -1167,6 +1181,7 @@ domain2.test,sh8013,tech
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
       &lt;csvDomain:fRgpStatus/&gt;
+      &lt;rdeCsv:fCrRf/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -1194,13 +1209,13 @@ domain2.test,sh8013,tech
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 domain1.test,clientUpdateProhibited,"Disallow update",
-en,,clientX,2009-12-03T09:05:00.0Z
+en,,registrarX,clientY,2009-12-03T09:05:00.0Z
 domain1.test,clientDeleteProhibited,"Disallow delete",
-en,,clientX,2010-12-04T10:05:00.0Z
+en,,registrarX,clientY,2010-12-04T10:05:00.0Z
 domain2.test,clientUpdateProhibited,"Disallow update",
-en,,clientX,2011-10-03T09:05:00.0Z
+en,,registrarX,clientY,2011-10-03T09:05:00.0Z
 domain2.test,pendingDelete,,,
-redemptionPeriod,clientX,2011-11-14T10:05:00.0Z
+redemptionPeriod,registrarX,clientY,2011-11-14T10:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1292,6 +1307,9 @@ domain2.test,pendingDelete
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that created the link between the domain name object and the delegated host.
 </dd>
@@ -1323,6 +1341,7 @@ domain2.test,pendingDelete
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;csvHost:fName/&gt;
+      &lt;rdeCsv:fCrRf/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -1349,10 +1368,14 @@ domain2.test,pendingDelete
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,ns1.domain2.test,clientX,2009-12-03T09:05:00.0Z
-domain1.test,ns2.domain2.test,clientX,2009-12-03T09:05:00.0Z
-domain2.test,ns1.domain.example,clientX,2009-12-03T09:05:00.0Z
-domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z
+domain1.test,ns1.domain2.test,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain1.test,ns2.domain2.test,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,ns1.domain.example,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,ns2.domain.example,registrarX,
+clientY,2009-12-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1373,6 +1396,7 @@ domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fRoid/&gt;
+      &lt;rdeCsv:fCrRf/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -1400,10 +1424,14 @@ domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,Dns1.domain2.test-TEST,clientX,2009-12-03T09:05:00.0Z
-domain1.test,Dns2.domain2.test-TEST,clientX,2009-12-03T09:05:00.0Z
-domain2.test,Dns1.domain.example-TEST,clientX,2009-12-03T09:05:00.0Z
-domain2.test,Dns2.domain.example-TEST,clientX,2009-12-03T09:05:00.0Z
+domain1.test,Dns1.domain2.test-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain1.test,Dns2.domain2.test-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,Dns1.domain.example-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,Dns2.domain.example-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -1696,8 +1724,8 @@ domain1.test,604800,257,3,1,AQPJ////4QQQ
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,604800,12345,3,1,49FD46E6C4B45C55D4AC
-domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B
+domain1.test,12345,3,1,49FD46E6C4B45C55D4AC
+domain1.test,12346,3,1,38EC35D5B3A34B44C39B
 </pre></div>
                     
 </dd>
@@ -1761,11 +1789,17 @@ domain1.test,257,3,1,AQPJ////4QQQ
 <dt>&lt;rdeCsv:fTrStatus&gt;</dt>
 <dd>State of the most recent transfer request.
 </dd>
+<dt>&lt;rdeCsv:fReRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that requested the transfer.
+</dd>
 <dt>&lt;rdeCsv:fReID&gt;</dt>
 <dd>Identifier of client that requested the transfer.
 </dd>
 <dt>&lt;rdeCsv:fReDate&gt;</dt>
 <dd>Date and time that the transfer was requested
+</dd>
+<dt>&lt;rdeCsv:fAcRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that should take or took action.
 </dd>
 <dt>&lt;rdeCsv:fAcID&gt;</dt>
 <dd>Identifier of client that should take or took action for transfer.
@@ -1807,8 +1841,10 @@ domain1.test,257,3,1,AQPJ////4QQQ
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fTrStatus/&gt;
+      &lt;rdeCsv:fReRr/&gt;
       &lt;rdeCsv:fReID/&gt;
       &lt;rdeCsv:fReDate/&gt;
+      &lt;rdeCsv:fAcRr/&gt;
       &lt;rdeCsv:fAcID/&gt;
       &lt;rdeCsv:fAcDate/&gt;
       &lt;rdeCsv:fExDate/&gt;
@@ -1836,10 +1872,12 @@ domain1.test,257,3,1,AQPJ////4QQQ
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-domain1.test,pending,clientW,2011-03-08T19:38:00.0Z,
-clientX,2011-03-13T23:59:59.0Z,2016-04-03T22:00:00.0Z
-domain2.test,clientApproved,clientW,2012-03-08T19:38:00.0Z,
-clientX,2012-03-09T23:59:59.0Z,2016-05-04T23:00:00.0Z
+domain1.test,pending,registrarX,clientY,
+2011-03-08T19:38:00.0Z,registrarY,,2011-03-13T23:59:59.0Z,
+2016-04-03T22:00:00.0Z
+domain2.test,clientApproved,registrarX,clientY,
+2012-03-08T19:38:00.0Z,registrarY,clientY,
+2012-03-09T23:59:59.0Z,2016-05-04T23:00:00.0Z
 </pre></div>
                     
 </dd>
@@ -1918,14 +1956,6 @@ Host Object</h3>
 <dd>Host name field with type="eppcom:labelType".  
                   
 </dd>
-<dt>&lt;csvHost:fParentDomain&gt;</dt>
-<dd>Contains parent domain name for the subordinate host object with type="eppcom:labelType".  
-                
-</dd>
-<dt>&lt;csvHost:fIdn&gt;</dt>
-<dd>Boolean flag indicating if the host object is an IDN host object with type="boolean".
-                
-</dd>
 </dl></blockquote>
 </dd>
 <dt></dt>
@@ -1936,9 +1966,6 @@ Host Object</h3>
 <dt></dt>
 <dd>
 <blockquote class="text"><dl>
-<dt>&lt;rdeCsv:fUName&gt;</dt>
-<dd>UTF8 encoded name of an IDN host name.
-</dd>
 <dt>&lt;rdeCsv:fRoid&gt;</dt>
 <dd>Repository Object IDentifier (ROID) assigned to the host object.  The &lt;rdeCsv:fRoid&gt; uniquely 
                     identifies the host object that MAY be used in place of the &lt;csvHost:fName&gt; field element to uniquely identify the 
@@ -1950,11 +1977,17 @@ Host Object</h3>
                     hosts for each sponsoring client, so the &lt;csvHost:fName&gt; itself won't be unique but instead the combination of the &lt;rdeCsv:fClID&gt; and the 
                     &lt;csvHost:fName&gt; is unique.
 </dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that created the host object.
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>Date and time that the host object was created.
+</dd>
+<dt>&lt;rdeCsv:fUpRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that updated the object.
 </dd>
 <dt>&lt;rdeCsv:fUpID&gt;</dt>
 <dd>Identifier of client that last updated the host object.
@@ -1983,10 +2016,11 @@ Host Object</h3>
    &lt;rdeCsv:fields&gt;
      &lt;csvHost:fName/&gt;
      &lt;rdeCsv:fRoid/&gt;
-     &lt;csvHost:fParentDomain/&gt;
      &lt;rdeCsv:fClID/&gt;
+     &lt;rdeCsv:fCrRr/&gt;
      &lt;rdeCsv:fCrID/&gt;
      &lt;rdeCsv:fCrDate/&gt;
+     &lt;rdeCsv:fUpRr/&gt;
      &lt;rdeCsv:fUpID/&gt;
      &lt;rdeCsv:fUpDate/&gt;
      &lt;rdeCsv:fTrDate/&gt;
@@ -2015,12 +2049,12 @@ Host Object</h3>
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-ns1.example.test,Hns1_example_test-TEST,example.test,
-clientY,clientX,
-1999-05-08T12:10:00.0Z,clientX,2009-10-03T09:34:00.0Z,
-2007-01-08T09:19:00.0Z
-ns1.example.test2,Hns1_example_test2-TEST,,clientY,clientX,
-2009-05-08T12:10:00.0Z,clientX,2010-10-03T09:34:00.0Z,
+ns1.example.test,Hns1_example_test-TEST,registrarX,registrarX,
+clientY,1999-05-08T12:10:00.0Z,registrarX,
+clientY,2009-10-03T09:34:00.0Z,2007-01-08T09:19:00.0Z
+ns1.example.test2,Hns1_example_test2-TEST,clientY,
+clientX,2009-05-08T12:10:00.0Z,clientX,
+2010-10-03T09:34:00.0Z,
 </pre></div>
                     
 </dd>
@@ -2083,7 +2117,7 @@ ns1.example.test2
 <dd>Host name of status.
 </dd>
 <dt>&lt;csvHost:fStatus&gt;</dt>
-<dd>The status of the host with type="host:statusType"/>.  
+<dd>The status of the host with type="host:statusValueType"/>.  
                 
 </dd>
 </dl></blockquote>
@@ -2106,6 +2140,9 @@ ns1.example.test2
 </dd>
 <dt>&lt;rdeCsv:fLanguage&gt;</dt>
 <dd>Language of the &lt;rdeCsv:fStatusDescription&gt; field.
+</dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
 </dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that set the status for the host object.
@@ -2133,6 +2170,7 @@ ns1.example.test2
       &lt;csvHost:fStatus/&gt;
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -2160,10 +2198,10 @@ ns1.example.test2
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ns1.domain1.test,clientUpdateProhibited,"Disallow update",
-en,clientX,2009-12-03T09:05:00.0Z
+en,registrarX,clientY,2009-12-03T09:05:00.0Z
 ns1.domain1.test,clientDeleteProhibited,"Disallow delete",
-en,clientX,2010-12-04T10:05:00.0Z
-ns1.domain2.test,ok,,,clientX,2011-10-03T09:05:00.0Z
+en,registrarX,clientY,2010-12-04T10:05:00.0Z
+ns1.domain2.test,ok,,,registrarX,clientY,2011-10-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -2206,7 +2244,7 @@ ns1.domain2.test,ok,,,clientX,2011-10-03T09:05:00.0Z
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ns1.domain1.test,clientUpdateProhibited
-ns1.domain1.test,deleteUpdateProhibited
+ns1.domain1.test,clientDeleteProhibited
 </pre></div>
                     
 </dd>
@@ -2257,6 +2295,9 @@ ns1.domain1.test,deleteUpdateProhibited
                     the &lt;csvHost:fName&gt; is not unique.  The &lt;rdeCsv:fRoid&gt; is used for servers that supports a set of external host objects 
                     per sponsoring client or when the server supports the &lt;domain:hostAttr&gt; model of <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that set the address for the host object.
 </dd>
@@ -2283,6 +2324,7 @@ ns1.domain1.test,deleteUpdateProhibited
       &lt;csvHost:fName/&gt;
       &lt;csvHost:fAddr/&gt;
       &lt;csvHost:fAddrVersion/&gt;
+      &lt;rdeCsv:rCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -2309,8 +2351,10 @@ ns1.domain1.test,deleteUpdateProhibited
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-ns1.domain1.test,192.0.2.2,v4,clientX,2009-12-03T09:05:00.0Z
-ns1.domain1.test,192.0.2.29,v4,clientX,2009-12-03T09:05:00.0Z
+ns1.domain1.test,192.0.2.2,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+ns1.domain1.test,192.0.2.29,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
 ns1.domain1.test,1080:0:0:0:8:800:200C:417A,
 v6,clientX,2009-12-03T09:05:00.0Z
 </pre></div>
@@ -2378,6 +2422,7 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A
       &lt;rdeCsv:fRoid/&gt;
       &lt;csvHost:fAddr/&gt;
       &lt;csvHost:fAddrVersion/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -2404,8 +2449,10 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-Dns1.domain1.test-TEST,192.0.2.2,v4,clientX,2009-12-03T09:05:00.0Z
-Dns1.domain1.test-TEST,192.0.2.29,v4,clientX,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,192.0.2.2,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,192.0.2.29,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
 Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A,
 v6,clientX,2009-12-03T09:05:00.0Z
 </pre></div>
@@ -2506,14 +2553,6 @@ Contact Object</h3>
 <dd>Contains the contact's email address with type="eppcom:minTokenType".  
                 
 </dd>
-<dt>&lt;csvContact:fIsRegistrarContact&gt;</dt>
-<dd>Defines whether the contact record is a registrar contact with type="boolean".  Registrar contacts 
-                MAY be mixed with other contacts but MAY not have the same set of required fields.  For example, a registrar contact should always have the sponsoring 
-                client identifier be that of the registrar.  This means that a registrar contact should not support transfer and subsequently does not 
-                require an authorization info value with the &lt;rdeCsv:fPwAuthInfo&gt; field element.  The &lt;svContact:fIsRegistrarContact&gt; flag MAY further be used to 
-                validate against the list of contacts in the "registrarContacts" CSV file, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, to ensure that they are all registrar contacts.      
-                
-</dd>
 </dl></blockquote>
 </dd>
 <dt></dt>
@@ -2530,11 +2569,17 @@ Contact Object</h3>
 <dt>&lt;rdeCsv:fClID&gt;</dt>
 <dd>Identifier of client that sponsors the contact object.
 </dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that created the contact object.
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>Created date and time of the contact object
+</dd>
+<dt>&lt;rdeCsv:fUpRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that updated the object.
 </dd>
 <dt>&lt;rdeCsv:fUpID&gt;</dt>
 <dd>Identifier of the client that last updated the contact object.
@@ -2544,9 +2589,6 @@ Contact Object</h3>
 </dd>
 <dt>&lt;rdeCsv:fTrDate&gt;</dt>
 <dd>Date and time of the last transfer for the contact object.
-</dd>
-<dt>&lt;rdeCsv:fPwAuthInfo&gt;</dt>
-<dd>Password authorization info value for the domain name object.
 </dd>
 </dl></blockquote>
 </dd>
@@ -2566,18 +2608,18 @@ Contact Object</h3>
     &lt;rdeCsv:fields&gt;
      &lt;csvContact:fId/&gt;
      &lt;rdeCsv:fRoid/&gt;
-     &lt;csvContact:fIsRegistrarContact/&gt;
      &lt;csvContact:fVoice/&gt;
      &lt;csvContact:fVoiceExt/&gt;
      &lt;csvContact:fFax/&gt;
      &lt;csvContact:fFaxExt/&gt;
      &lt;csvContact:fEmail/&gt;
      &lt;rdeCsv:fClID/&gt;
+     &lt;rdeCsv:fCrRr/&gt;
      &lt;rdeCsv:fCrID/&gt;
      &lt;rdeCsv:fCrDate/&gt;
+     &lt;rdeCsv:fUpRr/&gt;
      &lt;rdeCsv:fUpID/&gt;
      &lt;rdeCsv:fUpDate/&gt;
-     &lt;rdeCsv:fPwAuthInfo/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
      &lt;rdeCsv:file
@@ -2595,23 +2637,19 @@ Contact Object</h3>
 <dt></dt>
 <dd>
                         Example of the contact-YYYYMMDD.csv file.
-                        The file contains two object contact records 
-                        and one registrar contact record.
+                        The file contains two object contact records.
                     
 </dd>
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-sh8013,Csh8013-TEST,0,+1.7035555555,1234,+1.7035555556,,
-jdoe@example.test,clientY,
-clientX,2009-09-13T08:01:00.0Z,clientX,
-2009-11-26T09:10:00.0Z,2fooBAR
-mycontactid,Cmycontactid-TEST,0,+1.7034444444,1234,
-+1.7033333333,,jsmith@example.test,clientY,clientX,
-2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,2fooBAR
-registrarcontact,Cregistrarcontact-TEST,1,+1.7034444444,1234,
-+1.7033333333,,jsmith@example.test,clientY,clientX,
-2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,
+sh8013,Csh8013-TEST,+1.7035555555,1234,+1.7035555556,,
+jdoe@example.test,registrarX,registarX,
+clientY,2009-09-13T08:01:00.0Z,registarX,clientY,
+2009-11-26T09:10:00.0Z
+mycontactid,Cmycontactid-TEST,+1.7034444444,1234,
++1.7033333333,,jsmith@example.test,registrarX,registarX,clientY,
+2010-09-13T08:01:00.0Z,registarX,clientY,2011-11-26T09:10:00.0Z
 </pre></div>
                     
 </dd>
@@ -2674,7 +2712,7 @@ mycontactid
 <dd>Server-unique contact identifier of status.
 </dd>
 <dt>&lt;csvContact:fStatus&gt;</dt>
-<dd>The status of the contact with type="contact:statusType".
+<dd>The status of the contact with type="contact:statusValueType".
 </dd>
 </dl></blockquote>
 </dd>
@@ -2691,6 +2729,9 @@ mycontactid
 </dd>
 <dt>&lt;rdeCsv:fLanguage&gt;</dt>
 <dd>Language of the &lt;rdeCsv:fStatusDescription&gt; field.
+</dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
 </dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that set the status for the contact object.
@@ -2718,6 +2759,7 @@ mycontactid
       &lt;csvContact:fStatus/&gt;
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -2745,10 +2787,10 @@ mycontactid
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 sh8013,clientUpdateProhibited,"Disallow update",
-en,clientX,2009-12-03T09:05:00.0Z
+en,registrarX,clientY,2009-12-03T09:05:00.0Z
 sh8013,clientDeleteProhibited,"Disallow delete",
-en,clientX,2010-12-04T10:05:00.0Z
-mycontactid,ok,,,clientX,2011-10-03T09:05:00.0Z
+en,registrarX,clientY,2010-12-04T10:05:00.0Z
+mycontactid,ok,,,registrarX,clientY,2011-10-03T09:05:00.0Z
 </pre></div>
                     
 </dd>
@@ -2975,11 +3017,17 @@ mycontactid,int
 <dt>&lt;rdeCsv:fTrStatus&gt;</dt>
 <dd>State of the most recent transfer request.
 </dd>
+<dt>&lt;rdeCsv:fReRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that requested the transfer.
+</dd>
 <dt>&lt;rdeCsv:fReID&gt;</dt>
 <dd>Identifier of client that requested the transfer.
 </dd>
 <dt>&lt;rdeCsv:fReDate&gt;</dt>
 <dd>Date and time that the transfer was requested.
+</dd>
+<dt>&lt;rdeCsv:fAcRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that should take or took action.
 </dd>
 <dt>&lt;rdeCsv:fAcID&gt;</dt>
 <dd>Identifier of client that should take or took action for transfer.
@@ -3018,8 +3066,10 @@ mycontactid,int
     &lt;rdeCsv:fields&gt;
       &lt;csvContact:fId/&gt;
       &lt;rdeCsv:fTrStatus/&gt;
+      &lt;rdeCsv:fReRr/&gt;
       &lt;rdeCsv:fReID/&gt;
       &lt;rdeCsv:fReDate/&gt;
+      &lt;rdeCsv:fAcRr/&gt;
       &lt;rdeCsv:fAcID/&gt;
       &lt;rdeCsv:fAcDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -3047,10 +3097,10 @@ mycontactid,int
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-sh8013,pending,clientW,2011-03-08T19:38:00.0Z,
-clientX,2011-03-13T23:59:59.0Z
-mycontactid,clientApproved,clientW,2011-04-08T19:38:00.0Z,
-clientX,2011-04-09T20:38:00.0Z
+sh8013,pending,registrarX,clientX,2011-03-08T19:38:00.0Z,
+registrarY,,2011-03-13T23:59:59.0Z
+mycontactid,clientApproved,registrarX,clientX,2011-04-08T19:38:00.0Z,
+registrarY,clientY,2011-04-09T20:38:00.0Z
 </pre></div>
                     
 </dd>
@@ -3280,8 +3330,9 @@ mycontactid
 Registrar Object</h3>
 
 <p>
-                    The registrar object represents the sponsoring client for other objects.  The registrar object MAY be related 
-                    to registrar contacts using Contact Object, as defined in <a class='info' href='#contactObject'>Section&nbsp;4.3<span> (</span><span class='info'>Contact Object</span><span>)</span></a>, references or MAY contain registrar contacts. The 
+                    The registrar object represents the sponsoring client for objects and the organization for clients that create and update objects.  
+                    A registrar object MAY include the server (registry) itself to reference object created and updated by the server.
+                    The 
                     elements used for the Registrar Object references are defined in this section.  The &lt;csvRegistrar:contents&gt; child 
                     element of the &lt;rde:contents&gt; element holds the registrar objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
                 &lt;rdeCsv:csvDelete&gt; elements, defined in the 
@@ -3316,11 +3367,6 @@ Registrar Object</h3>
 <dd>Contains the status of the registrar with type="csvRegistrar:statusValueType".  
                 
 </dd>
-<dt>&lt;csvRegistrar:fStatusName&gt;</dt>
-<dd>Contains the name of the registrar sub-status or the full name of the 
-                status when the fStatus value is "custom" with type="token".  
-                
-</dd>
 <dt>&lt;csvRegistrar:fWhoisUrl&gt;</dt>
 <dd>Contains the Whois URL of the registrar with type="anyURI".  
                 
@@ -3338,11 +3384,17 @@ Registrar Object</h3>
 <dt>&lt;rdeCsv:fRoid&gt;</dt>
 <dd>Registry Object IDentifier (ROID) for the registrar object.
 </dd>
+<dt>&lt;rdeCsv:fCrRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+</dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that created the registrar object.
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>Created date and time of the registrar object.
+</dd>
+<dt>&lt;rdeCsv:fUpRr&gt;</dt>
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that updated the object.
 </dd>
 <dt>&lt;rdeCsv:fUpID&gt;</dt>
 <dd>Identifier of the client that last updated the registrar object.
@@ -3430,8 +3482,10 @@ Registrar Object</h3>
       &lt;csvContact:fEmail/&gt;
       &lt;rdeCsv:fUrl/&gt;
       &lt;csvRegistrar:fWhoisUrl/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
+      &lt;rdeCsv:fUpRr/&gt;
       &lt;rdeCsv:fUpID/&gt;
       &lt;rdeCsv:fUpDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -3460,8 +3514,8 @@ Registrar Object</h3>
 EXAMPLE,REGISTRAR123-TEST,"Example Inc.",1234,ok,"123 Example Dr.",
 "Suite 100",,Dulles,VA,20166-6503,US,+1.7035555555,1234,
 +1.7035555556,,jdoe@example.test,http://www.example.test,
-http://whois.example.test,clientX,2005-04-23T11:49:00.0Z,
-clientY,2009-02-17T17:51:00.0Z
+http://whois.example.test,registrarX,clientY,2005-04-23T11:49:00.0Z,
+registrarX,clientY,2009-02-17T17:51:00.0Z
 </pre></div>
                     
 </dd>
@@ -3493,223 +3547,22 @@ clientY,2009-02-17T17:51:00.0Z
 </pre></div>
                     
 </dd>
-<dt></dt>
-<dd>
+</dl></blockquote>
+
+<p>
                         Example of the registrar-delete-YYYYMMDD.csv file.
                         The file contains two registrar records.
                     
-</dd>
-<dt></dt>
-<dd>
-                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+</p>
+<p>
+                        </p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 EXAMPLE
 EXAMPLE2
-</pre></div>
-                    
-</dd>
-<dt>&quot;registrarContacts&quot;</dt>
-<dd>Defines the fields and CSV file references 
-                  used for the registrar object link records to contact objects, as described in <a class='info' href='#contactObject'>Section&nbsp;4.3<span> (</span><span class='info'>Contact Object</span><span>)</span></a>.  
-                  The following field elements were added for use in the "registrarContacts" 
-                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
-                  
-</dd>
-<dt></dt>
-<dd>
-<blockquote class="text"><dl>
-<dt>&lt;csvRegistrar:fContactType&gt;</dt>
-<dd>The registrar contact type for the contact object link with type="csvRegistrar:contactAttrType".  The possible values 
-                for the &lt;csvRegistrar:fContactType&gt; include:
-</dd>
-<dt></dt>
-<dd>
-<blockquote class="text"><dl>
-<dt>&quot;admin&quot;</dt>
-<dd> Administration registrar contact.
-</dd>
-<dt>&quot;billing&quot;</dt>
-<dd>Billing registrar contact.
-</dd>
-<dt>&quot;primaryBilling&quot;</dt>
-<dd>Primary billing registrar contact.  If supported, there SHOULD be at most one "primaryBilling" contact per registrar for invoicing.
-</dd>
-<dt>&quot;tech&quot;</dt>
-<dd>Technical registrar contact.
-</dd>
-<dt>&quot;marketing&quot;</dt>
-<dd>Marketing registrar contact.
-</dd>
-<dt>&quot;icann&quot;</dt>
-<dd>ICANN registrar registrar contact.
-</dd>
-<dt>&quot;support&quot;</dt>
-<dd>Customer support registrar contact.
-</dd>
-<dt>&quot;abuse&quot;</dt>
-<dd>Abuse registrar contact.
-</dd>
-<dt>&quot;ceo&quot;</dt>
-<dd>CEO registrar contact
-</dd>
-<dt>&quot;custom&quot;</dt>
-<dd>Custom registrar contact type.  If custom is used, the &lt;csvRegistrar:fCustomContactTypeName&gt; field element MUST be defined to define the name 
-                  of the custom contact type.
-</dd>
-</dl></blockquote>
-</dd>
-<dt>&lt;csvRegistrar:fCustomContactTypeName&gt;</dt>
-<dd>The name of the custom registrar contact type, when the &lt;csvRegistrar:fContactType&gt; field element value 
-               is "custom", with type="token".  
-                
-</dd>
-</dl></blockquote>
-</dd>
-<dt></dt>
-<dd>The following "csvRegistrar" fields, defined for the "registrar" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
-                  MAY be used in the "registrarContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
-                  
-</dd>
-<dt></dt>
-<dd>
-<blockquote class="text"><dl>
-<dt>&lt;csvRegistrar:fId&gt;</dt>
-<dd>Contains the server-unique registrar identifier for the registrar object.  
-                
-</dd>
-</dl></blockquote>
-</dd>
-<dt></dt>
-<dd>The following "csvContact" fields, defined for the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
-                  MAY be used in the "registrarContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
-                  
-</dd>
-<dt></dt>
-<dd>
-<blockquote class="text"><dl>
-<dt>&lt;csvContact:fId&gt;</dt>
-<dd>Server-unique contact identifier reference.  The matching contact object, as defined in <a class='info' href='#contactObject'>Section&nbsp;4.3<span> (</span><span class='info'>Contact Object</span><span>)</span></a>, SHOULD 
-                    define the &lt;csvContact:fIsRegistrarContact&gt; field element with a value of "true" or "1".
-</dd>
-</dl></blockquote>
-</dd>
-<dt></dt>
-<dd>The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
-                  MAY be used in the "registrarContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
-                  
-</dd>
-<dt></dt>
-<dd>
-<blockquote class="text"><dl>
-<dt>&lt;rdeCsv:fCrID&gt;</dt>
-<dd>Identifier of client that created the registrar object link to the contact object.
-</dd>
-<dt>&lt;rdeCsv:fCrDate&gt;</dt>
-<dd>Date and time that the registrar object link to the contact object was created.
-</dd>
-</dl></blockquote>
-</dd>
-<dt></dt>
-<dd>
-                        Example of a "registrarContacts" &lt;rdeCsv:csv&gt; element:
-                    
-</dd>
-<dt></dt>
-<dd>
-                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-...
-&lt;csvDomain:contents&gt;
-  ...
-  &lt;rdeCsv:csv name="registrarContacts"&gt;
-    &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
-    &lt;rdeCsv:fields&gt;
-      &lt;csvRegistrar:fId/&gt;
-      &lt;csvContact:fId/&gt;
-      &lt;csvRegistrar:fContactType/&gt;
-      &lt;csvRegistrar:fCustomContactTypeName/&gt;
-      &lt;rdeCsv:fCrID/&gt;
-      &lt;rdeCsv:fCrDate/&gt;
-    &lt;/rdeCsv:fields&gt;
-    &lt;rdeCsv:files&gt;
-      &lt;rdeCsv:file
-        cksum="1234567890 987654"&gt;
-        registrarContacts-YYYYMMDD.csv
-      &lt;/rdeCsv:file&gt;
-    &lt;/rdeCsv:files&gt;
-  &lt;/rdeCsv:csv&gt;
-  ...
-&lt;/csvDomain:contents&gt;
-...
-</pre></div>
-                    
-</dd>
-<dt></dt>
-<dd>
-                        Example of the corresponding registrarContacts-YYYYMMDD.csv file.
-                        The file contains a admin, tech, billing, abuse, and custom "policy" contact for 
-                        the EXAMPLE registrar.
-                    
-</dd>
-<dt></dt>
-<dd>
-                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-EXAMPLE,johnsmithid,admin,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,janesmithid,tech,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,johnsmithid,billing,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,janesmithid,abuse,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,johnsmithid,custom,policy,clientX,2011-10-03T09:05:00.0Z
-</pre></div>
-                    
-</dd>
-<dt></dt>
-<dd>
-                        Example of a "registrarContacts" &lt;rdeCsv:csvDelete&gt; element:
-                    
-</dd>
-<dt></dt>
-<dd>
-                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-...
-&lt;rde:deletes&gt;
-...
- &lt;rdeCsv:csvDelete name="registrarContacts"&gt;
-  &lt;rdeCsv:fields&gt;
-      &lt;csvRegistrar:fId/&gt;
-      &lt;csvContact:fId/&gt;
-      &lt;csvRegistrar:fContactType/&gt;
-      &lt;csvRegistrar:fCustomContactTypeName/&gt;
-  &lt;/rdeCsv:fields&gt;
-  &lt;rdeCsv:files&gt;
-    &lt;rdeCsv:file
-     cksum="1234567890 987654"&gt;
-     registrarContacts-delete-YYYYMMDD.csv
-    &lt;/rdeCsv:file&gt;
-  &lt;/rdeCsv:files&gt;
- &lt;/rdeCsv:csvDelete&gt;
-...
-&lt;/rde:deletes&gt;
-...
-</pre></div>
-                    
-</dd>
-<dt></dt>
-<dd>
-                        Example of the corresponding registrarContacts-delete-YYYYMMDD.csv file.
-                        The file contains five contact records for the EXAMPLE registrar.
-                    
-</dd>
-<dt></dt>
-<dd>
-                        <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-EXAMPLE,johnsmithid,admin,
-EXAMPLE,janesmithid,tech,
-EXAMPLE,johnsmithid,billing,
-EXAMPLE,janesmithid,abuse,
-EXAMPLE,johnsmithid,custom,policy
-</pre></div>
-                    
-</dd>
-</dl></blockquote>
+</pre></div><p>
 
+                    
+</p>
 <a name="idnLanguageObject"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.4.5"></a><h3>4.5.&nbsp;
@@ -3791,8 +3644,10 @@ IDN Language Object</h3>
 <dt></dt>
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
-LANG1,http://www.iana.org/domains/idn-tables/tables/test_tab1_1.1.txt
-LANG2,http://www.iana.org/domains/idn-tables/tables/test_tab2_1.1.txt
+LANG-1,
+http://www.iana.org/domains/idn-tables/tables/test_tab1_1.1.txt
+LANG-2,
+http://www.iana.org/domains/idn-tables/tables/test_tab2_1.1.txt
 </pre></div>
                     
 </dd>
@@ -4030,14 +3885,28 @@ RDE CSV Schema</h3>
  &lt;!-- Identifier of client that sponsors the object --&gt;
  &lt;element name="fClID" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of registrar client that created the object --&gt;
+ &lt;element name="fCrRr" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Identifier of client that created the object --&gt;
  &lt;element name="fCrID" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of registrar client that updated the object --&gt;
+ &lt;element name="fUpRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Identifier of client that updated the object --&gt;
  &lt;element name="fUpID" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of registrar client that
+ requested the transfer --&gt;
+ &lt;element name="fReRr" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Identifier of client that requested the transfer --&gt;
  &lt;element name="fReID" type="rdeCsv:fClIDType"
+  substitutionGroup="rdeCsv:field"/&gt;
+ &lt;!-- Identifier of registrar client that
+ should take or took action --&gt;
+ &lt;element name="fAcRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Identifier of client that should take or took action --&gt;
  &lt;element name="fAcID" type="rdeCsv:fClIDType"
@@ -4181,12 +4050,6 @@ RDE CSV Schema</h3>
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
-
-
- &lt;!-- Password authorization info --&gt;
- &lt;element name="fPwAuthInfo" type="rdeCsv:fNormalizedStringType"
-  substitutionGroup="rdeCsv:field"/&gt;
-
 
  &lt;!-- Custom / extension field type --&gt;
  &lt;element name="fCustom" type="rdeCsv:fCustomType"
@@ -4369,7 +4232,7 @@ Domain Object</h3>
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
-      default="rgp\:statusType"/&gt;
+      default="rgp\:statusValueType"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
@@ -4444,15 +4307,6 @@ Domain Object</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
-
- &lt;!-- Boolean type  fields --&gt;
- &lt;element name="fIdn" type="rdeCsv:fBooleanType"
-  substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fVariant" type="rdeCsv:fBooleanType"
-  substitutionGroup="rdeCsv:field"/&gt;
- &lt;element name="fReserved" type="rdeCsv:fBooleanType"
-  substitutionGroup="rdeCsv:field"/&gt;
-
  &lt;!-- Original Domain Name for Variant field --&gt;
  &lt;element name="fOriginalName" type="rdeCsv:fNameType"
   substitutionGroup="rdeCsv:field"/&gt;
@@ -4467,7 +4321,7 @@ Domain Object</h3>
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
-        default="domain\:statusType"/&gt;
+        default="domain\:statusValueType"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
@@ -4610,15 +4464,6 @@ Host Object</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
-
- &lt;!-- Boolean type  fields --&gt;
- &lt;element name="fIdn" type="rdeCsv:fBooleanType"
-  substitutionGroup="rdeCsv:field"/&gt;
-
- &lt;!-- Parent domain name for subordinate host field --&gt;
- &lt;element name="fParentDomain" type="rdeCsv:fNameType"
-  substitutionGroup="rdeCsv:field"/&gt;
-
  &lt;!-- Host status field --&gt;
  &lt;element name="fStatus" type="csvHost:fStatusType"
   substitutionGroup="rdeCsv:field"/&gt;
@@ -4629,7 +4474,7 @@ Host Object</h3>
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
-        default="host\:statusType"/&gt;
+        default="host\:statusValueType"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
@@ -4958,7 +4803,7 @@ Child elements of the &lt;rde:contents&gt; object
     &lt;extension base="rdeCsv:fieldType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
-        default="contact\:statusType"/&gt;
+        default="contact\:statusValueType"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
@@ -5128,51 +4973,16 @@ Registrar Object</h3>
  &lt;simpleType name="statusValueType"&gt;
    &lt;restriction base="token"&gt;
      &lt;enumeration value="ok"/&gt;
-     &lt;enumeration value="hold"/&gt;
+     &lt;enumeration value="readonly"/&gt;
      &lt;enumeration value="terminated"/&gt;
-     &lt;enumeration value="custom"/&gt;
    &lt;/restriction&gt;
  &lt;/simpleType&gt;
 
-  &lt;!-- Contact type field --&gt;
- &lt;element name="fContactType"
-  type="csvRegistrar:fContactsTypeType"
+ &lt;!-- Whois URL field --&gt;
+ &lt;element name="fWhoisUrl"
+  type="rdeCsv:anyURIType"
   substitutionGroup="rdeCsv:field"/&gt;
 
- &lt;element name="fCustomContactTypeName"
-  type="rdeCsv:fTokenType"
-  substitutionGroup="rdeCsv:field"/&gt;
-
- &lt;complexType name="fContactsTypeType"&gt;
-  &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
-      &lt;sequence/&gt;
-      &lt;attribute name="type" type="token"
-      default="domain\:contactAttrType"/&gt;
-    &lt;/extension&gt;
-  &lt;/complexContent&gt;
- &lt;/complexType&gt;
-
- &lt;!-- Contact type enumerated values --&gt;
-  &lt;simpleType name="contactAttrType"&gt;
-    &lt;restriction base="token"&gt;
-      &lt;enumeration value="admin"/&gt;
-      &lt;enumeration value="billing"/&gt;
-      &lt;enumeration value="primaryBilling"/&gt;
-      &lt;enumeration value="tech"/&gt;
-      &lt;enumeration value="legal"/&gt;
-      &lt;enumeration value="marketing"/&gt;
-      &lt;enumeration value="icann"/&gt;
-      &lt;enumeration value="support"/&gt;
-      &lt;enumeration value="abuse"/&gt;
-      &lt;enumeration value="ceo"/&gt;
-      &lt;enumeration value="custom"/&gt;
-    &lt;/restriction&gt;
-  &lt;/simpleType&gt;
-
-   &lt;!-- Whois URL field --&gt;
- &lt;element name="fWhoisUrl" type="rdeCsv:anyURIType"
-  substitutionGroup="rdeCsv:field"/&gt;
 
   &lt;!--
   End of schema.
@@ -5540,11 +5350,29 @@ Change from 01 to 02</h3>
 
 <p></p>
 <ol class="text">
-<li>Replaced the &lt;rdeCsv:fStatus&gt; field with the &lt;csvDomain:fStatus&gt;, &lt;csvHost:fStatus&gt;, and &lt;csvContact:fStatus&gt; fields, since there is no eppcom:statusType element, but there is a domain:statusType, host:statusType, and contact:statusType elements.
+<li>Replaced the &lt;rdeCsv:fStatus&gt; field with the &lt;csvDomain:fStatus&gt;, &lt;csvHost:fStatus&gt;, and &lt;csvContact:fStatus&gt; fields, since there is no eppcom:statusType element, but there is a domain:statusValueType, host:statusValueType, and contact:statusValueType types.
 </li>
 <li>Fixed reference of XSD datatime to dateTime in the rdeCsv:fDatetimeType field, that was renamed to the rdeCsv:fDataTimeType field.
 </li>
 <li>Fixed reference to XSD unsignedbyte to unsignedByte in the rdeCsv:fUnsignedByteType field.
+</li>
+<li>Fixed some of the sample CSV sample data.
+</li>
+<li>Removed &lt;csvDomain:fIdn&gt;, &lt;csvDomain:fVariant&gt;, and &lt;csvDomain:fReserved&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.
+</li>
+<li>Added &lt;rdeCsv:fCrRr&gt; and &lt;rdeCsv:fUpRr&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.
+</li>
+<li>Removed &lt;domain:fPwAuthInfo&gt; and &lt;contact:fPwAuthInfo&gt; to sync up with draft-arias-noguchi-dnrd-objects.
+</li>
+<li>Removed the "registrarContacts" &lt;rdeCsv:csv&gt; object, the &lt;csvContact:fIsRegistrarContact&gt; field, the &lt;csvRegistrar:fContacType&gt; field, the &lt;csvRegistrar:fCustomContactTypeName&gt; to sync up with draft-arias-noguchi-dnrd-objects.
+</li>
+<li>Added the &lt;rdeCsv:fReRr&gt; and &lt;rdeCsv:fAcRr&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.
+</li>
+<li>Removed the &lt;csvHost:fParentDomain&gt; and &tl;csvHost:fIdn&gt; fields, and removed reference to &lt;rdeCsv:fUName&gt; of the "host" object.
+</li>
+<li>Changed the &lt;csvRegistrar:fStatus&gt; enumerated list to include only "ok", "readonly", and "terminated" to sync up with draft-arias-noguchi-dnrd-object.  Also removed support for the &lt;csvRegistrar:fStatusName&gt; field.
+</li>
+<li>Updated the description of the "Registrar Object" to include an organization for clients that create and update objects, including the registry.
 </li>
 </ol>
 

@@ -1,4 +1,4 @@
-domain1.test,ns1.domain2.test,clientX,2009-12-03T09:05:00.0Z
-domain1.test,ns2.domain2.test,clientX,2009-12-03T09:05:00.0Z
-domain2.test,ns1.domain.example,clientX,2009-12-03T09:05:00.0Z
-domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z
+domain1.test,ns1.domain2.test,registrarX,clientY,2009-12-03T09:05:00.0Z
+domain1.test,ns2.domain2.test,registrarX,clientY,2009-12-03T09:05:00.0Z
+domain2.test,ns1.domain.example,registrarX,clientY,2009-12-03T09:05:00.0Z
+domain2.test,ns2.domain.example,registrarX,clientY,2009-12-03T09:05:00.0Z

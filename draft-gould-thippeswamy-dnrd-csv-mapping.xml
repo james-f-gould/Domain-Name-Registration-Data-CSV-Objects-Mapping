@@ -82,7 +82,7 @@
       </address>
      </author>
 
-        <date day="28" month="February" year="2013"/>
+        <date day="11" month="March" year="2013"/>
         
         <area>Applications</area>
         
@@ -225,8 +225,10 @@
       <csvContact:fEmail/>
       <rdeCsv:fUrl/>
       <csvRegistrar:fWhoisUrl/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
+      <rdeCsv:fUpRr/>
       <rdeCsv:fUpID/>
       <rdeCsv:fUpDate/>
     </rdeCsv:fields>
@@ -331,19 +333,17 @@
   <rdeCsv:fields>
     <csvDomain:fName/>
     <rdeCsv:fRoid/>
-    <csvDomain:fIdn/>
     <rdeCsv:fLanguage/>
-    <csvDomain:fVariant/>
     <csvDomain:fOriginalName/>
-    <csvDomain:fReserved/>
     <rdeCsv:fRegistrant/>
     <rdeCsv:fClID/>
+    <rdeCsv:fCrRr/>
     <rdeCsv:fCrID/>
     <rdeCsv:fCrDate/>
+    <rdeCsv:fUpRr/>
     <rdeCsv:fUpID/>
     <rdeCsv:fUpDate/>
     <rdeCsv:fExDate/>
-    <rdeCsv:fPwAuthInfo/>
   </rdeCsv:fields>
   <rdeCsv:files>
     <rdeCsv:file 
@@ -358,9 +358,9 @@
                   with a single record matching the &lt;rdeCsv:fields&gt; definition.</t>
                     <t>
                         <figure><artwork><![CDATA[
-domain1.test,Ddomain2-TEST,0,,0,,0,registrantid,
-clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
-2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR]]>
+domain1.test,Ddomain2-TEST,,,registrantid,registrarX,registrarX,
+clientY,2009-04-03T22:00:00.0Z,registrarX,clientX
+2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z]]>
                         </artwork></figure>
                     </t>
                   <t>The following is an example of the &lt;rde:csvDelete&gt; element for domain name records.</t>
@@ -410,11 +410,19 @@ domainN.test]]>
                   </t>
                   <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client that sponsors the object with type="eppcom:clIDType".
                   </t>
+                  <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object with type="eppcom:clIDType".
+                  </t>
                   <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the object with type="eppcom:clIDType".
+                  </t>
+                  <t hangText="&lt;rdeCsv:fUpRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that updated the object with type="eppcom:clIDType".
                   </t>
                   <t hangText="&lt;rdeCsv:fUpID&gt;">Identifier of client that updated the object with type="eppcom:clIDType".
                   </t>
+                  <t hangText="&lt;rdeCsv:fReRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that requested the transfer with type="eppcom:clIDType".
+                  </t>
                   <t hangText="&lt;rdeCsv:fReID&gt;">Identifier of client that requested the transfer with type="eppcom:clIDType".
+                  </t>
+                  <t hangText="&lt;rdeCsv:fAcRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that should take or took action with type="eppcom:clIDType".
                   </t>
                   <t hangText="&lt;rdeCsv:fAcID&gt;">Identifier of client that should take or took action for transfer with type="eppcom:clIDType".
                   </t>
@@ -437,8 +445,6 @@ domainN.test]]>
                   <t hangText="&lt;rdeCsv:fLanguage&gt;">General language field with type="language".
                   </t>
                   <t hangText="&lt;rdeCsv:fPositiveIntegerType&gt;">General positive integer field with type="positiveInteger".
-                  </t>
-                  <t hangText="&lt;rdeCsv:fPwAuthInfo&gt;">Password authorization info value with type="normalizedString".
                   </t>
                   <t hangText="&lt;rdeCsv:fUrl&gt;">Contains the URL of an object like a registrar object with type="anyURI".  
                   </t>
@@ -474,19 +480,10 @@ domainN.test]]>
                   <t hangText="&lt;csvDomain:fName&gt;">Domain name field with type="eppcom:labelType".  
                   </t>
                   
-                <t hangText="&lt;csvDomain:fIdn&gt;">Boolean flag indicating if the domain name object is an IDN domain name object with type="boolean".
-                </t>
-                
-                <t hangText="&lt;csvDomain:fVariant&gt;">Boolean flag indicating if the domain name object is an IDN variant domain name object with type="boolean". 
-                </t>
-  
                 <t hangText="&lt;csvDomain:fOriginalName&gt;">Fully qualified name of the original IDN domain name object related to the 
                       variant domain name object with type="eppcom:labelType".
                 </t>
   
-                <t hangText="&lt;csvDomain:fReserved&gt;">Boolean flag indicating if the domain name object is a reserved domain with type="boolean".
-                </t>
-                    
                   </list></t>
                   <t>The following "rdeCsv" fields, defined in section <xref target="csvCommonFieldElements">CSV common field elements</xref>,  
                   MAY be used in the "domain" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
@@ -497,13 +494,14 @@ domainN.test]]>
                     <t hangText="&lt;rdeCsv:fLanguage&gt;">IDN language tag for the IDN domain name object.</t>
                     <t hangText="&lt;rdeCsv:fRegistrant&gt;">Registrant contact identifier for the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client that sponsors the domain name object.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Created date and time of the domain name object.</t>
+                    <t hangText="&lt;rdeCsv:fUpRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that updated the object.</t>
                     <t hangText="&lt;rdeCsv:fUpID&gt;">Identifier of the client that last updated the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fUpDate&gt;">Date and time of the last update to the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fExDate&gt;">Expiration date and time for the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fTrDate&gt;">Date and time of the last transfer for the domain name object.</t>
-                    <t hangText="&lt;rdeCsv:fPwAuthInfo&gt;"> - Password authorization info value for the domain name object.</t>
                   </list></t>
                     <t>
                         Example of a "domain" &lt;rdeCsv:csv&gt; element:
@@ -518,19 +516,17 @@ domainN.test]]>
     <rdeCsv:fields>
       <csvDomain:fName/>
       <rdeCsv:fRoid/>
-      <csvDomain:fIdn/>
       <rdeCsv:fLanguage/>
-      <csvDomain:fVariant/>
       <csvDomain:fOriginalName/>
-      <csvDomain:fReserved/>
       <rdeCsv:fRegistrant/>
       <rdeCsv:fClID/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
+      <rdeCsv:fUpRr/>
       <rdeCsv:fUpID/>
       <rdeCsv:fUpDate/>
       <rdeCsv:fExDate/>
-      <rdeCsv:fPwAuthInfo/>
     </rdeCsv:fields>
     <rdeCsv:files>
       <rdeCsv:file 
@@ -552,19 +548,19 @@ domainN.test]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-domain1.test,Ddomain2-TEST,0,,0,,0,registrantid,
-clientX,clientY,2009-04-03T22:00:00.0Z,clientX,
-2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-domain2.test,Ddomain1-TEST,0,,0,,0,registrantid,
-clientX,clientY,1999-04-03T22:00:00.0Z,clientX,
-2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc123.test,Dxn-abc123-TEST,1,LANG1,0,,0,
-registrantid,clientX,clientY,
-2009-04-03T22:00:00.0Z,clientX,2009-12-03T09:05:00.0Z,
-2015-04-03T22:00:00.0Z,2fooBAR
-xn-abc321.test,Dxn-abc321-TEST,1,LANG1,1,xn-abc123.test,
-0,registrantid,clientX,clientY,2009-04-03T22:00:00.0Z,
-clientX,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z,2fooBAR]]>
+domain1.test,Ddomain2-TEST,,,registrantid,
+registrarX,registrarX,clientY,2009-04-03T22:00:00.0Z,registrarX,
+clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
+domain2.test,Ddomain1-TEST,,,registrantid,
+registrarX,registrarX,clientY,1999-04-03T22:00:00.0Z,registrarX,
+clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z
+xn-abc123.test,Dxn-abc123-TEST,LANG1,,,
+registrantid,registrarX,registrarX,clientY,
+2009-04-03T22:00:00.0Z,registrarX,clientY,2009-12-03T09:05:00.0Z,
+2015-04-03T22:00:00.0Z
+xn-abc321.test,Dxn-abc321-TEST,LANG1,xn-abc123.test,
+registrantid,registrarX,registrarX,clientY,2009-04-03T22:00:00.0Z,
+registrarX,clientY,2009-12-03T09:05:00.0Z,2015-04-03T22:00:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -633,7 +629,8 @@ domainN.test]]>
                   MAY be used in the "domainContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   </t>
                   <t><list style="hanging">
-                    <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the domain object link to the contact object.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
+                    <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of clisent that created the domain object link to the contact object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the domain object link to the contact object was created.</t>
                    </list></t>
                     <t>
@@ -650,6 +647,7 @@ domainN.test]]>
       <csvDomain:fName/>
       <csvContact:fId/>
       <csvDomain:fContactType/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -672,12 +670,18 @@ domainN.test]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-domain1.test,sh8013,admin,clientX,2011-10-03T09:05:00.0Z
-domain1.test,mycontactid,tech,clientX,2011-10-03T09:05:00.0Z
-domain1.test,mycontactid,billing,clientX,2011-10-03T09:05:00.0Z
-domain2.test,mycontactid,admin,clientX,2011-10-03T09:05:00.0Z
-domain2.test,sh8013,tech,clientX,2011-10-03T09:05:00.0Z
-domain2.test,mycontactid,billing,clientX,2011-10-03T09:05:00.0Z]]>
+domain1.test,sh8013,admin,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain1.test,mycontactid,tech,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain1.test,mycontactid,billing,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain2.test,mycontactid,admin,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain2.test,sh8013,tech,registrarX,
+clientY,2011-10-03T09:05:00.0Z
+domain2.test,mycontactid,billing,registrarX,
+clientY,2011-10-03T09:05:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -725,9 +729,9 @@ domain2.test,sh8013,tech]]>
                   </t>
                   <t><list style="hanging">
                   
-               <t hangText="&lt;csvDomain:fStatus&gt;">The status of the domain name with type="domain:statusType"/>.  
+               <t hangText="&lt;csvDomain:fStatus&gt;">The status of the domain name with type="domain:statusValueType"/>.  
                 </t>
-               <t hangText="&lt;csvDomain:fRgpStatus&gt;">The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusType" as 
+               <t hangText="&lt;csvDomain:fRgpStatus&gt;">The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusValueType" as 
                 defined in <xref target="RFC3915"/>.  
                 </t>
                    </list></t>
@@ -746,6 +750,7 @@ domain2.test,sh8013,tech]]>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fStatusDescription&gt;">Domain object status description which is free form text describing the rationale for the status.</t>
                     <t hangText="&lt;rdeCsv:fLanguage&gt;">Language of the &lt;rdeCsv:fStatusDescription&gt; field.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the status for the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the status was set for the domain name object.</t>
                   </list></t>
@@ -765,6 +770,7 @@ domain2.test,sh8013,tech]]>
       <rdeCsv:fStatusDescription/>
       <rdeCsv:fLanguage/>
       <csvDomain:fRgpStatus/>
+      <rdeCsv:fCrRf/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -788,13 +794,13 @@ domain2.test,sh8013,tech]]>
                     <t>
                         <figure><artwork><![CDATA[
 domain1.test,clientUpdateProhibited,"Disallow update",
-en,,clientX,2009-12-03T09:05:00.0Z
+en,,registrarX,clientY,2009-12-03T09:05:00.0Z
 domain1.test,clientDeleteProhibited,"Disallow delete",
-en,,clientX,2010-12-04T10:05:00.0Z
+en,,registrarX,clientY,2010-12-04T10:05:00.0Z
 domain2.test,clientUpdateProhibited,"Disallow update",
-en,,clientX,2011-10-03T09:05:00.0Z
+en,,registrarX,clientY,2011-10-03T09:05:00.0Z
 domain2.test,pendingDelete,,,
-redemptionPeriod,clientX,2011-11-14T10:05:00.0Z]]>
+redemptionPeriod,registrarX,clientY,2011-11-14T10:05:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -862,6 +868,7 @@ domain2.test,pendingDelete]]>
                   MAY be used in the "domainNameServers" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   </t>
                   <t><list style="hanging">
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the link between the domain name object and the delegated host.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the delegated host (name server) was set for the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fRoid&gt;">Registry Object IDentifier (ROID) used to uniquely reference a delegated host record with the &lt;domain:hostAttr&gt; model in 
@@ -884,6 +891,7 @@ domain2.test,pendingDelete]]>
     <rdeCsv:fields>
       <csvDomain:fName/>
       <csvHost:fName/>
+      <rdeCsv:fCrRf/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -907,10 +915,14 @@ domain2.test,pendingDelete]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-domain1.test,ns1.domain2.test,clientX,2009-12-03T09:05:00.0Z
-domain1.test,ns2.domain2.test,clientX,2009-12-03T09:05:00.0Z
-domain2.test,ns1.domain.example,clientX,2009-12-03T09:05:00.0Z
-domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z]]>
+domain1.test,ns1.domain2.test,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain1.test,ns2.domain2.test,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,ns1.domain.example,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,ns2.domain.example,registrarX,
+clientY,2009-12-03T09:05:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -927,6 +939,7 @@ domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z]]>
     <rdeCsv:fields>
       <csvDomain:fName/>
       <rdeCsv:fRoid/>
+      <rdeCsv:fCrRf/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -951,10 +964,14 @@ domain2.test,ns2.domain.example,clientX,2009-12-03T09:05:00.0Z]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-domain1.test,Dns1.domain2.test-TEST,clientX,2009-12-03T09:05:00.0Z
-domain1.test,Dns2.domain2.test-TEST,clientX,2009-12-03T09:05:00.0Z
-domain2.test,Dns1.domain.example-TEST,clientX,2009-12-03T09:05:00.0Z
-domain2.test,Dns2.domain.example-TEST,clientX,2009-12-03T09:05:00.0Z]]>
+domain1.test,Dns1.domain2.test-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain1.test,Dns2.domain2.test-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,Dns1.domain.example-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+domain2.test,Dns2.domain.example-TEST,registrarX,
+clientY,2009-12-03T09:05:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -1186,8 +1203,8 @@ domain1.test,604800,257,3,1,AQPJ////4QQQ]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-domain1.test,604800,12345,3,1,49FD46E6C4B45C55D4AC
-domain1.test,604800,12346,3,1,38EC35D5B3A34B44C39B]]>
+domain1.test,12345,3,1,49FD46E6C4B45C55D4AC
+domain1.test,12346,3,1,38EC35D5B3A34B44C39B]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -1237,8 +1254,10 @@ domain1.test,257,3,1,AQPJ////4QQQ]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fTrStatus&gt;">State of the most recent transfer request.</t>
+                    <t hangText="&lt;rdeCsv:fReRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that requested the transfer.</t>
                     <t hangText="&lt;rdeCsv:fReID&gt;">Identifier of client that requested the transfer.</t>
                     <t hangText="&lt;rdeCsv:fReDate&gt;">Date and time that the transfer was requested</t>
+                    <t hangText="&lt;rdeCsv:fAcRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that should take or took action.</t>
                     <t hangText="&lt;rdeCsv:fAcID&gt;">Identifier of client that should take or took action for transfer.</t>
                     <t hangText="&lt;rdeCsv:fAcDate&gt;">Date and time that the transfer action should be taken or has been taken.</t>
                     <t hangText="&lt;rdeCsv:fExDate&gt;">Expiration date if the transfer command caused or causes a change in the validity period.</t>
@@ -1264,8 +1283,10 @@ domain1.test,257,3,1,AQPJ////4QQQ]]>
     <rdeCsv:fields>
       <csvDomain:fName/>
       <rdeCsv:fTrStatus/>
+      <rdeCsv:fReRr/>
       <rdeCsv:fReID/>
       <rdeCsv:fReDate/>
+      <rdeCsv:fAcRr/>
       <rdeCsv:fAcID/>
       <rdeCsv:fAcDate/>
       <rdeCsv:fExDate/>
@@ -1289,10 +1310,12 @@ domain1.test,257,3,1,AQPJ////4QQQ]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-domain1.test,pending,clientW,2011-03-08T19:38:00.0Z,
-clientX,2011-03-13T23:59:59.0Z,2016-04-03T22:00:00.0Z
-domain2.test,clientApproved,clientW,2012-03-08T19:38:00.0Z,
-clientX,2012-03-09T23:59:59.0Z,2016-05-04T23:00:00.0Z]]>
+domain1.test,pending,registrarX,clientY,
+2011-03-08T19:38:00.0Z,registrarY,,2011-03-13T23:59:59.0Z,
+2016-04-03T22:00:00.0Z
+domain2.test,clientApproved,registrarX,clientY,
+2012-03-08T19:38:00.0Z,registrarY,clientY,
+2012-03-09T23:59:59.0Z,2016-05-04T23:00:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -1355,19 +1378,12 @@ domain2.test,2012-03-08T19:38:00.0Z]]>
                   
                   <t hangText="&lt;csvHost:fName&gt;">Host name field with type="eppcom:labelType".  
                   </t>
-                  
-                <t hangText="&lt;csvHost:fParentDomain&gt;">Contains parent domain name for the subordinate host object with type="eppcom:labelType".  
-                </t>
-  
-                <t hangText="&lt;csvHost:fIdn&gt;">Boolean flag indicating if the host object is an IDN host object with type="boolean".
-                </t>
-               
+                                 
                   </list></t>
                   <t>The following "rdeCsv" fields, defined in section <xref target="csvCommonFieldElements">CSV common field elements</xref>,  
                   MAY be used in the "host" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   </t>
                   <t><list style="hanging">
-                    <t hangText="&lt;rdeCsv:fUName&gt;">UTF8 encoded name of an IDN host name.</t>
                     <t hangText="&lt;rdeCsv:fRoid&gt;">Repository Object IDentifier (ROID) assigned to the host object.  The &lt;rdeCsv:fRoid&gt; uniquely 
                     identifies the host object that MAY be used in place of the &lt;csvHost:fName&gt; field element to uniquely identify the 
                     host object when the &;lt;csvHost:fName&gt; is not unique due to the server supporting the &lt;domain:hostAttr&gt; model of <xref target="RFC5731"/> or 
@@ -1375,8 +1391,10 @@ domain2.test,2012-03-08T19:38:00.0Z]]>
                     <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of the sponsoring client.  In the case of external hosts, the server MAY create a unique set of external 
                     hosts for each sponsoring client, so the &lt;csvHost:fName&gt; itself won't be unique but instead the combination of the &lt;rdeCsv:fClID&gt; and the 
                     &lt;csvHost:fName&gt; is unique.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the host object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the host object was created.</t>
+                    <t hangText="&lt;rdeCsv:fUpRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that updated the object.</t>
                     <t hangText="&lt;rdeCsv:fUpID&gt;">Identifier of client that last updated the host object.</t>
                     <t hangText="&lt;rdeCsv:fUpDate&gt;">Date and time that the host object was last updated.</t>
                     <t hangText="&lt;rdeCsv:fTrDate&gt;">Date and time that the host was last transferred.</t>
@@ -1394,10 +1412,11 @@ domain2.test,2012-03-08T19:38:00.0Z]]>
    <rdeCsv:fields>
      <csvHost:fName/>
      <rdeCsv:fRoid/>
-     <csvHost:fParentDomain/>
      <rdeCsv:fClID/>
+     <rdeCsv:fCrRr/>
      <rdeCsv:fCrID/>
      <rdeCsv:fCrDate/>
+     <rdeCsv:fUpRr/>
      <rdeCsv:fUpID/>
      <rdeCsv:fUpDate/>
      <rdeCsv:fTrDate/>
@@ -1422,12 +1441,12 @@ domain2.test,2012-03-08T19:38:00.0Z]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-ns1.example.test,Hns1_example_test-TEST,example.test,
-clientY,clientX,
-1999-05-08T12:10:00.0Z,clientX,2009-10-03T09:34:00.0Z,
-2007-01-08T09:19:00.0Z
-ns1.example.test2,Hns1_example_test2-TEST,,clientY,clientX,
-2009-05-08T12:10:00.0Z,clientX,2010-10-03T09:34:00.0Z,]]>
+ns1.example.test,Hns1_example_test-TEST,registrarX,registrarX,
+clientY,1999-05-08T12:10:00.0Z,registrarX,
+clientY,2009-10-03T09:34:00.0Z,2007-01-08T09:19:00.0Z
+ns1.example.test2,Hns1_example_test2-TEST,clientY,
+clientX,2009-05-08T12:10:00.0Z,clientX,
+2010-10-03T09:34:00.0Z,]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -1474,7 +1493,7 @@ ns1.example.test2]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;csvHost:fName&gt;">Host name of status.</t>
-               <t hangText="&lt;csvHost:fStatus&gt;">The status of the host with type="host:statusType"/>.  
+               <t hangText="&lt;csvHost:fStatus&gt;">The status of the host with type="host:statusValueType"/>.  
                 </t>
                   </list></t>
                 
@@ -1488,6 +1507,7 @@ ns1.example.test2]]>
                     per sponsoring client.</t>
                     <t hangText="&lt;rdeCsv:fStatusDescription&gt;">Host object status description which is free form text describing the rationale for the status.</t>
                     <t hangText="&lt;rdeCsv:fLanguage&gt;">Language of the &lt;rdeCsv:fStatusDescription&gt; field.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the status for the host object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the status was set for the host object.</t>
                   </list></t>
@@ -1506,6 +1526,7 @@ ns1.example.test2]]>
       <csvHost:fStatus/>
       <rdeCsv:fStatusDescription/>
       <rdeCsv:fLanguage/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -1529,10 +1550,10 @@ ns1.example.test2]]>
                     <t>
                         <figure><artwork><![CDATA[
 ns1.domain1.test,clientUpdateProhibited,"Disallow update",
-en,clientX,2009-12-03T09:05:00.0Z
+en,registrarX,clientY,2009-12-03T09:05:00.0Z
 ns1.domain1.test,clientDeleteProhibited,"Disallow delete",
-en,clientX,2010-12-04T10:05:00.0Z
-ns1.domain2.test,ok,,,clientX,2011-10-03T09:05:00.0Z]]>
+en,registrarX,clientY,2010-12-04T10:05:00.0Z
+ns1.domain2.test,ok,,,registrarX,clientY,2011-10-03T09:05:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -1567,7 +1588,7 @@ ns1.domain2.test,ok,,,clientX,2011-10-03T09:05:00.0Z]]>
                     <t>
                         <figure><artwork><![CDATA[
 ns1.domain1.test,clientUpdateProhibited
-ns1.domain1.test,deleteUpdateProhibited]]>
+ns1.domain1.test,clientDeleteProhibited]]>
                         </artwork></figure>
                     </t>    
    
@@ -1601,6 +1622,7 @@ ns1.domain1.test,deleteUpdateProhibited]]>
                      <t hangText="&lt;rdeCsv:fRoid&gt;">Host object Registry Object IDentifier (ROID) that uniquely identifies the host object when 
                     the &lt;csvHost:fName&gt; is not unique.  The &lt;rdeCsv:fRoid&gt; is used for servers that supports a set of external host objects 
                     per sponsoring client or when the server supports the &lt;domain:hostAttr&gt; model of <xref target="RFC5731"/>.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                      <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the address for the host object.</t>
                      <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the address was set for the host object.</t>
                   </list></t>
@@ -1619,6 +1641,7 @@ ns1.domain1.test,deleteUpdateProhibited]]>
       <csvHost:fName/>
       <csvHost:fAddr/>
       <csvHost:fAddrVersion/>
+      <rdeCsv:rCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -1641,8 +1664,10 @@ ns1.domain1.test,deleteUpdateProhibited]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-ns1.domain1.test,192.0.2.2,v4,clientX,2009-12-03T09:05:00.0Z
-ns1.domain1.test,192.0.2.29,v4,clientX,2009-12-03T09:05:00.0Z
+ns1.domain1.test,192.0.2.2,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+ns1.domain1.test,192.0.2.29,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
 ns1.domain1.test,1080:0:0:0:8:800:200C:417A,
 v6,clientX,2009-12-03T09:05:00.0Z]]>
                         </artwork></figure>
@@ -1698,6 +1723,7 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A]]>
       <rdeCsv:fRoid/>
       <csvHost:fAddr/>
       <csvHost:fAddrVersion/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -1720,8 +1746,10 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-Dns1.domain1.test-TEST,192.0.2.2,v4,clientX,2009-12-03T09:05:00.0Z
-Dns1.domain1.test-TEST,192.0.2.29,v4,clientX,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,192.0.2.2,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
+Dns1.domain1.test-TEST,192.0.2.29,v4,registrarX,
+clientY,2009-12-03T09:05:00.0Z
 Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A,
 v6,clientX,2009-12-03T09:05:00.0Z]]>
                         </artwork></figure>
@@ -1802,13 +1830,6 @@ Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A]]>
                 <t hangText="&lt;csvContact:fEmail&gt;">Contains the contact's email address with type="eppcom:minTokenType".  
                 </t>
    
-                <t hangText="&lt;csvContact:fIsRegistrarContact&gt;">Defines whether the contact record is a registrar contact with type="boolean".  Registrar contacts 
-                MAY be mixed with other contacts but MAY not have the same set of required fields.  For example, a registrar contact should always have the sponsoring 
-                client identifier be that of the registrar.  This means that a registrar contact should not support transfer and subsequently does not 
-                require an authorization info value with the &lt;rdeCsv:fPwAuthInfo&gt; field element.  The &lt;svContact:fIsRegistrarContact&gt; flag MAY further be used to 
-                validate against the list of contacts in the "registrarContacts" CSV file, defined in <xref target="registrarObject"/>, to ensure that they are all registrar contacts.      
-                </t>
-                
                   </list></t>
                   <t>The following "rdeCsv" fields, defined in section <xref target="csvCommonFieldElements">CSV common field elements</xref>,  
                   MAY be used in the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
@@ -1816,12 +1837,13 @@ Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A]]>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fRoid&gt;">The Registry Object IDentifier (ROID) for the contact object.</t>
                     <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client that sponsors the contact object.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the contact object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Created date and time of the contact object</t>
+                    <t hangText="&lt;rdeCsv:fUpRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that updated the object.</t>
                     <t hangText="&lt;rdeCsv:fUpID&gt;">Identifier of the client that last updated the contact object.</t>
                     <t hangText="&lt;rdeCsv:fUpDate&gt;">Date and time of the last update to the contact object.</t>
                     <t hangText="&lt;rdeCsv:fTrDate&gt;">Date and time of the last transfer for the contact object.</t>
-                    <t hangText="&lt;rdeCsv:fPwAuthInfo&gt;">Password authorization info value for the domain name object.</t>
                   </list></t>
                     <t>
                         Example of a "contact" &lt;rdeCsv:csv&gt; element:
@@ -1836,18 +1858,18 @@ Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A]]>
     <rdeCsv:fields>
      <csvContact:fId/>
      <rdeCsv:fRoid/>
-     <csvContact:fIsRegistrarContact/>
      <csvContact:fVoice/>
      <csvContact:fVoiceExt/>
      <csvContact:fFax/>
      <csvContact:fFaxExt/>
      <csvContact:fEmail/>
      <rdeCsv:fClID/>
+     <rdeCsv:fCrRr/>
      <rdeCsv:fCrID/>
      <rdeCsv:fCrDate/>
+     <rdeCsv:fUpRr/>
      <rdeCsv:fUpID/>
      <rdeCsv:fUpDate/>
-     <rdeCsv:fPwAuthInfo/>
     </rdeCsv:fields>
     <rdeCsv:files>
      <rdeCsv:file 
@@ -1863,21 +1885,17 @@ Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A]]>
                     </t>    
                      <t>
                         Example of the contact-YYYYMMDD.csv file.
-                        The file contains two object contact records 
-                        and one registrar contact record.
+                        The file contains two object contact records.
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-sh8013,Csh8013-TEST,0,+1.7035555555,1234,+1.7035555556,,
-jdoe@example.test,clientY,
-clientX,2009-09-13T08:01:00.0Z,clientX,
-2009-11-26T09:10:00.0Z,2fooBAR
-mycontactid,Cmycontactid-TEST,0,+1.7034444444,1234,
-+1.7033333333,,jsmith@example.test,clientY,clientX,
-2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,2fooBAR
-registrarcontact,Cregistrarcontact-TEST,1,+1.7034444444,1234,
-+1.7033333333,,jsmith@example.test,clientY,clientX,
-2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,]]>
+sh8013,Csh8013-TEST,+1.7035555555,1234,+1.7035555556,,
+jdoe@example.test,registrarX,registarX,
+clientY,2009-09-13T08:01:00.0Z,registarX,clientY,
+2009-11-26T09:10:00.0Z
+mycontactid,Cmycontactid-TEST,+1.7034444444,1234,
++1.7033333333,,jsmith@example.test,registrarX,registarX,clientY,
+2010-09-13T08:01:00.0Z,registarX,clientY,2011-11-26T09:10:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -1924,7 +1942,7 @@ mycontactid]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;csvContact:fId&gt;">Server-unique contact identifier of status.</t>
-               <t hangText="&lt;csvContact:fStatus&gt;">The status of the contact with type="contact:statusType".</t>
+               <t hangText="&lt;csvContact:fStatus&gt;">The status of the contact with type="contact:statusValueType".</t>
                   </list></t>
                 
                 
@@ -1934,6 +1952,7 @@ mycontactid]]>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fStatusDescription&gt;">The contact object status description which is free form text describing the rationale for the status.</t>
                     <t hangText="&lt;rdeCsv:fLanguage&gt;">Language of the &lt;rdeCsv:fStatusDescription&gt; field.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that set the status for the contact object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">The date and time that the status was set for the contact object.</t>
                   </list></t>
@@ -1952,6 +1971,7 @@ mycontactid]]>
       <csvContact:fStatus/>
       <rdeCsv:fStatusDescription/>
       <rdeCsv:fLanguage/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -1975,10 +1995,10 @@ mycontactid]]>
                     <t>
                         <figure><artwork><![CDATA[
 sh8013,clientUpdateProhibited,"Disallow update",
-en,clientX,2009-12-03T09:05:00.0Z
+en,registrarX,clientY,2009-12-03T09:05:00.0Z
 sh8013,clientDeleteProhibited,"Disallow delete",
-en,clientX,2010-12-04T10:05:00.0Z
-mycontactid,ok,,,clientX,2011-10-03T09:05:00.0Z]]>
+en,registrarX,clientY,2010-12-04T10:05:00.0Z
+mycontactid,ok,,,registrarX,clientY,2011-10-03T09:05:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -2159,8 +2179,10 @@ mycontactid,int]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fTrStatus&gt;">State of the most recent transfer request.</t>
+                    <t hangText="&lt;rdeCsv:fReRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that requested the transfer.</t>
                     <t hangText="&lt;rdeCsv:fReID&gt;">Identifier of client that requested the transfer.</t>
                     <t hangText="&lt;rdeCsv:fReDate&gt;">Date and time that the transfer was requested.</t>
+                    <t hangText="&lt;rdeCsv:fAcRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that should take or took action.</t>
                     <t hangText="&lt;rdeCsv:fAcID&gt;">Identifier of client that should take or took action for transfer.</t>
                     <t hangText="&lt;rdeCsv:fAcDate&gt;">Date and time that the transfer action should be taken or has been taken</t>
                   </list></t>
@@ -2184,8 +2206,10 @@ mycontactid,int]]>
     <rdeCsv:fields>
       <csvContact:fId/>
       <rdeCsv:fTrStatus/>
+      <rdeCsv:fReRr/>
       <rdeCsv:fReID/>
       <rdeCsv:fReDate/>
+      <rdeCsv:fAcRr/>
       <rdeCsv:fAcID/>
       <rdeCsv:fAcDate/>
     </rdeCsv:fields>
@@ -2209,10 +2233,10 @@ mycontactid,int]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-sh8013,pending,clientW,2011-03-08T19:38:00.0Z,
-clientX,2011-03-13T23:59:59.0Z
-mycontactid,clientApproved,clientW,2011-04-08T19:38:00.0Z,
-clientX,2011-04-09T20:38:00.0Z]]>
+sh8013,pending,registrarX,clientX,2011-03-08T19:38:00.0Z,
+registrarY,,2011-03-13T23:59:59.0Z
+mycontactid,clientApproved,registrarX,clientX,2011-04-08T19:38:00.0Z,
+registrarY,clientY,2011-04-09T20:38:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -2399,8 +2423,9 @@ mycontactid]]>
 
             <section title="Registrar Object" anchor="registrarObject">
                 <t>
-                    The registrar object represents the sponsoring client for other objects.  The registrar object MAY be related 
-                    to registrar contacts using Contact Object, as defined in <xref target="contactObject"/>, references or MAY contain registrar contacts. The 
+                    The registrar object represents the sponsoring client for objects and the organization for clients that create and update objects.  
+                    A registrar object MAY include the server (registry) itself to reference object created and updated by the server.
+                    The 
                     elements used for the Registrar Object references are defined in this section.  The &lt;csvRegistrar:contents&gt; child 
                     element of the &lt;rde:contents&gt; element holds the registrar objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
                 &lt;rdeCsv:csvDelete&gt; elements, defined in the 
@@ -2426,10 +2451,6 @@ mycontactid]]>
                 <t hangText="&lt;csvRegistrar:fStatus&gt;">Contains the status of the registrar with type="csvRegistrar:statusValueType".  
                 </t>
 
-                <t hangText="&lt;csvRegistrar:fStatusName&gt;">Contains the name of the registrar sub-status or the full name of the 
-                status when the fStatus value is "custom" with type="token".  
-                </t>
-
                 <t hangText="&lt;csvRegistrar:fWhoisUrl&gt;">Contains the Whois URL of the registrar with type="anyURI".  
                 </t>
                 
@@ -2439,8 +2460,10 @@ mycontactid]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fRoid&gt;">Registry Object IDentifier (ROID) for the registrar object.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the registrar object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Created date and time of the registrar object.</t>
+                    <t hangText="&lt;rdeCsv:fUpRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that updated the object.</t>
                     <t hangText="&lt;rdeCsv:fUpID&gt;">Identifier of the client that last updated the registrar object.</t>
                     <t hangText="&lt;rdeCsv:fUpDate&gt;">Date and time of the last update to the registrar object.</t>
                     <t hangText="&lt;rdeCsv:fUrl&gt;">URL for the registrar web home page.</t>
@@ -2494,8 +2517,10 @@ mycontactid]]>
       <csvContact:fEmail/>
       <rdeCsv:fUrl/>
       <csvRegistrar:fWhoisUrl/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
+      <rdeCsv:fUpRr/>
       <rdeCsv:fUpID/>
       <rdeCsv:fUpDate/>
     </rdeCsv:fields>
@@ -2520,8 +2545,8 @@ mycontactid]]>
 EXAMPLE,REGISTRAR123-TEST,"Example Inc.",1234,ok,"123 Example Dr.",
 "Suite 100",,Dulles,VA,20166-6503,US,+1.7035555555,1234,
 +1.7035555556,,jdoe@example.test,http://www.example.test,
-http://whois.example.test,clientX,2005-04-23T11:49:00.0Z,
-clientY,2009-02-17T17:51:00.0Z]]>
+http://whois.example.test,registrarX,clientY,2005-04-23T11:49:00.0Z,
+registrarX,clientY,2009-02-17T17:51:00.0Z]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -2547,7 +2572,8 @@ clientY,2009-02-17T17:51:00.0Z]]>
 </rde:deletes>
 ...]]>
                         </artwork></figure>
-                    </t>    
+                    </t>  
+                     </list></t>  
                       <t>
                         Example of the registrar-delete-YYYYMMDD.csv file.
                         The file contains two registrar records.
@@ -2557,149 +2583,10 @@ clientY,2009-02-17T17:51:00.0Z]]>
 EXAMPLE
 EXAMPLE2]]>
                         </artwork></figure>
-                    </t>    
+                    </t> 
+             </section>
+                
 
-                  <t hangText="&quot;registrarContacts&quot;">Defines the fields and CSV file references 
-                  used for the registrar object link records to contact objects, as described in <xref target="contactObject"/>.  
-                  The following field elements were added for use in the "registrarContacts" 
-                  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element:
-                  </t>
-                  <t><list style="hanging">
-                <t hangText="&lt;csvRegistrar:fContactType&gt;">The registrar contact type for the contact object link with type="csvRegistrar:contactAttrType".  The possible values 
-                for the &lt;csvRegistrar:fContactType&gt; include:</t>
-                <t><list style="hanging">
-                  <t hangText="&quot;admin&quot;"> Administration registrar contact.</t>
-                  <t hangText="&quot;billing&quot;">Billing registrar contact.</t>
-                  <t hangText="&quot;primaryBilling&quot;">Primary billing registrar contact.  If supported, there SHOULD be at most one "primaryBilling" contact per registrar for invoicing.</t>
-                  <t hangText="&quot;tech&quot;">Technical registrar contact.</t>
-                  <t hangText="&quot;marketing&quot;">Marketing registrar contact.</t>
-                  <t hangText="&quot;icann&quot;">ICANN registrar registrar contact.</t>
-                  <t hangText="&quot;support&quot;">Customer support registrar contact.</t>
-                  <t hangText="&quot;abuse&quot;">Abuse registrar contact.</t>
-                  <t hangText="&quot;ceo&quot;">CEO registrar contact</t>
-                  <t hangText="&quot;custom&quot;">Custom registrar contact type.  If custom is used, the &lt;csvRegistrar:fCustomContactTypeName&gt; field element MUST be defined to define the name 
-                  of the custom contact type.</t>
-                </list></t>
-                
-               <t hangText="&lt;csvRegistrar:fCustomContactTypeName&gt;">The name of the custom registrar contact type, when the &lt;csvRegistrar:fContactType&gt; field element value 
-               is "custom", with type="token".  
-                </t>
-                
-                  </list></t>
-                 <t>The following "csvRegistrar" fields, defined for the "registrar" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
-                  MAY be used in the "registrarContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
-                  </t>
-                  <t><list style="hanging">
-                  <t hangText="&lt;csvRegistrar:fId&gt;">Contains the server-unique registrar identifier for the registrar object.  
-                </t>
-                  </list></t>
-                
-                  <t>The following "csvContact" fields, defined for the "contact" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
-                  MAY be used in the "registrarContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
-                  </t>
-                  <t><list style="hanging">
-                    <t hangText="&lt;csvContact:fId&gt;">Server-unique contact identifier reference.  The matching contact object, as defined in <xref target="contactObject"/>, SHOULD 
-                    define the &lt;csvContact:fIsRegistrarContact&gt; field element with a value of "true" or "1".</t>
-                  </list></t>
-                
-                
-                  <t>The following "rdeCsv" fields, defined in section <xref target="csvCommonFieldElements">CSV common field elements</xref>,  
-                  MAY be used in the "registrarContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
-                  </t>
-                  <t><list style="hanging">
-                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the registrar object link to the contact object.</t>
-                    <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the registrar object link to the contact object was created.</t>
-                   </list></t>
-                    <t>
-                        Example of a "registrarContacts" &lt;rdeCsv:csv&gt; element:
-                    </t>
-                    <t>
-                        <figure><artwork><![CDATA[
-...
-<csvDomain:contents>
-  ...
-  <rdeCsv:csv name="registrarContacts">
-    <rdeCsv:sep>,</rdeCsv:sep>
-    <rdeCsv:fields>
-      <csvRegistrar:fId/>
-      <csvContact:fId/>
-      <csvRegistrar:fContactType/>
-      <csvRegistrar:fCustomContactTypeName/>
-      <rdeCsv:fCrID/>
-      <rdeCsv:fCrDate/>
-    </rdeCsv:fields>
-    <rdeCsv:files>
-      <rdeCsv:file 
-        cksum="1234567890 987654">
-        registrarContacts-YYYYMMDD.csv
-      </rdeCsv:file> 
-    </rdeCsv:files>
-  </rdeCsv:csv>
-  ...
-</csvDomain:contents>
-...]]>
-                        </artwork></figure>
-                    </t>    
-                    <t>
-                        Example of the corresponding registrarContacts-YYYYMMDD.csv file.
-                        The file contains a admin, tech, billing, abuse, and custom "policy" contact for 
-                        the EXAMPLE registrar.
-                    </t>
-                    <t>
-                        <figure><artwork><![CDATA[
-EXAMPLE,johnsmithid,admin,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,janesmithid,tech,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,johnsmithid,billing,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,janesmithid,abuse,,clientX,2011-10-03T09:05:00.0Z
-EXAMPLE,johnsmithid,custom,policy,clientX,2011-10-03T09:05:00.0Z]]>
-                        </artwork></figure>
-                    </t>    
-                    <t>
-                        Example of a "registrarContacts" &lt;rdeCsv:csvDelete&gt; element:
-                    </t>
-                    <t>
-                        <figure><artwork><![CDATA[
-...
-<rde:deletes>
-...
- <rdeCsv:csvDelete name="registrarContacts">
-  <rdeCsv:fields>
-      <csvRegistrar:fId/>
-      <csvContact:fId/>
-      <csvRegistrar:fContactType/>
-      <csvRegistrar:fCustomContactTypeName/>
-  </rdeCsv:fields>
-  <rdeCsv:files>
-    <rdeCsv:file 
-     cksum="1234567890 987654">
-     registrarContacts-delete-YYYYMMDD.csv
-    </rdeCsv:file> 
-  </rdeCsv:files>
- </rdeCsv:csvDelete>
-...
-</rde:deletes>
-...]]>
-                        </artwork></figure>
-                    </t>    
-                    <t>
-                        Example of the corresponding registrarContacts-delete-YYYYMMDD.csv file.
-                        The file contains five contact records for the EXAMPLE registrar.
-                    </t>
-                    <t>
-                        <figure><artwork><![CDATA[
-EXAMPLE,johnsmithid,admin,
-EXAMPLE,janesmithid,tech,
-EXAMPLE,johnsmithid,billing,
-EXAMPLE,janesmithid,abuse,
-EXAMPLE,johnsmithid,custom,policy]]>
-                        </artwork></figure>
-                    </t>    
-
-                
-                </list></t>
-                                                    
-            </section>
-            
  
              <section title="IDN Language Object" anchor="idnLanguageObject">
                 <t>
@@ -2758,8 +2645,10 @@ EXAMPLE,johnsmithid,custom,policy]]>
                     </t>
                     <t>
                         <figure><artwork><![CDATA[
-LANG1,http://www.iana.org/domains/idn-tables/tables/test_tab1_1.1.txt
-LANG2,http://www.iana.org/domains/idn-tables/tables/test_tab2_1.1.txt]]>
+LANG-1,
+http://www.iana.org/domains/idn-tables/tables/test_tab1_1.1.txt
+LANG-2,
+http://www.iana.org/domains/idn-tables/tables/test_tab2_1.1.txt]]>
                         </artwork></figure>
                     </t>    
                     <t>
@@ -2802,8 +2691,7 @@ LANG2]]>
                                      
             </section>
 
- 
-            
+             
          </section>
             
            
@@ -2982,14 +2870,28 @@ LANG2]]>
  <!-- Identifier of client that sponsors the object -->   
  <element name="fClID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar client that created the object -->  
+ <element name="fCrRr" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that created the object -->  
  <element name="fCrID" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar client that updated the object -->  
+ <element name="fUpRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that updated the object -->  
  <element name="fUpID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar client that 
+ requested the transfer -->
+ <element name="fReRr" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that requested the transfer -->
  <element name="fReID" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar client that 
+ should take or took action -->
+ <element name="fAcRr" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that should take or took action -->
  <element name="fAcID" type="rdeCsv:fClIDType" 
@@ -3133,12 +3035,6 @@ LANG2]]>
     </extension>
   </complexContent>
  </complexType>
-
- 
- <!-- Password authorization info -->
- <element name="fPwAuthInfo" type="rdeCsv:fNormalizedStringType" 
-  substitutionGroup="rdeCsv:field"/>
- 
  
  <!-- Custom / extension field type -->
  <element name="fCustom" type="rdeCsv:fCustomType" 
@@ -3308,7 +3204,7 @@ END]]></artwork></figure>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-      default="rgp\:statusType"/>
+      default="rgp\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>
@@ -3382,16 +3278,7 @@ END]]></artwork></figure>
     </extension>
   </complexContent>
  </complexType>
- 
- 
- <!-- Boolean type  fields -->
- <element name="fIdn" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
- <element name="fVariant" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
- <element name="fReserved" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
- 
+  
  <!-- Original Domain Name for Variant field -->
  <element name="fOriginalName" type="rdeCsv:fNameType" 
   substitutionGroup="rdeCsv:field"/>
@@ -3406,7 +3293,7 @@ END]]></artwork></figure>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="domain\:statusType"/>
+        default="domain\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>
@@ -3536,15 +3423,6 @@ END]]></artwork></figure>
   </complexContent>
  </complexType>
 
-
- <!-- Boolean type  fields -->
- <element name="fIdn" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
-
- <!-- Parent domain name for subordinate host field -->
- <element name="fParentDomain" type="rdeCsv:fNameType" 
-  substitutionGroup="rdeCsv:field"/>
-
  <!-- Host status field -->
  <element name="fStatus" type="csvHost:fStatusType" 
   substitutionGroup="rdeCsv:field"/>
@@ -3555,7 +3433,7 @@ END]]></artwork></figure>
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="host\:statusType"/>
+        default="host\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>
@@ -3871,7 +3749,7 @@ Child elements of the <rde:contents> object
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="contact\:statusType"/>
+        default="contact\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>
@@ -4028,52 +3906,17 @@ END]]></artwork></figure>
  <simpleType name="statusValueType">
    <restriction base="token">
      <enumeration value="ok"/>
-     <enumeration value="hold"/>
+     <enumeration value="readonly"/>
      <enumeration value="terminated"/>
-     <enumeration value="custom"/>
    </restriction>
  </simpleType>
  
-  <!-- Contact type field -->
- <element name="fContactType" 
-  type="csvRegistrar:fContactsTypeType" 
-  substitutionGroup="rdeCsv:field"/>
- 
- <element name="fCustomContactTypeName" 
-  type="rdeCsv:fTokenType" 
+ <!-- Whois URL field -->
+ <element name="fWhoisUrl" 
+  type="rdeCsv:anyURIType" 
   substitutionGroup="rdeCsv:field"/>
 
- <complexType name="fContactsTypeType">
-  <complexContent>
-    <extension base="rdeCsv:fieldType">
-      <sequence/>
-      <attribute name="type" type="token"  
-      default="domain\:contactAttrType"/>
-    </extension>
-  </complexContent>
- </complexType>
 
- <!-- Contact type enumerated values -->
-  <simpleType name="contactAttrType">
-    <restriction base="token">
-      <enumeration value="admin"/>
-      <enumeration value="billing"/>
-      <enumeration value="primaryBilling"/>
-      <enumeration value="tech"/>
-      <enumeration value="legal"/>
-      <enumeration value="marketing"/>
-      <enumeration value="icann"/>
-      <enumeration value="support"/>
-      <enumeration value="abuse"/>
-      <enumeration value="ceo"/>     
-      <enumeration value="custom"/>
-    </restriction>
-  </simpleType>
-
-   <!-- Whois URL field -->
- <element name="fWhoisUrl" type="rdeCsv:anyURIType" 
-  substitutionGroup="rdeCsv:field"/>
-   
   <!--
   End of schema.
   -->
@@ -4342,9 +4185,18 @@ END]]></artwork></figure>
           </section>
           <section title="Change from 01 to 02" anchor="change-01-to-02">
             <t><list style="numbers">
-              <t>Replaced the &lt;rdeCsv:fStatus&gt; field with the &lt;csvDomain:fStatus&gt;, &lt;csvHost:fStatus&gt;, and &lt;csvContact:fStatus&gt; fields, since there is no eppcom:statusType element, but there is a domain:statusType, host:statusType, and contact:statusType elements.</t>
+              <t>Replaced the &lt;rdeCsv:fStatus&gt; field with the &lt;csvDomain:fStatus&gt;, &lt;csvHost:fStatus&gt;, and &lt;csvContact:fStatus&gt; fields, since there is no eppcom:statusType element, but there is a domain:statusValueType, host:statusValueType, and contact:statusValueType types.</t>
               <t>Fixed reference of XSD datatime to dateTime in the rdeCsv:fDatetimeType field, that was renamed to the rdeCsv:fDataTimeType field.</t>
-              <t>Fixed reference to XSD unsignedbyte to unsignedByte in the rdeCsv:fUnsignedByteType field.</t>    
+              <t>Fixed reference to XSD unsignedbyte to unsignedByte in the rdeCsv:fUnsignedByteType field.</t> 
+              <t>Fixed some of the sample CSV sample data.</t>
+              <t>Removed &lt;csvDomain:fIdn&gt;, &lt;csvDomain:fVariant&gt;, and &lt;csvDomain:fReserved&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.</t>
+              <t>Added &lt;rdeCsv:fCrRr&gt; and &lt;rdeCsv:fUpRr&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.</t>
+              <t>Removed &lt;domain:fPwAuthInfo&gt; and &lt;contact:fPwAuthInfo&gt; to sync up with draft-arias-noguchi-dnrd-objects.</t>
+              <t>Removed the "registrarContacts" &lt;rdeCsv:csv&gt; object, the &lt;csvContact:fIsRegistrarContact&gt; field, the &lt;csvRegistrar:fContacType&gt; field, the &lt;csvRegistrar:fCustomContactTypeName&gt; to sync up with draft-arias-noguchi-dnrd-objects.</t>  
+              <t>Added the &lt;rdeCsv:fReRr&gt; and &lt;rdeCsv:fAcRr&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.</t>
+              <t>Removed the &lt;csvHost:fParentDomain&gt; and &tl;csvHost:fIdn&gt; fields, and removed reference to &lt;rdeCsv:fUName&gt; of the "host" object.</t>
+              <t>Changed the &lt;csvRegistrar:fStatus&gt; enumerated list to include only "ok", "readonly", and "terminated" to sync up with draft-arias-noguchi-dnrd-object.  Also removed support for the &lt;csvRegistrar:fStatusName&gt; field.</t>
+              <t>Updated the description of the "Registrar Object" to include an organization for clients that create and update objects, including the registry.</t>
             </list></t>
           </section>
         </section>

@@ -1,3 +1,2 @@
-sh8013,Csh8013-TEST,0,+1.7035555555,1234,+1.7035555556,,jdoe@example.test,clientY,clientX,2009-09-13T08:01:00.0Z,clientX,2009-11-26T09:10:00.0Z,2fooBAR
-mycontactid,Cmycontactid-TEST,0,+1.7034444444,1234,+1.7033333333,,jsmith@example.test,clientY,clientX,2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,2fooBAR
-registrarcontact,Cregistrarcontact-TEST,1,+1.7034444444,1234,+1.7033333333,,jsmith@example.test,clientY,clientX,2010-09-13T08:01:00.0Z,clientX,2011-11-26T09:10:00.0Z,
+sh8013,Csh8013-TEST,+1.7035555555,1234,+1.7035555556,,jdoe@example.test,registrarX,registrarX,clientY,2009-09-13T08:01:00.0Z,registrarX,clientY,2009-11-26T09:10:00.0Z
+mycontactid,Cmycontactid-TEST,+1.7034444444,1234,+1.7033333333,,jsmith@example.test,registrarX,registrarX,clientY,2010-09-13T08:01:00.0Z,registrarX,clientY,2011-11-26T09:10:00.0Z

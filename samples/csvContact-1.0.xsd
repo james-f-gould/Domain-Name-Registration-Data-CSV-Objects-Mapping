@@ -256,7 +256,7 @@ Child elements of the <rde:contents> object
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="contact\:statusType"/>
+        default="contact\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>

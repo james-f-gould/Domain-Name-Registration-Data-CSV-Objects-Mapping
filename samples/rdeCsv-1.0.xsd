@@ -117,14 +117,26 @@
  <!-- Identifier of client that sponsors the object -->   
  <element name="fClID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar of client that created the object -->  
+ <element name="fCrRr" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that created the object -->  
  <element name="fCrID" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar of client that updated the object -->  
+ <element name="fUpRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that updated the object -->  
  <element name="fUpID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar of client that requested the transfer -->
+ <element name="fReRr" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that requested the transfer -->
  <element name="fReID" type="rdeCsv:fClIDType" 
+  substitutionGroup="rdeCsv:field"/>
+ <!-- Identifier of registrar client that should take or took action -->
+ <element name="fAcRr" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that should take or took action -->
  <element name="fAcID" type="rdeCsv:fClIDType" 
@@ -268,12 +280,6 @@
     </extension>
   </complexContent>
  </complexType>
-
- 
- <!-- Password authorization info -->
- <element name="fPwAuthInfo" type="rdeCsv:fNormalizedStringType" 
-  substitutionGroup="rdeCsv:field"/>
- 
  
  <!-- Custom / extension field type -->
  <element name="fCustom" type="rdeCsv:fCustomType" 
@@ -329,7 +335,6 @@
   </complexContent>
  </complexType>
 
-  
   <!--
   End of schema.
   -->

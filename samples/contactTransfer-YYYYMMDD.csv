@@ -1,2 +1,2 @@
-sh8013,pending,clientW,2011-03-08T19:38:00.0Z,clientX,2011-03-13T23:59:59.0Z
-mycontactid,clientApproved,clientW,2011-04-08T19:38:00.0Z,clientX,2011-04-09T20:38:00.0Z
+sh8013,pending,registrarX,clientX,2011-03-08T19:38:00.0Z,registrarY,,2011-03-13T23:59:59.0Z
+mycontactid,clientApproved,registrarX,clientX,2011-04-08T19:38:00.0Z,registrarY,clientY,2011-04-09T20:38:00.0Z

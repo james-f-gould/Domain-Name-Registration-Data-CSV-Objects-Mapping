@@ -70,15 +70,6 @@
   </complexContent>
  </complexType>
 
-
- <!-- Boolean type  fields -->
- <element name="fIdn" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
-
- <!-- Parent domain name for subordinate host field -->
- <element name="fParentDomain" type="rdeCsv:fNameType" 
-  substitutionGroup="rdeCsv:field"/>
-
  <!-- Host status field -->
  <element name="fStatus" type="csvHost:fStatusType" 
   substitutionGroup="rdeCsv:field"/>
@@ -89,11 +80,10 @@
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="host\:statusType"/>
+        default="host\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>
-
 
   <!--
   End of schema.

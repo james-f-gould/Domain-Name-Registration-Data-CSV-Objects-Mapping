@@ -1,2 +1,2 @@
 ns1.domain1.test,clientUpdateProhibited
-ns1.domain1.test,deleteUpdateProhibited
+ns1.domain1.test,clientDeleteProhibited

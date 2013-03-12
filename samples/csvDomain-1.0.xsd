@@ -59,7 +59,7 @@
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-      default="rgp\:statusType"/>
+      default="rgp\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>
@@ -133,16 +133,7 @@
     </extension>
   </complexContent>
  </complexType>
- 
- 
- <!-- Boolean type  fields -->
- <element name="fIdn" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
- <element name="fVariant" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
- <element name="fReserved" type="rdeCsv:fBooleanType" 
-  substitutionGroup="rdeCsv:field"/>
- 
+  
  <!-- Original Domain Name for Variant field -->
  <element name="fOriginalName" type="rdeCsv:fNameType" 
   substitutionGroup="rdeCsv:field"/>
@@ -157,12 +148,11 @@
     <extension base="rdeCsv:fieldType">
       <sequence/>
       <attribute name="type" type="token"  
-        default="domain\:statusType"/>
+        default="domain\:statusValueType"/>
     </extension>
   </complexContent>
  </complexType>
   
- 
   <!--
   End of schema.
   -->

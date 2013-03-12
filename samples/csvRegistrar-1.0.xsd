@@ -96,48 +96,11 @@
  <simpleType name="statusValueType">
    <restriction base="token">
      <enumeration value="ok"/>
-     <enumeration value="hold"/>
+     <enumeration value="readonly"/>
      <enumeration value="terminated"/>
-     <enumeration value="custom"/>
    </restriction>
  </simpleType>
  
-  <!-- Contact type field -->
- <element name="fContactType" 
-  type="csvRegistrar:fContactsTypeType" 
-  substitutionGroup="rdeCsv:field"/>
- 
- <element name="fCustomContactTypeName" 
-  type="rdeCsv:fTokenType" 
-  substitutionGroup="rdeCsv:field"/>
-
- <complexType name="fContactsTypeType">
-  <complexContent>
-    <extension base="rdeCsv:fieldType">
-      <sequence/>
-      <attribute name="type" type="token"  
-      default="domain\:contactAttrType"/>
-    </extension>
-  </complexContent>
- </complexType>
-
- <!-- Contact type enumerated values -->
-  <simpleType name="contactAttrType">
-    <restriction base="token">
-      <enumeration value="admin"/>
-      <enumeration value="billing"/>
-      <enumeration value="primaryBilling"/>
-      <enumeration value="tech"/>
-      <enumeration value="legal"/>
-      <enumeration value="marketing"/>
-      <enumeration value="icann"/>
-      <enumeration value="support"/>
-      <enumeration value="abuse"/>
-      <enumeration value="ceo"/>     
-      <enumeration value="custom"/>
-    </restriction>
-  </simpleType>
-
  <!-- Whois URL field -->
  <element name="fWhoisUrl" 
   type="rdeCsv:anyURIType" 
