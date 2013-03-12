@@ -63,9 +63,33 @@
  <!-- Abstract field type -->
  <element name="field" type="rdeCsv:fieldType" 
   abstract="true"/>
+  
  <complexType name="fieldType">
   <sequence/>
  </complexType>
+  
+ <!-- fieldType with optional value (isRequired=false) -->  
+ <complexType name="fieldOptionalType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="isRequired" type="boolean" 
+        default="false"/>
+    </extension>
+  </complexContent>
+ </complexType>
+ 
+ <!-- fieldType with required value (isRequired=false) -->  
+ <complexType name="fieldRequiredType">
+  <complexContent>
+    <extension base="rdeCsv:fieldType">
+      <sequence/>
+      <attribute name="isRequired" type="boolean" 
+        default="true"/>
+    </extension>
+  </complexContent>
+ </complexType>
+ 
  
  <!-- Concrete field types -->
  
@@ -74,20 +98,30 @@
    substitutionGroup="rdeCsv:field"/>   
  <complexType name="fNameType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="eppcom\:labelType"/>
     </extension>
   </complexContent>
  </complexType>
+ <complexType name="fNameRequiredType">
+  <complexContent>
+    <extension base="rdeCsv:fieldRequiredType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="eppcom\:labelType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+ 
 
  <!-- Registry Object IDentifier (roid) field -->
  <element name="fRoid" type="rdeCsv:fRoidType" 
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fRoidType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldRequiredType">
       <sequence/>
       <attribute name="type" type="token"  
         default="eppcom\:roidType"/>
@@ -100,7 +134,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fRegistrantType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="eppcom\:clIDType"/>
@@ -115,7 +149,7 @@
  
  <!-- clID fields (fClID, fCrID, fUpID) -->
  <!-- Identifier of client that sponsors the object -->   
- <element name="fClID" type="rdeCsv:fClIDType" 
+ <element name="fClID" type="rdeCsv:fClIDRequiredType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of registrar of client that created the object -->  
  <element name="fCrRr" type="rdeCsv:fClIDType" 
@@ -143,13 +177,23 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fClIDType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="eppcom\:clIDType"/>
     </extension>
   </complexContent>
  </complexType>
+ <complexType name="fClIDRequiredType">
+  <complexContent>
+    <extension base="rdeCsv:fieldRequiredType">
+      <sequence/>
+      <attribute name="type" type="token"  
+        default="eppcom\:clIDType"/>
+    </extension>
+  </complexContent>
+ </complexType>
+
  
  <!-- dateTime fields (fCrDate, fUpDate, fExDate) -->
  <element name="fCrDate" type="rdeCsv:fDateTimeType" 
@@ -168,7 +212,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fDateTimeType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="dateTime"/>
@@ -179,7 +223,7 @@
  <!-- boolean type -->
  <complexType name="fBooleanType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="boolean"/>
@@ -190,7 +234,7 @@
  <!-- unsignedByte type -->
  <complexType name="fUnsignedByteType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="unsignedByte"/>
@@ -201,7 +245,7 @@
  <!-- unsignedShort type -->
  <complexType name="fUnsignedShortType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="unsignedShort"/>
@@ -212,7 +256,7 @@
  <!-- hexBinary type -->
  <complexType name="fHexBinaryType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="hexBinary"/>
@@ -226,7 +270,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fLanguageType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="language"/>
@@ -240,7 +284,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fTrStatusType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="eppcom\:trStatusType"/>
@@ -251,7 +295,7 @@
  <!-- General token type -->
  <complexType name="fTokenType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="token"/>
@@ -262,7 +306,7 @@
  <!-- General normalizedString type -->
  <complexType name="fNormalizedStringType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="normalizedString"/>
@@ -273,7 +317,7 @@
  <!-- positive integer type -->
  <complexType name="fPositiveIntegerType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="positiveInteger"/>
@@ -286,7 +330,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fCustomType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="name" type="token"/>
       <attribute name="type" type="token"  
@@ -327,7 +371,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="anyURIType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="anyURI"/>

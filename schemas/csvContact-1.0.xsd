@@ -44,7 +44,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fIdType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldRequiredType">
       <sequence/>
       <attribute name="type" type="token"  
       default="eppcom\:clIDType"/>
@@ -66,7 +66,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fE164StringType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="contact\:e164StringType"/>
@@ -85,7 +85,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fEmailType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldRequiredType">
       <sequence/>
       <attribute name="type" type="token"  
       default="eppcom\:minTokenType"/>
@@ -103,7 +103,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fPostalTypeType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="contact\:postalInfoEnumType"/>
@@ -114,7 +114,7 @@ Child elements of the <rde:contents> object
  <!-- Standard postal line field -->
  <complexType name="fPostalLineType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldRequiredType">
       <sequence/>
       <attribute name="type" type="token"  
       default="contact\:postalLineType"/>
@@ -126,7 +126,7 @@ Child elements of the <rde:contents> object
  <!-- Standard optional postal line field -->
  <complexType name="fOptPostalLineType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="contact\:optPostalLineType"/>
@@ -151,7 +151,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fStreetType">
   <complexContent>
-    <extension base="csvContact:fPostalLineType">
+    <extension base="csvContact:fOptPostalLineType">
       <sequence/>
       <attribute name="index" type="int"  
       use="required"/>
@@ -172,7 +172,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fPcType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="contact\:pcType"/>
@@ -186,7 +186,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fCcType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="contact\:ccType"/>
@@ -238,7 +238,7 @@ Child elements of the <rde:contents> object
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fBoolean">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="boolean"/>
@@ -253,7 +253,7 @@ Child elements of the <rde:contents> object
  <!-- Host status based on contact-1.0.xsd  -->
  <complexType name="fStatusType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="contact\:statusValueType"/>

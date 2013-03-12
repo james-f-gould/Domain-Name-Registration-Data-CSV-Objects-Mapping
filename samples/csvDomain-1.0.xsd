@@ -46,7 +46,7 @@
   </complexType>
 
  <!-- Domain name field -->
- <element name="fName" type="rdeCsv:fNameType" 
+ <element name="fName" type="rdeCsv:fNameRequiredType" 
   substitutionGroup="rdeCsv:field"/>
  
 
@@ -56,7 +56,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fRgpStatusType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="rgp\:statusValueType"/>
@@ -70,7 +70,7 @@
  
  <complexType name="fContactsTypeType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="domain\:contactAttrType"/>
@@ -85,7 +85,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fMaxSigLifeType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="secDNS\:maxSigLifeType"/>
@@ -126,7 +126,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fPubKeyType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="secDNS\:keyType"/>
@@ -145,7 +145,7 @@
  <!-- Domain status based on domain-1.0.xsd  -->
  <complexType name="fStatusType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="domain\:statusValueType"/>

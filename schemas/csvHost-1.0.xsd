@@ -40,7 +40,7 @@
   </complexType>
 
  <!-- Host name field -->
- <element name="fName" type="rdeCsv:fNameType" 
+ <element name="fName" type="rdeCsv:fNameRequiredType" 
   substitutionGroup="rdeCsv:field"/>
 
  
@@ -49,7 +49,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fAddrType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="host\:addrStringType"/>
@@ -62,7 +62,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fAddrVersionType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="host\:ipType"/>
@@ -77,7 +77,7 @@
  <!-- Host status based on host-1.0.xsd  -->
  <complexType name="fStatusType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
         default="host\:statusValueType"/>

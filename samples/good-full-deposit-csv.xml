@@ -35,7 +35,7 @@
 	 				<rdeCsv:fRoid/> 				
 	 				<rdeCsv:fLanguage/>	 				
 	 				<csvDomain:fOriginalName/>
-	 				<rdeCsv:fRegistrant/>
+	 				<rdeCsv:fRegistrant isRequired="true"/>
 	 				<rdeCsv:fClID/>
 	 				<rdeCsv:fCrRr/>
 	 				<rdeCsv:fCrID/>
@@ -348,11 +348,7 @@
 	 				<csvContact:fEmail/>
 	 				<rdeCsv:fUrl/>
 	 				<csvRegistrar:fWhoisUrl/>
-	 				<rdeCsv:fCrRr/>
-	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
-	 				<rdeCsv:fUpRr/>
-	 				<rdeCsv:fUpID/>
 	 				<rdeCsv:fUpDate/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
@@ -367,8 +363,8 @@
 	 		<rdeCsv:csv name="idnLanguage">
 	 			<rdeCsv:sep>,</rdeCsv:sep>
 	 			<rdeCsv:fields>
-	 				<rdeCsv:fLanguage/>
-	 				<rdeCsv:fUrl/>
+	 				<rdeCsv:fLanguage isRequired="true"/>
+	 				<rdeCsv:fUrl isRequired="true"/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>
 	 				<rdeCsv:file 

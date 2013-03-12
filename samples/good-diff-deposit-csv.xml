@@ -539,11 +539,7 @@
 	 				<csvContact:fEmail/>
 	 				<rdeCsv:fUrl/>
 	 				<csvRegistrar:fWhoisUrl/>
-	 				<rdeCsv:fCrRr/>
-	 				<rdeCsv:fCrID/>
 	 				<rdeCsv:fCrDate/>
-	 				<rdeCsv:fUpRr/>
-	 				<rdeCsv:fUpID/>
 	 				<rdeCsv:fUpDate/>
 	 			</rdeCsv:fields>
 	 			<rdeCsv:files>

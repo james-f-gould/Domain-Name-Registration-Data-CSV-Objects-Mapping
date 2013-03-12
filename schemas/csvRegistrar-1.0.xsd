@@ -43,7 +43,7 @@
   </complexType>
 
  <!-- Registrar unique identifier (short name / id) -->
- <element name="fId" type="rdeCsv:fClIDType" 
+ <element name="fId" type="rdeCsv:fClIDRequiredType" 
   substitutionGroup="rdeCsv:field"/>
 
  <!-- Registrar name (full name) -->
@@ -53,7 +53,7 @@
  <!-- Registrar name field -->
  <complexType name="fNameType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldRequiredType">
       <sequence/>
       <attribute name="type" type="token"  
       default="normalizedString"/>
@@ -75,7 +75,7 @@
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fStatusType">
   <complexContent>
-    <extension base="rdeCsv:fieldType">
+    <extension base="rdeCsv:fieldOptionalType">
       <sequence/>
       <attribute name="type" type="token"  
       default="csvRegistrar\:statusType"/>

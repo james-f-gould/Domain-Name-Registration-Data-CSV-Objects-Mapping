@@ -145,7 +145,7 @@
 <tr><td class="header">Network Working Group</td><td class="header">J. Gould</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">C. Thippeswamy</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">Verisign</td></tr>
-<tr><td class="header">Expires: September 12, 2013</td><td class="header">March 11, 2013</td></tr>
+<tr><td class="header">Expires: September 13, 2013</td><td class="header">March 12, 2013</td></tr>
 </table></td></tr></table>
 <h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-02</h1>
 
@@ -173,7 +173,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on September 12, 2013.</p>
+This Internet-Draft will expire on September 13, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -499,10 +499,12 @@ CSV elements</h3>
 <dt>&lt;rdeCsv:fields&gt;</dt>
 <dd>Ordered list of CSV fields used in the CSV files.  There is one or more 
                     child elements that substitute for the &lt;rdeCsv:field&gt; abstract element.  Each element 
-                    defines the format of the CSV field contained in the CSV files.  &lt;rdeCsv:field&gt; elements by 
-                    convention support the "type" attribute that defines the XML data type of the field elements.  
-                    By convention all fields are optional, where an undefined field 
-                    can be represented with an empty field value ",," in the CSV file, where ',' is the separator character.
+                    defines the format of the CSV field contained in the CSV files.  The &lt;rdeCsv:field&gt; elements  
+                    support the "type" attribute that defines the XML simple data type of the field element.  The &lt;rdeCsv:field&gt; 
+                    elements support the "isRequired" attribute, with a default value of "false", when set to "true" indicates that the field must be non-empty 
+                    in the CSV files and when set to "false" indicates that the field MAY be empty in the CSV files.  The "isRequired" 
+                    attribute MAY be specifically set for the field elements within the XML schema and MAY be overridden when specifying 
+                    the fields under the &lt;rdeCsv:fields&gt; element.
 </dd>
 <dt>&lt;rdeCsv:files&gt;</dt>
 <dd>A list of one or more CSV files using the &lt;rdeCsv:file&gt; child element.  
@@ -534,7 +536,8 @@ CSV elements</h3>
                   are defined for each object type.
                   
 </p>
-<p>The following is an example of the &lt;rdeCsv:csv&gt; element for domain name records.
+<p>The following is an example of the &lt;rdeCsv:csv&gt; element for domain name records where the &lt;rdeCsv:fRegistrant&gt; is 
+                  set as required with isRequired="true".
 </p>
 <p>
                         </p>
@@ -546,7 +549,7 @@ CSV elements</h3>
     &lt;rdeCsv:fRoid/&gt;
     &lt;rdeCsv:fLanguage/&gt;
     &lt;csvDomain:fOriginalName/&gt;
-    &lt;rdeCsv:fRegistrant/&gt;
+    &lt;rdeCsv:fRegistrant isRequired="true"/&gt;
     &lt;rdeCsv:fClID/&gt;
     &lt;rdeCsv:fCrRr/&gt;
     &lt;rdeCsv:fCrID/&gt;
@@ -635,7 +638,7 @@ CSV common field elements</h3>
                   
 </dd>
 <dt>&lt;rdeCsv:fRoid&gt;</dt>
-<dd>Repository Object IDentifier (ROID) field with type="eppcom:roidType".
+<dd>Repository Object IDentifier (ROID) field with type="eppcom:roidType" and isRequired="true".
                   
 </dd>
 <dt>&lt;rdeCsv:fRegistrant&gt;</dt>
@@ -647,7 +650,7 @@ CSV common field elements</h3>
                   
 </dd>
 <dt>&lt;rdeCsv:fClID&gt;</dt>
-<dd>Identifier of client that sponsors the object with type="eppcom:clIDType".
+<dd>Identifier of client that sponsors the object with type="eppcom:clIDType" and isRequired="true".
                   
 </dd>
 <dt>&lt;rdeCsv:fCrRr&gt;</dt>
@@ -768,7 +771,7 @@ Domain Name Object</h3>
 <dd>
 <blockquote class="text"><dl>
 <dt>&lt;csvDomain:fName&gt;</dt>
-<dd>Domain name field with type="eppcom:labelType".  
+<dd>Domain name field with type="eppcom:labelType" and isRequired="true".  
                   
 </dd>
 <dt>&lt;csvDomain:fOriginalName&gt;</dt>
@@ -1953,7 +1956,7 @@ Host Object</h3>
 <dd>
 <blockquote class="text"><dl>
 <dt>&lt;csvHost:fName&gt;</dt>
-<dd>Host name field with type="eppcom:labelType".  
+<dd>Host name field with type="eppcom:labelType" and isRequired="true".  
                   
 </dd>
 </dl></blockquote>
@@ -2530,7 +2533,7 @@ Contact Object</h3>
 <dd>
 <blockquote class="text"><dl>
 <dt>&lt;csvContact:fId&gt;</dt>
-<dd>Contains the server-unique contact identifier with type="eppcom:clIDType".  
+<dd>Contains the server-unique contact identifier with type="eppcom:clIDType" and isRequired="true".  
                 
 </dd>
 <dt>&lt;csvContact:fVoice&gt;</dt>
@@ -2550,7 +2553,7 @@ Contact Object</h3>
                 
 </dd>
 <dt>&lt;csvContact:fEmail&gt;</dt>
-<dd>Contains the contact's email address with type="eppcom:minTokenType".  
+<dd>Contains the contact's email address with type="eppcom:minTokenType" and isRequired="true".  
                 
 </dd>
 </dl></blockquote>
@@ -2854,7 +2857,7 @@ sh8013,clientDeleteProhibited
                 
 </dd>
 <dt>&lt;csvContact:fName&gt;</dt>
-<dd>Contains the contact's name of the individual or role represented by the contact with type="contact:postalLineType".  
+<dd>Contains the contact's name of the individual or role represented by the contact with type="contact:postalLineType" and isRequired="true".  
                 An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
                 
 </dd>
@@ -2870,7 +2873,7 @@ sh8013,clientDeleteProhibited
                 
 </dd>
 <dt>&lt;csvContact:fCity&gt;</dt>
-<dd>Contains the contact's city with type="contact:postalLineType".   
+<dd>Contains the contact's city with type="contact:postalLineType" and isRequired="true".   
                 An OPTIONAL "isLoc" attribute to used to indicate the localized or internationalized form as defined in section <a class='info' href='#intandloc'>Section&nbsp;3.4<span> (</span><span class='info'>Internationalized and Localized Elements</span><span>)</span></a>. 
                 
 </dd>
@@ -3352,11 +3355,11 @@ Registrar Object</h3>
 <dd>
 <blockquote class="text"><dl>
 <dt>&lt;csvRegistrar:fId&gt;</dt>
-<dd>Contains the server-unique registrar identifier with type="eppcom:clIDType".  
+<dd>Contains the server-unique registrar identifier with type="eppcom:clIDType" and isRequired="true".  
                 
 </dd>
 <dt>&lt;csvRegistrar:fName&gt;</dt>
-<dd>Contains the name of the registrar with type="normalizedString".  
+<dd>Contains the name of the registrar with type="normalizedString" and isRequired="true".  
                 
 </dd>
 <dt>&lt;csvRegistrar:fGurid&gt;</dt>
@@ -3384,20 +3387,8 @@ Registrar Object</h3>
 <dt>&lt;rdeCsv:fRoid&gt;</dt>
 <dd>Registry Object IDentifier (ROID) for the registrar object.
 </dd>
-<dt>&lt;rdeCsv:fCrRr&gt;</dt>
-<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
-</dd>
-<dt>&lt;rdeCsv:fCrID&gt;</dt>
-<dd>Identifier of client that created the registrar object.
-</dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>Created date and time of the registrar object.
-</dd>
-<dt>&lt;rdeCsv:fUpRr&gt;</dt>
-<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that updated the object.
-</dd>
-<dt>&lt;rdeCsv:fUpID&gt;</dt>
-<dd>Identifier of the client that last updated the registrar object.
 </dd>
 <dt>&lt;rdeCsv:fUpDate&gt;</dt>
 <dd>Date and time of the last update to the registrar object.
@@ -3482,11 +3473,7 @@ Registrar Object</h3>
       &lt;csvContact:fEmail/&gt;
       &lt;rdeCsv:fUrl/&gt;
       &lt;csvRegistrar:fWhoisUrl/&gt;
-      &lt;rdeCsv:fCrRr/&gt;
-      &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
-      &lt;rdeCsv:fUpRr/&gt;
-      &lt;rdeCsv:fUpID/&gt;
       &lt;rdeCsv:fUpDate/&gt;
     &lt;/rdeCsv:fields&gt;
     &lt;rdeCsv:files&gt;
@@ -3514,8 +3501,8 @@ Registrar Object</h3>
 EXAMPLE,REGISTRAR123-TEST,"Example Inc.",1234,ok,"123 Example Dr.",
 "Suite 100",,Dulles,VA,20166-6503,US,+1.7035555555,1234,
 +1.7035555556,,jdoe@example.test,http://www.example.test,
-http://whois.example.test,registrarX,clientY,2005-04-23T11:49:00.0Z,
-registrarX,clientY,2009-02-17T17:51:00.0Z
+http://whois.example.test,2005-04-23T11:49:00.0Z,
+2009-02-17T17:51:00.0Z
 </pre></div>
                     
 </dd>
@@ -3831,9 +3818,33 @@ RDE CSV Schema</h3>
  &lt;!-- Abstract field type --&gt;
  &lt;element name="field" type="rdeCsv:fieldType"
   abstract="true"/&gt;
+
  &lt;complexType name="fieldType"&gt;
   &lt;sequence/&gt;
  &lt;/complexType&gt;
+
+ &lt;!-- fieldType with optional value (isRequired=false) --&gt;
+ &lt;complexType name="fieldOptionalType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="isRequired" type="boolean"
+        default="false"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
+ &lt;!-- fieldType with required value (isRequired=false) --&gt;
+ &lt;complexType name="fieldRequiredType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="isRequired" type="boolean"
+        default="true"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
 
  &lt;!-- Concrete field types --&gt;
 
@@ -3842,7 +3853,16 @@ RDE CSV Schema</h3>
    substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fNameType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:labelType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+ &lt;complexType name="fNameRequiredType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldRequiredType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="eppcom\:labelType"/&gt;
@@ -3850,12 +3870,13 @@ RDE CSV Schema</h3>
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
 
+
  &lt;!-- Registry Object IDentifier (roid) field --&gt;
  &lt;element name="fRoid" type="rdeCsv:fRoidType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fRoidType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldRequiredType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="eppcom\:roidType"/&gt;
@@ -3868,7 +3889,7 @@ RDE CSV Schema</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fRegistrantType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="eppcom\:clIDType"/&gt;
@@ -3883,22 +3904,24 @@ RDE CSV Schema</h3>
 
  &lt;!-- clID fields (fClID, fCrID, fUpID) --&gt;
  &lt;!-- Identifier of client that sponsors the object --&gt;
- &lt;element name="fClID" type="rdeCsv:fClIDType"
+ &lt;element name="fClID" type="rdeCsv:fClIDRequiredType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;!-- Identifier of registrar client that created the object --&gt;
+ &lt;!-- Identifier of registrar of client that
+ created the object --&gt;
  &lt;element name="fCrRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Identifier of client that created the object --&gt;
  &lt;element name="fCrID" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;!-- Identifier of registrar client that updated the object --&gt;
+ &lt;!-- Identifier of registrar of client that
+ updated the object --&gt;
  &lt;element name="fUpRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Identifier of client that updated the object --&gt;
  &lt;element name="fUpID" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
- &lt;!-- Identifier of registrar client that
- requested the transfer --&gt;
+ &lt;!-- Identifier of registrar of client
+ that requested the transfer --&gt;
  &lt;element name="fReRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;!-- Identifier of client that requested the transfer --&gt;
@@ -3913,13 +3936,23 @@ RDE CSV Schema</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fClIDType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="eppcom\:clIDType"/&gt;
     &lt;/extension&gt;
   &lt;/complexContent&gt;
  &lt;/complexType&gt;
+ &lt;complexType name="fClIDRequiredType"&gt;
+  &lt;complexContent&gt;
+    &lt;extension base="rdeCsv:fieldRequiredType"&gt;
+      &lt;sequence/&gt;
+      &lt;attribute name="type" type="token"
+        default="eppcom\:clIDType"/&gt;
+    &lt;/extension&gt;
+  &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+
 
  &lt;!-- dateTime fields (fCrDate, fUpDate, fExDate) --&gt;
  &lt;element name="fCrDate" type="rdeCsv:fDateTimeType"
@@ -3938,7 +3971,7 @@ RDE CSV Schema</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fDateTimeType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="dateTime"/&gt;
@@ -3949,7 +3982,7 @@ RDE CSV Schema</h3>
  &lt;!-- boolean type --&gt;
  &lt;complexType name="fBooleanType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="boolean"/&gt;
@@ -3960,7 +3993,7 @@ RDE CSV Schema</h3>
  &lt;!-- unsignedByte type --&gt;
  &lt;complexType name="fUnsignedByteType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="unsignedByte"/&gt;
@@ -3971,7 +4004,7 @@ RDE CSV Schema</h3>
  &lt;!-- unsignedShort type --&gt;
  &lt;complexType name="fUnsignedShortType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="unsignedShort"/&gt;
@@ -3982,7 +4015,7 @@ RDE CSV Schema</h3>
  &lt;!-- hexBinary type --&gt;
  &lt;complexType name="fHexBinaryType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="hexBinary"/&gt;
@@ -3996,7 +4029,7 @@ RDE CSV Schema</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fLanguageType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="language"/&gt;
@@ -4010,7 +4043,7 @@ RDE CSV Schema</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fTrStatusType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="eppcom\:trStatusType"/&gt;
@@ -4021,7 +4054,7 @@ RDE CSV Schema</h3>
  &lt;!-- General token type --&gt;
  &lt;complexType name="fTokenType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="token"/&gt;
@@ -4032,7 +4065,7 @@ RDE CSV Schema</h3>
  &lt;!-- General normalizedString type --&gt;
  &lt;complexType name="fNormalizedStringType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="normalizedString"/&gt;
@@ -4043,7 +4076,7 @@ RDE CSV Schema</h3>
  &lt;!-- positive integer type --&gt;
  &lt;complexType name="fPositiveIntegerType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="positiveInteger"/&gt;
@@ -4056,7 +4089,7 @@ RDE CSV Schema</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fCustomType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="name" type="token"/&gt;
       &lt;attribute name="type" type="token"
@@ -4097,7 +4130,7 @@ RDE CSV Schema</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="anyURIType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="anyURI"/&gt;
@@ -4219,7 +4252,7 @@ Domain Object</h3>
   &lt;/complexType&gt;
 
  &lt;!-- Domain name field --&gt;
- &lt;element name="fName" type="rdeCsv:fNameType"
+ &lt;element name="fName" type="rdeCsv:fNameRequiredType"
   substitutionGroup="rdeCsv:field"/&gt;
 
 
@@ -4229,7 +4262,7 @@ Domain Object</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fRgpStatusType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="rgp\:statusValueType"/&gt;
@@ -4243,7 +4276,7 @@ Domain Object</h3>
 
  &lt;complexType name="fContactsTypeType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="domain\:contactAttrType"/&gt;
@@ -4258,7 +4291,7 @@ Domain Object</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fMaxSigLifeType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="secDNS\:maxSigLifeType"/&gt;
@@ -4299,7 +4332,7 @@ Domain Object</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fPubKeyType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="secDNS\:keyType"/&gt;
@@ -4318,7 +4351,7 @@ Domain Object</h3>
  &lt;!-- Domain status based on domain-1.0.xsd  --&gt;
  &lt;complexType name="fStatusType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="domain\:statusValueType"/&gt;
@@ -4434,7 +4467,7 @@ Host Object</h3>
   &lt;/complexType&gt;
 
  &lt;!-- Host name field --&gt;
- &lt;element name="fName" type="rdeCsv:fNameType"
+ &lt;element name="fName" type="rdeCsv:fNameRequiredType"
   substitutionGroup="rdeCsv:field"/&gt;
 
 
@@ -4443,7 +4476,7 @@ Host Object</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fAddrType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="host\:addrStringType"/&gt;
@@ -4456,7 +4489,7 @@ Host Object</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fAddrVersionType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="host\:ipType"/&gt;
@@ -4471,7 +4504,7 @@ Host Object</h3>
  &lt;!-- Host status based on host-1.0.xsd  --&gt;
  &lt;complexType name="fStatusType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="host\:statusValueType"/&gt;
@@ -4591,7 +4624,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fIdType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldRequiredType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="eppcom\:clIDType"/&gt;
@@ -4613,7 +4646,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fE164StringType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="contact\:e164StringType"/&gt;
@@ -4632,7 +4665,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fEmailType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldRequiredType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="eppcom\:minTokenType"/&gt;
@@ -4650,7 +4683,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fPostalTypeType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="contact\:postalInfoEnumType"/&gt;
@@ -4661,7 +4694,7 @@ Child elements of the &lt;rde:contents&gt; object
  &lt;!-- Standard postal line field --&gt;
  &lt;complexType name="fPostalLineType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldRequiredType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="contact\:postalLineType"/&gt;
@@ -4673,7 +4706,7 @@ Child elements of the &lt;rde:contents&gt; object
  &lt;!-- Standard optional postal line field --&gt;
  &lt;complexType name="fOptPostalLineType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="contact\:optPostalLineType"/&gt;
@@ -4698,7 +4731,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fStreetType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="csvContact:fPostalLineType"&gt;
+    &lt;extension base="csvContact:fOptPostalLineType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="index" type="int"
       use="required"/&gt;
@@ -4719,7 +4752,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fPcType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="contact\:pcType"/&gt;
@@ -4733,7 +4766,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fCcType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="contact\:ccType"/&gt;
@@ -4785,7 +4818,7 @@ Child elements of the &lt;rde:contents&gt; object
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fBoolean"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="boolean"/&gt;
@@ -4800,7 +4833,7 @@ Child elements of the &lt;rde:contents&gt; object
  &lt;!-- Host status based on contact-1.0.xsd  --&gt;
  &lt;complexType name="fStatusType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
         default="contact\:statusValueType"/&gt;
@@ -4920,7 +4953,7 @@ Registrar Object</h3>
   &lt;/complexType&gt;
 
  &lt;!-- Registrar unique identifier (short name / id) --&gt;
- &lt;element name="fId" type="rdeCsv:fClIDType"
+ &lt;element name="fId" type="rdeCsv:fClIDRequiredType"
   substitutionGroup="rdeCsv:field"/&gt;
 
  &lt;!-- Registrar name (full name) --&gt;
@@ -4930,7 +4963,7 @@ Registrar Object</h3>
  &lt;!-- Registrar name field --&gt;
  &lt;complexType name="fNameType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldRequiredType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="normalizedString"/&gt;
@@ -4952,7 +4985,7 @@ Registrar Object</h3>
   substitutionGroup="rdeCsv:field"/&gt;
  &lt;complexType name="fStatusType"&gt;
   &lt;complexContent&gt;
-    &lt;extension base="rdeCsv:fieldType"&gt;
+    &lt;extension base="rdeCsv:fieldOptionalType"&gt;
       &lt;sequence/&gt;
       &lt;attribute name="type" type="token"
       default="csvRegistrar\:statusType"/&gt;
@@ -5362,17 +5395,21 @@ Change from 01 to 02</h3>
 </li>
 <li>Added &lt;rdeCsv:fCrRr&gt; and &lt;rdeCsv:fUpRr&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.
 </li>
+<li>Removed use of &lt;rdeCsv:fCrID&gt; and &lt;rdeCsv:fUpID&gt; from "registrar" to sync up with draft-arias-noguchi-dnrd-objects.
+</li>
 <li>Removed &lt;domain:fPwAuthInfo&gt; and &lt;contact:fPwAuthInfo&gt; to sync up with draft-arias-noguchi-dnrd-objects.
 </li>
-<li>Removed the "registrarContacts" &lt;rdeCsv:csv&gt; object, the &lt;csvContact:fIsRegistrarContact&gt; field, the &lt;csvRegistrar:fContacType&gt; field, the &lt;csvRegistrar:fCustomContactTypeName&gt; to sync up with draft-arias-noguchi-dnrd-objects.
+<li>Removed the "registrarContacts" &lt;rdeCsv:csv&gt; object, the &lt;csvContact:fIsRegistrarContact&gt; field, the &lt;csvRegistrar:fContactType&gt; field, the &lt;csvRegistrar:fCustomContactTypeName&gt; to sync up with draft-arias-noguchi-dnrd-objects.
 </li>
 <li>Added the &lt;rdeCsv:fReRr&gt; and &lt;rdeCsv:fAcRr&gt; fields to sync up with draft-arias-noguchi-dnrd-objects.
 </li>
-<li>Removed the &lt;csvHost:fParentDomain&gt; and &tl;csvHost:fIdn&gt; fields, and removed reference to &lt;rdeCsv:fUName&gt; of the "host" object.
+<li>Removed the &lt;csvHost:fParentDomain&gt; and &lt;csvHost:fIdn&gt; fields, and removed reference to &lt;rdeCsv:fUName&gt; of the "host" object.
 </li>
 <li>Changed the &lt;csvRegistrar:fStatus&gt; enumerated list to include only "ok", "readonly", and "terminated" to sync up with draft-arias-noguchi-dnrd-object.  Also removed support for the &lt;csvRegistrar:fStatusName&gt; field.
 </li>
 <li>Updated the description of the "Registrar Object" to include an organization for clients that create and update objects, including the registry.
+</li>
+<li>Added definition of the "isRequired" boolean field attribute to indicate whether a field must be non-empty in the CSV file.
 </li>
 </ol>
 
