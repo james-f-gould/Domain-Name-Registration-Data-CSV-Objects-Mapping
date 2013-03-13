@@ -295,9 +295,10 @@
                 <t>
                 To support a CSV model with the <eref
       target="http://tools.ietf.org/id/draft-arias-noguchi-registry-data-escrow-04.txt">Registry Data Escrow Specification</eref>, 
-                  a &lt;rdeCsv:csv&gt; element is defined that substitutes for &lt;rde:content&gt; as a child element of 
-                  a &lt;rde:contents&gt; substitute element like the &lt;csvDomain:contents&gt; element.  A &lt;rdeCsv:csvDelete&gt; element 
-                  substitutes for &lt;rde:delete&gt; as a child element of the &lt;rde:deletes&gt; element.
+                  a &lt;rdeCsv:csv&gt; element is defined that substitutes for the &lt;rde:content&gt; element.  Each object defines 
+                  a substitute element for the &lt;rde:contents&gt; element, like the &lt;csvDomain:contents&gt; element for the <xref target="domainNameObject">Domain Name Object</xref>. 
+                  A &lt;rdeCsv:csvDelete&gt; element 
+                  substitutes for the &lt;rde:delete&gt; element as a child element of the &lt;rde:deletes&gt; element.
                   The &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements share the following child elements:</t>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:sep&gt;">Optional definition of the CSV separator characters with the default 
@@ -411,7 +412,7 @@ domainN.test]]>
                   </t>
                   <t hangText="&lt;rdeCsv:fStatusDescription&gt;">The  object status description, which is free form text describing the rationale for the status, with type="normalizedString".  
                   </t>
-                  <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client that sponsors the object with type="eppcom:clIDType" and isRequired="true".
+                  <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client (registrar) that sponsors the object with type="eppcom:clIDType" and isRequired="true".
                   </t>
                   <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object with type="eppcom:clIDType".
                   </t>
@@ -773,7 +774,7 @@ domain2.test,sh8013,tech]]>
       <rdeCsv:fStatusDescription/>
       <rdeCsv:fLanguage/>
       <csvDomain:fRgpStatus/>
-      <rdeCsv:fCrRf/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -871,7 +872,7 @@ domain2.test,pendingDelete]]>
                   MAY be used in the "domainNameServers" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   </t>
                   <t><list style="hanging">
-                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
+                    <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the link between the domain name object and the delegated host.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the link between the domain name object and the delegated host.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the delegated host (name server) was set for the domain name object.</t>
                     <t hangText="&lt;rdeCsv:fRoid&gt;">Registry Object IDentifier (ROID) used to uniquely reference a delegated host record with the &lt;domain:hostAttr&gt; model in 
@@ -894,7 +895,7 @@ domain2.test,pendingDelete]]>
     <rdeCsv:fields>
       <csvDomain:fName/>
       <csvHost:fName/>
-      <rdeCsv:fCrRf/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -942,7 +943,7 @@ clientY,2009-12-03T09:05:00.0Z]]>
     <rdeCsv:fields>
       <csvDomain:fName/>
       <rdeCsv:fRoid/>
-      <rdeCsv:fCrRf/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -1802,8 +1803,8 @@ Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A]]>
             <section title="Contact Object" anchor="contactObject">
                 <t>
                     The contact object is based on the EPP contact mapping in <xref target="RFC5733"/>. The 
-                    elements used for the Contact Object are defined in this sections  The &lt;csvContact:contents&gt; child 
-                    element of the &lt;rde:contents&gt; element to hold the contact objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
+                    elements used for the Contact Object are defined in this section.  The &lt;csvContact:contents&gt; child 
+                    element of the &lt;rde:contents&gt; element is used to hold the contact objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
                 &lt;rdeCsv:csvDelete&gt; elements, defined in the 
                 "<xref target="rdeCsv-csv-csvDelete">&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</xref>" section, 
                 are used with the following supported "name" attribute values:
@@ -1839,7 +1840,7 @@ Dns1.domain1.test-TEST,1080:0:0:0:8:800:200C:417A]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fRoid&gt;">The Registry Object IDentifier (ROID) for the contact object.</t>
-                    <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client that sponsors the contact object.</t>
+                    <t hangText="&lt;rdeCsv:fClID&gt;">Identifier of client (registrar) that sponsors the contact object.</t>
                     <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
                     <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the contact object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Created date and time of the contact object</t>
@@ -2482,6 +2483,7 @@ mycontactid]]>
                     <t hangText="&lt;csvContact:fCc&gt;">Registrar country code with an OPTIONAL "isLoc" attribute that is used to 
                     indicate the localized or internationalized form, as defined in <xref target="intandloc"/>.</t>
                     <t hangText="&lt;csvContact:fVoice&gt;">Registrar voice telephone number.</t>
+                    <t hangText="&lt;csvContact:fVoiceExt&gt;">Registrar voice telephone number extension.</t>
                     <t hangText="&lt;csvContact:fFax&gt;">Registrar facsimile telephone number.</t>
                     <t hangText="&lt;csvContact:fFaxExt&gt;">Registrar facsimile telephone number extension.</t>
                     <t hangText="&lt;csvContact:fEmail&gt;">Registrar email address.</t>

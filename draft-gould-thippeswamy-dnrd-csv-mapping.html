@@ -485,9 +485,10 @@ CSV elements</h3>
 
 <p>
                 To support a CSV model with the <a href='http://tools.ietf.org/id/draft-arias-noguchi-registry-data-escrow-04.txt'>Registry Data Escrow Specification</a>, 
-                  a &lt;rdeCsv:csv&gt; element is defined that substitutes for &lt;rde:content&gt; as a child element of 
-                  a &lt;rde:contents&gt; substitute element like the &lt;csvDomain:contents&gt; element.  A &lt;rdeCsv:csvDelete&gt; element 
-                  substitutes for &lt;rde:delete&gt; as a child element of the &lt;rde:deletes&gt; element.
+                  a &lt;rdeCsv:csv&gt; element is defined that substitutes for the &lt;rde:content&gt; element.  Each object defines 
+                  a substitute element for the &lt;rde:contents&gt; element, like the &lt;csvDomain:contents&gt; element for the <a class='info' href='#domainNameObject'>Domain Name Object<span> (</span><span class='info'>Domain Name Object</span><span>)</span></a>. 
+                  A &lt;rdeCsv:csvDelete&gt; element 
+                  substitutes for the &lt;rde:delete&gt; element as a child element of the &lt;rde:deletes&gt; element.
                   The &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements share the following child elements:
 </p>
 <p></p>
@@ -650,7 +651,7 @@ CSV common field elements</h3>
                   
 </dd>
 <dt>&lt;rdeCsv:fClID&gt;</dt>
-<dd>Identifier of client that sponsors the object with type="eppcom:clIDType" and isRequired="true".
+<dd>Identifier of client (registrar) that sponsors the object with type="eppcom:clIDType" and isRequired="true".
                   
 </dd>
 <dt>&lt;rdeCsv:fCrRr&gt;</dt>
@@ -1184,7 +1185,7 @@ domain2.test,sh8013,tech
       &lt;rdeCsv:fStatusDescription/&gt;
       &lt;rdeCsv:fLanguage/&gt;
       &lt;csvDomain:fRgpStatus/&gt;
-      &lt;rdeCsv:fCrRf/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -1311,7 +1312,7 @@ domain2.test,pendingDelete
 <dd>
 <blockquote class="text"><dl>
 <dt>&lt;rdeCsv:fCrRr&gt;</dt>
-<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
+<dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the link between the domain name object and the delegated host.
 </dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
 <dd>Identifier of client that created the link between the domain name object and the delegated host.
@@ -1344,7 +1345,7 @@ domain2.test,pendingDelete
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;csvHost:fName/&gt;
-      &lt;rdeCsv:fCrRf/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -1399,7 +1400,7 @@ clientY,2009-12-03T09:05:00.0Z
     &lt;rdeCsv:fields&gt;
       &lt;csvDomain:fName/&gt;
       &lt;rdeCsv:fRoid/&gt;
-      &lt;rdeCsv:fCrRf/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -2514,8 +2515,8 @@ Contact Object</h3>
 
 <p>
                     The contact object is based on the EPP contact mapping in <a class='info' href='#RFC5733'>[RFC5733]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Contact Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>. The 
-                    elements used for the Contact Object are defined in this sections  The &lt;csvContact:contents&gt; child 
-                    element of the &lt;rde:contents&gt; element to hold the contact objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
+                    elements used for the Contact Object are defined in this section.  The &lt;csvContact:contents&gt; child 
+                    element of the &lt;rde:contents&gt; element is used to hold the contact objects for the deposit. The &lt;rdeCsv:csv&gt; and the 
                 &lt;rdeCsv:csvDelete&gt; elements, defined in the 
                 "<a class='info' href='#rdeCsv-csv-csvDelete'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements<span> (</span><span class='info'>&lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; elements</span><span>)</span></a>" section, 
                 are used with the following supported "name" attribute values:
@@ -2570,7 +2571,7 @@ Contact Object</h3>
 <dd>The Registry Object IDentifier (ROID) for the contact object.
 </dd>
 <dt>&lt;rdeCsv:fClID&gt;</dt>
-<dd>Identifier of client that sponsors the contact object.
+<dd>Identifier of client (registrar) that sponsors the contact object.
 </dd>
 <dt>&lt;rdeCsv:fCrRr&gt;</dt>
 <dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
@@ -3428,6 +3429,9 @@ Registrar Object</h3>
 </dd>
 <dt>&lt;csvContact:fVoice&gt;</dt>
 <dd>Registrar voice telephone number.
+</dd>
+<dt>&lt;csvContact:fVoiceExt&gt;</dt>
+<dd>Registrar voice telephone number extension.
 </dd>
 <dt>&lt;csvContact:fFax&gt;</dt>
 <dd>Registrar facsimile telephone number.

@@ -322,12 +322,12 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
    To support a CSV model with the Registry Data Escrow
    Specification [1], a <rdeCsv:csv> element is defined that substitutes
-   for <rde:content> as a child element of a <rde:contents> substitute
-   element like the <csvDomain:contents> element.  A <rdeCsv:csvDelete>
-   element substitutes for <rde:delete> as a child element of the <rde:
-   deletes> element.  The <rdeCsv:csv> and <rdeCsv:csvDelete> elements
-   share the following child elements:
-
+   for the <rde:content> element.  Each object defines a substitute
+   element for the <rde:contents> element, like the <csvDomain:contents>
+   element for the Domain Name Object (Section 4.1).  A <rdeCsv:
+   csvDelete> element substitutes for the <rde:delete> element as a
+   child element of the <rde:deletes> element.  The <rdeCsv:csv> and
+   <rdeCsv:csvDelete> elements share the following child elements:
 
 
 
@@ -482,8 +482,8 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
       free form text describing the rationale for the status, with
       type="normalizedString".
 
-   <rdeCsv:fClID>  Identifier of client that sponsors the object with
-      type="eppcom:clIDType" and isRequired="true".
+   <rdeCsv:fClID>  Identifier of client (registrar) that sponsors the
+      object with type="eppcom:clIDType" and isRequired="true".
 
    <rdeCsv:fCrRr>  Identifier of the registrar, defined in Section 4.4,
       of the client that created the object with type="eppcom:clIDType".
@@ -1020,7 +1020,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
          <rdeCsv:fStatusDescription/>
          <rdeCsv:fLanguage/>
          <csvDomain:fRgpStatus/>
-         <rdeCsv:fCrRf/>
+         <rdeCsv:fCrRr/>
          <rdeCsv:fCrID/>
          <rdeCsv:fCrDate/>
        </rdeCsv:fields>
@@ -1139,7 +1139,8 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
       <rdeCsv:fCrRr>  Identifier of the registrar, defined in
-         Section 4.4, of the client that created the object.
+         Section 4.4, of the client that created the link between the
+         domain name object and the delegated host.
 
       <rdeCsv:fCrID>  Identifier of client that created the link between
          the domain name object and the delegated host.
@@ -1171,7 +1172,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-
 Gould & Thippeswamy    Expires September 14, 2013              [Page 21]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
@@ -1185,7 +1185,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
        <rdeCsv:fields>
          <csvDomain:fName/>
          <csvHost:fName/>
-         <rdeCsv:fCrRf/>
+         <rdeCsv:fCrRr/>
          <rdeCsv:fCrID/>
          <rdeCsv:fCrDate/>
        </rdeCsv:fields>
@@ -1241,7 +1241,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
        <rdeCsv:fields>
          <csvDomain:fName/>
          <rdeCsv:fRoid/>
-         <rdeCsv:fCrRf/>
+         <rdeCsv:fCrRr/>
          <rdeCsv:fCrID/>
          <rdeCsv:fCrDate/>
        </rdeCsv:fields>
@@ -2384,12 +2384,12 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 4.3.  Contact Object
 
    The contact object is based on the EPP contact mapping in [RFC5733].
-   The elements used for the Contact Object are defined in this sections
+   The elements used for the Contact Object are defined in this section.
    The <csvContact:contents> child element of the <rde:contents> element
-   to hold the contact objects for the deposit.  The <rdeCsv:csv> and
-   the <rdeCsv:csvDelete> elements, defined in the "<rdeCsv:csv> and
-   <rdeCsv:csvDelete> elements (Section 3.6.1)" section, are used with
-   the following supported "name" attribute values:
+   is used to hold the contact objects for the deposit.  The <rdeCsv:
+   csv> and the <rdeCsv:csvDelete> elements, defined in the "<rdeCsv:
+   csv> and <rdeCsv:csvDelete> elements (Section 3.6.1)" section, are
+   used with the following supported "name" attribute values:
 
    "contact"  Defines the fields and CSV file references used for the
       contact object records.  The following field elements were added
@@ -2436,8 +2436,8 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
       <rdeCsv:fRoid>  The Registry Object IDentifier (ROID) for the
          contact object.
 
-      <rdeCsv:fClID>  Identifier of client that sponsors the contact
-         object.
+      <rdeCsv:fClID>  Identifier of client (registrar) that sponsors the
+         contact object.
 
       <rdeCsv:fCrRr>  Identifier of the registrar, defined in
          Section 4.4, of the client that created the object.
@@ -3319,6 +3319,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
       <csvContact:fVoice>  Registrar voice telephone number.
 
+      <csvContact:fVoiceExt>  Registrar voice telephone number
+         extension.
+
       <csvContact:fFax>  Registrar facsimile telephone number.
 
       <csvContact:fFaxExt>  Registrar facsimile telephone number
@@ -3327,9 +3330,6 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
       <csvContact:fEmail>  Registrar email address.
 
       Example of a "registrar" <rdeCsv:csv> element.
-
-
-
 
 
 
