@@ -82,7 +82,7 @@
       </address>
      </author>
 
-        <date day="12" month="March" year="2013"/>
+        <date day="13" month="March" year="2013"/>
         
         <area>Applications</area>
         
@@ -633,7 +633,7 @@ domainN.test]]>
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;rdeCsv:fCrRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that created the object.</t>
-                    <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of clisent that created the domain object link to the contact object.</t>
+                    <t hangText="&lt;rdeCsv:fCrID&gt;">Identifier of client that created the domain object link to the contact object.</t>
                     <t hangText="&lt;rdeCsv:fCrDate&gt;">Date and time that the domain object link to the contact object was created.</t>
                    </list></t>
                     <t>
@@ -732,7 +732,7 @@ domain2.test,sh8013,tech]]>
                   </t>
                   <t><list style="hanging">
                   
-               <t hangText="&lt;csvDomain:fStatus&gt;">The status of the domain name with type="domain:statusValueType"/>.  
+               <t hangText="&lt;csvDomain:fStatus&gt;">The status of the domain name with type="domain:statusValueType".  
                 </t>
                <t hangText="&lt;csvDomain:fRgpStatus&gt;">The Registry Grace Period (RGP) status, as a sub-status of the &lt;csvDomain:fStatus&gt; "pendingDelete" status value, with type="rgp:statusValueType" as 
                 defined in <xref target="RFC3915"/>.  
@@ -844,7 +844,7 @@ domain2.test,pendingDelete]]>
  
                   <t hangText="&quot;domainNameServers&quot;">Defines the fields and CSV file references 
                   used for the domain name delegated hosts (name servers).  The "domainNameServers" CSV files
-                  define the relationship between a domain name object and a delegated host, so it will 
+                  define the relationship between a domain name object and a delegated host.  It will 
                   support both the &lt;domain:hostAttr&gt;, using a &lt;rdeCsv:fRoid&gt; field element, 
                   or the &lt;domain:hostObj&gt; model, using a &lt;csvHost:fName&gt; field element, defined in 
                   <xref target="RFC5731"/>.  See <xref target="hostObject"/> for information in how 
@@ -1054,7 +1054,7 @@ domain2.test,Dns2.domain.example-TEST]]>
                         </artwork></figure>
                     </t>    
  
-                  <t hangText="&quot;dnssec&quot;">Defines the fields and CSV file referenes used 
+                  <t hangText="&quot;dnssec&quot;">Defines the fields and CSV file references used 
                   for the domain name object DNSSEC records (DS or Key Data).  The following field elements were added for use 
                   in the "dnssec" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; rdeCsv:fields&gt; elements:
                   </t>
@@ -1249,7 +1249,7 @@ domain1.test,257,3,1,AQPJ////4QQQ]]>
                         </artwork></figure>
                     </t>    
                   
-                  <t hangText="&quot;domainTransfer&quot;">Defines the fields and CSV file referenes 
+                  <t hangText="&quot;domainTransfer&quot;">Defines the fields and CSV file references 
                   used for the domain name object pending and completed transfer records.  No additional 
                   field elements were added for use in the "domainTransfer"  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element. 
                   The following "rdeCsv" fields, defined in section <xref target="csvCommonFieldElements">CSV common field elements</xref>,  
@@ -1259,7 +1259,7 @@ domain1.test,257,3,1,AQPJ////4QQQ]]>
                     <t hangText="&lt;rdeCsv:fTrStatus&gt;">State of the most recent transfer request.</t>
                     <t hangText="&lt;rdeCsv:fReRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that requested the transfer.</t>
                     <t hangText="&lt;rdeCsv:fReID&gt;">Identifier of client that requested the transfer.</t>
-                    <t hangText="&lt;rdeCsv:fReDate&gt;">Date and time that the transfer was requested</t>
+                    <t hangText="&lt;rdeCsv:fReDate&gt;">Date and time that the transfer was requested.</t>
                     <t hangText="&lt;rdeCsv:fAcRr&gt;">Identifier of the registrar, defined in <xref target="registrarObject"/>, of the client that should take or took action.</t>
                     <t hangText="&lt;rdeCsv:fAcID&gt;">Identifier of client that should take or took action for transfer.</t>
                     <t hangText="&lt;rdeCsv:fAcDate&gt;">Date and time that the transfer action should be taken or has been taken.</t>
@@ -1267,7 +1267,7 @@ domain1.test,257,3,1,AQPJ////4QQQ]]>
                   </list></t>
  
                   <t>The following "csvDomain" fields, defined for the "domain" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
-                  MAY be used in the "domainContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  MAY be used in the "domainTransfer" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   </t>
                   <t><list style="hanging">
                     <t hangText="&lt;csvDomain:fName&gt;">Domain name of the domain object involved in the transfer.</t>
@@ -2174,7 +2174,7 @@ mycontactid,int]]>
                         </artwork></figure>
                     </t>    
                 
-                  <t hangText="&quot;contactTransfer&quot;">Defines the fields and CSV file referenes 
+                  <t hangText="&quot;contactTransfer&quot;">Defines the fields and CSV file references 
                   used for the contact object pending and completed transfer records.  No additional 
                   field elements were added for use in the "contactTransfer"  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element. 
                   The following "rdeCsv" fields, defined in section <xref target="csvCommonFieldElements">CSV common field elements</xref>,  
@@ -2427,7 +2427,7 @@ mycontactid]]>
             <section title="Registrar Object" anchor="registrarObject">
                 <t>
                     The registrar object represents the sponsoring client for objects and the organization for clients that create and update objects.  
-                    A registrar object MAY include the server (registry) itself to reference object created and updated by the server.
+                    A registrar object MAY include the server (registry) itself to reference objects created and updated by the server.
                     The 
                     elements used for the Registrar Object references are defined in this section.  The &lt;csvRegistrar:contents&gt; child 
                     element of the &lt;rde:contents&gt; element holds the registrar objects for the deposit. The &lt;rdeCsv:csv&gt; and the 

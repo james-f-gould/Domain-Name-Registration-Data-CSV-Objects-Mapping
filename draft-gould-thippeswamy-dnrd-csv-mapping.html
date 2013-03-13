@@ -145,7 +145,7 @@
 <tr><td class="header">Network Working Group</td><td class="header">J. Gould</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">C. Thippeswamy</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">Verisign</td></tr>
-<tr><td class="header">Expires: September 13, 2013</td><td class="header">March 12, 2013</td></tr>
+<tr><td class="header">Expires: September 14, 2013</td><td class="header">March 13, 2013</td></tr>
 </table></td></tr></table>
 <h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-02</h1>
 
@@ -173,7 +173,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on September 13, 2013.</p>
+This Internet-Draft will expire on September 14, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -996,7 +996,7 @@ domainN.test
 <dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that created the object.
 </dd>
 <dt>&lt;rdeCsv:fCrID&gt;</dt>
-<dd>Identifier of clisent that created the domain object link to the contact object.
+<dd>Identifier of client that created the domain object link to the contact object.
 </dd>
 <dt>&lt;rdeCsv:fCrDate&gt;</dt>
 <dd>Date and time that the domain object link to the contact object was created.
@@ -1117,7 +1117,7 @@ domain2.test,sh8013,tech
 <dd>
 <blockquote class="text"><dl>
 <dt>&lt;csvDomain:fStatus&gt;</dt>
-<dd>The status of the domain name with type="domain:statusValueType"/>.  
+<dd>The status of the domain name with type="domain:statusValueType".  
                 
 </dd>
 <dt>&lt;csvDomain:fRgpStatus&gt;</dt>
@@ -1268,7 +1268,7 @@ domain2.test,pendingDelete
 <dt>&quot;domainNameServers&quot;</dt>
 <dd>Defines the fields and CSV file references 
                   used for the domain name delegated hosts (name servers).  The "domainNameServers" CSV files
-                  define the relationship between a domain name object and a delegated host, so it will 
+                  define the relationship between a domain name object and a delegated host.  It will 
                   support both the &lt;domain:hostAttr&gt;, using a &lt;rdeCsv:fRoid&gt; field element, 
                   or the &lt;domain:hostObj&gt; model, using a &lt;csvHost:fName&gt; field element, defined in 
                   <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.  See <a class='info' href='#hostObject'>Section&nbsp;4.2<span> (</span><span class='info'>Host Object</span><span>)</span></a> for information in how 
@@ -1531,7 +1531,7 @@ domain2.test,Dns2.domain.example-TEST
                     
 </dd>
 <dt>&quot;dnssec&quot;</dt>
-<dd>Defines the fields and CSV file referenes used 
+<dd>Defines the fields and CSV file references used 
                   for the domain name object DNSSEC records (DS or Key Data).  The following field elements were added for use 
                   in the "dnssec" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; rdeCsv:fields&gt; elements:
                   
@@ -1779,7 +1779,7 @@ domain1.test,257,3,1,AQPJ////4QQQ
                     
 </dd>
 <dt>&quot;domainTransfer&quot;</dt>
-<dd>Defines the fields and CSV file referenes 
+<dd>Defines the fields and CSV file references 
                   used for the domain name object pending and completed transfer records.  No additional 
                   field elements were added for use in the "domainTransfer"  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element. 
                   The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
@@ -1799,7 +1799,7 @@ domain1.test,257,3,1,AQPJ////4QQQ
 <dd>Identifier of client that requested the transfer.
 </dd>
 <dt>&lt;rdeCsv:fReDate&gt;</dt>
-<dd>Date and time that the transfer was requested
+<dd>Date and time that the transfer was requested.
 </dd>
 <dt>&lt;rdeCsv:fAcRr&gt;</dt>
 <dd>Identifier of the registrar, defined in <a class='info' href='#registrarObject'>Section&nbsp;4.4<span> (</span><span class='info'>Registrar Object</span><span>)</span></a>, of the client that should take or took action.
@@ -1817,7 +1817,7 @@ domain1.test,257,3,1,AQPJ////4QQQ
 </dd>
 <dt></dt>
 <dd>The following "csvDomain" fields, defined for the "domain" &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element,  
-                  MAY be used in the "domainContacts" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
+                  MAY be used in the "domainTransfer" &lt;rdeCsv:csv&gt; and &lt;rdeCsv:csvDelete&gt; &lt;rdeCsv:fields&gt; elements:
                   
 </dd>
 <dt></dt>
@@ -3007,7 +3007,7 @@ mycontactid,int
                     
 </dd>
 <dt>&quot;contactTransfer&quot;</dt>
-<dd>Defines the fields and CSV file referenes 
+<dd>Defines the fields and CSV file references 
                   used for the contact object pending and completed transfer records.  No additional 
                   field elements were added for use in the "contactTransfer"  &lt;rdeCsv:csv&gt; &lt;rdeCsv:fields&gt; element. 
                   The following "rdeCsv" fields, defined in section <a class='info' href='#csvCommonFieldElements'>CSV common field elements<span> (</span><span class='info'>CSV common field elements</span><span>)</span></a>,  
@@ -3334,7 +3334,7 @@ Registrar Object</h3>
 
 <p>
                     The registrar object represents the sponsoring client for objects and the organization for clients that create and update objects.  
-                    A registrar object MAY include the server (registry) itself to reference object created and updated by the server.
+                    A registrar object MAY include the server (registry) itself to reference objects created and updated by the server.
                     The 
                     elements used for the Registrar Object references are defined in this section.  The &lt;csvRegistrar:contents&gt; child 
                     element of the &lt;rde:contents&gt; element holds the registrar objects for the deposit. The &lt;rdeCsv:csv&gt; and the 

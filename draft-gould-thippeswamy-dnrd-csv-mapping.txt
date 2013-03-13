@@ -4,7 +4,7 @@
 Network Working Group                                           J. Gould
 Internet-Draft                                            C. Thippeswamy
 Intended status: Standards Track                                Verisign
-Expires: September 13, 2013                               March 12, 2013
+Expires: September 14, 2013                               March 13, 2013
 
 
    Domain Name Registration Data (DNRD) Comma-Separated Values (CSV)
@@ -33,7 +33,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 13, 2013.
+   This Internet-Draft will expire on September 14, 2013.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 1]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 1]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 2]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 2]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -164,7 +164,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 3]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 3]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -220,7 +220,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 4]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 4]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -276,7 +276,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 5]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 5]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -332,7 +332,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 6]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 6]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -388,7 +388,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 7]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 7]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -444,7 +444,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 8]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 8]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -500,7 +500,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013               [Page 9]
+Gould & Thippeswamy    Expires September 14, 2013               [Page 9]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -556,7 +556,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 10]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 10]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -612,7 +612,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 11]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 11]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -668,7 +668,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 12]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 12]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -724,7 +724,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 13]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 13]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -780,7 +780,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 14]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 14]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -827,7 +827,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
       <rdeCsv:fCrRr>  Identifier of the registrar, defined in
          Section 4.4, of the client that created the object.
 
-      <rdeCsv:fCrID>  Identifier of clisent that created the domain
+      <rdeCsv:fCrID>  Identifier of client that created the domain
          object link to the contact object.
 
 
@@ -836,7 +836,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 15]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 15]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -892,7 +892,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 16]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 16]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -939,7 +939,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
       <csvDomain:fStatus>  The status of the domain name with
-         type="domain:statusValueType"/>.
+         type="domain:statusValueType".
 
       <csvDomain:fRgpStatus>  The Registry Grace Period (RGP) status, as
          a sub-status of the <csvDomain:fStatus> "pendingDelete" status
@@ -948,7 +948,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 17]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 17]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1004,7 +1004,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 18]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 18]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1060,7 +1060,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 19]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 19]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1095,9 +1095,9 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
    "domainNameServers"  Defines the fields and CSV file references used
       for the domain name delegated hosts (name servers).  The
       "domainNameServers" CSV files define the relationship between a
-      domain name object and a delegated host, so it will support both
-      the <domain:hostAttr>, using a <rdeCsv:fRoid> field element, or
-      the <domain:hostObj> model, using a <csvHost:fName> field element,
+      domain name object and a delegated host.  It will support both the
+      <domain:hostAttr>, using a <rdeCsv:fRoid> field element, or the
+      <domain:hostObj> model, using a <csvHost:fName> field element,
       defined in [RFC5731].  See Section 4.2 for information in how to
       support either the <domain:hostAttr> or <domain:hostObj> model
       defined in [RFC5731] in the "host" CSV files.
@@ -1116,7 +1116,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 20]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 20]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1172,7 +1172,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 21]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 21]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1228,7 +1228,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 22]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 22]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1284,7 +1284,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 23]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 23]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1340,7 +1340,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 24]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 24]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1374,7 +1374,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
    domain2.test,Dns1.domain.example-TEST
    domain2.test,Dns2.domain.example-TEST
 
-   "dnssec"  Defines the fields and CSV file referenes used for the
+   "dnssec"  Defines the fields and CSV file references used for the
       domain name object DNSSEC records (DS or Key Data).  The following
       field elements were added for use in the "dnssec" <rdeCsv:csv> and
       <rdeCsv:csvDelete> rdeCsv:fields> elements:
@@ -1396,7 +1396,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 25]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 25]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1452,7 +1452,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 26]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 26]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1508,7 +1508,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 27]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 27]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1564,7 +1564,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 28]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 28]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1620,7 +1620,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 29]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 29]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1655,7 +1655,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
    domain1.test,257,3,1,AQPJ////4Q==
    domain1.test,257,3,1,AQPJ////4QQQ
 
-   "domainTransfer"  Defines the fields and CSV file referenes used for
+   "domainTransfer"  Defines the fields and CSV file references used for
       the domain name object pending and completed transfer records.  No
       additional field elements were added for use in the
       "domainTransfer" <rdeCsv:csv> <rdeCsv:fields> element.  The
@@ -1676,14 +1676,14 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 30]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 30]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
       <rdeCsv:fReID>  Identifier of client that requested the transfer.
 
-      <rdeCsv:fReDate>  Date and time that the transfer was requested
+      <rdeCsv:fReDate>  Date and time that the transfer was requested.
 
       <rdeCsv:fAcRr>  Identifier of the registrar, defined in
          Section 4.4, of the client that should take or took action.
@@ -1699,7 +1699,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
       The following "csvDomain" fields, defined for the "domain"
       <rdeCsv:csv> <rdeCsv:fields> element, MAY be used in the
-      "domainContacts" <rdeCsv:csv> and <rdeCsv:csvDelete> <rdeCsv:
+      "domainTransfer" <rdeCsv:csv> and <rdeCsv:csvDelete> <rdeCsv:
       fields> elements:
 
 
@@ -1732,7 +1732,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 31]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 31]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1788,7 +1788,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 32]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 32]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1844,7 +1844,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 33]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 33]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1900,7 +1900,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 34]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 34]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -1956,7 +1956,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 35]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 35]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2012,7 +2012,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 36]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 36]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2068,7 +2068,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 37]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 37]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2124,7 +2124,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 38]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 38]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2180,7 +2180,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 39]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 39]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2236,7 +2236,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 40]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 40]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2292,7 +2292,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 41]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 41]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2348,7 +2348,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 42]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 42]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2404,7 +2404,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 43]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 43]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2460,7 +2460,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 44]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 44]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2516,7 +2516,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 45]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 45]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2572,7 +2572,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 46]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 46]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2628,7 +2628,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 47]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 47]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2684,7 +2684,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 48]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 48]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2740,7 +2740,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 49]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 49]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2796,7 +2796,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 50]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 50]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2852,7 +2852,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 51]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 51]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2887,8 +2887,8 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
    sh8013,int
    mycontactid,int
 
-   "contactTransfer"  Defines the fields and CSV file referenes used for
-      the contact object pending and completed transfer records.  No
+   "contactTransfer"  Defines the fields and CSV file references used
+      for the contact object pending and completed transfer records.  No
       additional field elements were added for use in the
       "contactTransfer" <rdeCsv:csv> <rdeCsv:fields> element.  The
       following "rdeCsv" fields, defined in section CSV common field
@@ -2908,7 +2908,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 52]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 52]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -2964,7 +2964,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 53]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 53]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3020,7 +3020,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 54]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 54]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3076,7 +3076,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 55]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 55]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3132,7 +3132,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 56]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 56]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3188,7 +3188,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 57]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 57]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3223,7 +3223,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
    The registrar object represents the sponsoring client for objects and
    the organization for clients that create and update objects.  A
    registrar object MAY include the server (registry) itself to
-   reference object created and updated by the server.  The elements
+   reference objects created and updated by the server.  The elements
    used for the Registrar Object references are defined in this section.
    The <csvRegistrar:contents> child element of the <rde:contents>
    element holds the registrar objects for the deposit.  The <rdeCsv:
@@ -3244,7 +3244,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 58]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 58]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3300,7 +3300,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 59]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 59]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3356,7 +3356,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 60]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 60]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3412,7 +3412,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 61]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 61]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3468,7 +3468,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 62]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 62]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3524,7 +3524,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 63]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 63]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3580,7 +3580,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 64]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 64]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3636,7 +3636,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 65]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 65]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3692,7 +3692,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 66]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 66]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3748,7 +3748,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 67]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 67]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3804,7 +3804,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 68]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 68]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3860,7 +3860,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 69]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 69]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3916,7 +3916,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 70]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 70]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -3972,7 +3972,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 71]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 71]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4028,7 +4028,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 72]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 72]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4084,7 +4084,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 73]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 73]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4140,7 +4140,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 74]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 74]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4196,7 +4196,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 75]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 75]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4252,7 +4252,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 76]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 76]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4308,7 +4308,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 77]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 77]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4364,7 +4364,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 78]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 78]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4420,7 +4420,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 79]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 79]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4476,7 +4476,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 80]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 80]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4532,7 +4532,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 81]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 81]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4588,7 +4588,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 82]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 82]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4644,7 +4644,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 83]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 83]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4700,7 +4700,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 84]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 84]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4756,7 +4756,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 85]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 85]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4812,7 +4812,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 86]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 86]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4868,7 +4868,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 87]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 87]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4924,7 +4924,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 88]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 88]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -4980,7 +4980,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 89]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 89]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5036,7 +5036,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 90]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 90]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5092,7 +5092,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 91]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 91]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5148,7 +5148,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 92]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 92]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5204,7 +5204,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 93]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 93]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5260,7 +5260,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 94]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 94]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5316,7 +5316,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 95]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 95]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5372,7 +5372,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 96]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 96]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5428,7 +5428,7 @@ Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 97]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 97]
 
 Internet-Draft  Domain Name Registration Data CSV Mapping     March 2013
 
@@ -5484,5 +5484,5 @@ Authors' Addresses
 
 
 
-Gould & Thippeswamy    Expires September 13, 2013              [Page 98]
+Gould & Thippeswamy    Expires September 14, 2013              [Page 98]
 
