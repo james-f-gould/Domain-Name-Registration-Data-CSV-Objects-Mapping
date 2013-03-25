@@ -145,9 +145,9 @@
 <tr><td class="header">Network Working Group</td><td class="header">J. Gould</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">C. Thippeswamy</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">Verisign</td></tr>
-<tr><td class="header">Expires: September 15, 2013</td><td class="header">March 14, 2013</td></tr>
+<tr><td class="header">Expires: September 25, 2013</td><td class="header">March 24, 2013</td></tr>
 </table></td></tr></table>
-<h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-02</h1>
+<h1><br />Domain Name Registration Data (DNRD) Comma-Separated Values (CSV) Objects Mapping<br />draft-gould-thippeswamy-dnrd-csv-mapping-03</h1>
 
 <h3>Abstract</h3>
 
@@ -173,7 +173,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on September 15, 2013.</p>
+This Internet-Draft will expire on September 25, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -2165,7 +2165,7 @@ ns1.example.test2
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ...
-&lt;csvDomain:contents&gt;
+&lt;csvHost:contents&gt;
   ...
   &lt;rdeCsv:csv name="hostStatuses"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
@@ -2186,7 +2186,7 @@ ns1.example.test2
     &lt;/rdeCsv:files&gt;
   &lt;/rdeCsv:csv&gt;
   ...
-&lt;/csvDomain:contents&gt;
+&lt;/csvHost:contents&gt;
 ...
 </pre></div>
                     
@@ -2320,7 +2320,7 @@ ns1.domain1.test,clientDeleteProhibited
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ...
-&lt;csvDomain:contents&gt;
+&lt;csvHost:contents&gt;
   ...
   &lt;rdeCsv:csv name="hostAddresses"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
@@ -2328,7 +2328,7 @@ ns1.domain1.test,clientDeleteProhibited
       &lt;csvHost:fName/&gt;
       &lt;csvHost:fAddr/&gt;
       &lt;csvHost:fAddrVersion/&gt;
-      &lt;rdeCsv:rCrRr/&gt;
+      &lt;rdeCsv:fCrRr/&gt;
       &lt;rdeCsv:fCrID/&gt;
       &lt;rdeCsv:fCrDate/&gt;
     &lt;/rdeCsv:fields&gt;
@@ -2340,7 +2340,7 @@ ns1.domain1.test,clientDeleteProhibited
     &lt;/rdeCsv:files&gt;
   &lt;/rdeCsv:csv&gt;
   ...
-&lt;/csvDomain:contents&gt;
+&lt;/csvHost:contents&gt;
 ...
 </pre></div>
                     
@@ -2418,7 +2418,7 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ...
-&lt;csvDomain:contents&gt;
+&lt;csvHost:contents&gt;
   ...
   &lt;rdeCsv:csv name="hostAddresses"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
@@ -2438,7 +2438,7 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A
     &lt;/rdeCsv:files&gt;
   &lt;/rdeCsv:csv&gt;
   ...
-&lt;/csvDomain:contents&gt;
+&lt;/csvHost:contents&gt;
 ...
 </pre></div>
                     
@@ -2754,7 +2754,7 @@ mycontactid
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ...
-&lt;csvDomain:contents&gt;
+&lt;csvContact:contents&gt;
   ...
   &lt;rdeCsv:csv name="contactStatuses"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
@@ -2775,7 +2775,7 @@ mycontactid
     &lt;/rdeCsv:files&gt;
   &lt;/rdeCsv:csv&gt;
   ...
-&lt;/csvDomain:contents&gt;
+&lt;/csvContact:contents&gt;
 ...
 </pre></div>
                     
@@ -3063,7 +3063,7 @@ mycontactid,int
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ...
-&lt;rde:deletes&gt;
+&lt;csvContact:contents&gt;
   ...
   &lt;rdeCsv:csv name="contactTransfer"&gt;
     &lt;rdeCsv:sep&gt;,&lt;/rdeCsv:sep&gt;
@@ -3117,7 +3117,7 @@ registrarY,clientY,2011-04-09T20:38:00.0Z
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ...
-&lt;csvContact:contents&gt;
+&lt;rde:deletes&gt;
   ...
   &lt;rdeCsv:csvDelete name="contactTransfer"&gt;
     &lt;rdeCsv:fields&gt;
@@ -3293,7 +3293,7 @@ mycontactid,1,1,1,0,0,0,0,0,0,0
 <dd>
                         <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 ...
-&lt;csvContact:contents&gt;
+&lt;rde:deletes&gt;
   ...
   &lt;rdeCsv:csvDelete name="contactDisclose"&gt;
     &lt;rdeCsv:fields&gt;
@@ -5414,6 +5414,17 @@ Change from 01 to 02</h3>
 <li>Updated the description of the "Registrar Object" to include an organization for clients that create and update objects, including the registry.
 </li>
 <li>Added definition of the "isRequired" boolean field attribute to indicate whether a field must be non-empty in the CSV file.
+</li>
+</ol>
+
+<a name="change-02-to-03"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.12.3"></a><h3>5.12.3.&nbsp;
+Change from 02 to 03</h3>
+
+<p></p>
+<ol class="text">
+<li>Incorporated fixes to issues with examples identified by Rickard Bellgrim.
 </li>
 </ol>
 

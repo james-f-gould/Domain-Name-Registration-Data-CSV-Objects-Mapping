@@ -27,7 +27,7 @@
 <?rfc comments="yes" ?>
 <?rfc sortrefs="yes" ?>
 
-<rfc category="std" ipr="trust200902" docName="draft-gould-thippeswamy-dnrd-csv-mapping-02">
+<rfc category="std" ipr="trust200902" docName="draft-gould-thippeswamy-dnrd-csv-mapping-03">
 
 
     <front>
@@ -82,7 +82,7 @@
       </address>
      </author>
 
-        <date day="14" month="March" year="2013"/>
+        <date day="24" month="March" year="2013"/>
         
         <area>Applications</area>
         
@@ -1521,7 +1521,7 @@ ns1.example.test2]]>
                     <t>
                         <figure><artwork><![CDATA[
 ...
-<csvDomain:contents>
+<csvHost:contents>
   ...
   <rdeCsv:csv name="hostStatuses">
     <rdeCsv:sep>,</rdeCsv:sep>
@@ -1542,7 +1542,7 @@ ns1.example.test2]]>
     </rdeCsv:files>
   </rdeCsv:csv>
   ...
-</csvDomain:contents>
+</csvHost:contents>
 ...]]>
                         </artwork></figure>
                     </t>    
@@ -1637,7 +1637,7 @@ ns1.domain1.test,clientDeleteProhibited]]>
                     <t>
                         <figure><artwork><![CDATA[
 ...
-<csvDomain:contents>
+<csvHost:contents>
   ...
   <rdeCsv:csv name="hostAddresses">
     <rdeCsv:sep>,</rdeCsv:sep>
@@ -1645,7 +1645,7 @@ ns1.domain1.test,clientDeleteProhibited]]>
       <csvHost:fName/>
       <csvHost:fAddr/>
       <csvHost:fAddrVersion/>
-      <rdeCsv:rCrRr/>
+      <rdeCsv:fCrRr/>
       <rdeCsv:fCrID/>
       <rdeCsv:fCrDate/>
     </rdeCsv:fields>
@@ -1657,7 +1657,7 @@ ns1.domain1.test,clientDeleteProhibited]]>
     </rdeCsv:files>
   </rdeCsv:csv>
   ...
-</csvDomain:contents>
+</csvHost:contents>
 ...]]>
                         </artwork></figure>
                     </t>    
@@ -1719,7 +1719,7 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A]]>
                     <t>
                         <figure><artwork><![CDATA[
 ...
-<csvDomain:contents>
+<csvHost:contents>
   ...
   <rdeCsv:csv name="hostAddresses">
     <rdeCsv:sep>,</rdeCsv:sep>
@@ -1739,7 +1739,7 @@ ns1.domain1.test,1080:0:0:0:8:800:200C:417A]]>
     </rdeCsv:files>
   </rdeCsv:csv>
   ...
-</csvDomain:contents>
+</csvHost:contents>
 ...]]>
                         </artwork></figure>
                     </t>    
@@ -1966,7 +1966,7 @@ mycontactid]]>
                     <t>
                         <figure><artwork><![CDATA[
 ...
-<csvDomain:contents>
+<csvContact:contents>
   ...
   <rdeCsv:csv name="contactStatuses">
     <rdeCsv:sep>,</rdeCsv:sep>
@@ -1987,7 +1987,7 @@ mycontactid]]>
     </rdeCsv:files>
   </rdeCsv:csv>
   ...
-</csvDomain:contents>
+</csvContact:contents>
 ...]]>
                         </artwork></figure>
                     </t>    
@@ -2203,7 +2203,7 @@ mycontactid,int]]>
                     <t>
                         <figure><artwork><![CDATA[
 ...
-<rde:deletes>
+<csvContact:contents>
   ...
   <rdeCsv:csv name="contactTransfer">
     <rdeCsv:sep>,</rdeCsv:sep>
@@ -2249,7 +2249,7 @@ registrarY,clientY,2011-04-09T20:38:00.0Z]]>
                     <t>
                         <figure><artwork><![CDATA[
 ...
-<csvContact:contents>
+<rde:deletes>
   ...
   <rdeCsv:csvDelete name="contactTransfer">
     <rdeCsv:fields>
@@ -2392,7 +2392,7 @@ mycontactid,1,1,1,0,0,0,0,0,0,0]]>
                     <t>
                         <figure><artwork><![CDATA[
 ...
-<csvContact:contents>
+<rde:deletes>
   ...
   <rdeCsv:csvDelete name="contactDisclose">
     <rdeCsv:fields>
@@ -4242,6 +4242,11 @@ END]]></artwork></figure>
               <t>Changed the &lt;csvRegistrar:fStatus&gt; enumerated list to include only "ok", "readonly", and "terminated" to sync up with draft-arias-noguchi-dnrd-object.  Also removed support for the &lt;csvRegistrar:fStatusName&gt; field.</t>
               <t>Updated the description of the "Registrar Object" to include an organization for clients that create and update objects, including the registry.</t>
               <t>Added definition of the "isRequired" boolean field attribute to indicate whether a field must be non-empty in the CSV file.</t>
+            </list></t>
+          </section>
+          <section title="Change from 02 to 03" anchor="change-02-to-03">
+            <t><list style="numbers">
+              <t>Incorporated fixes to issues with examples identified by Rickard Bellgrim.</t>
             </list></t>
           </section>
         </section>
