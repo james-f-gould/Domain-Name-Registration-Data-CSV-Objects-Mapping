@@ -27,212 +27,222 @@
    	<rde:objURI>urn:ietf:params:xml:ns:csvIDN-1.0</rde:objURI>
 	 </rde:rdeMenu>
 	 <rde:deletes>
-		<rdeCsv:csvDelete name="domain">
-			<rdeCsv:fields>
-				<csvDomain:fName/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					domain-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="domainContacts">
-			<rdeCsv:fields>
-				<csvDomain:fName/>
-     			<csvContact:fId/>
-      		<csvDomain:fContactType/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					domainContacts-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="domainStatuses">
-			<rdeCsv:fields>
-				<csvDomain:fName/>
-     			<csvDomain:fStatus/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					domainStatuses-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="domainNameServers">
-			<rdeCsv:fields>
-				<csvDomain:fName/>
-     			<csvHost:fName/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					domainNameServersObj-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="dnssec">
-			<rdeCsv:fields>
-				<csvDomain:fName/>
-				<csvDomain:fKeyTag/>
-				<csvDomain:fDsAlg/>
-				<csvDomain:fDigestType/>
-				<csvDomain:fDigest/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					dnssec-ds-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="dnssec">
-			<rdeCsv:fields>
-				<csvDomain:fName/>
-				<csvDomain:fFlags/>
-				<csvDomain:fProtocol/>
-				<csvDomain:fKeyAlg/>
-				<csvDomain:fPubKey/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					dnssec-key-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="domainTransfer">
-			<rdeCsv:fields>
-				<csvDomain:fName/>
-				<rdeCsv:fReDate/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					domainTransfer-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="host">
-			<rdeCsv:fields>
-				<csvHost:fName/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1410255126 216">
-					host-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="hostStatuses">
-			<rdeCsv:fields>
-				<csvHost:fName/>
-				<csvHost:fStatus/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1410255126 216">
-					hostStatuses-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="hostAddresses">
-			<rdeCsv:fields>
-				<csvHost:fName/>
-				<csvHost:fAddr/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1410255126 216">
-					hostAddressesObj-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="contact">
-			<rdeCsv:fields>
-				<csvContact:fId/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1410255126 216">
-					contact-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="contactStatuses">
-			<rdeCsv:fields>
-				<csvContact:fId/>
-				<csvContact:fStatus/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1410255126 216">
-					contactStatuses-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="contactPostal">
-			<rdeCsv:sep>,</rdeCsv:sep>
-			<rdeCsv:fields>
-				<csvContact:fId/>
-				<csvContact:fPostalType/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					contactPostal-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>	 		
-		<rdeCsv:csvDelete name="contactTransfer">
-			<rdeCsv:fields>
-				<csvContact:fId/>
-				<rdeCsv:fReDate/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					contactTransfer-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="contactDisclose">
-			<rdeCsv:fields>
-				<csvContact:fId/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1234567890 98765432">
-					contactDisclose-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="registrar">
-			<rdeCsv:fields>
-				<csvRegistrar:fId/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="1924040625 268">
-					registrar-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
-		<rdeCsv:csvDelete name="idnLanguage">
-			<rdeCsv:fields>
-				<rdeCsv:fLanguage/>
-			</rdeCsv:fields>
-			<rdeCsv:files>
-				<rdeCsv:file 
-					cksum="2186160075 371">
-					idnLanguage-delete-YYYYMMDD.csv
-				</rdeCsv:file> 
-			</rdeCsv:files>
-		</rdeCsv:csvDelete>
+	 	<csvDomain:deletes>
+			<rdeCsv:csv name="domain">
+				<rdeCsv:fields>
+					<csvDomain:fName/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						domain-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="domainContacts">
+				<rdeCsv:fields>
+					<csvDomain:fName/>
+					<csvContact:fId/>
+					<csvDomain:fContactType/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						domainContacts-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="domainStatuses">
+				<rdeCsv:fields>
+					<csvDomain:fName/>
+					<csvDomain:fStatus/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						domainStatuses-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="domainNameServers">
+				<rdeCsv:fields>
+					<csvDomain:fName/>
+					<csvHost:fName/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						domainNameServersObj-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="dnssec">
+				<rdeCsv:fields>
+					<csvDomain:fName/>
+					<csvDomain:fKeyTag/>
+					<csvDomain:fDsAlg/>
+					<csvDomain:fDigestType/>
+					<csvDomain:fDigest/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						dnssec-ds-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="dnssec">
+				<rdeCsv:fields>
+					<csvDomain:fName/>
+					<csvDomain:fFlags/>
+					<csvDomain:fProtocol/>
+					<csvDomain:fKeyAlg/>
+					<csvDomain:fPubKey/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						dnssec-key-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="domainTransfer">
+				<rdeCsv:fields>
+					<csvDomain:fName/>
+					<rdeCsv:fReDate/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						domainTransfer-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+	 	</csvDomain:deletes>
+	 	<csvHost:deletes>
+			<rdeCsv:csv name="host">
+				<rdeCsv:fields>
+					<csvHost:fName/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1410255126 216">
+						host-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="hostStatuses">
+				<rdeCsv:fields>
+					<csvHost:fName/>
+					<csvHost:fStatus/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1410255126 216">
+						hostStatuses-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="hostAddresses">
+				<rdeCsv:fields>
+					<csvHost:fName/>
+					<csvHost:fAddr/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1410255126 216">
+						hostAddressesObj-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+		</csvHost:deletes>
+	 	<csvContact:deletes>
+			<rdeCsv:csv name="contact">
+				<rdeCsv:fields>
+					<csvContact:fId/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1410255126 216">
+						contact-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="contactStatuses">
+				<rdeCsv:fields>
+					<csvContact:fId/>
+					<csvContact:fStatus/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1410255126 216">
+						contactStatuses-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="contactPostal">
+				<rdeCsv:sep>,</rdeCsv:sep>
+				<rdeCsv:fields>
+					<csvContact:fId/>
+					<csvContact:fPostalType/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						contactPostal-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>	 		
+			<rdeCsv:csv name="contactTransfer">
+				<rdeCsv:fields>
+					<csvContact:fId/>
+					<rdeCsv:fReDate/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						contactTransfer-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+			<rdeCsv:csv name="contactDisclose">
+				<rdeCsv:fields>
+					<csvContact:fId/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1234567890 98765432">
+						contactDisclose-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+	 	</csvContact:deletes>
+	 	<csvRegistrar:deletes>
+			<rdeCsv:csv name="registrar">
+				<rdeCsv:fields>
+					<csvRegistrar:fId/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="1924040625 268">
+						registrar-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+	 	</csvRegistrar:deletes>
+	 	<csvIDN:deletes>
+			<rdeCsv:csv name="idnLanguage">
+				<rdeCsv:fields>
+					<rdeCsv:fLanguage/>
+				</rdeCsv:fields>
+				<rdeCsv:files>
+					<rdeCsv:file 
+						cksum="2186160075 371">
+						idnLanguage-delete-YYYYMMDD.csv
+					</rdeCsv:file> 
+				</rdeCsv:files>
+			</rdeCsv:csv>
+	 	</csvIDN:deletes>
 	 </rde:deletes>
 	 <rde:contents>
 	 	<csvDomain:contents>

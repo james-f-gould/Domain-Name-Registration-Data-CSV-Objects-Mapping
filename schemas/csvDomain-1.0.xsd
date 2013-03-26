@@ -36,14 +36,36 @@
   <!--
   Child elements of the <rde:contents> object
   -->
-  <element name="contents" type="csvDomain:contentsType"
-  substitutionGroup="rde:contents"/>
+  <element name="contents" type="csvDomain:contentType"
+  substitutionGroup="rde:content"/>
 
-  <complexType name="contentsType">
+  <complexType name="contentType">
    <complexContent>
-    <extension base="rde:contentsType"/>
+    <extension base="rde:contentType">
+       <sequence>
+    	   <element ref="rdeCsv:csv" maxOccurs="unbounded"/>
+       </sequence>
+    </extension>
    </complexContent>
   </complexType>
+
+  <!--
+  Child elements of the <rde:deletes> object
+  -->
+  <element name="deletes" type="csvDomain:deleteType"
+  substitutionGroup="rde:delete"/>
+
+  <complexType name="deleteType">
+   <complexContent>
+    <extension base="rde:deleteType">
+       <sequence>
+    	   <element ref="rdeCsv:csv" maxOccurs="unbounded"/>
+       </sequence>
+    </extension>
+   </complexContent>
+  </complexType>
+
+
 
  <!-- Domain name field -->
  <element name="fName" type="rdeCsv:fNameRequiredType" 
