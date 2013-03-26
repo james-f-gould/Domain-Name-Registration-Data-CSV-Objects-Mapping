@@ -128,28 +128,34 @@
  <!-- Identifier of client that sponsors the object -->   
  <element name="fClID" type="rdeCsv:fClIDRequiredType" 
   substitutionGroup="rdeCsv:field"/>
- <!-- Identifier of registrar of client that created the object -->  
+ <!-- Identifier of registrar of client 
+ that created the object -->  
  <element name="fCrRr" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that created the object -->  
  <element name="fCrID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
- <!-- Identifier of registrar of client that updated the object -->  
+ <!-- Identifier of registrar of client that 
+ updated the object -->  
  <element name="fUpRr" type="rdeCsv:fClIDType"
   substitutionGroup="rdeCsv:field"/>
  <!-- Identifier of client that updated the object -->  
  <element name="fUpID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
- <!-- Identifier of registrar of client that requested the transfer -->
+ <!-- Identifier of registrar of client that 
+ requested the transfer -->
  <element name="fReRr" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
- <!-- Identifier of client that requested the transfer -->
+ <!-- Identifier of client that requested 
+ the transfer -->
  <element name="fReID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
- <!-- Identifier of registrar client that should take or took action -->
+ <!-- Identifier of registrar client that 
+ should take or took action -->
  <element name="fAcRr" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
- <!-- Identifier of client that should take or took action -->
+ <!-- Identifier of client that should take or 
+ took action -->
  <element name="fAcID" type="rdeCsv:fClIDType" 
   substitutionGroup="rdeCsv:field"/>
  <complexType name="fClIDType">
