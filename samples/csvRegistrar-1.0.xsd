@@ -40,7 +40,7 @@
    <complexContent>
     <extension base="rde:contentType">
        <sequence>
-    	   <element ref="rdeCsv:csv" maxOccurs="unbounded"/>
+         <element ref="rdeCsv:csv" maxOccurs="unbounded"/>
        </sequence>
     </extension>
    </complexContent>
@@ -56,7 +56,7 @@
    <complexContent>
     <extension base="rde:deleteType">
        <sequence>
-    	   <element ref="rdeCsv:csv" maxOccurs="unbounded"/>
+         <element ref="rdeCsv:csv" maxOccurs="unbounded"/>
        </sequence>
     </extension>
    </complexContent>
