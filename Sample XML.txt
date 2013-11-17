@@ -1,4 +1,5 @@
 <rdeCsv:csv name="domain">
+
   <rdeCsv:sep>,</rdeCsv:sep>
   <rdeCsv:fields>
     <rdeCsv:fName/>
